@@ -1,3 +1,3 @@
 # wdi-group-project
 Group project Repo
-Semmi
+Rich (again)
