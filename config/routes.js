@@ -10,7 +10,7 @@ const secureRoute = require('../lib/secureRoute')
 
 router.route('/recipes')
   .get(recipes.index)
-  .post(recipes.create)
+  .post(secureRoute, recipes.create)
 
 router.route('/recipes/:id')
   .get(recipes.show)
@@ -23,7 +23,7 @@ router.delete('/recipes/:id/comments/:commentId', secureRoute, recipes.commentDe
 
 router.route('/reviews')
   .get(reviews.index)
-  .post(reviews.create)
+  .post(secureRoute, reviews.create)
 
 router.route('/reviews/:id')
   .get(reviews.show)
