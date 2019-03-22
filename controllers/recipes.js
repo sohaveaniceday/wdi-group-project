@@ -44,10 +44,35 @@ function deleteRoute(req, res) {
     .catch(err => res.status(404).json(err))
 }
 
+function commentCreateRoute(req, res, next) {
+  Recipe
+    .findById(req.params.id)
+    .then(recipe => {
+      recipe.comments.push(req.body)
+      return recipe.save()
+    })
+    .then(recipe => res.json(recipe))
+    .catch(next)
+}
+
+function commentDeleteRoute(req, res, next) {
+  Recipe
+    .findById(req.params.id)
+    .then(recipe => {
+      const comment = recipe.comments.id(req.params.commentId)
+      comment.remove()
+      return recipe.save()
+    })
+    .then(recipe => res.json(recipe))
+    .catch(next)
+}
+
 module.exports = {
   index: indexRoute,
   create: createRoute,
   show: showRoute,
   edit: editRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  commentCreate: commentCreateRoute,
+  commentDelete: commentDeleteRoute
 }

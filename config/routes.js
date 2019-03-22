@@ -3,10 +3,10 @@ const router = require('express').Router()
 const recipes = require('../controllers/recipes')
 const reviews = require('../controllers/reviews')
 const categories = require('../controllers/categories')
+const auth = require('../controllers/auth')
+const secureRoute = require('../lib/secureRoute')
 
-// const auth = require('../controllers/auth')
-// const secureRoutes = require('../lib/secureHandler')
-
+// SAFE
 
 router.route('/recipes')
   .get(recipes.index)
@@ -14,11 +14,12 @@ router.route('/recipes')
 
 router.route('/recipes/:id')
   .get(recipes.show)
-  .put(recipes.edit)
-  .delete(recipes.delete)
+  .put(secureRoute, recipes.edit)
+  .delete(secureRoute, recipes.delete)
 
-router.post('/recipes/:id/comments', recipes.commentCreate)
-router.delete('/recipes/:id/comments/:commentId', recipes.commentDelete)
+
+router.post('/recipes/:id/comments', secureRoute, recipes.commentCreate)
+router.delete('/recipes/:id/comments/:commentId', secureRoute, recipes.commentDelete)
 
 router.route('/reviews')
   .get(reviews.index)
@@ -26,11 +27,11 @@ router.route('/reviews')
 
 router.route('/reviews/:id')
   .get(reviews.show)
-  .put(reviews.edit)
-  .delete(reviews.delete)
+  .put(secureRoute, reviews.edit)
+  .delete(secureRoute, reviews.delete)
 
-router.post('/reviews/:id/comments', reviews.commentCreate)
-router.delete('/reviews/:id/comments/:commentId', reviews.commentDelete)
+router.post('/reviews/:id/comments', secureRoute, reviews.commentCreate)
+router.delete('/reviews/:id/comments/:commentId', secureRoute, reviews.commentDelete)
 
 router.route('/categories')
   .get(categories.index)
@@ -41,7 +42,7 @@ router.route('/categories/:id')
   .put(categories.edit)
   .delete(categories.delete)
 
-// router.post('/register', auth.register)
-// router.post('/login', auth.login)
+router.post('/register', auth.register)
+router.post('/login', auth.login)
 
 module.exports = router

@@ -44,6 +44,6 @@ module.exports = {
   index: categoriesIndex,
   show: categoriesShow,
   create: categoriesCreate,
-  update: categoriesUpdate,
+  edit: categoriesUpdate,
   delete: categoriesDelete
 }

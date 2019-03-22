@@ -25,7 +25,7 @@ function showRoute(req, res) {
     .catch(err => res.json(err))
 }
 
-function editRoute(req,res) {
+function editRoute(req, res) {
   return Review
     .findById(req.params.id)
     .then(review => {
@@ -44,10 +44,35 @@ function deleteRoute(req, res) {
     .catch(err => res.status(404).json(err))
 }
 
+function commentCreateRoute(req, res, next) {
+  Review
+    .findById(req.params.id)
+    .then(review => {
+      review.comments.push(req.body)
+      return review.save()
+    })
+    .then(review => res.json(review))
+    .catch(next)
+}
+
+function commentDeleteRoute(req, res, next) {
+  Review
+    .findById(req.params.id)
+    .then(review => {
+      const comment = review.comments.id(req.params.commentId)
+      comment.remove()
+      return review.save()
+    })
+    .then(review => res.json(review))
+    .catch(next)
+}
+
 module.exports = {
   index: indexRoute,
   create: createRoute,
   show: showRoute,
   edit: editRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  commentCreate: commentCreateRoute,
+  commentDelete: commentDeleteRoute
 }

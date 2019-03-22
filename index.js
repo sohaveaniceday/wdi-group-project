@@ -1,8 +1,11 @@
 //Munch is forever.
+//requires express
 const express = require('express')
+//requires mongoose
 const mongoose = require('mongoose')
+//requires bodyParser
 const bodyParser = require('body-parser')
-
+//requires your port number and 
 const { dbURI, port } = require('./config/environment')
 const router = require('./config/routes')
 
