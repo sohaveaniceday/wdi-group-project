@@ -4,26 +4,25 @@ const recipes = require('../controllers/recipes')
 const reviews = require('../controllers/reviews')
 const categories = require('../controllers/categories')
 const auth = require('../controllers/auth')
+const user = require('../controllers/user')
 const secureRoute = require('../lib/secureRoute')
 
 // SAFE
-
 router.route('/recipes')
   .get(recipes.index)
-  .post(recipes.create)
+  .post(secureRoute, recipes.create)
 
 router.route('/recipes/:id')
   .get(recipes.show)
   .put(secureRoute, recipes.edit)
   .delete(secureRoute, recipes.delete)
 
-
 router.post('/recipes/:id/comments', secureRoute, recipes.commentCreate)
 router.delete('/recipes/:id/comments/:commentId', secureRoute, recipes.commentDelete)
 
 router.route('/reviews')
   .get(reviews.index)
-  .post(reviews.create)
+  .post(secureRoute, reviews.create)
 
 router.route('/reviews/:id')
   .get(reviews.show)
@@ -41,6 +40,9 @@ router.route('/categories/:id')
   .get(categories.show)
   .put(categories.edit)
   .delete(categories.delete)
+
+router.route('/user/:id')
+  .get(user.show)
 
 router.post('/register', auth.register)
 router.post('/login', auth.login)
