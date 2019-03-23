@@ -63,7 +63,7 @@ class recipeShow extends React.Component {
               <br />
               <hr />
               <h4 className="title is-4">Categories</h4>
-              <p>{recipe.categories}</p>
+              <p>{recipe.categories[0].name}</p>
               <br />
               <hr />
               <Link className="button is-warning" to={`/recipes/${recipe._id}/edit`}>Edit</Link>

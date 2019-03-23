@@ -58,7 +58,7 @@ class reviewShow extends React.Component {
               <br />
               <hr />
               <h4 className="title is-4">Categories</h4>
-              <p>{review.categories}</p>
+              <p>{review.categories[0].name}</p>
               <br />
               <hr />
               <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>
