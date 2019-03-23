@@ -64,11 +64,11 @@ class reviewShow extends React.Component {
               <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>
               <button className="button is-danger" onClick={this.handleDelete}>Delete</button>
             </div>
+            <h4 className="title is-4">Comments</h4>
+            <p>{review.comments}</p>
+            <br />
+            <hr />
           </div>
-          <h4 className="title is-4">Comments</h4>
-          <p>{review.comments}</p>
-          <br />
-          <hr />
         </div>
       </main>
     )

@@ -12,7 +12,6 @@ class recipeShow extends React.Component {
     this.state = {}
 
     this.handleDelete = this.handleDelete.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {

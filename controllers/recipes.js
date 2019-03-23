@@ -9,6 +9,7 @@ function indexRoute(req, res) {
 }
 
 function createRoute(req,res) {
+  req.body.user = req.currentUser
   return Recipe
     .create(req.body)
     .then(recipe => res.status(201).json(recipe))
@@ -45,6 +46,7 @@ function deleteRoute(req, res) {
 }
 
 function commentCreateRoute(req, res, next) {
+  req.body.user = req.currentUser
   Recipe
     .findById(req.params.id)
     .then(recipe => {
