@@ -16,15 +16,16 @@ class ReviewEdit extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/api/reviews/${this.props.match.params.id}`)
-      .then(res => this.setState({ data: res.data }))
-      .catch(err => console.log(err.message))
     axios.get('/api/categories')
       .then(res => {
         return res.data.map(category => ({ value: category._id, label: category.name }))
       })
       .then(categories => this.setState({ categories }))
       .catch(err => console.log(err))
+    axios.get(`/api/reviews/${this.props.match.params.id}`)
+      .then(res => this.setState({ data: res.data }))
+      .catch(err => console.log(err.message))
+
   }
 
   handleChange({ target: { name, value }}) {

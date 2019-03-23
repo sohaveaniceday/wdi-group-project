@@ -37,7 +37,6 @@ class App extends React.Component {
           <Switch>
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
-            <Route exact path="/" component={Home} />
             <SecureRoute path="/recipes/new" component={RecipeNew} />
             <SecureRoute path="/recipes/:id/edit" component={RecipeEdit} />
             <SecureRoute path="/recipes/:id" component={RecipeShow} />
@@ -45,6 +44,7 @@ class App extends React.Component {
             <SecureRoute path="/reviews/:id/edit" component={ReviewEdit} />
             <Route path="/reviews/:id" component={ReviewShow} />
             <Route path="/newsfeed" component={Newsfeed} />
+            <Route exact path="/" component={Home} />
           </Switch>
           <Footer />
         </main>

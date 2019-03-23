@@ -81,9 +81,3 @@ class recipeShow extends React.Component {
 }
 
 export default recipeShow
-
-// <Link className="button is-warning" to={`/horror-films/${film._id}/edit`}>Edit</Link>
-// <button className="button is-danger" onClick={this.handleDelete}>Delete</button>
-
-// {this.isOwner() && <Link className="button is-warning" to={`/recipes/${recipe._id}/edit`}>Edit</Link>}
-// {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
