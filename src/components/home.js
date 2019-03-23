@@ -8,8 +8,8 @@ const Home = () => {
         <div className="container">
           <p className="title">Munch</p>
           <p className="subtitle">Munch App</p>
-          <Link className="button is-info" to={'/register'}>Register</Link>
-          <Link className="button is-info" to={'/login'}>Login</Link>
+          <Link className="button is-info" to="/register">Register</Link>
+          <Link className="button is-info" to="/login">Login</Link>
         </div>
       </div>
     </section>
