@@ -6,6 +6,9 @@ import './style.scss'
 // import { BrowserRouter as Browser, Route, Switch } from 'react-router-dom'
 import { BrowserRouter as Browser, Route, Switch } from 'react-router-dom'
 
+import Home from './components/home'
+import Register from './components/auth/register'
+import Login from './components/auth/login'
 import Nav from './components/common/nav'
 import Footer from './components/common/Footer'
 import Newsfeed from './components/users/newsFeed'
@@ -29,6 +32,9 @@ class App extends React.Component {
         <main>
           <Nav />
           <Switch>
+            <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
+            <Route exact path="/" component={Home} />
             <SecureRoute path="/recipes/new" component={RecipeNew} />
             <SecureRoute path="/recipes/:id/edit" component={RecipeEdit} />
             <Route path="/recipes/:id" component={RecipeShow} />
