@@ -9,8 +9,8 @@ const commentSchema = new mongoose.Schema({
 const recipeSchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String },
-  ingredients: [ { type: String } ],
-  method: [ { type: String } ],
+  ingredients: { type: String },
+  method: { type: String },
   image: { type: String },
   user: { type: mongoose.Schema.ObjectId, ref: 'User' },
   categories: [ { type: mongoose.Schema.ObjectId, ref: 'Category' } ],
