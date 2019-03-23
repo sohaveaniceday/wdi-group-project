@@ -9,6 +9,10 @@ import { BrowserRouter as Browser, Route, Switch } from 'react-router-dom'
 import Nav from './components/common/nav'
 import Footer from './components/common/Footer'
 import Newsfeed from './components/users/newsFeed'
+import RecipeShow from './components/recipes/recipeShow'
+import RecipeNew from './components/recipes/recipeNew'
+import RecipeEdit from './components/recipes/recipeEdit'
+import SecureRoute from './components/common/secureRoute'
 
 // import axios from 'axios'
 
@@ -25,6 +29,9 @@ class App extends React.Component {
         <main>
           <Nav />
           <Switch>
+            <SecureRoute path="/recipes/new" component={RecipeNew} />
+            <SecureRoute path="/recipes/:id/edit" component={RecipeEdit} />
+            <Route path="/recipes/:id" component={RecipeShow} />
             <Route path="/newsfeed" component={Newsfeed} />
           </Switch>
           <Footer />
