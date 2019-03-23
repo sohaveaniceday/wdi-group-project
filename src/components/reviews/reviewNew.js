@@ -49,8 +49,8 @@ class ReviewNew extends React.Component {
       })
   }
 
-  handleSelect(value) {
-    const data = {...this.state.data, category: value }
+  handleSelect(category) {
+    const data = {...this.state.data, categories: [category[0].value] }
     this.setState({ data })
   }
 

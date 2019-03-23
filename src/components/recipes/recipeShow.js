@@ -32,6 +32,7 @@ class recipeShow extends React.Component {
   // }
 
   render() {
+    console.log(this.state)
     if(!this.state.recipe) return null
     const { recipe } = this.state
     return(
@@ -58,7 +59,7 @@ class recipeShow extends React.Component {
               <br />
               <hr />
               <h4 className="title is-4">Written By</h4>
-              <p>{recipe.user}</p>
+              <p>{recipe.user.username}</p>
               <br />
               <hr />
               <h4 className="title is-4">Categories</h4>
@@ -67,11 +68,11 @@ class recipeShow extends React.Component {
               <hr />
               <Link className="button is-warning" to={`/recipes/${recipe._id}/edit`}>Edit</Link>
               <button className="button is-danger" onClick={this.handleDelete}>Delete</button>
+              <br />
+              <hr />
+              <h4 className="title is-4">Comments</h4>
+              <p>{recipe.comments}</p>
             </div>
-            <h4 className="title is-4">Comments</h4>
-            <p>{recipe.comments}</p>
-            <br />
-            <hr />
           </div>
         </div>
       </main>

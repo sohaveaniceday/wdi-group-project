@@ -19,6 +19,7 @@ function createRoute(req,res) {
 function showRoute(req, res) {
   return Recipe
     .findById(req.params.id)
+    .populate('user')
     .then(recipe=> {
       if (!recipe) return res.status(404).json({ message: 'Not Found'})
       res.status(200).json(recipe)

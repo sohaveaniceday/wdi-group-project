@@ -54,7 +54,7 @@ class reviewShow extends React.Component {
               <p>{review.reviewText}</p>
               <hr />
               <h4 className="title is-4">Written By</h4>
-              <p>{review.user}</p>
+              <p>{review.user.username}</p>
               <br />
               <hr />
               <h4 className="title is-4">Categories</h4>
@@ -63,11 +63,11 @@ class reviewShow extends React.Component {
               <hr />
               <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>
               <button className="button is-danger" onClick={this.handleDelete}>Delete</button>
+              <br />
+              <hr />
+              <h4 className="title is-4">Comments</h4>
+              <p>{review.comments}</p>
             </div>
-            <h4 className="title is-4">Comments</h4>
-            <p>{review.comments}</p>
-            <br />
-            <hr />
           </div>
         </div>
       </main>
