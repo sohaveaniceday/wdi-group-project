@@ -8,16 +8,23 @@ class ReviewEdit extends React.Component {
   constructor() {
     super()
 
-    this.state = { data: {}, errors: {} }
+    this.state = { data: {}, errors: {}, categories: [] }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
   }
 
   componentDidMount() {
     axios.get(`/api/reviews/${this.props.match.params.id}`)
       .then(res => this.setState({ data: res.data }))
       .catch(err => console.log(err.message))
+    axios.get('/api/categories')
+      .then(res => {
+        return res.data.map(category => ({ value: category._id, label: category.name }))
+      })
+      .then(categories => this.setState({ categories }))
+      .catch(err => console.log(err))
   }
 
   handleChange({ target: { name, value }}) {
@@ -34,6 +41,11 @@ class ReviewEdit extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
+  handleSelect(category) {
+    const data = {...this.state.data, categories: [category[0].value] }
+    this.setState({ data })
+  }
+
   render() {
     return (
       <main className="section">
@@ -41,6 +53,7 @@ class ReviewEdit extends React.Component {
           <ReviewForm
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            handleSelect={this.handleSelect}
             data={this.state.data}
             errors={this.state.errors}
           />

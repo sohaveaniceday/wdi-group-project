@@ -27,9 +27,9 @@ class recipeShow extends React.Component {
       .catch(err => console.log(err.message))
   }
 
-  // isOwner() {
-  //   return Auth.isAuthenticated() && this.state.recipe.user._id === Auth.getPayload().sub
-  // }
+  isOwner() {
+    return Auth.isAuthenticated() && this.state.recipe.user._id === Auth.getPayload().sub
+  }
 
   render() {
     console.log(this.state)
@@ -66,8 +66,8 @@ class recipeShow extends React.Component {
               <p>{recipe.categories[0].name}</p>
               <br />
               <hr />
-              <Link className="button is-warning" to={`/recipes/${recipe._id}/edit`}>Edit</Link>
-              <button className="button is-danger" onClick={this.handleDelete}>Delete</button>
+              {this.isOwner() && <Link className="button is-warning" to={`/recipes/${recipe._id}/edit`}>Edit</Link>}
+              {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
               <br />
               <hr />
               <h4 className="title is-4">Comments</h4>

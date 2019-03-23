@@ -27,9 +27,9 @@ class reviewShow extends React.Component {
       .catch(err => console.log(err.message))
   }
 
-  // isOwner() {
-  //   return Auth.isAuthenticated() && this.state.review.user._id === Auth.getPayload().sub
-  // }
+  isOwner() {
+    return Auth.isAuthenticated() && this.state.review.user._id === Auth.getPayload().sub
+  }
 
   render() {
     if(!this.state.review) return null
@@ -61,10 +61,9 @@ class reviewShow extends React.Component {
               <p>{review.categories[0].name}</p>
               <br />
               <hr />
-              <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>
-              <button className="button is-danger" onClick={this.handleDelete}>Delete</button>
+              {this.isOwner() && <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>}
+              {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
               <br />
-              <hr />
               <h4 className="title is-4">Comments</h4>
               <p>{review.comments}</p>
             </div>
@@ -76,6 +75,3 @@ class reviewShow extends React.Component {
 }
 
 export default reviewShow
-
-// {this.isOwner() && <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>}
-// {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
