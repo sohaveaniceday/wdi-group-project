@@ -16,15 +16,16 @@ class RecipeEdit extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/api/recipes/${this.props.match.params.id}`)
-      .then(res => this.setState({ data: res.data }))
-      .catch(err => console.log(err.message))
     axios.get('/api/categories')
       .then(res => {
         return res.data.map(category => ({ value: category._id, label: category.name }))
       })
       .then(categories => this.setState({ categories }))
       .catch(err => console.log(err))
+    axios.get(`/api/recipes/${this.props.match.params.id}`)
+      .then(res => this.setState({ data: res.data }))
+      .catch(err => console.log(err.message))
+
   }
 
   handleChange({ target: { name, value }}) {
@@ -41,8 +42,13 @@ class RecipeEdit extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
-  handleSelect(category) {
-    const data = {...this.state.data, categories: [category[0].value] }
+  handleSelect(value) {
+    let data = null
+    if (this.state.data.categories) {
+      data = {...this.state.data, categories: value.map(({ value }) => value) }
+    } else {
+      data = {...this.state.data, categories: [value.value] }
+    }
     this.setState({ data })
   }
 
@@ -54,6 +60,7 @@ class RecipeEdit extends React.Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
             handleSelect={this.handleSelect}
+            categories={this.state.categories}
             data={this.state.data}
             errors={this.state.errors}
           />

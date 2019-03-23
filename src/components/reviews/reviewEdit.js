@@ -42,8 +42,13 @@ class ReviewEdit extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
-  handleSelect(category) {
-    const data = {...this.state.data, categories: [category[0].value] }
+  handleSelect(value) {
+    let data = null
+    if (this.state.data.categories) {
+      data = {...this.state.data, categories: value.map(({ value }) => value) }
+    } else {
+      data = {...this.state.data, categories: [value.value] }
+    }
     this.setState({ data })
   }
 
@@ -55,6 +60,7 @@ class ReviewEdit extends React.Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
             handleSelect={this.handleSelect}
+            categories={this.state.categories}
             data={this.state.data}
             errors={this.state.errors}
           />

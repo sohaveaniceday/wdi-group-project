@@ -8,7 +8,7 @@ class ReviewNew extends React.Component {
   constructor() {
     super()
 
-    this.state = { data: {}, errors: {}, categories: [] }
+    this.state = { data: {}, errors: {} }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -32,25 +32,25 @@ class ReviewNew extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    axios.post('/api/reviews',
-      this.state.data,
-      { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
-      .then((res) => {
-        if (res.data.errors) {
-          this.setState({ sent: 'false' })
-        } else {
-          this.setState({ sent: 'true', data: {} })
-          this.props.history.push('/newsfeed')
-        }
-      })
-      .catch(err => {
-        this.setState({ errors: err.response.data.errors })
-        console.log(err)
-      })
+    if (this.state.data.categories && this.state.data.categories.length > 0) {
+      axios.post('/api/reviews',
+        this.state.data,
+        { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
+        .then((res) => {
+          if (res.data.errors) {
+            this.setState({ sent: 'false' })
+          } else {
+            this.setState({ sent: 'true', data: {} })
+            this.props.history.push('/newsfeed')
+          }
+        })
+        .catch(err => this.setState({ errors: err.response.data.errors }))
+    }
   }
 
-  handleSelect(category) {
-    const data = {...this.state.data, categories: [category[0].value] }
+  handleSelect(value) {
+    let data = null
+    data = {...this.state.data, categories: value.map(({ value }) => value) }
     this.setState({ data })
   }
 

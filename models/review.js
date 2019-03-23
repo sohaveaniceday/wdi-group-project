@@ -10,10 +10,10 @@ const commentSchema = new mongoose.Schema({
 const reviewSchema = new mongoose.Schema({
   restaurantName: { type: String, required: true },
   reviewText: { type: String },
-  rating: { type: Number, required: true, min: 1, max: 5 },
+  rating: { type: Number, min: 1, max: 5 },
   image: { type: String },
   user: { type: mongoose.Schema.ObjectId, ref: 'User' },
-  categories: [ { type: mongoose.Schema.ObjectId, ref: 'Category' } ],
+  categories: [{ type: mongoose.Schema.ObjectId, ref: 'Category', required: true, default: undefined }],
   comments: [ commentSchema ]
 })
 

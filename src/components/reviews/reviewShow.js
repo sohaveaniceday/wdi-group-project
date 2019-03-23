@@ -58,12 +58,14 @@ class reviewShow extends React.Component {
               <br />
               <hr />
               <h4 className="title is-4">Categories</h4>
-              <p>{review.categories[0].name}</p>
+              <div>{review.categories.map(category => (
+                <p key={category._id}>{category.name} <br /></p>))}</div>
               <br />
               <hr />
               {this.isOwner() && <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>}
               {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
               <br />
+              <hr />
               <h4 className="title is-4">Comments</h4>
               <p>{review.comments}</p>
             </div>
@@ -75,3 +77,5 @@ class reviewShow extends React.Component {
 }
 
 export default reviewShow
+
+// <p>{review.categories}</p>

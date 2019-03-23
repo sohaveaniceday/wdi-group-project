@@ -32,7 +32,7 @@ class recipeShow extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state.recipe)
     if(!this.state.recipe) return null
     const { recipe } = this.state
     return(
@@ -63,7 +63,8 @@ class recipeShow extends React.Component {
               <br />
               <hr />
               <h4 className="title is-4">Categories</h4>
-              <p>{recipe.categories[0].name}</p>
+              <div>{recipe.categories.map(category => (
+                <p key={category._id}>{category.name} <br /></p>))}</div>
               <br />
               <hr />
               {this.isOwner() && <Link className="button is-warning" to={`/recipes/${recipe._id}/edit`}>Edit</Link>}
