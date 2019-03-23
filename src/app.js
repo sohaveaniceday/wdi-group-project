@@ -12,6 +12,9 @@ import Newsfeed from './components/users/newsFeed'
 import RecipeShow from './components/recipes/recipeShow'
 import RecipeNew from './components/recipes/recipeNew'
 import RecipeEdit from './components/recipes/recipeEdit'
+import ReviewShow from './components/reviews/reviewShow'
+import ReviewNew from './components/reviews/reviewNew'
+import ReviewEdit from './components/reviews/reviewEdit'
 import SecureRoute from './components/common/secureRoute'
 
 // import axios from 'axios'
@@ -31,7 +34,10 @@ class App extends React.Component {
           <Switch>
             <SecureRoute path="/recipes/new" component={RecipeNew} />
             <SecureRoute path="/recipes/:id/edit" component={RecipeEdit} />
-            <Route path="/recipes/:id" component={RecipeShow} />
+            <SecureRoute path="/recipes/:id" component={RecipeShow} />
+            <SecureRoute path="/reviews/new" component={ReviewNew} />
+            <SecureRoute path="/reviews/:id/edit" component={ReviewEdit} />
+            <Route path="/reviews/:id" component={ReviewShow} />
             <Route path="/newsfeed" component={Newsfeed} />
           </Switch>
           <Footer />

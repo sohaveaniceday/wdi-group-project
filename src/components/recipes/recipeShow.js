@@ -12,6 +12,7 @@ class recipeShow extends React.Component {
     this.state = {}
 
     this.handleDelete = this.handleDelete.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -57,9 +58,21 @@ class recipeShow extends React.Component {
               <p>{recipe.method}</p>
               <br />
               <hr />
+              <h4 className="title is-4">Written By</h4>
+              <p>{recipe.user}</p>
+              <br />
+              <hr />
+              <h4 className="title is-4">Categories</h4>
+              <p>{recipe.categories}</p>
+              <br />
+              <hr />
               <Link className="button is-warning" to={`/recipes/${recipe._id}/edit`}>Edit</Link>
               <button className="button is-danger" onClick={this.handleDelete}>Delete</button>
             </div>
+            <h4 className="title is-4">Comments</h4>
+            <p>{recipe.comments}</p>
+            <br />
+            <hr />
           </div>
         </div>
       </main>

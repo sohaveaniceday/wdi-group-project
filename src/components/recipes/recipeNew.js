@@ -8,10 +8,20 @@ class RecipeNew extends React.Component {
   constructor() {
     super()
 
-    this.state = { data: {}, errors: {} }
+    this.state = { data: {}, errors: {}, categories: [] }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
+  }
+
+  componentDidMount() {
+    axios.get('/api/categories')
+      .then(res => {
+        return res.data.map(category => ({ value: category._id, label: category.name }))
+      })
+      .then(categories => this.setState({ categories }))
+      .catch(err => console.log(err))
   }
 
   handleChange({ target: { name, value }}) {
@@ -22,14 +32,10 @@ class RecipeNew extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    // const starring = this.state.data.starring
-    // const data = {...this.state.data, starring: ['test']}
-    console.log(this.state.data)
     axios.post('/api/recipes',
       this.state.data,
       { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
       .then((res) => {
-        console.log(res)
         if (res.data.errors) {
           this.setState({ sent: 'false' })
         } else {
@@ -43,15 +49,22 @@ class RecipeNew extends React.Component {
       })
   }
 
+  handleSelect(value) {
+    const data = {...this.state.data, category: value }
+    this.setState({ data })
+  }
+
   render() {
-    console.log(this.state.data)
+    console.log(this.state)
     return (
       <main className="section">
         <div className="container">
           <RecipeForm
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            handleSelect={this.handleSelect}
             data={this.state.data}
+            categories={this.state.categories}
             errors={this.state.errors}
           />
         </div>
