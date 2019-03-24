@@ -7,7 +7,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
       <h1 className="title is-2">Review Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="field">
-          <label className="label">Restaurant Name</label>
+          <label className="label">Restaurant Name (required)</label>
           <div className="control">
             <input
               className={`input ${errors.restaurantName ? 'is-danger': ''}`}
@@ -57,7 +57,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           {errors.image && <small className="help is-danger">{errors.image}</small>}
         </div>
         <div className="field">
-          <label className="label">Categories (Required)</label>
+          <label className="label">Categories (required)</label>
           <div>
             <Select
               options={categories}

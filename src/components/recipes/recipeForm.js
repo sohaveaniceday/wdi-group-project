@@ -7,7 +7,7 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
       <h1 className="title is-2">Recipe Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="field">
-          <label className="label">Name</label>
+          <label className="label">Name (required)</label>
           <div className="control">
             <input
               className={`input ${errors.name ? 'is-danger': ''}`}
@@ -72,7 +72,7 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           {errors.image && <small className="help is-danger">{errors.image}</small>}
         </div>
         <div className="field">
-          <label className="label">Categories (Required)</label>
+          <label className="label">Categories (required)</label>
           <div>
             <Select
               options={categories}
