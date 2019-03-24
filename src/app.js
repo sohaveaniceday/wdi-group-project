@@ -19,6 +19,7 @@ import ReviewShow from './components/reviews/reviewShow'
 import ReviewNew from './components/reviews/reviewNew'
 import ReviewEdit from './components/reviews/reviewEdit'
 import SecureRoute from './components/common/secureRoute'
+import ProfilePage from './components/users/profilePage'
 
 // import axios from 'axios'
 
@@ -44,7 +45,9 @@ class App extends React.Component {
             <SecureRoute path="/reviews/:id/edit" component={ReviewEdit} />
             <Route path="/reviews/:id" component={ReviewShow} />
             <Route path="/newsfeed" component={Newsfeed} />
+            <Route path="/profilePage" component={ProfilePage} />
             <Route exact path="/" component={Home} />
+
           </Switch>
           <Footer />
         </main>
