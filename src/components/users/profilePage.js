@@ -4,7 +4,7 @@ import axios from 'axios'
 
 class ProfilePage extends React.Component {
   cosntructor() {
-    super()
+    //super()
 
     this.setState = {}
   }
