@@ -4,7 +4,11 @@ import axios from 'axios'
 
 class ProfilePage extends React.Component {
   cosntructor() {
+<<<<<<< HEAD
     // super()
+=======
+    //super()
+>>>>>>> frontendstarting
 
     this.setState = {}
   }
