@@ -82,11 +82,9 @@ class recipeShow extends React.Component {
               <hr />
               <h4 className="title is-4">Method</h4>
               <p>{recipe.method}</p>
-              <br />
               <hr />
               <h4 className="title is-4">Written By</h4>
               <p>{recipe.user.username}</p>
-              <br />
               <hr />
               <h4 className="title is-4">Categories</h4>
               <div>{recipe.categories.map(category => (
@@ -94,7 +92,6 @@ class recipeShow extends React.Component {
               {this.isOwner() && <div><br /><hr /></div>}
               {this.isOwner() && <Link className="button is-warning" to={`/recipes/${recipe._id}/edit`}>Edit</Link>}
               {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
-              <br />
               <hr />
               <h4 className="title is-4">Comments</h4>
               <form onSubmit={this.handleSubmit}>

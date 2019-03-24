@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Select from 'react-select'
 
 class Register extends React.Component {
   constructor() {
@@ -12,27 +13,45 @@ class Register extends React.Component {
         password: '',
         passwordConfirmation: ''
       },
-      errors: {}
+      error: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
+  }
+
+  componentDidMount() {
+    axios.get('/api/categories')
+      .then(res => {
+        return res.data.map(category => ({ value: category._id, label: category.name }))
+      })
+      .then(categories => this.setState({ categories }))
+      .catch(err => console.log(err))
   }
 
   handleChange({ target: { name , value }}) {
     const data = {...this.state.data, [name]: value}
-    const errors = {...this.state.errors, [name]: ''}
-    this.setState({ data, errors })
+    const error = ''
+    this.setState({ data, error })
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    axios.post('api/register', this.state.data)
-      .then(() => this.props.history.push('/login'))
-      .catch(err => this.setState({ errors: err.response.data.errors }))
+    if (this.state.data.categories && this.state.data.categories.length > 0) {
+      axios.post('api/register', this.state.data)
+        .then(() => this.props.history.push('/login'))
+        .catch(() => this.setState({ error: 'Invalid Input'}))
+    }
+  }
+
+  handleSelect(value) {
+    let data = null
+    data = {...this.state.data, categories: value.map(({ value }) => value) }
+    this.setState({ data })
   }
 
   render() {
-    console.log(this.state.errors)
+    console.log(this.state.error)
     return (
       <main className="section">
         <div className="container">
@@ -42,33 +61,33 @@ class Register extends React.Component {
               <label className="label">Username</label>
               <div className="control">
                 <input
-                  className={`input ${this.state.errors.username ? 'is-danger': ''}`}
+                  className={`input ${this.state.error.username ? 'is-danger': ''}`}
                   name="username"
                   placeholder="Username"
                   value={this.state.data.username}
                   onChange={this.handleChange}
                 />
               </div>
-              {this.state.errors.username && <small className="help is-danger">{this.state.errors.username}</small>}
+              {this.state.error.username && <small className="help is-danger">{this.state.error.username}</small>}
             </div>
             <div className="field">
               <label className="label">Email</label>
               <div className="control">
                 <input
-                  className={`input ${this.state.errors.email ? 'is-danger': ''}`}
+                  className={`input ${this.state.error.email ? 'is-danger': ''}`}
                   name="email"
                   placeholder="Email"
                   value={this.state.data.email}
                   onChange={this.handleChange}
                 />
               </div>
-              {this.state.errors.email && <small className="help is-danger">{this.state.errors.email}</small>}
+              {this.state.error.email && <small className="help is-danger">{this.state.error.email}</small>}
             </div>
             <div className="field">
               <label className="label">Password</label>
               <div className="control">
                 <input
-                  className={`input ${this.state.errors.password ? 'is-danger': ''}`}
+                  className={`input ${this.state.error.password ? 'is-danger': ''}`}
                   name="password"
                   type="password"
                   placeholder="Password"
@@ -76,19 +95,32 @@ class Register extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
-              {this.state.errors.password && <small className="help is-danger">{this.state.errors.password}</small>}
+              {this.state.error.password && <small className="help is-danger">{this.state.error.password}</small>}
             </div>
             <div className="field">
               <label className="label">Password Confirmation</label>
               <div className="control">
                 <input
-                  className={`input ${this.state.errors.password ? 'is-danger': ''}`}
+                  className={`input ${this.state.error.password ? 'is-danger': ''}`}
                   name="passwordConfirmation"
                   type="password"
                   placeholder="Password Confirmation"
                   value={this.state.data.passwordConfirmation}
                   onChange={this.handleChange}
                 />
+              </div>
+              <div className="field">
+                <br />
+                <label className="label">Categories (required)</label>
+                <div>
+                  <Select
+                    options={this.state.categories}
+                    onChange={this.handleSelect}
+                    isMulti
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                  />
+                </div>
               </div>
             </div>
             <button className="button is-info">Register</button>
