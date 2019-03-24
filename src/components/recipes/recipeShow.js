@@ -9,9 +9,11 @@ class recipeShow extends React.Component {
   constructor() {
     super()
 
-    this.state = {}
+    this.state = { data: {}, errors: {} }
 
     this.handleDelete = this.handleDelete.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -31,10 +33,34 @@ class recipeShow extends React.Component {
     return Auth.isAuthenticated() && this.state.recipe.user._id === Auth.getPayload().sub
   }
 
+  handleChange({ target: { name, value } }) {
+    const data = {...this.state.data, [name]: value }
+    const errors = {...this.state.errors, [name]: null }
+    this.setState({ data, errors })
+    console.log(this.state.data)
+  }
+
+
+  handleSubmit(e) {
+    e.preventDefault()
+    axios.post(`/api/recipes/${this.props.match.params.id}/comments`,
+      this.state.data,
+      { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
+      .then((res) => {
+        if (res.data.errors) {
+          this.setState({ sent: 'false' })
+        } else {
+          document.location.reload(true)
+          this.setState({ sent: 'true', data: {} })
+        }
+      })
+      .catch(err => this.setState({ errors: err.response.data.errors }))
+  }
+
   render() {
     console.log(this.state.recipe)
     if(!this.state.recipe) return null
-    const { recipe } = this.state
+    const { recipe, data, errors } = this.state
     return(
       <main className="section">
         <div className="container recipe-show">
@@ -71,7 +97,25 @@ class recipeShow extends React.Component {
               <br />
               <hr />
               <h4 className="title is-4">Comments</h4>
-              <p>{recipe.comments}</p>
+              <form onSubmit={this.handleSubmit}>
+                <div className="field">
+                  <label className="label">Make Comment</label>
+                  <div className="control">
+                    <input
+                      className={`input ${errors.text ? 'is-danger': ''}`}
+                      name="text"
+                      placeholder="Comment"
+                      onChange={this.handleChange}
+                      value={data.text || ''}
+                    />
+                  </div>
+                  {errors.restaurantName && <small className="help is-danger">{errors.restaurantName}</small>}
+                </div>
+                <button className="button is-info">Submit</button>
+              </form>
+              <br />
+              <div>{recipe.comments.map((comment, i) => (
+                <div key={i}><p>{comment.text}</p><p>Written by {comment.user.username}</p><hr /></div>))}</div>
             </div>
           </div>
         </div>

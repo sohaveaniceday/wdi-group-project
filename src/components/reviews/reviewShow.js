@@ -9,9 +9,11 @@ class reviewShow extends React.Component {
   constructor() {
     super()
 
-    this.state = {}
+    this.state = { data: {}, errors: {} }
 
     this.handleDelete = this.handleDelete.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -31,15 +33,38 @@ class reviewShow extends React.Component {
     return Auth.isAuthenticated() && this.state.review.user._id === Auth.getPayload().sub
   }
 
+  handleChange({ target: { name, value } }) {
+    const data = {...this.state.data, [name]: value }
+    const errors = {...this.state.errors, [name]: null }
+    this.setState({ data, errors })
+    console.log(this.state.data)
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    axios.post(`/api/reviews/${this.props.match.params.id}/comments`,
+      this.state.data,
+      { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
+      .then((res) => {
+        if (res.data.errors) {
+          this.setState({ sent: 'false' })
+        } else {
+          document.location.reload(true)
+          this.setState({ sent: 'true', data: {} })
+        }
+      })
+      .catch(err => this.setState({ errors: err.response.data.errors }))
+  }
+
   render() {
+    console.log(this.state.review)
     if(!this.state.review) return null
-    const { review } = this.state
+    const { review, data, errors } = this.state
     return(
       <main className="section">
         <div className="container review-show">
           <h2 className="title">{review.restaurantName}</h2>
           <hr />
-
           <div className="columns">
             <div className="column is-half">
               <figure className="image">
@@ -47,26 +72,42 @@ class reviewShow extends React.Component {
               </figure>
             </div>
             <div className="column is-half">
-              <h4 className="title is-4">Rating</h4>
-              <p>Rating: {review.rating}</p>
+              <h4 className="title is-4">Rating: {review.rating} Stars</h4>
               <hr />
               <h4 className="title is-4">Review</h4>
               <p>{review.reviewText}</p>
               <hr />
               <h4 className="title is-4">Written By</h4>
               <p>{review.user.username}</p>
-              <br />
               <hr />
               <h4 className="title is-4">Categories</h4>
               <div>{review.categories.map(category => (
                 <p key={category._id}>{category.name} <br /></p>))}</div>
-              {this.isOwner() && <div><br /><hr /></div>}
+              {this.isOwner() && <div><hr /></div>}
               {this.isOwner() && <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>}
               {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
               <br />
               <hr />
               <h4 className="title is-4">Comments</h4>
-              <p>{review.comments}</p>
+              <form onSubmit={this.handleSubmit}>
+                <div className="field">
+                  <label className="label">Make Comment</label>
+                  <div className="control">
+                    <input
+                      className={`input ${errors.text ? 'is-danger': ''}`}
+                      name="text"
+                      placeholder="Comment"
+                      onChange={this.handleChange}
+                      value={data.text || ''}
+                    />
+                  </div>
+                  {errors.restaurantName && <small className="help is-danger">{errors.restaurantName}</small>}
+                </div>
+                <button className="button is-info">Submit</button>
+              </form>
+              <br />
+              <div>{review.comments.map((comment, i) => (
+                <div key={i}><p>{comment.text}</p><p>Written by {comment.user.username}</p><hr /></div>))}</div>
             </div>
           </div>
         </div>

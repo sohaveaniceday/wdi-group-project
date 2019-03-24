@@ -21,6 +21,7 @@ function showRoute(req, res) {
     .findById(req.params.id)
     .populate('user')
     .populate('categories')
+    .populate('comments.user')
     .then(review=> {
       if (!review) return res.status(404).json({ message: 'Not Found'})
       res.status(200).json(review)
