@@ -60,8 +60,7 @@ class reviewShow extends React.Component {
               <h4 className="title is-4">Categories</h4>
               <div>{review.categories.map(category => (
                 <p key={category._id}>{category.name} <br /></p>))}</div>
-              <br />
-              <hr />
+              {this.isOwner() && <div><br /><hr /></div>}
               {this.isOwner() && <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>}
               {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
               <br />
