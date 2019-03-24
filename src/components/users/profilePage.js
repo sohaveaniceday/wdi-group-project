@@ -12,8 +12,9 @@ class Profile extends React.Component {
 
   componentDidMount() {
     axios.all([
-      axios.get('/api/recipes'),
-      axios.get('/api/reviews')
+      axios.get('api/user/_id')
+      // axios.get('/api/recipes'),
+      // axios.get('/api/reviews')
     ])
       .then(res => {
         const recipeFeed = res[0].data
@@ -66,7 +67,6 @@ class Profile extends React.Component {
               </div>
             ))}
           </div>
-
         </div>
       </main>
 
