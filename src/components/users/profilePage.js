@@ -1,10 +1,11 @@
 import React from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
-class ProfilePage extends React.Component {
-  cosntructor() {
-    //super()
+class Profile extends React.Component {
+  constructor() {
+    super()
 
     this.setState = {}
   }
@@ -42,8 +43,28 @@ class ProfilePage extends React.Component {
             <div>user top pins</div>
             <div>user lastest pins</div>
           </div>
-
           <div className="column is one-quarter">
+            <div className="column is-one-quarter-desktop is-one-quarter-tablet"></div>
+            {this.state.reviewFeed && this.state.reviewFeed.map(reviewFeed => (
+              <div key={reviewFeed._id} className="column is-one-quarter-desktop is-one-quarter-tablet is-half-mobile">
+                <Link to={`/reviews/${reviewFeed._id}`} >
+                  <div className="card">
+                    <div className="card-header">
+                      <h4 className="card-header-title">{reviewFeed.restaurantName}</h4>
+                    </div>
+                    <div className="card-image">
+                      <figure className="image">
+                        <img src={reviewFeed.image} alt={reviewFeed.restaurantName} />
+                      </figure>
+                    </div>
+                    <div className="card-content">
+                      <h5 className="title is-6">{reviewFeed.reviewText}</h5>
+                      <h6 className="subtitle is-6">{reviewFeed.user}</h6>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
           </div>
 
         </div>
@@ -53,4 +74,4 @@ class ProfilePage extends React.Component {
   }
 }
 
-export default ProfilePage
+export default Profile
