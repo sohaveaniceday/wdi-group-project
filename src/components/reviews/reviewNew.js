@@ -41,9 +41,9 @@ class ReviewNew extends React.Component {
             this.setState({ sent: 'false' })
           } else {
             this.setState({ sent: 'true', data: {} })
-            this.props.history.push('/newsfeed')
           }
         })
+        .then(() => this.props.history.push('/newsfeed'))
         .catch(err => this.setState({ errors: err.response.data.errors }))
     }
   }
