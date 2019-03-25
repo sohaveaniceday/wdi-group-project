@@ -4,6 +4,7 @@ const Recipe = require('../models/recipe')
 function indexRoute(req, res) {
   return Recipe
     .find(req.query)
+    .populate('user')
     .then(recipe => res.status(200).json(recipe))
     .catch(err => res.json(err))
 }

@@ -31,6 +31,19 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           </select>
         </div>
         <div className="field">
+          <label className="label">Review Headline</label>
+          <div className="control">
+            <input
+              className={`input ${errors.reviewHeadline ? 'is-danger': ''}`}
+              name="reviewHeadline"
+              placeholder="Review Headline"
+              onChange={handleChange}
+              value={data.reviewHeadline || ''}
+            />
+          </div>
+          {errors.reviewHeadline && <small className="help is-danger">{errors.reviewHeadline}</small>}
+        </div>
+        <div className="field">
           <label className="label">Review</label>
           <div className="control">
             <input

@@ -26,3 +26,15 @@
 .user-show, .review-show, .review-form, .recipe-show, .recipe-form {
   margin: 50px;
 }
+
+
+.columns.articles {
+  height: 100%;
+  
+  .column.news {
+
+    display: flex;
+    overflow-y: scroll;
+    flex-direction: column;
+  }
+}
