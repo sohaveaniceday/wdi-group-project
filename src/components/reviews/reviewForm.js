@@ -10,7 +10,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           <label className="label">Restaurant Name (required)</label>
           <div className="control">
             <input
-              className={`input ${errors.restaurantName ? 'is-danger': ''}`}
+              className={`input is-rounded${errors.restaurantName ? 'is-danger': ''}`}
               name="restaurantName"
               placeholder="Restaurant Name"
               onChange={handleChange}
@@ -20,7 +20,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           {errors.restaurantName && <small className="help is-danger">{errors.restaurantName}</small>}
         </div>
         <label className="label">Rating</label>
-        <div className="select">
+        <div className="select is-rounded">
           <select onChange={handleChange} name="rating">
             <option>Select Rating</option>
             <option value="1">1 Star</option>
@@ -49,7 +49,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           <label className="label">Review</label>
           <div className="control">
             <input
-              className={`input ${errors.reviewText ? 'is-danger': ''}`}
+              className={`input is-rounded${errors.reviewText ? 'is-danger': ''}`}
               name="reviewText"
               placeholder="Review"
               onChange={handleChange}
@@ -62,7 +62,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           <label className="label">Image</label>
           <div className="control">
             <textarea
-              className={`input ${errors.image ? 'is-danger': ''}`}
+              className={`input is-rounded ${errors.image ? 'is-danger': ''}`}
               placeholder="Image"
               name="image"
               onChange={handleChange}
@@ -83,7 +83,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
             />
           </div>
         </div>
-        <button className="button is-info">Submit</button>
+        <button className="button is-info is-rounded">Submit</button>
       </form>
     </div>
   )
