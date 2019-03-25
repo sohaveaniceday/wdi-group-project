@@ -61,7 +61,7 @@ class Register extends React.Component {
               <label className="label">Username</label>
               <div className="control">
                 <input
-                  className={`input ${this.state.error.username ? 'is-danger': ''}`}
+                  className={`input is-rounded ${this.state.error.username ? 'is-danger': ''}`}
                   name="username"
                   placeholder="Username"
                   value={this.state.data.username}
@@ -74,7 +74,7 @@ class Register extends React.Component {
               <label className="label">Email</label>
               <div className="control">
                 <input
-                  className={`input ${this.state.error.email ? 'is-danger': ''}`}
+                  className={`input is-rounded ${this.state.error.email ? 'is-danger': ''}`}
                   name="email"
                   placeholder="Email"
                   value={this.state.data.email}
@@ -87,7 +87,7 @@ class Register extends React.Component {
               <label className="label">Location</label>
               <div className="control">
                 <input
-                  className={`input ${this.state.error.location ? 'is-danger': ''}`}
+                  className={`input is-rounded ${this.state.error.location ? 'is-danger': ''}`}
                   name="location"
                   placeholder="Location"
                   value={this.state.data.location}
@@ -101,7 +101,7 @@ class Register extends React.Component {
               <label className="label">Bio</label>
               <div className="control">
                 <input
-                  className={`input ${this.state.error.bio ? 'is-danger': ''}`}
+                  className={`input is-rounded ${this.state.error.bio ? 'is-danger': ''}`}
                   name="bio"
                   placeholder="Bio"
                   value={this.state.data.bio}
@@ -114,7 +114,7 @@ class Register extends React.Component {
               <label className="label">Image</label>
               <div className="control">
                 <input
-                  className={`input ${this.state.error.image ? 'is-danger': ''}`}
+                  className={`input is-rounded ${this.state.error.image ? 'is-danger': ''}`}
                   name="image"
                   placeholder="Image"
                   value={this.state.data.image}
@@ -127,7 +127,7 @@ class Register extends React.Component {
               <label className="label">Password</label>
               <div className="control">
                 <input
-                  className={`input ${this.state.error.password ? 'is-danger': ''}`}
+                  className={`input is-rounded ${this.state.error.password ? 'is-danger': ''}`}
                   name="password"
                   type="password"
                   placeholder="Password"
@@ -141,7 +141,7 @@ class Register extends React.Component {
               <label className="label">Password Confirmation</label>
               <div className="control">
                 <input
-                  className={`input ${this.state.error.password ? 'is-danger': ''}`}
+                  className={`input is-rounded ${this.state.error.password ? 'is-danger': ''}`}
                   name="passwordConfirmation"
                   type="password"
                   placeholder="Password Confirmation"
@@ -163,7 +163,7 @@ class Register extends React.Component {
                 </div>
               </div>
             </div>
-            <button className="button is-info">Register</button>
+            <button className="button is-info is-rounded">Register</button>
           </form>
         </div>
       </main>
