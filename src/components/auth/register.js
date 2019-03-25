@@ -84,6 +84,19 @@ class Register extends React.Component {
               {this.state.error.email && <small className="help is-danger">{this.state.error.email}</small>}
             </div>
             <div className="field">
+              <label className="label">Full Name</label>
+              <div className="control">
+                <input
+                  className={`input ${this.state.error.name ? 'is-danger': ''}`}
+                  name="name"
+                  placeholder="Full Name"
+                  value={this.state.data.name}
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.error.name && <small className="help is-danger">{this.state.error.name}</small>}
+            </div>
+            <div className="field">
               <label className="label">Location</label>
               <div className="control">
                 <input
@@ -163,7 +176,7 @@ class Register extends React.Component {
                 </div>
               </div>
             </div>
-            <button className="button is-info">Register</button>
+            <button className="button is-info bottom-margin">Register</button>
           </form>
         </div>
       </main>
