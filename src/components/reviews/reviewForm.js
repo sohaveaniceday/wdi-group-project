@@ -30,6 +30,8 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
             <option value="5">5 Stars</option>
           </select>
         </div>
+        <br />
+        <br />
         <div className="field">
           <label className="label">Review Headline</label>
           <div className="control">

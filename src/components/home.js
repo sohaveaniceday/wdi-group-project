@@ -7,7 +7,7 @@ import Auth from '../lib/auth'
 
 class Home extends Component {
   render(){
-    if(!Auth.getToken()){
+    if(Auth.getToken()){
       return (<Redirect to="/newsfeed" />)
     } else {
       return (

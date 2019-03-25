@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema({
 userSchema.plugin(require('mongoose-unique-validator'))
 
 userSchema.set('toJSON', {
+  virtuals: true,
   transform(doc, json) {
     delete json.password
     return json
@@ -27,13 +28,13 @@ userSchema.set('toJSON', {
 })
 
 userSchema.virtual('reviews', {
-  ref: 'Reviews',
+  ref: 'Review',
   localField: '_id',
   foreignField: 'user'
 })
 
 userSchema.virtual('recipes', {
-  ref: 'Recipes',
+  ref: 'Recipe',
   localField: '_id',
   foreignField: 'user'
 })
