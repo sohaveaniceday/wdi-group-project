@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
+import Auth from '../../lib/auth'
+
 class Newsfeed extends React.Component {
   constructor() {
     super()
@@ -11,17 +13,30 @@ class Newsfeed extends React.Component {
 
   componentDidMount() {
     axios.all([
+      axios.get(`/api/user/${Auth.getPayload().sub}`),
       axios.get('/api/recipes'),
       axios.get('/api/reviews')
     ])
       .then(res => {
-        const recipeFeed = res[0].data
-        const reviewFeed = res[1].data
-        this.setState({ recipeFeed, reviewFeed })
+        const [ user, recipes, reviews ] = res
+        console.log(user, recipes, reviews)
+        const recipeFeed = recipes.data.filter(recipe => {
+          return user.data.categories.some(category => {
+            return recipe.categories.includes(category._id)
+          })
+        })
+        const reviewFeed = reviews.data.filter(review => {
+          return user.data.categories.some(category => {
+            return review.categories.includes(category._id)
+          })
+        })
+        this.setState({ recipeFeed, reviewFeed, user })
       })
+
   }
 
   render() {
+    console.log(this.state.recipeFeed)
     return (
       <main className="section">
         <div className="container">
@@ -41,7 +56,7 @@ class Newsfeed extends React.Component {
                     </div>
                     <div className="card-content">
                       <h5 className="title is-6">{reviewFeed.reviewText}</h5>
-                      <h6 className="subtitle is-6">{reviewFeed.user}</h6>
+                      <h6 className="subtitle is-6">{reviewFeed.user.username}</h6>
                     </div>
                   </div>
                 </Link>
@@ -61,7 +76,7 @@ class Newsfeed extends React.Component {
                     </div>
                     <div className="card-content">
                       <h5 className="title is-6">{recipeFeed.description}</h5>
-                      <h6 className="subtitle is-6">{recipeFeed.user}</h6>
+                      <h6 className="subtitle is-6">{recipeFeed.user.username}</h6>
                     </div>
                   </div>
                 </Link>
