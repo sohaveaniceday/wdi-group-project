@@ -84,6 +84,46 @@ class Register extends React.Component {
               {this.state.error.email && <small className="help is-danger">{this.state.error.email}</small>}
             </div>
             <div className="field">
+              <label className="label">Location</label>
+              <div className="control">
+                <input
+                  className={`input ${this.state.error.location ? 'is-danger': ''}`}
+                  name="location"
+                  placeholder="Location"
+                  value={this.state.data.location}
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.error.location && <small className="help is-danger">{this.state.error.location}</small>}
+            </div>
+
+            <div className="field">
+              <label className="label">Bio</label>
+              <div className="control">
+                <input
+                  className={`input ${this.state.error.bio ? 'is-danger': ''}`}
+                  name="bio"
+                  placeholder="Bio"
+                  value={this.state.data.bio}
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.error.bio && <small className="help is-danger">{this.state.error.bio}</small>}
+            </div>
+            <div className="field">
+              <label className="label">Image</label>
+              <div className="control">
+                <input
+                  className={`input ${this.state.error.image ? 'is-danger': ''}`}
+                  name="image"
+                  placeholder="Image"
+                  value={this.state.data.image}
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.error.image && <small className="help is-danger">{this.state.error.image}</small>}
+            </div>
+            <div className="field">
               <label className="label">Password</label>
               <div className="control">
                 <input
