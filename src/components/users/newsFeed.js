@@ -40,54 +40,59 @@ class Newsfeed extends React.Component {
     return (
       <main className="section">
         <div className="container">
-          <div className="columns is-mobile is-multiline">
-            <div className="column is-one-quarter-desktop is-one-quarter-tablet"></div>
-            {this.state.reviewFeed && this.state.reviewFeed.map(reviewFeed => (
-              <div key={reviewFeed._id} className="column is-one-quarter-desktop is-one-quarter-tablet is-half-mobile">
-                <Link to={`/reviews/${reviewFeed._id}`} >
-                  <div className="card">
-                    <div className="card-header">
-                      <h4 className="card-header-title">{reviewFeed.restaurantName}</h4>
+          <div className="columns is-mobile is-multiline articles">
+            <div className="column"></div>
+            <div className="column is-one-third-desktop is-one-third-tablet is-half-mobile news">
+              {this.state.reviewFeed && this.state.reviewFeed.map(reviewFeed => (
+                <div key={reviewFeed._id} className="column news">
+                  <Link to={`/reviews/${reviewFeed._id}`} >
+                    <div className="card">
+                      <div className="card-header">
+                        <h4 className="card-header-title">{reviewFeed.restaurantName}</h4>
+                      </div>
+                      <div className="card-image">
+                        <figure className="image">
+                          <img src={reviewFeed.image} alt={reviewFeed.restaurantName} />
+                        </figure>
+                      </div>
+                      <div className="card-content">
+                        <h5 className="title is-6">{reviewFeed.reviewHeadline}</h5>
+                        <h6 className="subtitle is-6">{reviewFeed.user.username}</h6>
+                      </div>
                     </div>
-                    <div className="card-image">
-                      <figure className="image">
-                        <img src={reviewFeed.image} alt={reviewFeed.restaurantName} />
-                      </figure>
+                  </Link>
+                </div>
+              ))}
+            </div>
+            <div className="column is-one-third-desktop is-one-third-tablet is-half-mobile news">
+              {this.state.recipeFeed && this.state.recipeFeed.map(recipeFeed => (
+                <div key={recipeFeed._id} className="column">
+                  <Link to={`/recipes/${recipeFeed._id}`} >
+                    <div className="card">
+                      <div className="card-header">
+                        <h4 className="card-header-title">{recipeFeed.name}</h4>
+                      </div>
+                      <div className="card-image">
+                        <figure className="image">
+                          <img src={recipeFeed.image} alt={recipeFeed.name} />
+                        </figure>
+                      </div>
+                      <div className="card-content">
+                        <h5 className="title is-6">{recipeFeed.description}</h5>
+                        <h6 className="subtitle is-6">{recipeFeed.user.username}</h6>
+                      </div>
                     </div>
-                    <div className="card-content">
-                      <h5 className="title is-6">{reviewFeed.reviewHeadline}</h5>
-                      <h6 className="subtitle is-6">{reviewFeed.user.username}</h6>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            ))}
-            {this.state.recipeFeed && this.state.recipeFeed.map(recipeFeed => (
-              <div key={recipeFeed._id} className="column is-one-quarter-desktop is-one-quarter-tablet is-half-mobile">
-                <Link to={`/recipes/${recipeFeed._id}`} >
-                  <div className="card">
-                    <div className="card-header">
-                      <h4 className="card-header-title">{recipeFeed.name}</h4>
-                    </div>
-                    <div className="card-image">
-                      <figure className="image">
-                        <img src={recipeFeed.image} alt={recipeFeed.name} />
-                      </figure>
-                    </div>
-                    <div className="card-content">
-                      <h5 className="title is-6">{recipeFeed.description}</h5>
-                      <h6 className="subtitle is-6">{recipeFeed.user.username}</h6>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            ))}
+                  </Link>
+                </div>
+              ))}
+            </div>
             <div className="column is-one-quarter-desktop is-one-quarter-tablet"></div>
           </div>
         </div>
       </main>
     )
   }
+
 }
 
 export default Newsfeed
