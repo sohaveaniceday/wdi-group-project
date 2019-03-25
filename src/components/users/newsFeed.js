@@ -41,10 +41,11 @@ class Newsfeed extends React.Component {
       <main className="section">
         <div className="container">
           <div className="columns is-mobile is-multiline articles">
-            <div className="column"></div>
-            <div className="column is-one-third-desktop is-one-third-tablet is-half-mobile news">
+            <div className="column is-hidden-mobile"></div>
+            <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
+              <h2 className="title is-4 is-centered">Reviews for you</h2>
               {this.state.reviewFeed && this.state.reviewFeed.map(reviewFeed => (
-                <div key={reviewFeed._id} className="column news">
+                <div key={reviewFeed._id} className="column">
                   <Link to={`/reviews/${reviewFeed._id}`} >
                     <div className="card">
                       <div className="card-header">
@@ -64,7 +65,8 @@ class Newsfeed extends React.Component {
                 </div>
               ))}
             </div>
-            <div className="column is-one-third-desktop is-one-third-tablet is-half-mobile news">
+            <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
+              <h2 className="title is-4 is-centered">Recipes for you</h2>
               {this.state.recipeFeed && this.state.recipeFeed.map(recipeFeed => (
                 <div key={recipeFeed._id} className="column">
                   <Link to={`/recipes/${recipeFeed._id}`} >
@@ -86,7 +88,7 @@ class Newsfeed extends React.Component {
                 </div>
               ))}
             </div>
-            <div className="column is-one-quarter-desktop is-one-quarter-tablet"></div>
+            <div className="column is-hidden-mobile"></div>
           </div>
         </div>
       </main>
