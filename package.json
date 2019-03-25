@@ -9,6 +9,7 @@
     "start": "nodemon index",
     "seed1": "node db/seeds1",
     "seed2": "node db/seeds2",
+    "seed": "node db/seedsPromise",
     "start:server": "nodemon",
     "start:client": "webpack-dev-server --mode=development"
   },
