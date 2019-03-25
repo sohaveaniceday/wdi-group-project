@@ -3,6 +3,8 @@ import axios from 'axios'
 // import User from '../../../controllers/user'
 import Auth from '../../lib/auth'
 import { Redirect } from 'react-router'
+import { Link } from 'react-router-dom'
+
 
 class UserShow extends React.Component {
   constructor() {
@@ -43,6 +45,14 @@ class UserShow extends React.Component {
                 <figure className="image">
                   <img src={data.image} alt={data.username} />
                 </figure>
+                <hr />
+                <h4 className="title is-4">Reviews</h4>
+                {data.reviews && data.reviews.map((review, i) => (
+                  <Link key={i} to={`/review/${review._id}`}><strong>{review.restaurantName}</strong><br />{review.reviewHeadline}<br />{review.rating} Stars<br /><br /></Link>))}
+                <hr />
+                <h4 className="title is-4">Recipes</h4>
+                {data.recipes && data.recipes.map((recipe, i) => (
+                  <Link key={i} to={`/review/${recipe._id}`}><strong>{recipe.name}</strong><br />{recipe.description}<br /><br /></Link>))}
               </div>
               <div className="column is-half">
                 <h4 className="title is-4">{data.name}</h4>
