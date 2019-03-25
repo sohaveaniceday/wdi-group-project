@@ -45,8 +45,8 @@ class App extends React.Component {
             <SecureRoute path="/reviews/:id/edit" component={ReviewEdit} />
             <Route path="/reviews/:id" component={ReviewShow} />
             <Route path="/newsfeed" component={Newsfeed} />
-            <Route path="/profilePage" component={ProfilePage} />
             <Route exact path="/" component={Home} />
+            <Route path="/profilePage" component={ProfilePage} />
 
           </Switch>
           <Footer />
