@@ -110,7 +110,7 @@ class reviewShow extends React.Component {
               </form>
               <br />
               <div>{review.comments.map((comment, i) => (
-                <div key={i}><p>{comment.text}</p><p>Written by {comment.user.username}</p><hr /></div>))}</div>
+                <div key={i}><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong></p><hr /></div>))}</div>
             </div>
           </div>
         </div>
