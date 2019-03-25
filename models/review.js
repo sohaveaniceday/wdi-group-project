@@ -9,6 +9,7 @@ const commentSchema = new mongoose.Schema({
 
 const reviewSchema = new mongoose.Schema({
   restaurantName: { type: String, required: true },
+  reviewHeadline: { type: String },
   reviewText: { type: String },
   rating: { type: Number, min: 1, max: 5 },
   image: { type: String },

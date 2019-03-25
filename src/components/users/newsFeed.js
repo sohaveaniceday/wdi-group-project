@@ -56,7 +56,7 @@ class Newsfeed extends React.Component {
                         </figure>
                       </div>
                       <div className="card-content">
-                        <h5 className="title is-6">{reviewFeed.reviewText}</h5>
+                        <h5 className="title is-6">{reviewFeed.reviewHeadline}</h5>
                         <h6 className="subtitle is-6">{reviewFeed.user.username}</h6>
                       </div>
                     </div>
@@ -86,7 +86,7 @@ class Newsfeed extends React.Component {
                 </div>
               ))}
             </div>
-            <div className="column news"></div>
+            <div className="column is-one-quarter-desktop is-one-quarter-tablet"></div>
           </div>
         </div>
       </main>

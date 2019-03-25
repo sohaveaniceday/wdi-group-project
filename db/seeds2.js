@@ -14,7 +14,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true}, () => {
       'password': 'password',
       'passwordConfirmation': 'password',
       'name': 'Rich T',
-      'categories': ['5c974bb32fc13a434065c3eb'],
+      'categories': [''],
       'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
       'location': 'London, UK',
       'bio': 'burittos are my friend'
