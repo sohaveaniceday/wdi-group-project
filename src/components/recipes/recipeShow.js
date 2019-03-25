@@ -74,6 +74,11 @@ class recipeShow extends React.Component {
               </figure>
             </div>
             <div className="column is-half">
+              <h4 className="title is-4">Written By</h4>
+              <Link to={`/user/${recipe.user._id}`} >
+                <p>{recipe.user.username}</p>
+              </Link>
+              <hr />
               <h4 className="title is-4">Description</h4>
               <p>{recipe.description}</p>
               <hr />
@@ -82,9 +87,6 @@ class recipeShow extends React.Component {
               <hr />
               <h4 className="title is-4">Method</h4>
               <p>{recipe.method}</p>
-              <hr />
-              <h4 className="title is-4">Written By</h4>
-              <p>{recipe.user.username}</p>
               <hr />
               <h4 className="title is-4">Categories</h4>
               <div>{recipe.categories.map((category, i) => (

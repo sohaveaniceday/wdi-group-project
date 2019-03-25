@@ -40,7 +40,7 @@ class Newsfeed extends React.Component {
               <h2 className="title is-4 is-centered">Reviews for you</h2>
               {this.state.reviewFeed && this.state.reviewFeed.map(reviewFeed => (
                 <div key={reviewFeed._id} className="column">
-                  <Link to={`/reviews/${reviewFeed._id}`} >
+                  <Link to={`/review/${reviewFeed._id}`} >
                     <div className="card">
                       <div className="card-header">
                         <h4 className="card-header-title">{reviewFeed.restaurantName}</h4>
@@ -63,7 +63,7 @@ class Newsfeed extends React.Component {
               <h2 className="title is-4 is-centered">Recipes for you</h2>
               {this.state.recipeFeed && this.state.recipeFeed.map(recipeFeed => (
                 <div key={recipeFeed._id} className="column">
-                  <Link to={`/recipes/${recipeFeed._id}`} >
+                  <Link to={`/recipe/${recipeFeed._id}`} >
                     <div className="card">
                       <div className="card-header">
                         <h4 className="card-header-title">{recipeFeed.name}</h4>

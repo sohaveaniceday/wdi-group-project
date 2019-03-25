@@ -40,8 +40,8 @@ class ProfilePage extends React.Component {
               <p>{data.bio}</p>
               <hr />
               <h4 className="title is-4">Categories</h4>
-              {data.categories && <div>{data.categories.map(category => (
-                <p key={category._id}>{category.name} <br /></p>))}
+              {data.categories && <div>{data.categories.map((category, i) => (
+                <p key={i}>{category.name} <br /></p>))}
               </div>}
             </div>
           </div>

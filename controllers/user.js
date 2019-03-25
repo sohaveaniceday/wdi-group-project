@@ -12,7 +12,6 @@ function showRoute(req, res) {
     .catch(err => res.json(err))
 }
 
-
 module.exports = {
   show: showRoute
 }

@@ -20,6 +20,7 @@ import ReviewNew from './components/reviews/reviewNew'
 import ReviewEdit from './components/reviews/reviewEdit'
 import SecureRoute from './components/common/secureRoute'
 import ProfilePage from './components/users/profilePage'
+import UserShow from './components/users/userShow'
 
 // import axios from 'axios'
 
@@ -38,16 +39,16 @@ class App extends React.Component {
           <Switch>
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
-            <SecureRoute path="/recipes/new" component={RecipeNew} />
-            <SecureRoute path="/recipes/:id/edit" component={RecipeEdit} />
-            <SecureRoute path="/recipes/:id" component={RecipeShow} />
-            <SecureRoute path="/reviews/new" component={ReviewNew} />
-            <SecureRoute path="/reviews/:id/edit" component={ReviewEdit} />
-            <Route path="/reviews/:id" component={ReviewShow} />
+            <SecureRoute path="/recipe/new" component={RecipeNew} />
+            <SecureRoute path="/recipe/:id/edit" component={RecipeEdit} />
+            <SecureRoute path="/recipe/:id" component={RecipeShow} />
+            <SecureRoute path="/review/new" component={ReviewNew} />
+            <SecureRoute path="/review/:id/edit" component={ReviewEdit} />
+            <Route path="/review/:id" component={ReviewShow} />
             <Route path="/newsfeed" component={Newsfeed} />
             <Route exact path="/" component={Home} />
             <Route path="/profilePage" component={ProfilePage} />
-
+            <Route path="/user/:id" component={UserShow} />
           </Switch>
           <Footer />
         </main>
