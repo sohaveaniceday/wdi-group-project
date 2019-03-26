@@ -7,11 +7,12 @@ import { Link } from 'react-router-dom'
 
 let arrayNumber = null
 
-function checkRequest(value) {
+function checkFriend(value, i) {
   console.log(value._id)
   if (value._id === Auth.getPayload().sub) {
     console.log('true')
-
+    arrayNumber = i
+    console.log(arrayNumber)
     return true
   } else {
     console.log('false')
@@ -19,16 +20,28 @@ function checkRequest(value) {
   }
 }
 
-function checkStatus(value) {
-  // console.log(value._id)
-  // if (value._id === Auth.getPayload().sub) {
-  //   console.log('true')
-  //   return true
-  // } else {
-  //   console.log('false')
-  //   return false
-  // }
-  value._id ===
+function checkPending (value) {
+  if (value[arrayNumber].status === 'pending') {
+    return true
+  } else {
+    return false
+  }
+}
+
+function checkRequested (value) {
+  if (value[arrayNumber].status === 'requested') {
+    return true
+  } else {
+    return false
+  }
+}
+
+function checkAccepted (value) {
+  if (value[arrayNumber].status === 'accepted') {
+    return true
+  } else {
+    return false
+  }
 }
 
 class UserShow extends React.Component {
@@ -45,6 +58,11 @@ class UserShow extends React.Component {
       .then(res => this.setState({ data: res.data }))
   }
 
+  // componentDidUpdate() {
+  //   axios.get(`/api/user/${this.props.match.params.id}`)
+  //     .then(res => this.setState({ data: res.data }))
+  // }
+
   handleSubmit(e) {
     e.preventDefault()
     console.log('hello')
@@ -53,6 +71,7 @@ class UserShow extends React.Component {
       { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
       .then((res) => {
         console.log(res)
+        // this.forceUpdate()
       })
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
@@ -77,7 +96,22 @@ class UserShow extends React.Component {
                 <h2 className="title">{user.username}’s Profile</h2>
               </div>
               <div className="column is-half">
-                {(this.state.data.friends.some(checkRequest)) && (this.state.data.friends.some(checkStatus)) &&
+                {(this.state.data.friends.some(checkFriend)) && checkPending(this.state.data.friends) &&
+                <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
+                Requested
+                </button>
+                }
+                {(this.state.data.friends.some(checkFriend)) && checkAccepted(this.state.data.friends) &&
+                <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
+                Friends
+                </button>
+                }
+                {(this.state.data.friends.some(checkFriend)) && checkRequested(this.state.data.friends) &&
+                <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
+                Accept Request
+                </button>
+                }
+                {(!this.state.data.friends.some(checkFriend)) &&
                 <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
                 Request Friend
                 </button>
