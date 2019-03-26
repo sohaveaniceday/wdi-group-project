@@ -12,6 +12,7 @@ import Login from './components/auth/login'
 import Nav from './components/common/nav'
 import Footer from './components/common/Footer'
 import Newsfeed from './components/users/newsFeed'
+import PinnedItems from './components/users/pinnedItems'
 import RecipeShow from './components/recipes/recipeShow'
 import RecipeNew from './components/recipes/recipeNew'
 import RecipeEdit from './components/recipes/recipeEdit'
@@ -47,8 +48,9 @@ class App extends React.Component {
             <SecureRoute path="/review/:id/edit" component={ReviewEdit} />
             <SecureRoute path="/review/:id" component={ReviewShow} />
             <SecureRoute path="/newsfeed" component={Newsfeed} />
+            <SecureRoute path="/pinneditems" component={PinnedItems} />
             <Route exact path="/" component={Home} />
-            <SecureRoute path="/profilePage" component={ProfilePage} />
+            <SecureRoute path="/profilepage" component={ProfilePage} />
             <SecureRoute path="/user/:id/edit" component={ProfileEdit} />
             <Route path="/user/:id" component={UserShow} />
           </Switch>

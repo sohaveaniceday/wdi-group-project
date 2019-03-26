@@ -4,21 +4,36 @@ import { Link } from 'react-router-dom'
 
 import Auth from '../../lib/auth'
 
+let reviewId = null
+
+function checkPin(value) {
+  console.log(value)
+  if (value === reviewId) {
+    console.log('true')
+    return true
+  } else {
+    console.log('false')
+    return false
+  }
+}
 
 class reviewShow extends React.Component {
   constructor() {
     super()
 
-    this.state = { data: {}, errors: {} }
+    this.state = { data: {}, errors: {}, user: {} }
 
     this.handleDelete = this.handleDelete.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
     axios.get(`/api/reviews/${this.props.match.params.id}`)
       .then(res => this.setState({ review: res.data }))
+    axios.get(`/api/user/${Auth.getPayload().sub}`)
+      .then(res => this.setState({ data: res.data.user }))
   }
 
 
@@ -56,14 +71,53 @@ class reviewShow extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
+  handleClick(value, review) {
+    let data = null
+    data = {...this.state.data, pinnedReviews: review.concat(value) }
+    this.setState({ data }, function() {
+      axios.put(`/api/user/${Auth.getPayload().sub}`,
+        this.state.data,
+        { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
+        .then((res) => {
+          if (res.data.errors) {
+            this.setState({ sent: 'false' })
+          } else {
+            document.location.reload(true)
+            this.setState({ sent: 'true', data: {} })
+          }
+        })
+        .catch(err => this.setState({ errors: err.response.data.errors }))
+    })
+  }
+
   render() {
-    console.log(this.state.review)
+    reviewId = this.props.match.params.id
+    console.log(this.state)
     if(!this.state.review) return null
     const { review, data, errors } = this.state
+    const { pinnedReviews } = this.state.data
+    console.log('hello', this.state.data)
+    console.log(review._id)
     return(
       <main className="section">
         <div className="container margin-maker">
-          <h2 className="title">{review.restaurantName}</h2>
+          <div className="columns">
+            <div className="column is-half">
+              <h2 className="title">{review.restaurantName}</h2>
+            </div>
+            <div className="column is-half">
+              {pinnedReviews && pinnedReviews.some(checkPin) &&
+            <button className="button is-info is-rounded is-pulled-right">
+            Pinned
+            </button>
+              }
+              {pinnedReviews && !pinnedReviews.some(checkPin) &&
+              <button onClick={() => this.handleClick(pinnedReviews, [review._id])} className="button is-info is-rounded is-pulled-right">
+            Pin Review
+              </button>
+              }
+            </div>
+          </div>
           <hr />
           <div className="columns">
             <div className="column is-half">
@@ -124,3 +178,30 @@ class reviewShow extends React.Component {
 export default reviewShow
 
 // <p>{review.categories}</p>
+
+// {(this.state.data.friends.some(checkFriend)) && checkPending(this.state.data.friends) &&
+// <button className="button is-info is-rounded is-pulled-right">
+// Requested
+// </button>
+// }
+// {(this.state.data.friends.some(checkFriend)) && checkAccepted(this.state.data.friends) &&
+// <button className="button is-info is-rounded is-pulled-right">
+// Friends
+// </button>
+// }
+// {(this.state.data.friends.some(checkFriend)) && checkRequested(this.state.data.friends) &&
+// <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
+// Accept Request
+// </button>
+// }
+// {(!this.state.data.friends.some(checkFriend)) &&
+// <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
+// Request Friend
+// </button>
+// }
+
+// {(this.state.data.friends.some(checkFriend)) && checkRequested(this.state.data.friends) &&
+// <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
+// Accept Request
+// </button>
+// }

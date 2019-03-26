@@ -4,21 +4,36 @@ import { Link } from 'react-router-dom'
 
 import Auth from '../../lib/auth'
 
+let recipeId = null
+
+function checkPin(value) {
+  console.log(value)
+  if (value === recipeId) {
+    console.log('true')
+    return true
+  } else {
+    console.log('false')
+    return false
+  }
+}
 
 class recipeShow extends React.Component {
   constructor() {
     super()
 
-    this.state = { data: {}, errors: {} }
+    this.state = { data: {}, errors: {}, user: {} }
 
     this.handleDelete = this.handleDelete.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
     axios.get(`/api/recipes/${this.props.match.params.id}`)
       .then(res => this.setState({ recipe: res.data }))
+    axios.get(`/api/user/${Auth.getPayload().sub}`)
+      .then(res => this.setState({ data: res.data.user }))
   }
 
 
@@ -40,7 +55,6 @@ class recipeShow extends React.Component {
     console.log(this.state.data)
   }
 
-
   handleSubmit(e) {
     e.preventDefault()
     axios.post(`/api/recipes/${this.props.match.params.id}/comments`,
@@ -57,14 +71,50 @@ class recipeShow extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
+  handleClick(value, recipe) {
+    let data = null
+    data = {...this.state.data, pinnedRecipes: recipe.concat(value) }
+    this.setState({ data }, function() {
+      axios.put(`/api/user/${Auth.getPayload().sub}`,
+        this.state.data,
+        { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
+        .then((res) => {
+          if (res.data.errors) {
+            this.setState({ sent: 'false' })
+          } else {
+            document.location.reload(true)
+            this.setState({ sent: 'true', data: {} })
+          }
+        })
+        .catch(err => this.setState({ errors: err.response.data.errors }))
+    })
+  }
+
   render() {
-    console.log(this.state.recipe)
     if(!this.state.recipe) return null
     const { recipe, data, errors } = this.state
+    recipeId = this.props.match.params.id
+    const { pinnedRecipes } = this.state.data
     return(
       <main className="section">
         <div className="container margin-maker">
-          <h2 className="title">{recipe.name}</h2>
+          <div className="columns">
+            <div className="column is-half">
+              <h2 className="title">{recipe.name}</h2>
+            </div>
+            <div className="column is-half">
+              {pinnedRecipes && pinnedRecipes.some(checkPin) &&
+          <button className="button is-info is-rounded is-pulled-right">
+          Pinned
+          </button>
+              }
+              {pinnedRecipes && !pinnedRecipes.some(checkPin) &&
+            <button onClick={() => this.handleClick(pinnedRecipes, [recipe._id])} className="button is-info is-rounded is-pulled-right">
+          Pin Recipe
+            </button>
+              }
+            </div>
+          </div>
           <hr />
 
           <div className="columns">
