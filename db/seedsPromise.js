@@ -344,7 +344,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'rating': 4,
             'image': 'https://infatuation.imgix.net/media/images/reviews/gunpowder/banners/1492721083.49.jpg?auto=format&h=840&w=1336',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[7]._id,categories[18]._id,categories[60]._id,categories[61]._id,categories[63]._id,categories[69]._id,categories[81]._id,categories[g83]._id,categories[91]._id,categories[70]._id]
+            'categories': [categories[7]._id,categories[18]._id,categories[60]._id,categories[61]._id,categories[63]._id,categories[69]._id,categories[81]._id,categories[83]._id,categories[91]._id,categories[70]._id]
           },
           {
             'restaurantName': 'GBK',
@@ -454,7 +454,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'Chop the spring onions into rounds and cut the pepper into strips. Add to the bowl, sprinkle in your chosen herbs and toss the bean salad together, seasoning to taste.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/272698.jpg?HjvE',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[81]._id,categories[80]._id,categories[58]._id,categories[76]._id,categories[77]._id,categories[]._id,categories[55]._id,categories[49]._id,categories[48]._id,categories[56]._id]
+            'categories': [categories[81]._id,categories[80]._id,categories[58]._id,categories[76]._id,categories[77]._id,categories[54]._id,categories[55]._id,categories[49]._id,categories[48]._id,categories[56]._id]
           },
           {
             'name': 'Beef Burger with Smoked Cheese',
@@ -463,7 +463,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'Cook the burgers on a hot barbecue for 6 mins, turning every 2 mins. Then lay the slices of smoked cheese on top and cook for 2 mins with the lid on to melt the cheese.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/2682693.jpg?RIgk',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[2]._id,categories[50]._id,categories[76]._id,categories[77]._id,categories[87]._id,categories[95]._id,categories[85]._id,categories[83]._id,categories[74]._id,
+            'categories': [categories[2]._id,categories[50]._id,categories[76]._id,categories[77]._id,categories[87]._id,categories[95]._id,categories[85]._id,categories[83]._id,categories[74]._id]
           },
           {
             'name': 'Blueberry Lemonade',
@@ -472,7 +472,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'In a food processor or high-speed blender, whizz the blueberries, sugar, lemon juice and 250ml water together until the berries are completely puréed and the sugar is dissolved.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/2624030.jpg?Q2Ok',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[70]._id,categories[81]._id,categories[56]._id,categories[55]._id,categories[]._id,categories[49]._id,
+            'categories': [categories[70]._id,categories[81]._id,categories[56]._id,categories[55]._id,categories[57]._id,categories[49]._id]
           },
           {
             'name': 'Carrot and Beetroot Salad',
@@ -481,7 +481,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'Gently heat the remaining teaspoon of olive oil in a small frying pan and toast the seeds for 3–4 minutes over a moderate heat, stirring frequently to prevent sticking. Add the soy sauce at the end of the cooking, if using. Most of the sauce will evaporate, leaving a salty taste and extra browning for the seeds. Store the toasted seeds in a jar with a lid if preparing the day before.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/247459.jpg?HOpE',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[81]._id,categories[80]._id,categories[58]._id,categories[76]._id,categories[77]._id,categories[]._id,categories[55]._id,categories[49]._id,categories[48]._id,categories[56]._id]
+            'categories': [categories[81]._id,categories[80]._id,categories[58]._id,categories[76]._id,categories[77]._id,categories[54]._id,categories[55]._id,categories[49]._id,categories[48]._id,categories[56]._id]
           },
           {
             'name': 'Charred Corn Salad',
@@ -490,7 +490,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'To make the vinaigrette, pulse the basil and garlic in a blender until the basil starts to break down. Add the vinegar and keep pulsing while adding the oil in a steady stream until smooth.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/2053812.jpg?K8TE',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[81]._id,categories[80]._id,categories[58]._id,categories[76]._id,categories[77]._id,categories[]._id,categories[55]._id,categories[49]._id,categories[48]._id,categories[56]._id]
+            'categories': [categories[81]._id,categories[80]._id,categories[58]._id,categories[76]._id,categories[77]._id,categories[78]._id,categories[55]._id,categories[49]._id,categories[48]._id,categories[56]._id]
           },
           {
             'name': 'Butterflied Leg of Welsh Lamb with Orange, Soy and Thyme',
@@ -508,7 +508,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'For the pesto, pulse 1 garlic clove, 25g rocket, 25g basil, 2tbsp toasted pine nuts and 80ml extra virgin olive oil in a blender. Stir in 2tbsp grated parmesan and season.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/2425682.jpg?PGFE',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[10]._id,categories[55]._id,categories[50]._id,categories[53]._id,categories[]._id,categories[76]._id,categories[77]._id,categories[80]._id,categories[81]._id,categories[82]._id]
+            'categories': [categories[10]._id,categories[55]._id,categories[50]._id,categories[53]._id,categories[54]._id,categories[76]._id,categories[77]._id,categories[80]._id,categories[81]._id,categories[82]._id]
           },
           {
             'name': 'Chipotle BBQ Ribs',
@@ -544,7 +544,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'In a bowl, mix the strawberries with the sugar and Pimm\'s. Divide the strawberries evenly between the foil squares. Begin to fold the edges up to make a parcel before spooning in the remaining Pimm\'s. Close each parcel, sealing the edges tightly.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/49311.jpg?TsA',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[3]._id,categories[96]._id,categories[95]._id,categories[91]._id,categories[90]._id,categories[93]._id,categories[3]._id,categories[69]._id
+            'categories': [categories[3]._id,categories[96]._id,categories[95]._id,categories[91]._id,categories[90]._id,categories[93]._id,categories[3]._id,categories[69]._id]
           }
         ])
       ])
