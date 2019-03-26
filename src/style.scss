@@ -23,18 +23,21 @@
   }
 }
 
-.user-show, .review-show, .review-form, .recipe-show, .recipe-form {
+.user-show, .review-show, .review-form, .recipe-show, .recipe-form, .newsfeed-page {
   margin: 50px;
+}
+
+.bottom-margin {
+  margin: 0 0 50px 0;
 }
 
 
 .columns.articles {
   height: 100%;
-  
-  .column.news {
+  display: flex;
 
-    display: flex;
+  .news {
     overflow-y: scroll;
-    flex-direction: column;
+
   }
 }

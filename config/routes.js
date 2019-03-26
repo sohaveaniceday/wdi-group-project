@@ -7,7 +7,6 @@ const auth = require('../controllers/auth')
 const user = require('../controllers/user')
 const secureRoute = require('../lib/secureRoute')
 
-// SAFE
 router.route('/recipes')
   .get(recipes.index)
   .post(secureRoute, recipes.create)
@@ -43,6 +42,7 @@ router.route('/categories/:id')
 
 router.route('/user/:id')
   .get(user.show)
+  .put(user.edit)
 
 router.post('/register', auth.register)
 router.post('/login', auth.login)

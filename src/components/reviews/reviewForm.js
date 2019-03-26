@@ -10,7 +10,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           <label className="label">Restaurant Name (required)</label>
           <div className="control">
             <input
-              className={`input is-rounded${errors.restaurantName ? 'is-danger': ''}`}
+              className={`input is-rounded ${errors.restaurantName ? 'is-danger': ''}`}
               name="restaurantName"
               placeholder="Restaurant Name"
               onChange={handleChange}
@@ -30,6 +30,8 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
             <option value="5">5 Stars</option>
           </select>
         </div>
+        <br />
+        <br />
         <div className="field">
           <label className="label">Review Headline</label>
           <div className="control">

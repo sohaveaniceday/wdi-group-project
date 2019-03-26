@@ -72,6 +72,11 @@ class reviewShow extends React.Component {
               </figure>
             </div>
             <div className="column is-half">
+              <h4 className="title is-4">Written By</h4>
+              <Link to={`/user/${review.user._id}`} >
+                <p>{review.user.username}</p>
+              </Link>
+              <hr />
               <h4 className="title is-4">Rating: {review.rating} Stars</h4>
               <hr />
               <h4 className="title is-4">Review Headline</h4>
@@ -80,12 +85,9 @@ class reviewShow extends React.Component {
               <h4 className="title is-4">Review</h4>
               <p>{review.reviewText}</p>
               <hr />
-              <h4 className="title is-4">Written By</h4>
-              <p>{review.user.username}</p>
-              <hr />
               <h4 className="title is-4">Categories</h4>
               <div>{review.categories.map((category, i) => (
-                <p key={i}>{category.name} <br /></p>))}</div>
+                <span key={i}>{category.name}, </span>))}</div>
               {this.isOwner() && <div><hr /></div>}
               {this.isOwner() && <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>}
               {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}

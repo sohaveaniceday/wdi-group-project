@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/auth'
+import { Link } from 'react-router-dom'
 
 class ProfilePage extends React.Component {
   constructor() {
@@ -8,6 +9,7 @@ class ProfilePage extends React.Component {
 
     this.state = { data: {}, errors: {} }
 
+    // this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -22,15 +24,21 @@ class ProfilePage extends React.Component {
     return(
       <main className="section">
         <div className="container user-show">
-          <h2 className="title">Hello {data.username}!</h2>
-          <hr />
           <div className="columns">
+            <div className="column is-half">
+              <h2 className="title">Hello {data.username}!</h2>
+            </div>
+            <div className="column is-half">
+              <Link className="button is-warning is-pulled-right" to={`/user/${data._id}/edit`}>Edit Profile</Link>
+            </div>
+          </div>
+          <hr />
+          <div className="columns is-multiline">
             <div className="column is-half">
               <figure className="image">
                 <img src={data.image} alt={data.username} />
               </figure>
-            </div>
-            <div className="column is-half">
+              <br />
               <h4 className="title is-4">{data.name}</h4>
               <hr />
               <h4 className="title is-4">Location</h4>
@@ -39,10 +47,21 @@ class ProfilePage extends React.Component {
               <h4 className="title is-4">Bio</h4>
               <p>{data.bio}</p>
               <hr />
+            </div>
+            <div className="column is-half">
+              <h4 className="title is-4">Reviews</h4>
+              {data.reviews && data.reviews.map((review, i) => (
+                <Link key={i} to={`/review/${review._id}`}><strong>{review.restaurantName}</strong><br />{review.reviewHeadline}<br />{review.rating} Stars<br /><br /></Link>))}
+              <hr />
+              <h4 className="title is-4">Recipes</h4>
+              {data.recipes && data.recipes.map((recipe, i) => (
+                <Link key={i} to={`/review/${recipe._id}`}><strong>{recipe.name}</strong><br />{recipe.description}<br /><br /></Link>))}
+            </div>
+            <div className="column is-full has-text-centered">
               <h4 className="title is-4">Categories</h4>
-              {data.categories && <div>{data.categories.map(category => (
-                <p key={category._id}>{category.name} <br /></p>))}
-              </div>}
+              {data.categories && <p>{data.categories.map((category, i) => (
+                <span key={i}>{category.name}, </span>))}
+              </p>}
             </div>
           </div>
         </div>
@@ -54,3 +73,10 @@ class ProfilePage extends React.Component {
 export default ProfilePage
 
 // <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>}
+//
+// <div>
+// <h4 className="title is-4">Reviews</h4>
+// {data.reviews && <div>{data.reviews.map((review, i) => (
+//   <p key={i}><strong>{review.restaurantName}</strong> <br />{review.restaurantHeadline}</p>))}
+// <hr />
+// </div>
