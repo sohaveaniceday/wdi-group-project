@@ -68,7 +68,7 @@ class ProfilePage extends React.Component {
             </div>
             <hr />
             <div className="columns is-multiline">
-              <div className="column is-one-fifth">
+              <div className="column is-two-fifths">
                 <figure className="image">
                   <img src={user.image} alt={user.username} />
                 </figure>
@@ -86,7 +86,7 @@ class ProfilePage extends React.Component {
                   <span key={i}>{category.name}, </span>))}
                 </p>}
               </div>
-              <div className="column is-three-fiths has-text-centered">
+              <div className="column is-two-fifths has-text-centered">
                 <h4 className="title is-4">Reviews</h4>
                 {user.reviews && user.reviews.map((review, i) => (
                   <Link key={i} to={`/review/${review._id}`}><strong>{review.restaurantName}</strong><br />{review.reviewHeadline}<br />{review.rating} Stars<br /><br /></Link>))}
