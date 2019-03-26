@@ -38,7 +38,7 @@ class Login extends React.Component {
   render() {
     return (
       <main className="section">
-        <div className="container">
+        <div className="container margin-maker">
           <form onSubmit={this.handleSubmit}>
             <h2 className="title">Login</h2>
             <div className="field">

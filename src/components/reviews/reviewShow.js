@@ -62,7 +62,7 @@ class reviewShow extends React.Component {
     const { review, data, errors } = this.state
     return(
       <main className="section">
-        <div className="container review-show">
+        <div className="container margin-maker">
           <h2 className="title">{review.restaurantName}</h2>
           <hr />
           <div className="columns">

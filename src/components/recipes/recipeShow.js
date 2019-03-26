@@ -63,7 +63,7 @@ class recipeShow extends React.Component {
     const { recipe, data, errors } = this.state
     return(
       <main className="section">
-        <div className="container recipe-show">
+        <div className="container margin-maker">
           <h2 className="title">{recipe.name}</h2>
           <hr />
 
