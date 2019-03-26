@@ -1,5 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
+import Container from '../Container'
 
 const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, categories }) => {
   return (
@@ -57,6 +58,11 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
             />
           </div>
           {errors.method && <small className="help is-danger">{errors.method}</small>}
+        </div>
+
+        <div ClassName="field">
+          <label className="label">Image</label>
+          <Container className="button is-info is-rounded" />
         </div>
         <div className="field">
           <label className="label">Image</label>

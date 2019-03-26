@@ -2,15 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import 'bulma'
 import './style.scss'
-// import Filestack from 'filestack-js'
-// import Container from './components/Container'
-//
-// //uploadImage function//
-// const client = filestack.init('AYoVZLJZuQ2GNd6qd87SYz')
-// render(
-// <Container client= { client }/>
-//   document.getElementById('app'),
-// )
+import Container from './components/Container'
 
 // import { BrowserRouter as Browser, Route, Switch } from 'react-router-dom'
 import { BrowserRouter as Browser, Route, Switch } from 'react-router-dom'
