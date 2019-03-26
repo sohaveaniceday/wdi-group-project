@@ -46,15 +46,6 @@ class UserShow extends React.Component {
                   <img src={data.image} alt={data.username} />
                 </figure>
                 <hr />
-                <h4 className="title is-4">Reviews</h4>
-                {data.reviews && data.reviews.map((review, i) => (
-                  <Link key={i} to={`/review/${review._id}`}><strong>{review.restaurantName}</strong><br />{review.reviewHeadline}<br />{review.rating} Stars<br /><br /></Link>))}
-                <hr />
-                <h4 className="title is-4">Recipes</h4>
-                {data.recipes && data.recipes.map((recipe, i) => (
-                  <Link key={i} to={`/review/${recipe._id}`}><strong>{recipe.name}</strong><br />{recipe.description}<br /><br /></Link>))}
-              </div>
-              <div className="column is-half">
                 <h4 className="title is-4">{data.name}</h4>
                 <hr />
                 <h4 className="title is-4">Location</h4>
@@ -67,6 +58,15 @@ class UserShow extends React.Component {
                 {data.categories && <div>{data.categories.map((category, i) => (
                   <p key={i}>{category.name} <br /></p>))}
                 </div>}
+              </div>
+              <div className="column is-half">
+                <h4 className="title is-4">Reviews</h4>
+                {data.reviews && data.reviews.map((review, i) => (
+                  <Link key={i} to={`/review/${review._id}`}><strong>{review.restaurantName}</strong><br />{review.reviewHeadline}<br />{review.rating} Stars<br /><br /></Link>))}
+                <hr />
+                <h4 className="title is-4">Recipes</h4>
+                {data.recipes && data.recipes.map((recipe, i) => (
+                  <Link key={i} to={`/review/${recipe._id}`}><strong>{recipe.name}</strong><br />{recipe.description}<br /><br /></Link>))}
               </div>
             </div>
           </div>
