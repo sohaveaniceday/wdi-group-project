@@ -117,12 +117,12 @@ class recipeShow extends React.Component {
           <hr />
 
           <div className="columns">
-            <div className="column is-half">
+            <div className="column is-one-third">
               <figure className="image">
                 <img src={recipe.image} alt={recipe.name} />
               </figure>
             </div>
-            <div className="column is-half">
+            <div className="column is-two-thirds">
               <h4 className="title is-4">Written By</h4>
               <Link to={`/user/${recipe.user._id}`} >
                 <p>{recipe.user.username}</p>

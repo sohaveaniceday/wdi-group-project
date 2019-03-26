@@ -116,12 +116,12 @@ class reviewShow extends React.Component {
           </div>
           <hr />
           <div className="columns">
-            <div className="column is-half">
+            <div className="column is-one-third">
               <figure className="image">
                 <img src={review.image} alt={review.restaurantName} />
               </figure>
             </div>
-            <div className="column is-half">
+            <div className="column is-two-thirds">
               <h4 className="title is-4">Written By</h4>
               <Link to={`/user/${review.user._id}`} >
                 <p>{review.user.username}</p>
