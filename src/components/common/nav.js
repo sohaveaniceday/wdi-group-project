@@ -36,10 +36,19 @@ class Nav extends React.Component {
   render() {
     return (
     //nav-bar burger checks if the navbarOpen is true and adds a class to trigger it to open. Triggers the toggleNavbar function when clicked
-      <nav className="navbar is-dark">
+      <nav className="navbar is-primary">
         <div className="navbar-brand">
-          {Auth.isAuthenticated() && <Link to="/newsfeed" className="navbar-item">Home</Link>}
-          {!Auth.isAuthenticated() && <Link to="/" className="navbar-item">Home</Link>}
+          {!Auth.isAuthenticated() && <Link to="/" className="navbar-item">
+            <span className="icon has-text-white is-large">
+              <i className="fas fa-home"></i>
+            </span>
+          </Link>}
+          {Auth.isAuthenticated() && <Link to="/newsfeed" className="navbar-item">
+            <span className="icon has-text-white icon is-large">
+              <i className="fas fa-home"></i>
+            </span>
+          </Link>}
+
           <a role="button"
             className={`navbar-burger ${this.state.navbarOpen ? 'is-active' : ''}`}
             onClick={this.toggleNavbar}
@@ -53,11 +62,11 @@ class Nav extends React.Component {
         <div className={`navbar-menu ${this.state.navbarOpen ? 'is-active' : ''}`}>
           <div className="navbar-end">
             {Auth.isAuthenticated() && <Link to="/profilePage" className="navbar-item">Profile</Link>}
-            {Auth.isAuthenticated() && <Link to="/reviews/new" className="navbar-item">New Review</Link>}
-            {Auth.isAuthenticated() && <Link to="/recipes/new" className="navbar-item">New Recipe</Link>}
-            {!Auth.isAuthenticated() && <Link to="/register" className="navbar-item">Register</Link>}
+            {Auth.isAuthenticated() && <Link to="/review/new" className="navbar-item">New Review</Link>}
+            {Auth.isAuthenticated() && <Link to="/recipe/new" className="navbar-item">New Recipe</Link>}
             {!Auth.isAuthenticated() && <Link to="/login" className="navbar-item">Login</Link>}
             {Auth.isAuthenticated() && <a className="navbar-item" onClick={this.logout}>Logout</a>}
+            {!Auth.isAuthenticated() && <Link to="/register" className="navbar-item">Register</Link>}
           </div>
         </div>
       </nav>
