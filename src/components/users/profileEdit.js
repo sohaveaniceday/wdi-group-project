@@ -28,7 +28,7 @@ class ProfileEdit extends React.Component {
       .then(categories => this.setState({ categories }))
       .catch(err => console.log(err))
     axios.get(`/api/user/${this.props.match.params.id}`)
-      .then(res => this.setState({ data: res.data }))
+      .then(res => this.setState({ data: res.data.user }))
       .catch(err => console.log(err.message))
   }
 
@@ -55,7 +55,7 @@ class ProfileEdit extends React.Component {
     console.log(this.state.error)
     return (
       <main className="section">
-        <div className="container">
+        <div className="container margin-maker">
           <form onSubmit={this.handleSubmit}>
             <h2 className="title">Edit Profile</h2>
             <div className="field">
