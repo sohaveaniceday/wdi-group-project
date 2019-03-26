@@ -71,6 +71,7 @@ class UserShow extends React.Component {
       { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
       .then((res) => {
         console.log(res)
+        document.location.reload(true)
         // this.forceUpdate()
       })
       .catch(err => this.setState({ errors: err.response.data.errors }))
@@ -133,6 +134,10 @@ class UserShow extends React.Component {
                 <h4 className="title is-4">Bio</h4>
                 <p>{user.bio}</p>
                 <hr />
+                <h4 className="title is-4">Categories</h4>
+                {user.categories && <p>{user.categories.map((category, i) => (
+                  <span key={i}>{category.name}, </span>))}
+                </p>}
               </div>
               <div className="column is-half">
                 <h4 className="title is-4">Reviews</h4>
@@ -142,12 +147,6 @@ class UserShow extends React.Component {
                 <h4 className="title is-4">Recipes</h4>
                 {user.recipes && user.recipes.map((recipe, i) => (
                   <Link key={i} to={`/recipe/${recipe._id}`}><strong>{recipe.name}</strong><br />{recipe.description}<br /><br /></Link>))}
-              </div>
-              <div className="column is-full has-text-centered">
-                <h4 className="title is-4">Categories</h4>
-                {user.categories && <p>{user.categories.map((category, i) => (
-                  <span key={i}>{category.name}, </span>))}
-                </p>}
               </div>
             </div>
           </div>

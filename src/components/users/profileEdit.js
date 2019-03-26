@@ -55,7 +55,7 @@ class ProfileEdit extends React.Component {
     console.log(this.state.error)
     return (
       <main className="section">
-        <div className="container">
+        <div className="container margin-maker">
           <form onSubmit={this.handleSubmit}>
             <h2 className="title">Edit Profile</h2>
             <div className="field">

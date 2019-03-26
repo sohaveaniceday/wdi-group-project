@@ -38,6 +38,8 @@ function userFriendRequest(req, res){
     .catch(err => console.log(err))
 }
 
+
+
 // function acceptFriendRequest(req, res){
 //   User
 //     .requestFriend(req.body._id, req.currentUser._id)

@@ -2,11 +2,13 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Auth from '../../lib/auth'
+
 class Newsfeed extends React.Component {
   constructor() {
     super()
     this.state = {}
   }
+
   componentDidMount() {
     axios.all([
       axios.get(`/api/user/${Auth.getPayload().sub}`),
@@ -30,6 +32,7 @@ class Newsfeed extends React.Component {
         this.setState({ recipeFeed, reviewFeed, user })
       })
   }
+
   render() {
     console.log(this.state.recipeFeed)
     return (
