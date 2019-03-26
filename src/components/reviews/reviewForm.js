@@ -1,5 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
+import Container from '../Container'
 
 const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, categories }) => {
   return (
@@ -58,19 +59,12 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           </div>
           {errors.reviewText && <small className="help is-danger">{errors.reviewText}</small>}
         </div>
-        <div className="field">
-          <label className="label">Image</label>
-          <div className="control">
-            <textarea
-              className={`input is-rounded ${errors.image ? 'is-danger': ''}`}
-              placeholder="Image"
-              name="image"
-              onChange={handleChange}
-              value={data.image || ''}
-            />
-          </div>
-          {errors.image && <small className="help is-danger">{errors.image}</small>}
+
+        <div ClassName="field">
+          <label className="label">Review Image</label>
+          <Container className="button is-info is-rounded" />
         </div>
+
         <div className="field">
           <label className="label">Categories (required)</label>
           <div>

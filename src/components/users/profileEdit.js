@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Select from 'react-select'
+import Container from '../Container'
 
 class ProfileEdit extends React.Component {
   constructor() {
@@ -125,7 +126,10 @@ class ProfileEdit extends React.Component {
               {this.state.error.bio && <small className="help is-danger">{this.state.error.bio}</small>}
             </div>
             <div className="field">
-              <label className="label">Image</label>
+              <label className="label">Profile Image</label>
+              <Container className="button is-info is-rounded" />
+            </div>
+            {/*
               <div className="control">
                 <input
                   className={`input ${this.state.error.image ? 'is-danger': ''}`}
@@ -137,6 +141,7 @@ class ProfileEdit extends React.Component {
               </div>
               {this.state.error.image && <small className="help is-danger">{this.state.error.image}</small>}
             </div>
+            */}
             <div className="field">
               <label className="label">Password</label>
               <div className="control">
