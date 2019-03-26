@@ -90,7 +90,7 @@ class recipeShow extends React.Component {
               <hr />
               <h4 className="title is-4">Categories</h4>
               <div>{recipe.categories.map((category, i) => (
-                <p key={i}>{category.name} <br /></p>))}</div>
+                <span key={i}>{category.name}, </span>))}</div>
               {this.isOwner() && <div><br /><hr /></div>}
               {this.isOwner() && <Link className="button is-warning" to={`/recipes/${recipe._id}/edit`}>Edit</Link>}
               {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
