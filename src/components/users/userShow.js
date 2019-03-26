@@ -36,7 +36,7 @@ class UserShow extends React.Component {
       const { data } = this.state
       return(
         <main className="section">
-          <div className="container user-show">
+          <div className="container margin-maker">
             <div className="columns">
               <div className="column is-half">
                 <h2 className="title">{data.username}’s Profile</h2>

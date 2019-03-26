@@ -3,7 +3,7 @@ import Select from 'react-select'
 
 const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, categories }) => {
   return (
-    <div className="recipe-form">
+    <div className="margin-maker">
       <h1 className="title is-2">Recipe Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="field">
