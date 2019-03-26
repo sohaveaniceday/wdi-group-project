@@ -28,7 +28,7 @@ class ProfileEdit extends React.Component {
       .then(categories => this.setState({ categories }))
       .catch(err => console.log(err))
     axios.get(`/api/user/${this.props.match.params.id}`)
-      .then(res => this.setState({ data: res.data }))
+      .then(res => this.setState({ data: res.data.user }))
       .catch(err => console.log(err.message))
   }
 

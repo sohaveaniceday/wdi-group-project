@@ -16,13 +16,14 @@ class Newsfeed extends React.Component {
       .then(res => {
         const [ user, recipes, reviews ] = res
         console.log(user, recipes, reviews)
+        console.log(res)
         const recipeFeed = recipes.data.filter(recipe => {
-          return user.data.categories.some(category => {
+          return user.data.user.categories.some(category => {
             return recipe.categories.includes(category._id)
           })
         })
         const reviewFeed = reviews.data.filter(review => {
-          return user.data.categories.some(category => {
+          return user.data.user.categories.some(category => {
             return review.categories.includes(category._id)
           })
         })
