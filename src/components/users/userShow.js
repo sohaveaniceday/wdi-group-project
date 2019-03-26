@@ -63,8 +63,7 @@ class UserShow extends React.Component {
   //     .then(res => this.setState({ data: res.data }))
   // }
 
-  handleSubmit(e) {
-    e.preventDefault()
+  handleSubmit() {
     console.log('hello')
     axios.post('/api/friends',
       this.props.match.params,

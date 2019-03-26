@@ -82,8 +82,7 @@ class reviewShow extends React.Component {
           if (res.data.errors) {
             this.setState({ sent: 'false' })
           } else {
-            document.location.reload(true)
-            this.setState({ sent: 'true', data: {} })
+            this.setState({ sent: 'true' })
           }
         })
         .catch(err => this.setState({ errors: err.response.data.errors }))
@@ -92,12 +91,9 @@ class reviewShow extends React.Component {
 
   render() {
     reviewId = this.props.match.params.id
-    console.log(this.state)
     if(!this.state.review) return null
     const { review, data, errors } = this.state
     const { pinnedReviews } = this.state.data
-    console.log('hello', this.state.data)
-    console.log(review._id)
     return(
       <main className="section">
         <div className="container margin-maker">

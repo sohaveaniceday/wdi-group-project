@@ -82,8 +82,7 @@ class recipeShow extends React.Component {
           if (res.data.errors) {
             this.setState({ sent: 'false' })
           } else {
-            document.location.reload(true)
-            this.setState({ sent: 'true', data: {} })
+            this.setState({ sent: 'true' })
           }
         })
         .catch(err => this.setState({ errors: err.response.data.errors }))
