@@ -3,14 +3,14 @@ import Select from 'react-select'
 
 const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, categories }) => {
   return (
-    <div className="review-form">
+    <div className="margin-maker">
       <h1 className="title is-2">Review Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="field">
           <label className="label">Restaurant Name (required)</label>
           <div className="control">
             <input
-              className={`input is-rounded${errors.restaurantName ? 'is-danger': ''}`}
+              className={`input is-rounded ${errors.restaurantName ? 'is-danger': ''}`}
               name="restaurantName"
               placeholder="Restaurant Name"
               onChange={handleChange}
@@ -36,7 +36,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           <label className="label">Review Headline</label>
           <div className="control">
             <input
-              className={`input ${errors.reviewHeadline ? 'is-danger': ''}`}
+              className={`input is-rounded ${errors.reviewHeadline ? 'is-danger': ''}`}
               name="reviewHeadline"
               placeholder="Review Headline"
               onChange={handleChange}

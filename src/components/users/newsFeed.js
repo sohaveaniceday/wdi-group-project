@@ -2,11 +2,13 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Auth from '../../lib/auth'
+
 class Newsfeed extends React.Component {
   constructor() {
     super()
     this.state = {}
   }
+
   componentDidMount() {
     axios.all([
       axios.get(`/api/user/${Auth.getPayload().sub}`),
@@ -16,31 +18,33 @@ class Newsfeed extends React.Component {
       .then(res => {
         const [ user, recipes, reviews ] = res
         console.log(user, recipes, reviews)
+        console.log(res)
         const recipeFeed = recipes.data.filter(recipe => {
-          return user.data.categories.some(category => {
+          return user.data.user.categories.some(category => {
             return recipe.categories.includes(category._id)
           })
         })
         const reviewFeed = reviews.data.filter(review => {
-          return user.data.categories.some(category => {
+          return user.data.user.categories.some(category => {
             return review.categories.includes(category._id)
           })
         })
         this.setState({ recipeFeed, reviewFeed, user })
       })
   }
+
   render() {
     console.log(this.state.recipeFeed)
     return (
       <main className="section">
-        <div className="container">
+        <div className="container margin-maker">
           <div className="columns is-mobile is-multiline articles">
             <div className="column is-hidden-mobile"></div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
-              <h2 className="title is-4 is-centered">Reviews for you</h2>
+              <h2 className="title is-4 is-centered has-text-centered">Reviews for you</h2>
               {this.state.reviewFeed && this.state.reviewFeed.map(reviewFeed => (
                 <div key={reviewFeed._id} className="column">
-                  <Link to={`/reviews/${reviewFeed._id}`} >
+                  <Link to={`/review/${reviewFeed._id}`} >
                     <div className="card">
                       <div className="card-header">
                         <h4 className="card-header-title">{reviewFeed.restaurantName}</h4>
@@ -60,10 +64,10 @@ class Newsfeed extends React.Component {
               ))}
             </div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
-              <h2 className="title is-4 is-centered">Recipes for you</h2>
+              <h2 className="title is-4 is-centered has-text-centered">Recipes for you</h2>
               {this.state.recipeFeed && this.state.recipeFeed.map(recipeFeed => (
                 <div key={recipeFeed._id} className="column">
-                  <Link to={`/recipes/${recipeFeed._id}`} >
+                  <Link to={`/recipe/${recipeFeed._id}`} >
                     <div className="card">
                       <div className="card-header">
                         <h4 className="card-header-title">{recipeFeed.name}</h4>

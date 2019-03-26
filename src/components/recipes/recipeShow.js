@@ -63,7 +63,7 @@ class recipeShow extends React.Component {
     const { recipe, data, errors } = this.state
     return(
       <main className="section">
-        <div className="container recipe-show">
+        <div className="container margin-maker">
           <h2 className="title">{recipe.name}</h2>
           <hr />
 
@@ -74,6 +74,11 @@ class recipeShow extends React.Component {
               </figure>
             </div>
             <div className="column is-half">
+              <h4 className="title is-4">Written By</h4>
+              <Link to={`/user/${recipe.user._id}`} >
+                <p>{recipe.user.username}</p>
+              </Link>
+              <hr />
               <h4 className="title is-4">Description</h4>
               <p>{recipe.description}</p>
               <hr />
@@ -83,14 +88,11 @@ class recipeShow extends React.Component {
               <h4 className="title is-4">Method</h4>
               <p>{recipe.method}</p>
               <hr />
-              <h4 className="title is-4">Written By</h4>
-              <p>{recipe.user.username}</p>
-              <hr />
               <h4 className="title is-4">Categories</h4>
               <div>{recipe.categories.map((category, i) => (
-                <p key={i}>{category.name} <br /></p>))}</div>
+                <span key={i}>{category.name}, </span>))}</div>
               {this.isOwner() && <div><br /><hr /></div>}
-              {this.isOwner() && <Link className="button is-warning" to={`/recipes/${recipe._id}/edit`}>Edit</Link>}
+              {this.isOwner() && <Link className="button is-warning" to={`/recipe/${recipe._id}/edit`}>Edit</Link>}
               {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
               <hr />
               <h4 className="title is-4">Comments</h4>

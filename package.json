@@ -27,6 +27,7 @@
     "font-awesome": "^4.7.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.4.19",
+    "mongoose-friends-plugin": "^0.7.3",
     "mongoose-unique-validator": "^2.0.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",

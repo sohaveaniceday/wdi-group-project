@@ -282,7 +282,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'rating': 5,
             'image': 'https://infatuation.imgix.net/media/images/reviews/noble-rot-wine-bar/banners/1492493931.11.jpg?auto=format&h=840&w=1336',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[5]._id,categories[3]._id,categories[63]._id,categories[89]._id,categories[69]._id,categories[61]._id,categories[58]._id,categories[62]._id,categories[67]._id,categories[56]._id]
           },
           {
             'restaurantName': 'Rochelle Canteen',
@@ -291,7 +291,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'rating': 4,
             'image': 'https://infatuation.imgix.net/media/images/reviews/rochelle-canteen/banners/1492459896.7.jpg?auto=format&h=840&w=1336',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[3]._id,categories[8]._id,categories[17]._id,categories[18]._id,categories[58]._id,categories[65]._id,categories[66]._id,categories[67]._id,categories[70]._id,categories[74]._id]
           },
           {
             'restaurantName': 'Kitty Fisher\'s',
@@ -300,7 +300,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'rating': 3,
             'image': 'https://infatuation.imgix.net/media/images/reviews/kitty-fishers/banners/1531381427.52.jpg?auto=format&crop=focalpoint&fit=crop&fp-x=0.42&fp-y=0.18&h=840&w=1336',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[1]._id,categories[56]._id,categories[58]._id,categories[61]._id,categories[62]._id,categories[63]._id,categories[67]._id,categories[69]._id,categories[70]._id,categories[77]._id]
           },
           {
             'restaurantName': 'Black Axe Mangal',
@@ -309,7 +309,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'rating': 4,
             'image': 'https://infatuation.imgix.net/media/images/reviews/black-axe-mangal/banners/1517315875.19.jpg?auto=format&h=840&w=1336',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[15]._id,categories[3]._id,categories[50]._id,categories[65]._id,categories[66]._id,categories[74]._id,categories[80]._id,categories[82]._id,categories[70]._id,categories[98]._id]
           },
           {
             'restaurantName': 'Barrafina Soho',
@@ -318,7 +318,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'rating': 2,
             'image': 'https://infatuation.imgix.net/media/images/reviews/barrafina-soho/banners/1492477372.63.jpg?auto=format&h=840&w=1336',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[13]._id,categories[11]._id,categories[76]._id,categories[77]._id,categories[80]._id,categories[83]._id,categories[81]._id,categories[56]._id,categories[92]._id,categories[98]._id]
           },
           {
             'restaurantName': 'Hoppers',
@@ -327,7 +327,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'rating': 3,
             'image': 'https://infatuation.imgix.net/media/images/reviews/hoppers/banners/1492457759.84.jpg?auto=format&h=840&w=1336',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[16]._id,categories[20]._id,categories[49]._id,categories[56]._id,categories[75]._id,categories[76]._id,categories[77]._id,categories[86]._id,categories[92]._id,categories[91]._id]
           },
           {
             'restaurantName': 'P Franco',
@@ -336,7 +336,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'rating': 4,
             'image': 'https://infatuation.imgix.net/media/images/reviews/p-franco/banners/1493673233.93.jpg?auto=format&h=840&w=1336',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[3]._id,categories[71]._id,categories[73]._id,categories[81]._id,categories[85]._id,categories[82]._id,categories[90]._id,categories[95]._id,categories[96]._id,categories[81]._id]
           },
           {
             'restaurantName': 'Gunpowder',
@@ -345,7 +345,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'rating': 4,
             'image': 'https://infatuation.imgix.net/media/images/reviews/gunpowder/banners/1492721083.49.jpg?auto=format&h=840&w=1336',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[7]._id,categories[18]._id,categories[60]._id,categories[61]._id,categories[63]._id,categories[69]._id,categories[81]._id,categories[83]._id,categories[91]._id,categories[70]._id]
           },
           {
             'restaurantName': 'GBK',
@@ -354,7 +354,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'rating': 4,
             'image': 'https://cdn.images.express.co.uk/img/dynamic/22/590x/secondary/burger-679161.jpg',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[2]._id,categories[64]._id,categories[76]._id,categories[77]._id,categories[91]._id,categories[18]._id,categories[68]._id,categories[69]._id,categories[58]._id,categories[82]._id]
           },
           {
             'restaurantName': 'Pizza express',
@@ -363,25 +363,25 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'rating': 2,
             'image': 'http://cdn.ltstatic.com/2008/July/JQ718524_942long.jpg',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[65]._id,categories[76]._id,categories[77]._id,categories[57]._id,categories[58]._id,categories[86]._id,categories[84]._id,categories[91]._id,categories[82]._id,categories[70]._id]
           },
           {
             'restaurantName': 'The Table Cafe',
-            'reviewHeadline': 'DElicioius vegy food',
+            'reviewHeadline': 'Delicioius vegy food',
             'reviewText': 'Really good for groups, will come back.',
             'rating': 4,
             'image': 'http://www.breakfastlondon.co.uk/wp-content/uploads/2015/07/TheTable049web-1024x682.jpg',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[5]._id,categories[3]._id,categories[63]._id,categories[89]._id,categories[69]._id,categories[61]._id,categories[58]._id,categories[62]._id,categories[67]._id,categories[56]._id]
           },
           {
             'restaurantName': 'Pomona\'s',
             'reviewHeadline': 'Pom Yum!',
-            'reviewText': 'So good! I will be coming back for sure',
+            'reviewText': 'It’s pretty much a distillation of everything that sets my teeth on edge',
             'rating': 4,
             'image': 'https://resizer.otstatic.com/v2/photos/huge/24864785.jpg',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[16]._id,categories[20]._id,categories[49]._id,categories[56]._id,categories[75]._id,categories[76]._id,categories[77]._id,categories[86]._id,categories[92]._id,categories[91]._id]
           },
           {
             'restaurantName': 'Monsieur Le Duck',
@@ -390,7 +390,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'rating': 4,
             'image': 'https://media-cdn.tripadvisor.com/media/photo-s/15/ef/43/3a/le-frontage.jpg',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[5]._id,categories[3]._id,categories[63]._id,categories[89]._id,categories[69]._id,categories[61]._id,categories[58]._id,categories[62]._id,categories[67]._id,categories[56]._id]
           },
           {
             'restaurantName': 'Magic Falafel',
@@ -399,7 +399,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'rating': 2,
             'image': 'http://cdn.ltstatic.com/2008/July/JQ718524_942long.jpg',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[10]._id,categories[12]._id,categories[55]._id,categories[52]._id,categories[54]._id,categories[58]._id,categories[75]._id,categories[76]._id,categories[77]._id,categories[97]._id]
           },
           {
             'restaurantName': 'The Table Cafe',
@@ -408,7 +408,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'rating': 4,
             'image': 'http://www.breakfastlondon.co.uk/wp-content/uploads/2015/07/TheTable049web-1024x682.jpg',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[5]._id,categories[3]._id,categories[65]._id,categories[61]._id,categories[58]._id,categories[64]._id,categories[87]._id,categories[75]._id,categories[70]._id,categories[68]._id]
           }
         ]),
         Recipe.create([
@@ -419,7 +419,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'Preheat the oven to gas 6, 200°C, fan 180°C. Peel and finely slice the garlic, wash and finely slice the leeks, then place in a large pan on a medium heat with 1 tsp of oil. Cook for 10 mins, or until softened, stirring regularly.',
             'image': 'https://realfood.tesco.com/media/images/RFO-1400x919-Filo-fish-pies-with-pea-spiked-mash-3b1120a9-8e50-4e39-8bea-aecae3a42675-0-1400x919.jpg',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[83]._id,categories[55]._id,categories[49]._id,categories[50]._id,categories[84]._id,categories[76]._id,categories[77]._id,categories[68]._id]
           },
           {
             'name': 'Barbecue Chicken with Coriander Couscous and Elderflower Roasted Vegetables',
@@ -428,7 +428,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'Peel and quarter the red onion, cut the courgette into thick slices. Place on a baking tray with the cherry tomatoes. Pour over the Bottlegreen Elderflower Cordial and 1 tbsp of the olive oil, toss until coated. Cook for around 20-30 minutes until softened and beginning to char a little.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/348445.jpg?Iiqk',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[64]._id,categories[3]._id,categories[56]._id,categories[62]._id,categories[76]._id,categories[77]._id,categories[81]._id,categories[80]._id,categories[83]._id]
           },
           {
             'name': 'Barbecue Trout with a Ginger & Lemongrass Glaze',
@@ -437,7 +437,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'Barbecue or grill the fish for approximately 15-20 minutes, depending on size, turning halfway through cooking. The fish will flake easily when cooked.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/348117.jpg?Iiqk',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[64]._id,categories[7]._id,categories[56]._id,categories[62]._id,categories[76]._id,categories[77]._id,categories[81]._id,categories[80]._id,categories[83]._id]
           },
           {
             'name': 'Barbecued Steak with Peach Relish',
@@ -446,7 +446,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'Cook the steaks according to your preference on a prepared barbecue or preheated grill.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/259924.jpg?HZ5E',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[64]._id,categories[3]._id,categories[62]._id,categories[76]._id,categories[77]._id,categories[56]._id,categories[55]._id,categories[54]._id,categories[68]._id,categories[83]._id]
           },
           {
             'name': 'Bean and Pesto Salad',
@@ -455,7 +455,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'Chop the spring onions into rounds and cut the pepper into strips. Add to the bowl, sprinkle in your chosen herbs and toss the bean salad together, seasoning to taste.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/272698.jpg?HjvE',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[81]._id,categories[80]._id,categories[58]._id,categories[76]._id,categories[77]._id,categories[54]._id,categories[55]._id,categories[49]._id,categories[48]._id,categories[56]._id]
           },
           {
             'name': 'Beef Burger with Smoked Cheese',
@@ -464,7 +464,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'Cook the burgers on a hot barbecue for 6 mins, turning every 2 mins. Then lay the slices of smoked cheese on top and cook for 2 mins with the lid on to melt the cheese.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/2682693.jpg?RIgk',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[2]._id,categories[50]._id,categories[76]._id,categories[77]._id,categories[87]._id,categories[95]._id,categories[85]._id,categories[83]._id,categories[74]._id]
           },
           {
             'name': 'Blueberry Lemonade',
@@ -473,7 +473,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'In a food processor or high-speed blender, whizz the blueberries, sugar, lemon juice and 250ml water together until the berries are completely puréed and the sugar is dissolved.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/2624030.jpg?Q2Ok',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[70]._id,categories[81]._id,categories[56]._id,categories[55]._id,categories[57]._id,categories[49]._id]
           },
           {
             'name': 'Carrot and Beetroot Salad',
@@ -482,7 +482,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'Gently heat the remaining teaspoon of olive oil in a small frying pan and toast the seeds for 3–4 minutes over a moderate heat, stirring frequently to prevent sticking. Add the soy sauce at the end of the cooking, if using. Most of the sauce will evaporate, leaving a salty taste and extra browning for the seeds. Store the toasted seeds in a jar with a lid if preparing the day before.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/247459.jpg?HOpE',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[81]._id,categories[80]._id,categories[58]._id,categories[76]._id,categories[77]._id,categories[54]._id,categories[55]._id,categories[49]._id,categories[48]._id,categories[56]._id]
           },
           {
             'name': 'Charred Corn Salad',
@@ -491,7 +491,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'To make the vinaigrette, pulse the basil and garlic in a blender until the basil starts to break down. Add the vinegar and keep pulsing while adding the oil in a steady stream until smooth.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/2053812.jpg?K8TE',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[81]._id,categories[80]._id,categories[58]._id,categories[76]._id,categories[77]._id,categories[78]._id,categories[55]._id,categories[49]._id,categories[48]._id,categories[56]._id]
           },
           {
             'name': 'Butterflied Leg of Welsh Lamb with Orange, Soy and Thyme',
@@ -500,7 +500,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'Either ask your butcher to butterfly the leg of lamb or, follow our step by step guide and have a go yourself. Take two long metal skewers and thread through the meat corner to corner. This not only holds the meat together, but believe it or not, also helps it cook.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/239366.jpg?HEzE',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[64]._id,categories[3]._id,categories[62]._id,categories[76]._id,categories[77]._id,categories[56]._id,categories[55]._id,categories[54]._id,categories[68]._id,categories[83]._id]
           },
           {
             'name': 'Chorizo Flatbreads with Rocket Pesto',
@@ -509,7 +509,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'For the pesto, pulse 1 garlic clove, 25g rocket, 25g basil, 2tbsp toasted pine nuts and 80ml extra virgin olive oil in a blender. Stir in 2tbsp grated parmesan and season.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/2425682.jpg?PGFE',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[10]._id,categories[55]._id,categories[50]._id,categories[53]._id,categories[54]._id,categories[76]._id,categories[77]._id,categories[80]._id,categories[81]._id,categories[82]._id]
           },
           {
             'name': 'Chipotle BBQ Ribs',
@@ -518,7 +518,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'Combine the remaining 2 tbsp of Tabasco Chipotle Sauce with the baroque sauce and spread evenly over both sides of the ribs.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/396727.jpg?JTLk',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[64]._id,categories[3]._id,categories[56]._id,categories[62]._id,categories[76]._id,categories[77]._id,categories[81]._id,categories[80]._id,categories[83]._id]
           },
           {
             'name': 'Gran Luchito Smoked Chilli Honey Bacon Onion Rings',
@@ -527,7 +527,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'If you have them, put a skewer through the rings and suspend over an oven-proof dish. If not, just bake them on a tray on foil/baking paper.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/2410931.jpg?O61E',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[52]._id,categories[55]._id,categories[56]._id,categories[54]._id,categories[51]._id,categories[80]._id,categories[81]._id,categories[76]._id,categories[77]._id,categories[3]._id]
           },
           {
             'name': 'Corn on the Cob with Smoky Chilli',
@@ -536,7 +536,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'While the corn is cooking beat the butter with the pepper sauce, lime zest and coriander until thoroughly mixed. Chill until ready to serve.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/46132.jpg?TsA',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[83]._id,categories[55]._id,categories[49]._id,categories[50]._id,categories[84]._id,categories[76]._id,categories[77]._id,categories[68]._id]
           },
           {
             'name': 'Foil-baked Strawberries with Pimm\'s and Clotted Cream',
@@ -545,7 +545,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'method': 'In a bowl, mix the strawberries with the sugar and Pimm\'s. Divide the strawberries evenly between the foil squares. Begin to fold the edges up to make a parcel before spooning in the remaining Pimm\'s. Close each parcel, sealing the edges tightly.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/49311.jpg?TsA',
             'user': users[getRandom(4)]._id,
-            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id]
+            'categories': [categories[3]._id,categories[96]._id,categories[95]._id,categories[91]._id,categories[90]._id,categories[93]._id,categories[3]._id,categories[69]._id]
           }
         ])
       ])
