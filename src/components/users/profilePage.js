@@ -69,7 +69,7 @@ class ProfilePage extends React.Component {
     )
   }
 }
-//tryal
+
 export default ProfilePage
 
 // <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>}
