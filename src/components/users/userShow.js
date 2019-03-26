@@ -98,12 +98,12 @@ class UserShow extends React.Component {
               </div>
               <div className="column is-half">
                 {(this.state.data.friends.some(checkFriend)) && checkPending(this.state.data.friends) &&
-                <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
+                <button className="button is-info is-rounded is-pulled-right">
                 Requested
                 </button>
                 }
                 {(this.state.data.friends.some(checkFriend)) && checkAccepted(this.state.data.friends) &&
-                <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
+                <button className="button is-info is-rounded is-pulled-right">
                 Friends
                 </button>
                 }
