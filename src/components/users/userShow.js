@@ -37,15 +37,21 @@ class UserShow extends React.Component {
       return(
         <main className="section">
           <div className="container user-show">
-            <h2 className="title">{data.username}’s Profile</h2>
-            <button onSubmit={this.handleSubmit} className="button is-info is-rounded">Request Friend</button>
-            <hr />
             <div className="columns">
+              <div className="column is-half">
+                <h2 className="title">{data.username}’s Profile</h2>
+              </div>
+              <div className="column is-half">
+                <button onSubmit={this.handleSubmit} className="button is-info is-rounded is-pulled-right">Request Friend</button>
+              </div>
+            </div>
+            <hr />
+            <div className="columns is-multiline">
               <div className="column is-half">
                 <figure className="image">
                   <img src={data.image} alt={data.username} />
                 </figure>
-                <hr />
+                <br />
                 <h4 className="title is-4">{data.name}</h4>
                 <hr />
                 <h4 className="title is-4">Location</h4>
@@ -54,10 +60,6 @@ class UserShow extends React.Component {
                 <h4 className="title is-4">Bio</h4>
                 <p>{data.bio}</p>
                 <hr />
-                <h4 className="title is-4">Categories</h4>
-                {data.categories && <div>{data.categories.map((category, i) => (
-                  <p key={i}>{category.name} <br /></p>))}
-                </div>}
               </div>
               <div className="column is-half">
                 <h4 className="title is-4">Reviews</h4>
@@ -67,6 +69,12 @@ class UserShow extends React.Component {
                 <h4 className="title is-4">Recipes</h4>
                 {data.recipes && data.recipes.map((recipe, i) => (
                   <Link key={i} to={`/review/${recipe._id}`}><strong>{recipe.name}</strong><br />{recipe.description}<br /><br /></Link>))}
+              </div>
+              <div className="column is-full has-text-centered">
+                <h4 className="title is-4">Categories</h4>
+                {data.categories && <p>{data.categories.map((category, i) => (
+                  <span key={i}>{category.name}, </span>))}
+                </p>}
               </div>
             </div>
           </div>

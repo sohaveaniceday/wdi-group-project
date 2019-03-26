@@ -42,6 +42,7 @@ router.route('/categories/:id')
 
 router.route('/user/:id')
   .get(user.show)
+  .put(user.edit)
 
 router.post('/register', auth.register)
 router.post('/login', auth.login)
