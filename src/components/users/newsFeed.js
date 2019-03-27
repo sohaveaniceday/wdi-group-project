@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Auth from '../../lib/auth'
+const moment = require('moment')
+
 
 class Newsfeed extends React.Component {
   constructor() {
@@ -64,7 +66,7 @@ class Newsfeed extends React.Component {
                       </div>
                       <div className="card-content">
                         <h5 className="title is-6">{reviewFeed.reviewHeadline}</h5>
-                        <h6 className="subtitle is-6">{reviewFeed.user.username}</h6>
+                        <h6 className="subtitle is-6">Created by <Link to={`/user/${reviewFeed.user._id}`}>{reviewFeed.user.username}</Link><br /> at {moment(reviewFeed.createdAt).format('hh:mm')} on {moment(reviewFeed.createdAt).format('Do MMMM YYYY')}</h6>
                       </div>
                     </div>
                   </Link>
@@ -87,7 +89,7 @@ class Newsfeed extends React.Component {
                       </div>
                       <div className="card-content">
                         <h5 className="title is-6">{recipeFeed.description}</h5>
-                        <h6 className="subtitle is-6">{recipeFeed.user.username}</h6>
+                        <h6 className="subtitle is-6">Created by <Link to={`/user/${recipeFeed.user._id}`}>{recipeFeed.user.username}</Link><br /> at {moment(recipeFeed.createdAt).format('hh:mm')} on {moment(recipeFeed.createdAt).format('Do MMMM YYYY')}</h6>
                       </div>
                     </div>
                   </Link>
