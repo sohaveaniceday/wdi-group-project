@@ -28,7 +28,7 @@
 }
 
 .margin-maker {
-  margin: 50px;
+  margin: 45px;
 }
 
 .bottom-margin {
@@ -61,8 +61,11 @@
 }
 
 .pin-button {
-  background-color: rgb(255, 161, 0);
+  background-color: rgb(237, 69, 70);
   color: white;
+  &:hover {
+    color: white;
+  }
 }
 
 
@@ -72,5 +75,16 @@
 
   .news {
     overflow-y: scroll;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+
+.pin-column {
+  display: flex;
+}
+  .pin-button {
+    text-align: center;
+
   }
 }

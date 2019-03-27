@@ -158,14 +158,20 @@ class reviewShow extends React.Component {
             </div>
             <div className="column is-half">
               {pinnedReviews && pinnedReviews.some(checkPin) &&
-            <button className="button is-info is-rounded is-pulled-right">
-            Pinned
-            </button>
+              <a className="button is-rounded is-pulled-right pin-button">
+                <span className="icon">
+                  <i className="fas fa-thumbtack"></i>
+                </span>
+                <span>Pinned</span>
+              </a>
               }
               {pinnedReviews && !pinnedReviews.some(checkPin) &&
-              <button onClick={() => this.handleClick(pinnedReviews, [review._id])} className="button is-info is-rounded is-pulled-right">
-            Pin Review
-              </button>
+              <a className="button is-rounded is-pulled-right pin-button" onClick={() => this.handleClick(pinnedReviews, [review._id])}>
+                <span className="icon">
+                  <i className="fas fa-thumbtack"></i>
+                </span>
+                <span>Pin</span>
+              </a>
               }
             </div>
           </div>
@@ -177,7 +183,7 @@ class reviewShow extends React.Component {
               </figure>
             </div>
             <div className="column is-two-thirds">
-              <h4 className="title is-4">Rating: {review.rating} Stars</h4>
+              <h4 className="title is-4">{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}</h4>
               <hr />
               <h4 className="title is-4">Review Headline</h4>
               <p>“{review.reviewHeadline}”</p>

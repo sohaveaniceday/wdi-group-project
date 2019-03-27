@@ -178,14 +178,17 @@ class recipeShow extends React.Component {
                 }
               </div>
             </div>
-            <div className="column is-half">
+            <div className="column is-half pin-column">
               {pinnedRecipes && pinnedRecipes.some(checkPin) &&
-          <button className="button is-info is-rounded is-pulled-right">
-          Pinned
-          </button>
+                <a className="button is-rounded is-pulled-right pin-button">
+                  <span className="icon">
+                    <i className="fas fa-thumbtack"></i>
+                  </span>
+                  <span>Pinned</span>
+                </a>
               }
               {pinnedRecipes && !pinnedRecipes.some(checkPin) &&
-                <a className="button is-rounded is-pulled-right is-danger" onClick={() => this.handleClick(pinnedRecipes, [recipe._id])}>
+                <a className="button is-rounded is-pulled-right pin-button" onClick={() => this.handleClick(pinnedRecipes, [recipe._id])}>
                   <span className="icon">
                     <i className="fas fa-thumbtack"></i>
                   </span>
