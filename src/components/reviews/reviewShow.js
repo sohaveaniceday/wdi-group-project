@@ -195,8 +195,8 @@ class reviewShow extends React.Component {
               <div>{review.categories.map((category, i) => (
                 <span key={i}>{category.name}, </span>))}</div>
               {this.isOwner() && <div><hr /></div>}
-              {this.isOwner() && <Link className="button is-warning" to={`/review/${review._id}/edit`}>Edit</Link>}
-              {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
+              {this.isOwner() && <Link className="button is-warning is-rounded" to={`/review/${review._id}/edit`}>Edit</Link>}
+              {this.isOwner() && <button className="button is-danger is-rounded" onClick={this.handleDelete}>Delete</button>}
               <br />
               <hr />
               <h4 className="title is-4">Comments</h4>

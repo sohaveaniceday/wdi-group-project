@@ -46,7 +46,7 @@ class Register extends React.Component {
     e.preventDefault()
     const data = {...this.state.data, image: this.state.image}
     console.log(data)
-    if (this.state.data.categories && this.state.data.categories.length > 0) {
+    if (this.state.data.categories && this.state.data.categories.length > 2) {
       axios.post('api/register', data)
         .then(() => this.props.history.push('/login'))
         .catch(() => this.setState({ error: 'Invalid Input'}))
@@ -93,7 +93,7 @@ class Register extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <h2 className="title">Register</h2>
             <div className="field">
-              <label className="label">Username</label>
+              <label className="label">Username (required)</label>
               <div className="control">
                 <input
                   className={`input is-rounded ${this.state.error.username ? 'is-danger': ''}`}
@@ -106,7 +106,7 @@ class Register extends React.Component {
               {this.state.error.username && <small className="help is-danger">{this.state.error.username}</small>}
             </div>
             <div className="field">
-              <label className="label">Email</label>
+              <label className="label">Email (required)</label>
               <div className="control">
                 <input
                   className={`input is-rounded ${this.state.error.email ? 'is-danger': ''}`}
@@ -118,11 +118,41 @@ class Register extends React.Component {
               </div>
               {this.state.error.email && <small className="help is-danger">{this.state.error.email}</small>}
             </div>
+
+
+            <div className="field">
+              <label className="label">Password (required)</label>
+              <div className="control">
+                <input
+                  className={`input is-rounded ${this.state.error.password ? 'is-danger': ''}`}
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  value={this.state.data.password}
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.error.password && <small className="help is-danger">{this.state.error.password}</small>}
+            </div>
+            <div className="field">
+              <label className="label">Password Confirmation (required)</label>
+              <div className="control">
+                <input
+                  className={`input is-rounded ${this.state.error.password ? 'is-danger': ''}`}
+                  name="passwordConfirmation"
+                  type="password"
+                  placeholder="Password Confirmation"
+                  value={this.state.data.passwordConfirmation}
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.error.passwordConfirmation && <small className="help is-danger">{this.state.error.passwordConfirmation}</small>}
+            </div>
             <div className="field">
               <label className="label">Full Name</label>
               <div className="control">
                 <input
-                  className={`input ${this.state.error.name ? 'is-danger': ''}`}
+                  className={`input is-rounded ${this.state.error.name ? 'is-danger': ''}`}
                   name="name"
                   placeholder="Full Name"
                   value={this.state.data.name}
@@ -148,12 +178,12 @@ class Register extends React.Component {
             <div className="field">
               <label className="label">Bio</label>
               <div className="control">
-                <input
-                  className={`input is-rounded ${this.state.error.bio ? 'is-danger': ''}`}
+                <textarea cols='60' rows='3'
+                  className={`textarea text-top is-rounded ${this.state.error.bio ? 'is-danger': ''}`}
                   name="bio"
                   placeholder="Bio"
-                  value={this.state.data.bio}
                   onChange={this.handleChange}
+                  value={this.state.data.bio || ''}
                 />
               </div>
               {this.state.error.bio && <small className="help is-danger">{this.state.error.bio}</small>}
@@ -162,7 +192,7 @@ class Register extends React.Component {
             <div className="field">
               <label className="label">Profile Image</label>
               {!this.state.image ?
-                <Container openModal={this.openModal} className="button is-info is-rounded" />
+                <Container openModal={this.openModal} className="button is-warning is-rounded" />
                 :
                 <img src={this.state.image}/>
               }
@@ -182,45 +212,16 @@ class Register extends React.Component {
               </div>
               {this.state.error.image && <small className="help is-danger">{this.state.error.image}</small>}
             </div>*/}
-
             <div className="field">
-              <label className="label">Password</label>
-              <div className="control">
-                <input
-                  className={`input is-rounded ${this.state.error.password ? 'is-danger': ''}`}
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  value={this.state.data.password}
-                  onChange={this.handleChange}
+              <label className="label">Categories (pick at least 3)</label>
+              <div>
+                <Select
+                  options={this.state.categories}
+                  onChange={this.handleSelect}
+                  isMulti
+                  className="basic-multi-select"
+                  classNamePrefix="select"
                 />
-              </div>
-              {this.state.error.password && <small className="help is-danger">{this.state.error.password}</small>}
-            </div>
-            <div className="field">
-              <label className="label">Password Confirmation</label>
-              <div className="control">
-                <input
-                  className={`input is-rounded ${this.state.error.password ? 'is-danger': ''}`}
-                  name="passwordConfirmation"
-                  type="password"
-                  placeholder="Password Confirmation"
-                  value={this.state.data.passwordConfirmation}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="field">
-                <br />
-                <label className="label">Categories (required)</label>
-                <div>
-                  <Select
-                    options={this.state.categories}
-                    onChange={this.handleSelect}
-                    isMulti
-                    className="basic-multi-select"
-                    classNamePrefix="select"
-                  />
-                </div>
               </div>
             </div>
             <button className="button is-info is-rounded">Register</button>

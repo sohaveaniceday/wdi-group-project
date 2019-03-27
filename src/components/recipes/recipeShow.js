@@ -224,8 +224,8 @@ class recipeShow extends React.Component {
               <div>{recipe.categories.map((category, i) => (
                 <span key={i}>{category.name}, </span>))}</div>
               {this.isOwner() && <div><br /><hr /></div>}
-              {this.isOwner() && <Link className="button is-warning" to={`/recipe/${recipe._id}/edit`}>Edit</Link>}
-              {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
+              {this.isOwner() && <Link className="button is-warning is-rounded" to={`/recipe/${recipe._id}/edit`}>Edit</Link>}
+              {this.isOwner() && <button className="button is-danger is-rounded" onClick={this.handleDelete}>Delete</button>}
               <hr />
               <h4 className="title is-4">Comments</h4>
               <form onSubmit={this.handleSubmit}>

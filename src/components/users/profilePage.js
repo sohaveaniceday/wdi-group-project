@@ -63,7 +63,7 @@ class ProfilePage extends React.Component {
                 <h2 className="title">Hello {user.username}!</h2>
               </div>
               <div className="column is-half">
-                <Link className="button is-warning is-pulled-right" to={`/user/${user._id}/edit`}>Edit Profile</Link>
+                <Link className="button is-warning is-pulled-right is-rounded" to={`/user/${user._id}/edit`}>Edit Profile</Link>
               </div>
             </div>
             <hr />
@@ -87,18 +87,21 @@ class ProfilePage extends React.Component {
                 </p>}
               </div>
               <div className="column is-two-fifths has-text-centered">
-                <h4 className="title is-4">Reviews</h4>
+
+                {(user.reviews.length > 0) && <h4 className="title is-4">Reviews</h4>}
                 {user.reviews && user.reviews.map((review, i) => (
-                  <Link key={i} to={`/review/${review._id}`}><strong>{review.restaurantName}</strong><br />{review.reviewHeadline}<br />{review.rating} Stars<br /><br /></Link>))}
-                <hr />
-                <h4 className="title is-4">Recipes</h4>
+                  <Link key={i} to={`/review/${review._id}`}><span className="title is-6">{review.restaurantName}</span><br />“{review.reviewHeadline}”<br />{review.rating} Stars<br /><br /></Link>))}
+                {(user.reviews.length > 0) && <hr />}
+                {(user.recipes.length > 0) && <h4 className="title is-4">Recipes</h4>}
                 {user.recipes && user.recipes.map((recipe, i) => (
-                  <Link key={i} to={`/recipe/${recipe._id}`}><strong>{recipe.name}</strong><br />{recipe.description}<br /><br /></Link>))}
+                  <Link key={i} to={`/recipe/${recipe._id}`}><span className="title is-6">{recipe.name}</span><br />“{recipe.description}”<br /><br /></Link>))}
+                {(user.recipes.length > 0)}
+                {!(user.recipes.length > 0) && !(user.reviews.length > 0) && <span><Link to="/review/new" className="button is-primary is-rounded">Create a Review</Link>   <Link to="/recipe/new" className="button is-primary is-rounded">Create a Recipe</Link></span>}
               </div>
               <div className="column is-one-fifth has-text-right">
                 {(friends.some(friend => friend.status === 'pending')) && <h4 className="title is-6">Pending Friend Requests</h4>}
                 {friends && filterPending(friends).map((friend, i) => (
-                  <div key={i}><span><Link to={`/user/${friend._id}`}>{friend.friend.name}  </Link><button className="button is-small" onClick={() => this.handleSubmit(friend.friend)}>
+                  <div key={i}><span><Link to={`/user/${friend._id}`}>{friend.friend.name}  </Link><button className="button is-small is-rounded is-danger" onClick={() => this.handleSubmit(friend.friend)}>
                   Accept
                   </button><br /></span></div>))}
                 {(friends.some(friend => friend.status === 'pending')) && <div><hr /></div>}

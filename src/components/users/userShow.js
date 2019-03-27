@@ -97,22 +97,22 @@ class UserShow extends React.Component {
               </div>
               <div className="column is-half">
                 {(this.state.data.friends.some(checkFriend)) && checkPending(this.state.data.friends) &&
-                <button className="button is-info is-rounded is-pulled-right">
+                <button className="button is-primary is-rounded is-pulled-right">
                 Requested
                 </button>
                 }
                 {(this.state.data.friends.some(checkFriend)) && checkAccepted(this.state.data.friends) &&
-                <button className="button is-info is-rounded is-pulled-right">
+                <button className="button is-primary is-rounded is-pulled-right">
                 Friends
                 </button>
                 }
                 {(this.state.data.friends.some(checkFriend)) && checkRequested(this.state.data.friends) &&
-                <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
+                <button onClick={this.handleSubmit} className="button is-primary is-rounded is-pulled-right">
                 Accept Request
                 </button>
                 }
                 {(!this.state.data.friends.some(checkFriend)) &&
-                <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
+                <button onClick={this.handleSubmit} className="button is-primary is-rounded is-pulled-right">
                 Request Friend
                 </button>
                 }
@@ -141,11 +141,11 @@ class UserShow extends React.Component {
               <div className="column is-half">
                 <h4 className="title is-4">Reviews</h4>
                 {user.reviews && user.reviews.map((review, i) => (
-                  <Link key={i} to={`/review/${review._id}`}><strong>{review.restaurantName}</strong><br />{review.reviewHeadline}<br />{review.rating} Stars<br /><br /></Link>))}
+                  <Link key={i} to={`/review/${review._id}`}><span className="title is-6">{review.restaurantName}</span><br />“{review.reviewHeadline}”<br />{review.rating} Stars<br /><br /></Link>))}
                 <hr />
                 <h4 className="title is-4">Recipes</h4>
                 {user.recipes && user.recipes.map((recipe, i) => (
-                  <Link key={i} to={`/recipe/${recipe._id}`}><strong>{recipe.name}</strong><br />{recipe.description}<br /><br /></Link>))}
+                  <Link key={i} to={`/recipe/${recipe._id}`}><span className="title is-6">{recipe.name}</span><br />“{recipe.description}”<br /><br /></Link>))}
               </div>
             </div>
           </div>

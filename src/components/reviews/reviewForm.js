@@ -63,7 +63,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
         <div className="field">
           <label className="label">Review Image</label>
           {!image ?
-            <Container openModal={openModal} className="button is-info is-rounded" />
+            <Container openModal={openModal} className="button is-warning is-rounded" />
             :
             <img src={image}/>
           }
