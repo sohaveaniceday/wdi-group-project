@@ -2,10 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Auth from '../../lib/auth'
-const moment = require('moment')
 
-
-class Newsfeed extends React.Component {
+class PinnedItems extends React.Component {
   constructor() {
     super()
     this.state = {}
@@ -20,24 +18,17 @@ class Newsfeed extends React.Component {
       .then(res => {
         const [ user, recipes, reviews ] = res
         console.log(user, recipes, reviews)
-        console.log('hello',res)
+        console.log(user.data.user.pinnedReviews)
+        // console.log(res)
         const recipeFeed = recipes.data.filter(recipe => {
-          return ((user.data.friends.some(friend => {
-            return (recipe.user.id.includes(friend._id) && friend.status !== 'pending')
-          })) || user.data.user.categories.some(category => {
-            return recipe.categories.some(categoryObject => {
-              return Object.values(categoryObject).includes(category._id)
-            })
-          }) && recipe.user.id !== Auth.getPayload().sub)
+          return (user.data.user.pinnedRecipes.some(pinnedRecipe => {
+            return recipe._id.includes(pinnedRecipe)
+          }))
         })
         const reviewFeed = reviews.data.filter(review => {
-          return ((user.data.friends.some(friend => {
-            return (review.user.id.includes(friend._id) && friend.status !== 'pending')
-          })) || user.data.user.categories.some(category => {
-            return review.categories.some(categoryObject => {
-              return Object.values(categoryObject).includes(category._id)
-            })
-          }) && review.user.id !== Auth.getPayload().sub)
+          return (user.data.user.pinnedReviews.some(pinnedReview => {
+            return review._id.includes(pinnedReview)
+          }))
         })
         this.setState({ recipeFeed, reviewFeed, user })
       })
@@ -51,7 +42,7 @@ class Newsfeed extends React.Component {
           <div className="columns is-mobile is-multiline articles">
             <div className="column is-hidden-mobile"></div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
-              <h2 className="title is-4 is-centered has-text-centered">Reviews for you</h2>
+              <h2 className="title is-4 is-centered has-text-centered">Pinned Reviews</h2>
               {this.state.reviewFeed && this.state.reviewFeed.map(reviewFeed => (
                 <div key={reviewFeed._id} className="column">
                   <Link to={`/review/${reviewFeed._id}`} >
@@ -66,7 +57,7 @@ class Newsfeed extends React.Component {
                       </div>
                       <div className="card-content">
                         <h5 className="title is-6">{reviewFeed.reviewHeadline}</h5>
-                        <h6 className="subtitle is-6">Created by <Link to={`/user/${reviewFeed.user._id}`}>{reviewFeed.user.username}</Link><br /> at {moment(reviewFeed.createdAt).format('hh:mm')} on {moment(reviewFeed.createdAt).format('Do MMMM YYYY')}</h6>
+                        <h6 className="subtitle is-6">{reviewFeed.user.username}</h6>
                       </div>
                     </div>
                   </Link>
@@ -74,7 +65,7 @@ class Newsfeed extends React.Component {
               ))}
             </div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
-              <h2 className="title is-4 is-centered has-text-centered">Recipes for you</h2>
+              <h2 className="title is-4 is-centered has-text-centered">Pinned Recipes</h2>
               {this.state.recipeFeed && this.state.recipeFeed.map(recipeFeed => (
                 <div key={recipeFeed._id} className="column">
                   <Link to={`/recipe/${recipeFeed._id}`} >
@@ -89,7 +80,7 @@ class Newsfeed extends React.Component {
                       </div>
                       <div className="card-content">
                         <h5 className="title is-6">{recipeFeed.description}</h5>
-                        <h6 className="subtitle is-6">Created by <Link to={`/user/${recipeFeed.user._id}`}>{recipeFeed.user.username}</Link><br /> at {moment(recipeFeed.createdAt).format('hh:mm')} on {moment(recipeFeed.createdAt).format('Do MMMM YYYY')}</h6>
+                        <h6 className="subtitle is-6">{recipeFeed.user.username}</h6>
                       </div>
                     </div>
                   </Link>
@@ -103,4 +94,4 @@ class Newsfeed extends React.Component {
     )
   }
 }
-export default Newsfeed
+export default PinnedItems

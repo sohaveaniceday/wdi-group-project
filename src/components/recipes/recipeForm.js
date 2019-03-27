@@ -36,8 +36,8 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
         <div className="field">
           <label className="label">Ingredients</label>
           <div className="control">
-            <input
-              className={`input is-rounded ${errors.ingredients ? 'is-danger': ''}`}
+            <textarea cols='60' rows='4'
+              className={`textarea text-top is-rounded ${errors.ingredients ? 'is-danger': ''}`}
               name="ingredients"
               placeholder="Ingredients"
               onChange={handleChange}
@@ -49,8 +49,8 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
         <div className="field">
           <label className="label">Method</label>
           <div className="control">
-            <input
-              className={`input is-rounded ${errors.method ? 'is-danger': ''}`}
+            <textarea cols='60' rows='4'
+              className={`textarea text-top is-rounded ${errors.method ? 'is-danger': ''}`}
               name="method"
               placeholder="Method"
               onChange={handleChange}
