@@ -172,32 +172,3 @@ class reviewShow extends React.Component {
 }
 
 export default reviewShow
-
-// <p>{review.categories}</p>
-
-// {(this.state.data.friends.some(checkFriend)) && checkPending(this.state.data.friends) &&
-// <button className="button is-info is-rounded is-pulled-right">
-// Requested
-// </button>
-// }
-// {(this.state.data.friends.some(checkFriend)) && checkAccepted(this.state.data.friends) &&
-// <button className="button is-info is-rounded is-pulled-right">
-// Friends
-// </button>
-// }
-// {(this.state.data.friends.some(checkFriend)) && checkRequested(this.state.data.friends) &&
-// <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
-// Accept Request
-// </button>
-// }
-// {(!this.state.data.friends.some(checkFriend)) &&
-// <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
-// Request Friend
-// </button>
-// }
-
-// {(this.state.data.friends.some(checkFriend)) && checkRequested(this.state.data.friends) &&
-// <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
-// Accept Request
-// </button>
-// }

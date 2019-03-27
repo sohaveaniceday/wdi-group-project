@@ -23,6 +23,7 @@ import SecureRoute from './components/common/secureRoute'
 import ProfilePage from './components/users/profilePage'
 import UserShow from './components/users/userShow'
 import ProfileEdit from './components/users/profileEdit'
+import Search from './components/search/search'
 
 // import axios from 'axios'
 
@@ -52,6 +53,7 @@ class App extends React.Component {
             <Route exact path="/" component={Home} />
             <SecureRoute path="/profilepage" component={ProfilePage} />
             <SecureRoute path="/user/:id/edit" component={ProfileEdit} />
+            <SecureRoute path="/search" component={Search} />
             <Route path="/user/:id" component={UserShow} />
           </Switch>
           <Footer />
