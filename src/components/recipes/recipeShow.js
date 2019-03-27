@@ -4,11 +4,24 @@ import { Link } from 'react-router-dom'
 
 import Auth from '../../lib/auth'
 
+let recipeId = null
+
+function checkPin(value) {
+  console.log(value)
+  if (value === recipeId) {
+    console.log('true')
+    return true
+  } else {
+    console.log('false')
+    return false
+  }
+}
+
 class recipeShow extends React.Component {
   constructor() {
     super()
 
-    this.state = { data: {}, errors: {}, likes: [] }
+    this.state = { data: {}, errors: {}, user: {} }
 
     this.handleDelete = this.handleDelete.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -19,6 +32,8 @@ class recipeShow extends React.Component {
   componentDidMount() {
     axios.get(`/api/recipes/${this.props.match.params.id}`)
       .then(res => this.setState({ recipe: res.data }))
+    axios.get(`/api/user/${Auth.getPayload().sub}`)
+      .then(res => this.setState({ data: res.data.user }))
   }
 
 
@@ -40,7 +55,6 @@ class recipeShow extends React.Component {
     console.log(this.state.data)
   }
 
-
   handleSubmit(e) {
     e.preventDefault()
     axios.post(`/api/recipes/${this.props.match.params.id}/comments`,
@@ -57,44 +71,58 @@ class recipeShow extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
-
-  handleClick(e) {
-    e.preventDefault()
-    axios.post(`/api/recipes/${this.props.match.params.id}`,
-      this.state.data)
-
-
-
-    // if (likeText.textContent === 'Like') {
-    //       likeText.textContent === 'Unlike'
-    //     } else {
-    //       likeText.textContent === 'Like'
-    //     }
-    //   })
-
-    // likeCount++
-    // likeTotal.text(likeCount)
+  handleClick(value, recipe) {
+    let data = null
+    data = {...this.state.data, pinnedRecipes: recipe.concat(value) }
+    this.setState({ data }, function() {
+      axios.put(`/api/user/${Auth.getPayload().sub}`,
+        this.state.data,
+        { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
+        .then((res) => {
+          if (res.data.errors) {
+            this.setState({ sent: 'false' })
+          } else {
+            this.setState({ sent: 'true' })
+          }
+        })
+        .catch(err => this.setState({ errors: err.response.data.errors }))
+    })
   }
 
-
-
   render() {
-    console.log(this.state.recipe)
     if(!this.state.recipe) return null
     const { recipe, data, errors } = this.state
+    recipeId = this.props.match.params.id
+    const { pinnedRecipes } = this.state.data
     return(
       <main className="section">
         <div className="container margin-maker">
-          <h2 className="title">{recipe.name}</h2>
+          <div className="columns">
+            <div className="column is-half">
+              <h2 className="title">{recipe.name}</h2>
+            </div>
+            <div className="column is-half">
+              {pinnedRecipes && pinnedRecipes.some(checkPin) &&
+          <button className="button is-info is-rounded is-pulled-right">
+          Pinned
+          </button>
+              }
+              {pinnedRecipes && !pinnedRecipes.some(checkPin) &&
+            <button onClick={() => this.handleClick(pinnedRecipes, [recipe._id])} className="button is-info is-rounded is-pulled-right">
+          Pin Recipe
+            </button>
+              }
+            </div>
+          </div>
           <hr />
 
           <div className="columns">
-            <div className="column is-half">
+            <div className="column is-one-third">
               <figure className="image">
                 <img src={recipe.image} alt={recipe.name} />
               </figure>
             </div>
-            <div className="column is-half">
+            <div className="column is-two-thirds">
               <h4 className="title is-4">Written By</h4>
               <Link to={`/user/${recipe.user._id}`} >
                 <p>{recipe.user.username}</p>
@@ -113,7 +141,7 @@ class recipeShow extends React.Component {
               <div>{recipe.categories.map((category, i) => (
                 <span key={i}>{category.name}, </span>))}</div>
               {this.isOwner() && <div><br /><hr /></div>}
-              {this.isOwner() && <Link className="button is-warning" to={`/recipes/${recipe._id}/edit`}>Edit</Link>}
+              {this.isOwner() && <Link className="button is-warning" to={`/recipe/${recipe._id}/edit`}>Edit</Link>}
               {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
               <hr />
               <h4 className="title is-4">Comments</h4>

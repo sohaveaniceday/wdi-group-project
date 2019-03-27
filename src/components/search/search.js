@@ -1,55 +1,78 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Auth from '../../lib/auth'
+// import Auth from '../../lib/auth'
 
-class Newsfeed extends React.Component {
+class Search extends React.Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = { data: {search: ''} }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  componentDidMount() {
+  handleChange({ target: { name, value } }) {
+    const data = {...this.state.data, [name]: value }
+    const errors = {...this.state.errors, [name]: null }
+    this.setState({ data, errors })
+    console.log(this.state.data.search)
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    this.setState({ sent: true })
     axios.all([
-      axios.get(`/api/user/${Auth.getPayload().sub}`),
+      // axios.get(`/api/user/${Auth.getPayload().sub}`),
       axios.get('/api/recipes'),
       axios.get('/api/reviews')
     ])
       .then(res => {
-        const [ user, recipes, reviews ] = res
-        console.log(user, recipes, reviews)
-        console.log('hello',res)
+        const [ recipes, reviews ] = res
+        const searchItem = this.state.data.search.toLowerCase()
         const recipeFeed = recipes.data.filter(recipe => {
-          return ((user.data.friends.some(friend => {
-            return (recipe.user.id.includes(friend._id) && friend.status !== 'pending')
-          })) || user.data.user.categories.some(category => {
-            return recipe.categories.some(categoryObject => {
-              return Object.values(categoryObject).includes(category._id)
-            })
-          }) && recipe.user.id !== Auth.getPayload().sub)
+          return (recipe.name.toLowerCase().includes(searchItem) || recipe.ingredients.toLowerCase().includes(searchItem) || recipe.categories.some(category => {
+            return category.name.toLowerCase().includes(searchItem)
+          })
+          )
         })
         const reviewFeed = reviews.data.filter(review => {
-          return ((user.data.friends.some(friend => {
-            return (review.user.id.includes(friend._id) && friend.status !== 'pending')
-          })) || user.data.user.categories.some(category => {
-            return review.categories.some(categoryObject => {
-              return Object.values(categoryObject).includes(category._id)
-            })
-          }) && review.user.id !== Auth.getPayload().sub)
+          return review.restaurantName.toLowerCase().includes(searchItem) || review.categories.some(category => {
+            return category.name.toLowerCase().includes(searchItem)
+          })
         })
-        this.setState({ recipeFeed, reviewFeed, user })
+        this.setState({ recipeFeed, reviewFeed })
       })
   }
 
   render() {
-    // console.log(this.state.recipeFeed)
+    const { data } = this.state
+    // console.log(search)
+    console.log(this.state)
     return (
       <main className="section">
         <div className="container margin-maker">
+          <form onSubmit={this.handleSubmit}>
+            <div className="field has-text-centered">
+              <div className="control">
+                <input
+                  className='input'
+                  name="search"
+                  placeholder="Search"
+                  onChange={this.handleChange}
+                  value={data.search || ''}
+                />
+              </div>
+            </div>
+            <div className="has-text-centered">
+              <button className="button is-info">Search</button>
+            </div>
+          </form>
+          <hr />
           <div className="columns is-mobile is-multiline articles">
             <div className="column is-hidden-mobile"></div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
-              <h2 className="title is-4 is-centered has-text-centered">Reviews for you</h2>
+              {this.state.sent && <h2 className="title is-4 is-centered has-text-centered">Review Results</h2>}
               {this.state.reviewFeed && this.state.reviewFeed.map(reviewFeed => (
                 <div key={reviewFeed._id} className="column">
                   <Link to={`/review/${reviewFeed._id}`} >
@@ -72,7 +95,7 @@ class Newsfeed extends React.Component {
               ))}
             </div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
-              <h2 className="title is-4 is-centered has-text-centered">Recipes for you</h2>
+              {this.state.sent && <h2 className="title is-4 is-centered has-text-centered">Recipe Results</h2>}
               {this.state.recipeFeed && this.state.recipeFeed.map(recipeFeed => (
                 <div key={recipeFeed._id} className="column">
                   <Link to={`/recipe/${recipeFeed._id}`} >
@@ -101,4 +124,22 @@ class Newsfeed extends React.Component {
     )
   }
 }
-export default Newsfeed
+
+export default Search
+
+// <form onSubmit={this.handleSubmit}>
+//   <div className="field">
+//     <label className="label">Make Comment</label>
+//     <div className="control">
+//       <input
+//         className={`input ${errors.text ? 'is-danger': ''}`}
+//         name="text"
+//         placeholder="Comment"
+//         onChange={this.handleChange}
+//         value={data.text || ''}
+//       />
+//     </div>
+//     {errors.restaurantName && <small className="help is-danger">{errors.restaurantName}</small>}
+//   </div>
+//   <button className="button is-info">Submit</button>
+// </form>
