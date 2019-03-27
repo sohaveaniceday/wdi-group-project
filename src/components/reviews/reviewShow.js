@@ -158,7 +158,7 @@ class reviewShow extends React.Component {
               </form>
               <br />
               <div>{review.comments.map((comment, i) => (
-                <div key={i}><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong></p><hr /></div>))}</div>
+                <div key={i}><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong> on {moment(comment.user.createdAt).format('Do MMMM YYYY')} at {moment(comment.user.createdAt).format('hh:mm')}</p><hr /></div>))}</div>
             </div>
           </div>
         </div>
