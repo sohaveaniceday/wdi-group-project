@@ -143,6 +143,7 @@ class recipeShow extends React.Component {
   // }
 
   render() {
+    console.log('state', this.state)
     if(!this.state.recipe) return null
     const { recipe, data, errors } = this.state
     recipeId = this.props.match.params.id
@@ -151,13 +152,11 @@ class recipeShow extends React.Component {
     if(!this.state.user) return null
     userId = Auth.getPayload().sub
     const { likes } = this.state.recipe
-    console.log(likes, '<-- likes')
-    console.log(userId, '<-- userID')
 
     return(
       <main className="section">
         <div className="container margin-maker">
-          <div className="columns">
+          <div className="columns is-vcentered">
             <div className="column is-half">
               <h2 className="custom-title">{recipe.name}<br /></h2>Created by <Link to={`/user/${recipe.user._id}`}>{recipe.user.username}</Link> on {moment(recipe.createdAt).format('Do MMMM YYYY')} at {moment(recipe.createdAt).format('hh:mm')}
             </div>
@@ -202,10 +201,10 @@ class recipeShow extends React.Component {
               <p>{recipe.description}</p>
               <hr />
               <h4 className="title is-4">Ingredients</h4>
-              <p>{recipe.ingredients}</p>
+              <p className="p_wrap">{recipe.ingredients}</p>
               <hr />
               <h4 className="title is-4">Method</h4>
-              <p>{recipe.method}</p>
+              <p className="p_wrap">{recipe.method}</p>
               <hr />
               <h4 className="title is-4">Categories</h4>
               <div>{recipe.categories.map((category, i) => (
@@ -244,3 +243,5 @@ class recipeShow extends React.Component {
 
 
 export default recipeShow
+
+// <p>{recipe.ingredients.replace('↵', /\n/g)}</p>

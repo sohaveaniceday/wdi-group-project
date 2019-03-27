@@ -136,7 +136,7 @@ class reviewShow extends React.Component {
     return(
       <main className="section">
         <div className="container margin-maker">
-          <div className="columns">
+          <div className="columns is-vcentered">
             <div className="column is-half">
               <h2 className="custom-title">{review.restaurantName}<br /></h2>Created by <Link to={`/user/${review.user._id}`}>{review.user.username}</Link> on {moment(review.createdAt).format('Do MMMM YYYY')} at {moment(review.createdAt).format('hh:mm')}
             </div>
