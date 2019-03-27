@@ -15,7 +15,8 @@ const recipeSchema = new mongoose.Schema({
   image: { type: String },
   user: { type: mongoose.Schema.ObjectId, ref: 'User' },
   categories: [{ type: mongoose.Schema.ObjectId, ref: 'Category', required: true, default: undefined }],
-  comments: [ commentSchema ]
+  comments: [ commentSchema ],
+  createdAt: { type: Date, default: Date.now }
 })
 
 module.exports = mongoose.model('Recipe', recipeSchema)
