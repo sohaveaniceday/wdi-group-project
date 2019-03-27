@@ -58,7 +58,7 @@ class Search extends React.Component {
                 <input
                   className='input'
                   name="search"
-                  placeholder="Search"
+                  placeholder="Search restuarants, recipes, ingredients and categories"
                   onChange={this.handleChange}
                   value={data.search || ''}
                 />
