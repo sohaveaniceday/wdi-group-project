@@ -9,6 +9,19 @@ let recipeId = null
 function checkPin(value) {
   console.log(value)
   if (value === recipeId) {
+
+    return true
+  } else {
+
+    return false
+  }
+}
+
+let userId = null
+
+function checkLikes(value) {
+  console.log('check like value', value)
+  if (value === userId) {
     console.log('true')
     return true
   } else {
@@ -27,6 +40,8 @@ class recipeShow extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.handleLike = this.handleLike.bind(this)
+    // this.handleUnlike = this.handleUnlike.bind(this)
   }
 
   componentDidMount() {
@@ -89,11 +104,56 @@ class recipeShow extends React.Component {
     })
   }
 
+  handleLike(value, user) {
+    let recipe = null
+    recipe = {...this.state.recipe, likes: value.concat(user) }
+    this.setState({ recipe }, function() {
+      console.log('recipe state -->', this.state.recipe)
+      axios.put(`/api/recipes/${this.props.match.params.id}`,
+        this.state.recipe,
+        { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
+        .then((res) => {
+          if (res.data.errors) {
+            this.setState({ sent: 'false' })
+          } else {
+            this.setState({ sent: 'true' })
+          }
+        })
+        .catch(err => this.setState({ errors: err.response.data.errors }))
+    })
+  }
+
+  // handleUnlike(value, user) {
+  //   let recipe = null
+  //   recipe = {...this.state.recipe, likes: value.concat(user) }
+  //   this.setState({ recipe }, function() {
+  //     console.log('recipe state -->', this.state.recipe)
+  //     axios.put(`/api/recipes/${this.props.match.params.id}`,
+  //       this.state.recipe,
+  //       { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
+  //       .then((res) => {
+  //         if (res.data.errors) {
+  //           this.setState({ sent: 'false' })
+  //         } else {
+  //           this.setState({ sent: 'true' })
+  //         }
+  //       })
+  //       .catch(err => this.setState({ errors: err.response.data.errors }))
+  //   })
+  // }
+
   render() {
     if(!this.state.recipe) return null
     const { recipe, data, errors } = this.state
     recipeId = this.props.match.params.id
     const { pinnedRecipes } = this.state.data
+
+    if(!this.state.user) return null
+    userId = Auth.getPayload().sub
+    const { likes } = this.state.recipe
+    console.log(likes, '<-- likes')
+    console.log(userId, '<-- userID')
+
     return(
       <main className="section">
         <div className="container margin-maker">
@@ -113,6 +173,21 @@ class recipeShow extends React.Component {
             </button>
               }
             </div>
+          </div>
+          <hr />
+
+          <div>
+            {likes && likes.some(checkLikes) &&
+            <button className="button is-info recipeLike">
+              Liked
+            </button>
+            }
+            {likes && !likes.some(checkLikes) &&
+              <button className="button is-info recipeLike" onClick={() => this.handleLike(likes, Auth.getPayload().sub)}>
+              Like
+              </button>
+            }
+            <label className="label totalLikes">Likes: {this.state.recipe.likes.length}</label>
           </div>
           <hr />
 
@@ -164,18 +239,6 @@ class recipeShow extends React.Component {
               <br />
               <div>{recipe.comments.map((comment, i) => (
                 <div key={i}><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong></p><hr /></div>))}</div>
-
-              <hr />
-              <form>
-                <button
-                  className="button is-info recipeLike"
-                  onClick={this.handleClick}
-                >
-                  {this.setState.isToggleOn ? 'Like' : 'Unlike'}
-                </button>
-                <label className="label totalLikes">Likes: </label>
-              </form>
-
             </div>
           </div>
         </div>
@@ -183,22 +246,6 @@ class recipeShow extends React.Component {
     )
   }
 }
-
-// window.addEventListener('DOMContentLoaded', () => {
-//
-//   const recipeLike = document.getElementById('.recipeLike')
-//   let likeCount = 0
-//   const likeTotal = document.getElementById('.totalLikes')
-//
-//   recipeLike.addEventListener('click', () => {
-//     if (likeText.textContent === 'Like') {
-//       likeText.textContent === 'Unlike'
-//     } else {
-//       likeText.textContent === 'Like'
-//     }
-//   })
-//
-// }
 
 
 export default recipeShow
