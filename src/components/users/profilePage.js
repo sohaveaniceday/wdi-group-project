@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/auth'
 import { Link } from 'react-router-dom'
-import Map from '../location/map'
+
 
 function filterRequested(friendsArray) {
   return friendsArray.filter(friend => friend.status === 'requested')
@@ -111,7 +111,7 @@ class ProfilePage extends React.Component {
               </div>
               <div className="column is-multiline">
                 <div className="column is-one-fifth">
-                  <Map />
+
                 </div>
               </div>
             </div>
