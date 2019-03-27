@@ -11,10 +11,8 @@ let recipeId = null
 function checkPin(value) {
   console.log(value)
   if (value === recipeId) {
-
     return true
   } else {
-
     return false
   }
 }
