@@ -2,7 +2,7 @@ import React from 'react'
 import Select from 'react-select'
 import Container from '../Container'
 
-const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, categories }) => {
+const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, categories, openModal }) => {
   return (
     <div className="margin-maker">
       <h1 className="title is-2">Review Form</h1>
@@ -62,7 +62,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
 
         <div ClassName="field">
           <label className="label">Review Image</label>
-          <Container className="button is-info is-rounded" />
+          <Container openModal={openModal} className="button is-info is-rounded" />
         </div>
 
         <div className="field">
