@@ -18,21 +18,24 @@ class Newsfeed extends React.Component {
       .then(res => {
         const [ user, recipes, reviews ] = res
         console.log(user, recipes, reviews)
-        // console.log(recipes)
-        // console.log(res)
+        console.log('hello',res)
         const recipeFeed = recipes.data.filter(recipe => {
-          return ((user.data.user.categories.some(category => {
-            return recipe.categories.includes(category._id)
-          }) || user.data.friends.some(friend => {
+          return ((user.data.friends.some(friend => {
             return (recipe.user.id.includes(friend._id) && friend.status !== 'pending')
-          })) && recipe.user.id !== Auth.getPayload().sub)
+          })) || user.data.user.categories.some(category => {
+            return recipe.categories.some(categoryObject => {
+              return Object.values(categoryObject).includes(category._id)
+            })
+          }) && recipe.user.id !== Auth.getPayload().sub)
         })
         const reviewFeed = reviews.data.filter(review => {
-          return ((user.data.user.categories.some(category => {
-            return review.categories.includes(category._id)
-          }) || user.data.friends.some(friend => {
+          return ((user.data.friends.some(friend => {
             return (review.user.id.includes(friend._id) && friend.status !== 'pending')
-          })) && review.user.id !== Auth.getPayload().sub)
+          })) || user.data.user.categories.some(category => {
+            return review.categories.some(categoryObject => {
+              return Object.values(categoryObject).includes(category._id)
+            })
+          }) && review.user.id !== Auth.getPayload().sub)
         })
         this.setState({ recipeFeed, reviewFeed, user })
       })
