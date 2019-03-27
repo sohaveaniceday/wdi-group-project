@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/auth'
 import { Link } from 'react-router-dom'
-
+import Map from '../location/map'
 
 function filterRequested(friendsArray) {
   return friendsArray.filter(friend => friend.status === 'requested')
@@ -15,7 +15,6 @@ function filterAccepted(friendsArray) {
 function filterPending(friendsArray) {
   return friendsArray.filter(friend => friend.status === 'pending')
 }
-
 
 
 class ProfilePage extends React.Component {
@@ -109,6 +108,11 @@ class ProfilePage extends React.Component {
                 <h4 className="title is-6">Requested Friends</h4>
                 {friends && filterRequested(friends).map((friend, i) => (
                   <Link key={i} to={`/user/${friend._id}`}>{friend.friend.name}<br /></Link>))}
+              </div>
+              <div className="column is-multiline">
+                <div className="column is-one-fifth">
+                  <Map />
+                </div>
               </div>
             </div>
           </div>
