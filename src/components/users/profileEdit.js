@@ -129,19 +129,7 @@ class ProfileEdit extends React.Component {
               <label className="label">Profile Image</label>
               <Container className="button is-info is-rounded" />
             </div>
-            {/*
-              <div className="control">
-                <input
-                  className={`input ${this.state.error.image ? 'is-danger': ''}`}
-                  name="image"
-                  placeholder="Image"
-                  value={this.state.data.image}
-                  onChange={this.handleChange}
-                />
-              </div>
-              {this.state.error.image && <small className="help is-danger">{this.state.error.image}</small>}
-            </div>
-            */}
+            
             <div className="field">
               <label className="label">Password</label>
               <div className="control">

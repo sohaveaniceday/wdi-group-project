@@ -2,7 +2,7 @@ import React from 'react'
 import Select from 'react-select'
 import Container from '../Container'
 
-const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, categories, openModal }) => {
+const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, categories, openModal, image }) => {
   return (
     <div className="margin-maker">
       <h1 className="title is-2">Review Form</h1>
@@ -60,10 +60,15 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           {errors.reviewText && <small className="help is-danger">{errors.reviewText}</small>}
         </div>
 
-        <div ClassName="field">
+        <div className="field">
           <label className="label">Review Image</label>
-          <Container openModal={openModal} className="button is-info is-rounded" />
+          {!image ?
+            <Container openModal={openModal} className="button is-info is-rounded" />
+            :
+            <img src={image}/>
+          }
         </div>
+
 
         <div className="field">
           <label className="label">Categories (required)</label>

@@ -38,9 +38,10 @@ class RecipeNew extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    const data = {...this.state.data, image: this.state.image}
     if (this.state.data.categories && this.state.data.categories.length > 0) {
       axios.post('/api/recipes',
-        this.state.data,
+        data,
         { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
         .then((res) => {
           if (res.data.errors) {
@@ -99,6 +100,7 @@ class RecipeNew extends React.Component {
             categories={this.state.categories}
             errors={this.state.errors}
             openModal={this.openModal}
+            image={this.image}
           />
         </div>
       </main>

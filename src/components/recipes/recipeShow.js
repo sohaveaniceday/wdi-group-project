@@ -2,8 +2,9 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-import Auth from '../../lib/auth'
 
+
+import Auth from '../../lib/auth'
 
 class recipeShow extends React.Component {
   constructor() {
@@ -14,6 +15,7 @@ class recipeShow extends React.Component {
     this.handleDelete = this.handleDelete.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+
   }
 
   componentDidMount() {
@@ -56,6 +58,8 @@ class recipeShow extends React.Component {
       })
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
+
+
 
   render() {
     console.log(this.state.recipe)

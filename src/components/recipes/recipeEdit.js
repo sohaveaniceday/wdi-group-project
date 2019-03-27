@@ -5,14 +5,18 @@ import Auth from '../../lib/auth'
 import RecipeForm from './recipeForm'
 
 import * as filestack from 'filestack-js'
-
 const client = filestack.init('AYoVZLJZuQ2GNd6qd87SYz')
 
 class RecipeEdit extends React.Component {
   constructor() {
     super()
 
-    this.state = { data: {}, errors: {}, categories: [] }
+    this.state = {
+      data: {},
+      errors: {},
+      categories: [],
+      image: ''
+    }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -41,10 +45,11 @@ class RecipeEdit extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    const data = {...this.state.data, image: this.state.image}
     axios.put(`/api/recipes/${this.props.match.params.id}`,
-      this.state.data,
+      data,
       { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
-      .then(() => this.props.history.push('/recipe/'))
+      .then(() => this.props.history.push(`/recipe/${this.props.match.params.id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
@@ -68,7 +73,7 @@ class RecipeEdit extends React.Component {
         rotate: true
       },
       onFileUploadFinished: (file) => {
-        this.setState({ image: file.url })
+        this.setState({image: file.url })
       },
       onFileUploadFailed: (file, error) => {
         console.log('file', file)
@@ -82,7 +87,6 @@ class RecipeEdit extends React.Component {
     console.log('updateState running')
     console.log(url)
   }
-
 
   render() {
     console.log(this.state)
@@ -98,6 +102,7 @@ class RecipeEdit extends React.Component {
             data={this.state.data}
             errors={this.state.errors}
             openModal={this.openModal}
+            image={this.image}
           />
         </div>
       </main>
