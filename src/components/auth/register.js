@@ -168,21 +168,7 @@ class Register extends React.Component {
               }
 
             </div>
-
-            {/*<div className="field">
-              <label className="label">Image</label>
-              <div className="control">
-                <input
-                  className={`input is-rounded ${this.state.error.image ? 'is-danger': ''}`}
-                  name="image"
-                  placeholder="Image"
-                  value={this.state.data.image}
-                  onChange={this.handleChange}
-                />
-              </div>
-              {this.state.error.image && <small className="help is-danger">{this.state.error.image}</small>}
-            </div>*/}
-
+            
             <div className="field">
               <label className="label">Password</label>
               <div className="control">
