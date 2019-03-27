@@ -6,13 +6,14 @@ const Category = require('../models/category')
 const Review = require('../models/review')
 const Recipe = require('../models/recipe')
 const User = require('../models/user')
-const Promise = require('bluebird')
+// const Promise = require('bluebird')
 
 function getRandom(max) {
   return Math.floor(Math.random() * Math.floor(max))
 }
 
 mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
+  console.log('connected')
   db.dropDatabase()
 
   Category.create([
@@ -549,6 +550,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
         ])
       ])
     })
+    .then(() => console.log('did my job'))
     .catch(err => console.log(err))
     .finally(() => mongoose.connection.close())
 })

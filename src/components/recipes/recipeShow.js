@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 const moment = require('moment')
 
 
-import Auth from '../../lib/auth'
 
 let recipeId = null
 
@@ -30,6 +29,8 @@ function checkLikes(value) {
   }
 }
 
+import Auth from '../../lib/auth'
+
 class recipeShow extends React.Component {
   constructor() {
     super()
@@ -39,9 +40,13 @@ class recipeShow extends React.Component {
     this.handleDelete = this.handleDelete.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+
+
+
     this.handleClick = this.handleClick.bind(this)
     this.handleLike = this.handleLike.bind(this)
     // this.handleUnlike = this.handleUnlike.bind(this)
+
   }
 
   componentDidMount() {
@@ -141,6 +146,7 @@ class recipeShow extends React.Component {
   //       .catch(err => this.setState({ errors: err.response.data.errors }))
   //   })
   // }
+
 
   render() {
     console.log('state', this.state)

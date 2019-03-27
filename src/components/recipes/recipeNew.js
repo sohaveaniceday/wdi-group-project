@@ -4,6 +4,10 @@ import axios from 'axios'
 import Auth from '../../lib/auth'
 import RecipeForm from './recipeForm'
 
+import * as filestack from 'filestack-js'
+
+const client = filestack.init('AYoVZLJZuQ2GNd6qd87SYz')
+
 class RecipeNew extends React.Component {
   constructor() {
     super()
@@ -13,6 +17,8 @@ class RecipeNew extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
+    this.updateState = this.updateState.bind(this)
+    this.openModal = this.openModal.bind(this)
   }
 
   componentDidMount() {
@@ -32,9 +38,10 @@ class RecipeNew extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    const data = {...this.state.data, image: this.state.image}
     if (this.state.data.categories && this.state.data.categories.length > 0) {
       axios.post('/api/recipes',
-        this.state.data,
+        data,
         { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
         .then((res) => {
           if (res.data.errors) {
@@ -54,18 +61,46 @@ class RecipeNew extends React.Component {
     this.setState({ data })
   }
 
+  openModal() {
+    const options = {
+      fromSources: ['local_file_system','instagram','facebook'],
+      accept: ['image/*'],
+      transformations: {
+        crop: true,
+        circle: true,
+        rotate: true
+      },
+      onFileUploadFinished: (file) => {
+        this.setState({ image: file.url })
+      },
+      onFileUploadFailed: (file, error) => {
+        console.log('file', file)
+        console.log('error', error)
+      }
+    }
+    client.picker(options).open()
+  }
+
+  updateState(url){
+    console.log('updateState running')
+    console.log(url)
+  }
+
   render() {
     console.log(this.state)
     return (
       <main className="section">
         <div className="container">
           <RecipeForm
+            updateState={this.updateState}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
             handleSelect={this.handleSelect}
             data={this.state.data}
             categories={this.state.categories}
             errors={this.state.errors}
+            openModal={this.openModal}
+            image={this.image}
           />
         </div>
       </main>
