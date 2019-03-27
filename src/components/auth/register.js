@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Select from 'react-select'
+import Container from '../Container'
 
 class Register extends React.Component {
   constructor() {
@@ -123,7 +124,13 @@ class Register extends React.Component {
               </div>
               {this.state.error.bio && <small className="help is-danger">{this.state.error.bio}</small>}
             </div>
+
             <div className="field">
+              <label className="label">Profile Image</label>
+              <Container className="button is-info is-rounded" />
+            </div>
+
+            {/*<div className="field">
               <label className="label">Image</label>
               <div className="control">
                 <input
@@ -135,7 +142,8 @@ class Register extends React.Component {
                 />
               </div>
               {this.state.error.image && <small className="help is-danger">{this.state.error.image}</small>}
-            </div>
+            </div>*/}
+
             <div className="field">
               <label className="label">Password</label>
               <div className="control">

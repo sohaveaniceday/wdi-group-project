@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router'
 import Auth from '../lib/auth'
+// import {Animated} from 'react-animated-css'
 
 class Home extends Component {
   render(){

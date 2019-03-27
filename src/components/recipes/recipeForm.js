@@ -2,7 +2,7 @@ import React from 'react'
 import Select from 'react-select'
 import Container from '../Container'
 
-const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, categories }) => {
+const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, categories, openModal }) => {
   return (
     <div className="margin-maker">
       <h1 className="title is-2">Recipe Form</h1>
@@ -60,11 +60,11 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           {errors.method && <small className="help is-danger">{errors.method}</small>}
         </div>
 
-        <div ClassName="field">
+        <div className="field">
           <label className="label">Food Image</label>
-          <Container className="button is-info is-rounded" />
+          <Container openModal={openModal} className="button is-info is-rounded" />
         </div>
-        
+
         <div className="field">
           <label className="label">Categories (required)</label>
           <div>
