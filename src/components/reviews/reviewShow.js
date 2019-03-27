@@ -18,6 +18,19 @@ function checkPin(value) {
   }
 }
 
+let userId = null
+
+function checkLikes(value) {
+  console.log('check like value', value)
+  if (value === userId) {
+    console.log('true')
+    return true
+  } else {
+    console.log('false')
+    return false
+  }
+}
+
 class reviewShow extends React.Component {
   constructor() {
     super()
@@ -28,6 +41,7 @@ class reviewShow extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.handleLike = this.handleLike.bind(this)
   }
 
   componentDidMount() {
@@ -90,11 +104,35 @@ class reviewShow extends React.Component {
     })
   }
 
+  handleLike(value, user) {
+    let review = null
+    review = {...this.state.review, likes: value.concat(user) }
+    this.setState({ review }, function() {
+      console.log('review state -->', this.state.review)
+      axios.put(`/api/reviews/${this.props.match.params.id}`,
+        this.state.review,
+        { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
+        .then((res) => {
+          if (res.data.errors) {
+            this.setState({ sent: 'false' })
+          } else {
+            this.setState({ sent: 'true' })
+          }
+        })
+        .catch(err => this.setState({ errors: err.response.data.errors }))
+    })
+  }
+
   render() {
     reviewId = this.props.match.params.id
     if(!this.state.review) return null
     const { review, data, errors } = this.state
     const { pinnedReviews } = this.state.data
+
+    if(!this.state.user) return null
+    userId = Auth.getPayload().sub
+    const { likes } = this.state.review
+
     return(
       <main className="section">
         <div className="container margin-maker">
@@ -114,6 +152,20 @@ class reviewShow extends React.Component {
               </button>
               }
             </div>
+          </div>
+          <hr />
+          <div>
+            {likes && likes.some(checkLikes) &&
+            <button className="button is-info reviewLike">
+              Liked
+            </button>
+            }
+            {likes && !likes.some(checkLikes) &&
+              <button className="button is-info reviewLike" onClick={() => this.handleLike(likes, Auth.getPayload().sub)}>
+              Like
+              </button>
+            }
+            <label className="label totalLikes">Likes: {this.state.review.likes.length}</label>
           </div>
           <hr />
           <div className="columns">

@@ -16,6 +16,11 @@ const reviewSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.ObjectId, ref: 'User' },
   categories: [{ type: mongoose.Schema.ObjectId, ref: 'Category', required: true, default: undefined }],
   comments: [ commentSchema ],
+  likes: [ {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: true
+  } ],
   createdAt: { type: Date, default: Date.now }
 })
 
