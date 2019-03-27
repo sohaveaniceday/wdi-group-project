@@ -98,7 +98,7 @@ class ProfilePage extends React.Component {
               <div className="column is-one-fifth has-text-right">
                 {(friends.some(friend => friend.status === 'pending')) && <h4 className="title is-6">Pending Friend Requests</h4>}
                 {friends && filterPending(friends).map((friend, i) => (
-                  <div key={i}><span><Link to={`/user/${friend._id}`}>{friend.friend.name}  </Link><button onClick={() => this.handleSubmit(friend.friend)}>
+                  <div key={i}><span><Link to={`/user/${friend._id}`}>{friend.friend.name}  </Link><button className="button is-small" onClick={() => this.handleSubmit(friend.friend)}>
                   Accept
                   </button><br /></span></div>))}
                 {(friends.some(friend => friend.status === 'pending')) && <div><hr /></div>}

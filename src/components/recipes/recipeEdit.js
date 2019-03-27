@@ -38,7 +38,7 @@ class RecipeEdit extends React.Component {
     axios.put(`/api/recipes/${this.props.match.params.id}`,
       this.state.data,
       { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
-      .then(() => this.props.history.push(`/recipe/${this.props.match.params.id}`))
+      .then(() => this.props.history.push('/newsfeed'))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 

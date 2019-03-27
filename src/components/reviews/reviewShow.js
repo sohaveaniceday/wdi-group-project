@@ -139,6 +139,22 @@ class reviewShow extends React.Component {
           <div className="columns is-vcentered">
             <div className="column is-half">
               <h2 className="custom-title">{review.restaurantName}<br /></h2>Created by <Link to={`/user/${review.user._id}`}>{review.user.username}</Link> on {moment(review.createdAt).format('Do MMMM YYYY')} at {moment(review.createdAt).format('hh:mm')}
+              {likes && likes.some(checkLikes) &&
+                <div><a className="button is-link is-rounded is-small">
+                  <span className="icon">
+                    <i className="fas fa-thumbs-up"></i>
+                  </span>
+                  <span>Liked</span>
+                </a><label className="label totalLikes like-info">{this.state.review.likes.length} Likes</label></div>
+              }
+              {likes && !likes.some(checkLikes) &&
+                    <div><a className="button is-link is-rounded is-small" onClick={() => this.handleLike(likes, Auth.getPayload().sub)}>
+                      <span className="icon">
+                        <i className="fas fa-thumbs-up"></i>
+                      </span>
+                      <span>Like</span>
+                    </a><label className="label totalLikes like-info">{this.state.review.likes.length} Likes</label></div>
+              }
             </div>
             <div className="column is-half">
               {pinnedReviews && pinnedReviews.some(checkPin) &&
@@ -154,20 +170,6 @@ class reviewShow extends React.Component {
             </div>
           </div>
           <hr />
-          <div>
-            {likes && likes.some(checkLikes) &&
-            <button className="button is-info reviewLike">
-              Liked
-            </button>
-            }
-            {likes && !likes.some(checkLikes) &&
-              <button className="button is-info reviewLike" onClick={() => this.handleLike(likes, Auth.getPayload().sub)}>
-              Like
-              </button>
-            }
-            <label className="label totalLikes">Likes: {this.state.review.likes.length}</label>
-          </div>
-          <hr />
           <div className="columns">
             <div className="column is-one-third">
               <figure className="image">
@@ -178,7 +180,7 @@ class reviewShow extends React.Component {
               <h4 className="title is-4">Rating: {review.rating} Stars</h4>
               <hr />
               <h4 className="title is-4">Review Headline</h4>
-              <p>{review.reviewHeadline}</p>
+              <p>“{review.reviewHeadline}”</p>
               <hr />
               <h4 className="title is-4">Review</h4>
               <p>{review.reviewText}</p>
@@ -196,8 +198,8 @@ class reviewShow extends React.Component {
                 <div className="field">
                   <label className="label">Make Comment</label>
                   <div className="control">
-                    <input
-                      className={`input ${errors.text ? 'is-danger': ''}`}
+                    <textarea cols='60' rows='3'
+                      className={`textarea text-top is-rounded ${errors.text ? 'is-danger': ''}`}
                       name="text"
                       placeholder="Comment"
                       onChange={this.handleChange}

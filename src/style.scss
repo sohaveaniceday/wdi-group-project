@@ -1,3 +1,7 @@
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
 .navbar {
   background: rgb(35,35,35);
   position: fixed;
@@ -36,21 +40,30 @@
   margin: 0;
 }
 
+.small-margin {
+  margin: 5px 0 0 0;
+}
+
 .custom-title {
   font-weight: bold;
   font-size: 25px;
-}
-
-.text-top {
-  display: table-cell;
-  vertical-align: top;
-  text-align: inherit;
 }
 
 .p_wrap {
   white-space: pre-line;
 }
 
+.like-info {
+  display:inline-block;
+  color: rgb(50, 115, 220);
+  font-size: 13px;
+  padding: 0 10px;
+}
+
+.pin-button {
+  background-color: rgb(255, 161, 0);
+  color: white;
+}
 
 
 .columns.articles {
