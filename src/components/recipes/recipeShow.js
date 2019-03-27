@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom'
 
 import Auth from '../../lib/auth'
 
-
 class recipeShow extends React.Component {
   constructor() {
     super()
 
-    this.state = { data: {}, errors: {} }
+    this.state = { data: {}, errors: {}, likes: [] }
 
     this.handleDelete = this.handleDelete.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -56,6 +56,27 @@ class recipeShow extends React.Component {
       })
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
+
+
+  handleClick(e) {
+    e.preventDefault()
+    axios.post(`/api/recipes/${this.props.match.params.id}`,
+      this.state.data)
+
+
+
+    // if (likeText.textContent === 'Like') {
+    //       likeText.textContent === 'Unlike'
+    //     } else {
+    //       likeText.textContent === 'Like'
+    //     }
+    //   })
+
+    // likeCount++
+    // likeTotal.text(likeCount)
+  }
+
+
 
   render() {
     console.log(this.state.recipe)
@@ -115,6 +136,18 @@ class recipeShow extends React.Component {
               <br />
               <div>{recipe.comments.map((comment, i) => (
                 <div key={i}><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong></p><hr /></div>))}</div>
+
+              <hr />
+              <form>
+                <button
+                  className="button is-info recipeLike"
+                  onClick={this.handleClick}
+                >
+                  {this.setState.isToggleOn ? 'Like' : 'Unlike'}
+                </button>
+                <label className="label totalLikes">Likes: </label>
+              </form>
+
             </div>
           </div>
         </div>
@@ -122,5 +155,22 @@ class recipeShow extends React.Component {
     )
   }
 }
+
+// window.addEventListener('DOMContentLoaded', () => {
+//
+//   const recipeLike = document.getElementById('.recipeLike')
+//   let likeCount = 0
+//   const likeTotal = document.getElementById('.totalLikes')
+//
+//   recipeLike.addEventListener('click', () => {
+//     if (likeText.textContent === 'Like') {
+//       likeText.textContent === 'Unlike'
+//     } else {
+//       likeText.textContent === 'Like'
+//     }
+//   })
+//
+// }
+
 
 export default recipeShow
