@@ -40,13 +40,13 @@ class recipeShow extends React.Component {
     this.handleDelete = this.handleDelete.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
-<<<<<<< HEAD
 
-=======
+
+
     this.handleClick = this.handleClick.bind(this)
     this.handleLike = this.handleLike.bind(this)
     // this.handleUnlike = this.handleUnlike.bind(this)
->>>>>>> development
+
   }
 
   componentDidMount() {
@@ -91,9 +91,6 @@ class recipeShow extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
-<<<<<<< HEAD
-
-=======
   handleClick(value, recipe) {
     let data = null
     data = {...this.state.data, pinnedRecipes: recipe.concat(value) }
@@ -149,7 +146,7 @@ class recipeShow extends React.Component {
   //       .catch(err => this.setState({ errors: err.response.data.errors }))
   //   })
   // }
->>>>>>> development
+
 
   render() {
     console.log('state', this.state)
