@@ -16,7 +16,16 @@ const userSchema = new mongoose.Schema({
   } ],
   image: { type: String },
   location: { type: String },
-  bio: { type: String }
+  bio: { type: String },
+  pinnedRecipes: [ {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Recipe'
+  } ],
+  pinnedReviews: [ {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Review',
+    required: true
+  } ]
 })
 
 userSchema.plugin(friendsPlugin({ pathName: 'friends' }))

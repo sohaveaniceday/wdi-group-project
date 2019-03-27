@@ -1,6 +1,10 @@
 import React from 'react'
 import axios from 'axios'
 import Select from 'react-select'
+import Container from '../Container'
+
+import * as filestack from 'filestack-js'
+const client = filestack.init('AYoVZLJZuQ2GNd6qd87SYz')
 
 class Register extends React.Component {
   constructor() {
@@ -11,13 +15,16 @@ class Register extends React.Component {
         username: '',
         email: '',
         password: '',
-        passwordConfirmation: ''
+        passwordConfirmation: '',
+        name: ''
       },
       error: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
+    this.updateState = this.updateState.bind(this)
+    this.openModal = this.openModal.bind(this)
   }
 
   componentDidMount() {
@@ -37,8 +44,10 @@ class Register extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    const data = {...this.state.data, image: this.state.image}
+    console.log(data)
     if (this.state.data.categories && this.state.data.categories.length > 0) {
-      axios.post('api/register', this.state.data)
+      axios.post('api/register', data)
         .then(() => this.props.history.push('/login'))
         .catch(() => this.setState({ error: 'Invalid Input'}))
     }
@@ -50,7 +59,33 @@ class Register extends React.Component {
     this.setState({ data })
   }
 
+  openModal() {
+    const options = {
+      fromSources: ['local_file_system','instagram','facebook'],
+      accept: ['image/*'],
+      transformations: {
+        crop: true,
+        circle: true,
+        rotate: true
+      },
+      onFileUploadFinished: (file) => {
+        this.setState({ image: file.url })
+      },
+      onFileUploadFailed: (file, error) => {
+        console.log('file', file)
+        console.log('error', error)
+      }
+    }
+    client.picker(options).open()
+  }
+
+  updateState(url){
+    console.log('updateState running')
+    console.log(url)
+  }
+
   render() {
+    console.log(this.state)
     console.log(this.state.error)
     return (
       <main className="section">
@@ -123,7 +158,18 @@ class Register extends React.Component {
               </div>
               {this.state.error.bio && <small className="help is-danger">{this.state.error.bio}</small>}
             </div>
+
             <div className="field">
+              <label className="label">Profile Image</label>
+              {!this.state.image ?
+                <Container openModal={this.openModal} className="button is-info is-rounded" />
+                :
+                <img src={this.state.image}/>
+              }
+
+            </div>
+
+            {/*<div className="field">
               <label className="label">Image</label>
               <div className="control">
                 <input
@@ -135,7 +181,8 @@ class Register extends React.Component {
                 />
               </div>
               {this.state.error.image && <small className="help is-danger">{this.state.error.image}</small>}
-            </div>
+            </div>*/}
+
             <div className="field">
               <label className="label">Password</label>
               <div className="control">

@@ -4,7 +4,7 @@ const Review = require('../models/review')
 function indexRoute(req, res) {
   return Review
     .find(req.query)
-    .populate('user')
+    .populate('user categories')
     .then(review => res.status(200).json(review))
     .catch(err => res.json(err))
 }

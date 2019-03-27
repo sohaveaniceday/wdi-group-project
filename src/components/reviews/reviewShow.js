@@ -1,24 +1,54 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+const moment = require('moment')
 
 import Auth from '../../lib/auth'
 
+let reviewId = null
+
+function checkPin(value) {
+  console.log(value)
+  if (value === reviewId) {
+    console.log('true')
+    return true
+  } else {
+    console.log('false')
+    return false
+  }
+}
+
+let userId = null
+
+function checkLikes(value) {
+  console.log('check like value', value)
+  if (value === userId) {
+    console.log('true')
+    return true
+  } else {
+    console.log('false')
+    return false
+  }
+}
 
 class reviewShow extends React.Component {
   constructor() {
     super()
 
-    this.state = { data: {}, errors: {} }
+    this.state = { data: {}, errors: {}, user: {} }
 
     this.handleDelete = this.handleDelete.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleLike = this.handleLike.bind(this)
   }
 
   componentDidMount() {
     axios.get(`/api/reviews/${this.props.match.params.id}`)
       .then(res => this.setState({ review: res.data }))
+    axios.get(`/api/user/${Auth.getPayload().sub}`)
+      .then(res => this.setState({ data: res.data.user }))
   }
 
 
@@ -56,27 +86,95 @@ class reviewShow extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
+  handleClick(value, review) {
+    let data = null
+    data = {...this.state.data, pinnedReviews: review.concat(value) }
+    this.setState({ data }, function() {
+      axios.put(`/api/user/${Auth.getPayload().sub}`,
+        this.state.data,
+        { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
+        .then((res) => {
+          if (res.data.errors) {
+            this.setState({ sent: 'false' })
+          } else {
+            this.setState({ sent: 'true' })
+          }
+        })
+        .catch(err => this.setState({ errors: err.response.data.errors }))
+    })
+  }
+
+  handleLike(value, user) {
+    let review = null
+    review = {...this.state.review, likes: value.concat(user) }
+    this.setState({ review }, function() {
+      console.log('review state -->', this.state.review)
+      axios.put(`/api/reviews/${this.props.match.params.id}`,
+        this.state.review,
+        { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
+        .then((res) => {
+          if (res.data.errors) {
+            this.setState({ sent: 'false' })
+          } else {
+            this.setState({ sent: 'true' })
+          }
+        })
+        .catch(err => this.setState({ errors: err.response.data.errors }))
+    })
+  }
+
   render() {
-    console.log(this.state.review)
+    reviewId = this.props.match.params.id
     if(!this.state.review) return null
     const { review, data, errors } = this.state
+    const { pinnedReviews } = this.state.data
+
+    if(!this.state.user) return null
+    userId = Auth.getPayload().sub
+    const { likes } = this.state.review
+
     return(
       <main className="section">
         <div className="container margin-maker">
-          <h2 className="title">{review.restaurantName}</h2>
+          <div className="columns is-vcentered">
+            <div className="column is-half">
+              <h2 className="custom-title">{review.restaurantName}<br /></h2>Created by <Link to={`/user/${review.user._id}`}>{review.user.username}</Link> on {moment(review.createdAt).format('Do MMMM YYYY')} at {moment(review.createdAt).format('hh:mm')}
+            </div>
+            <div className="column is-half">
+              {pinnedReviews && pinnedReviews.some(checkPin) &&
+            <button className="button is-info is-rounded is-pulled-right">
+            Pinned
+            </button>
+              }
+              {pinnedReviews && !pinnedReviews.some(checkPin) &&
+              <button onClick={() => this.handleClick(pinnedReviews, [review._id])} className="button is-info is-rounded is-pulled-right">
+            Pin Review
+              </button>
+              }
+            </div>
+          </div>
+          <hr />
+          <div>
+            {likes && likes.some(checkLikes) &&
+            <button className="button is-info reviewLike">
+              Liked
+            </button>
+            }
+            {likes && !likes.some(checkLikes) &&
+              <button className="button is-info reviewLike" onClick={() => this.handleLike(likes, Auth.getPayload().sub)}>
+              Like
+              </button>
+            }
+            <label className="label totalLikes">Likes: {this.state.review.likes.length}</label>
+          </div>
           <hr />
           <div className="columns">
-            <div className="column is-half">
+            <div className="column is-one-third">
               <figure className="image">
                 <img src={review.image} alt={review.restaurantName} />
               </figure>
             </div>
-            <div className="column is-half">
-              <h4 className="title is-4">Written By</h4>
-              <Link to={`/user/${review.user._id}`} >
-                <p>{review.user.username}</p>
-              </Link>
-              <hr />
+            <div className="column is-two-thirds">
               <h4 className="title is-4">Rating: {review.rating} Stars</h4>
               <hr />
               <h4 className="title is-4">Review Headline</h4>
@@ -112,7 +210,7 @@ class reviewShow extends React.Component {
               </form>
               <br />
               <div>{review.comments.map((comment, i) => (
-                <div key={i}><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong></p><hr /></div>))}</div>
+                <div key={i}><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong> on {moment(comment.user.createdAt).format('Do MMMM YYYY')} at {moment(comment.user.createdAt).format('hh:mm')}</p><hr /></div>))}</div>
             </div>
           </div>
         </div>
@@ -122,5 +220,3 @@ class reviewShow extends React.Component {
 }
 
 export default reviewShow
-
-// <p>{review.categories}</p>

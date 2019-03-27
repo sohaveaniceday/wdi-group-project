@@ -1,7 +1,8 @@
 import React from 'react'
 import Select from 'react-select'
+import Container from '../Container'
 
-const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, categories }) => {
+const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, categories, openModal, image }) => {
   return (
     <div className="margin-maker">
       <h1 className="title is-2">Recipe Form</h1>
@@ -35,8 +36,8 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
         <div className="field">
           <label className="label">Ingredients</label>
           <div className="control">
-            <input
-              className={`input is-rounded ${errors.ingredients ? 'is-danger': ''}`}
+            <textarea cols='60' rows='4'
+              className={`textarea text-top is-rounded ${errors.ingredients ? 'is-danger': ''}`}
               name="ingredients"
               placeholder="Ingredients"
               onChange={handleChange}
@@ -48,8 +49,8 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
         <div className="field">
           <label className="label">Method</label>
           <div className="control">
-            <input
-              className={`input is-rounded ${errors.method ? 'is-danger': ''}`}
+            <textarea cols='60' rows='4'
+              className={`textarea text-top is-rounded ${errors.method ? 'is-danger': ''}`}
               name="method"
               placeholder="Method"
               onChange={handleChange}
@@ -58,19 +59,21 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           </div>
           {errors.method && <small className="help is-danger">{errors.method}</small>}
         </div>
+
+        {/*<div className="field">
+        <label className="label">Food Image</label>
+        <Container openModal={openModal} className="button is-info is-rounded" />
+        </div>*/}
+
         <div className="field">
-          <label className="label">Image</label>
-          <div className="control">
-            <textarea
-              className={`input is-rounded ${errors.image ? 'is-danger': ''}`}
-              placeholder="Image"
-              name="image"
-              onChange={handleChange}
-              value={data.image || ''}
-            />
-          </div>
-          {errors.image && <small className="help is-danger">{errors.image}</small>}
+          <label className="label">Profile Image</label>
+          {!image ?
+            <Container openModal={openModal} className="button is-info is-rounded" />
+            :
+            <img src={image}/>
+          }
         </div>
+
         <div className="field">
           <label className="label">Categories (required)</label>
           <div>

@@ -6,13 +6,14 @@ const Category = require('../models/category')
 const Review = require('../models/review')
 const Recipe = require('../models/recipe')
 const User = require('../models/user')
-const Promise = require('bluebird')
+// const Promise = require('bluebird')
 
 function getRandom(max) {
   return Math.floor(Math.random() * Math.floor(max))
 }
 
 mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
+  console.log('connected')
   db.dropDatabase()
 
   Category.create([
@@ -401,11 +402,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'categories': [categories[10]._id,categories[12]._id,categories[55]._id,categories[52]._id,categories[54]._id,categories[58]._id,categories[75]._id,categories[76]._id,categories[77]._id,categories[97]._id]
           },
           {
-            'restaurantName': 'The Table Cafe',
+            'restaurantName': 'The Cafe Table',
             'reviewHeadline': 'Supremo!',
             'reviewText': 'Delicioius vegy food. Loved it',
             'rating': 4,
-            'image': 'http://www.breakfastlondon.co.uk/wp-content/uploads/2015/07/TheTable049web-1024x682.jpg',
+            'image': 'https://blackbarnrestaurant.com/wp-content/uploads/2018/03/MZ_Web_blackbarncafe_001.jpg',
             'user': users[getRandom(4)]._id,
             'categories': [categories[5]._id,categories[3]._id,categories[65]._id,categories[61]._id,categories[58]._id,categories[64]._id,categories[87]._id,categories[75]._id,categories[70]._id,categories[68]._id]
           }
@@ -549,6 +550,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
         ])
       ])
     })
+    .then(() => console.log('did my job'))
     .catch(err => console.log(err))
     .finally(() => mongoose.connection.close())
 })
