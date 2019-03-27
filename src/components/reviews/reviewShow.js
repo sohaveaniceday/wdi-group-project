@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+const moment = require('moment')
 
 import Auth from '../../lib/auth'
 
@@ -99,7 +100,7 @@ class reviewShow extends React.Component {
         <div className="container margin-maker">
           <div className="columns">
             <div className="column is-half">
-              <h2 className="title">{review.restaurantName}</h2>
+              <h2 className="custom-title">{review.restaurantName}<br /></h2>Created by <Link to={`/user/${review.user._id}`}>{review.user.username}</Link> on {moment(review.createdAt).format('Do MMMM YYYY')} at {moment(review.createdAt).format('hh:mm')}
             </div>
             <div className="column is-half">
               {pinnedReviews && pinnedReviews.some(checkPin) &&
@@ -122,11 +123,6 @@ class reviewShow extends React.Component {
               </figure>
             </div>
             <div className="column is-two-thirds">
-              <h4 className="title is-4">Written By</h4>
-              <Link to={`/user/${review.user._id}`} >
-                <p>{review.user.username}</p>
-              </Link>
-              <hr />
               <h4 className="title is-4">Rating: {review.rating} Stars</h4>
               <hr />
               <h4 className="title is-4">Review Headline</h4>
@@ -162,7 +158,7 @@ class reviewShow extends React.Component {
               </form>
               <br />
               <div>{review.comments.map((comment, i) => (
-                <div key={i}><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong></p><hr /></div>))}</div>
+                <div key={i}><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong> on {moment(comment.user.createdAt).format('Do MMMM YYYY')} at {moment(comment.user.createdAt).format('hh:mm')}</p><hr /></div>))}</div>
             </div>
           </div>
         </div>

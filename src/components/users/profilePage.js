@@ -95,7 +95,7 @@ class ProfilePage extends React.Component {
                 {user.recipes && user.recipes.map((recipe, i) => (
                   <Link key={i} to={`/recipe/${recipe._id}`}><strong>{recipe.name}</strong><br />{recipe.description}<br /><br /></Link>))}
               </div>
-              <div className="column is-one-fifth">
+              <div className="column is-one-fifth has-text-right">
                 {(friends.some(friend => friend.status === 'pending')) && <h4 className="title is-6">Pending Friend Requests</h4>}
                 {friends && filterPending(friends).map((friend, i) => (
                   <div key={i}><span><Link to={`/user/${friend._id}`}>{friend.friend.name}  </Link><button onClick={() => this.handleSubmit(friend.friend)}>
