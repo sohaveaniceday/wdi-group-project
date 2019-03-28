@@ -46,7 +46,7 @@ class Login extends React.Component {
                 <label className="label">Email</label>
                 <div className="control">
                   <input
-                    className={`input is-rounded ${this.state.error ? 'is-danger': ''}`}
+                    className={`input ${this.state.error ? 'is-danger': ''}`}
                     name="email"
                     placeholder="Email"
                     value={this.state.data.email}
@@ -58,7 +58,7 @@ class Login extends React.Component {
                 <label className="label">Password</label>
                 <div className="control">
                   <input
-                    className={`input is-rounded ${this.state.error ? 'is-danger': ''}`}
+                    className={`input ${this.state.error ? 'is-danger': ''}`}
                     type="password"
                     name="password"
                     placeholder="Password"

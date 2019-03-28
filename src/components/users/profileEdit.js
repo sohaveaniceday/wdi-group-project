@@ -120,6 +120,34 @@ class ProfileEdit extends React.Component {
               {this.state.error.email && <small className="help is-danger">{this.state.error.email}</small>}
             </div>
             <div className="field">
+              <label className="label">Password</label>
+              <div className="control">
+                <input
+                  className={`input ${this.state.error.password ? 'is-danger': ''}`}
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  value={this.state.data.password}
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.error.password && <small className="help is-danger">{this.state.error.password}</small>}
+            </div>
+            <div className="field">
+              <label className="label">Password Confirmation</label>
+              <div className="control">
+                <input
+                  className={`input ${this.state.error.password ? 'is-danger': ''}`}
+                  name="passwordConfirmation"
+                  type="password"
+                  placeholder="Password Confirmation"
+                  value={this.state.data.passwordConfirmation}
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.error.passwordConfirmation && <small className="help is-danger">{this.state.error.passwordConfirmation}</small>}
+            </div>
+            <div className="field">
               <label className="label">Full Name</label>
               <div className="control">
                 <input
@@ -167,48 +195,17 @@ class ProfileEdit extends React.Component {
                 :
                 <img src={this.state.image}/>
               }
-
-            </div>
-
-
-            <div className="field">
-              <label className="label">Password</label>
-              <div className="control">
-                <input
-                  className={`input ${this.state.error.password ? 'is-danger': ''}`}
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  value={this.state.data.password}
-                  onChange={this.handleChange}
-                />
-              </div>
-              {this.state.error.password && <small className="help is-danger">{this.state.error.password}</small>}
             </div>
             <div className="field">
-              <label className="label">Password Confirmation</label>
-              <div className="control">
-                <input
-                  className={`input ${this.state.error.password ? 'is-danger': ''}`}
-                  name="passwordConfirmation"
-                  type="password"
-                  placeholder="Password Confirmation"
-                  value={this.state.data.passwordConfirmation}
-                  onChange={this.handleChange}
+              <label className="label">Categories</label>
+              <div>
+                <Select
+                  options={this.state.categories}
+                  onChange={this.handleSelect}
+                  isMulti
+                  className="basic-multi-select"
+                  classNamePrefix="select"
                 />
-              </div>
-              <div className="field">
-                <br />
-                <label className="label">Categories (required)</label>
-                <div>
-                  <Select
-                    options={this.state.categories}
-                    onChange={this.handleSelect}
-                    isMulti
-                    className="basic-multi-select"
-                    classNamePrefix="select"
-                  />
-                </div>
               </div>
             </div>
             <button className="button bottom-margin pin-button is-rounded">Save</button>
