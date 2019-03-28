@@ -142,7 +142,7 @@ class reviewShow extends React.Component {
               {likes && likes.some(checkLikes) &&
                 <div><a className="button is-link is-rounded is-small">
                   <span className="icon">
-                    <i className="fas fa-thumbs-up"></i>
+                    <i className="fas fa-check-circle"></i>
                   </span>
                   <span>Liked</span>
                 </a><label className="label totalLikes like-info">{this.state.review.likes.length} Likes</label></div>
@@ -160,7 +160,7 @@ class reviewShow extends React.Component {
               {pinnedReviews && pinnedReviews.some(checkPin) &&
               <a className="button is-rounded is-pulled-right pin-button">
                 <span className="icon">
-                  <i className="fas fa-thumbtack"></i>
+                  <i className="fas fa-check-circle"></i>
                 </span>
                 <span>Pinned</span>
               </a>
@@ -207,7 +207,6 @@ class reviewShow extends React.Component {
                 </span>
                 <span>Delete</span>
               </a>}
-              <br />
               <hr />
               <h4 className="title is-4">Comments</h4>
               <form onSubmit={this.handleSubmit}>

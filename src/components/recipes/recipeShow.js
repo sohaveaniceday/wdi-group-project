@@ -169,7 +169,7 @@ class recipeShow extends React.Component {
                 {likes && likes.some(checkLikes) &&
                 <div className="small-margin"><a className="button is-link is-rounded is-small">
                   <span className="icon">
-                    <i className="fas fa-thumbs-up"></i>
+                    <i className="fas fa-check-circle"></i>
                   </span>
                   <span>Liked</span>
                 </a><label className="label totalLikes like-info">{this.state.recipe.likes.length} Likes</label></div>
@@ -188,7 +188,7 @@ class recipeShow extends React.Component {
               {pinnedRecipes && pinnedRecipes.some(checkPin) &&
                 <a className="button is-rounded is-pulled-right pin-button">
                   <span className="icon">
-                    <i className="fas fa-thumbtack"></i>
+                    <i className="fas fa-check-circle"></i>
                   </span>
                   <span>Pinned</span>
                 </a>
