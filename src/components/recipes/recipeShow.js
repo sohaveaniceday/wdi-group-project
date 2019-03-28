@@ -224,8 +224,18 @@ class recipeShow extends React.Component {
               <div>{recipe.categories.map((category, i) => (
                 <span key={i}>{category.name}, </span>))}</div>
               {this.isOwner() && <div><br /><hr /></div>}
-              {this.isOwner() && <Link className="button is-warning is-rounded" to={`/recipe/${recipe._id}/edit`}>Edit</Link>}
-              {this.isOwner() && <button className="button is-danger is-rounded" onClick={this.handleDelete}>Delete</button>}
+              {this.isOwner() && <a className="button is-warning is-rounded" href={`/review/${recipe._id}/edit`}>
+                <span className="icon">
+                  <i className="fas fa-pencil-alt"></i>
+                </span>
+                <span>Edit</span>
+              </a>}
+              {this.isOwner() && <a className="button is-danger is-rounded" onClick={this.handleDelete}>
+                <span className="icon">
+                  <i className="fas fa-trash-alt"></i>
+                </span>
+                <span>Delete</span>
+              </a>}
               <hr />
               <h4 className="title is-4">Comments</h4>
               <form onSubmit={this.handleSubmit}>
@@ -242,7 +252,7 @@ class recipeShow extends React.Component {
                   </div>
                   {errors.restaurantName && <small className="help is-danger">{errors.restaurantName}</small>}
                 </div>
-                <button className="button is-info">Submit</button>
+                <button className="button is-info is-rounded">Submit</button>
               </form>
               <br />
               <div>{recipe.comments.map((comment, i) => (
