@@ -86,7 +86,7 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
             />
           </div>
         </div>
-        <button className="button is-info is-rounded">Submit</button>
+        <button className="button pin-button is-rounded">Submit</button>
       </form>
     </div>
   )
