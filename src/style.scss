@@ -88,15 +88,6 @@ a {
 }
 
 
-.columns.articles {
-  height: 100%;
-  display: flex;
-
-  .news {
-    overflow-y: scroll;
-  }
-}
-
 @media only screen and (max-width: 769px) {
 
 .pin-column, .edit-column {
@@ -106,4 +97,13 @@ a {
     text-align: center;
 
   }
+}
+
+.feedPost {
+  border-style: none none dotted;
+}
+
+.card-image {
+  margin: 40px, 65px;
+  border-radius: 10%;
 }
