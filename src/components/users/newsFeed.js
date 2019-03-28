@@ -46,7 +46,7 @@ class Newsfeed extends React.Component {
   render() {
     // console.log(this.state.recipeFeed)
     return (
-      <main className="section">
+      <main className="section news-feed">
         <div className="container margin-maker">
           <div className="columns is-mobile is-multiline articles">
             <div className="column is-hidden-mobile"></div>
