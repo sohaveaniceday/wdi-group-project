@@ -37,7 +37,7 @@
       background: rgb(194, 77, 44);
       color: white;
     }
-  }
+
 }
 
   .nav-title {
@@ -99,18 +99,26 @@ a {
 // }
 
 .offeo {
-
+}
 .margin-top {
     margin: 200px
 }
 
-}
 .margin-maker {
   margin: 45px;
 }
 
+
 .small-margin-maker {
   margin: 20px;
+}
+
+.input {
+  width: 300px;
+}
+
+.input-max {
+  max-width: 500px;
 }
 
 .extra-padding {

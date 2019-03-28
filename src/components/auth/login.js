@@ -39,7 +39,7 @@ class Login extends React.Component {
     return (
       <main className="section profile-page hero is-fullheight">
         <div className="container margin-maker">
-          <div className="extra-padding has-background-white margin-topbottom curve-border">
+          <div className="input-max extra-padding has-background-white margin-topbottom curve-border">
             <form onSubmit={this.handleSubmit}>
               <h2 className="title">Login</h2>
               <div className="field">
@@ -51,6 +51,7 @@ class Login extends React.Component {
                     placeholder="Email"
                     value={this.state.data.email}
                     onChange={this.handleChange}
+
                   />
                 </div>
               </div>

@@ -458,6 +458,15 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'categories': [categories[16]._id,categories[20]._id,categories[49]._id,categories[56]._id,categories[75]._id,categories[76]._id,categories[77]._id,categories[86]._id,categories[92]._id,categories[91]._id]
           },
           {
+            'restaurantName': 'Red Dog Saloon',
+            'reviewHeadline': 'BBQ!',
+            'reviewText': 'Great place with a nice vibe to it. Depending what time you go, before you arrive to the place you can smell it, an amazing smell of barbecue permeates the surrounding area',
+            'rating': 4,
+            'image': 'https://media-cdn.tripadvisor.com/media/photo-s/06/1d/a1/d0/red-dog-south.jpg',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[2]._id,categories[64]._id,categories[76]._id,categories[77]._id,categories[91]._id,categories[18]._id,categories[68]._id,categories[69]._id,categories[58]._id,categories[82]._id]
+          },
+          {
             'restaurantName': 'P Franco',
             'reviewHeadline': 'Cosy!',
             'reviewText': 'You know those dinner parties you sometimes walk past and peer into at night? With big windows looking out onto the pavement, full of yellow lighting and the sound of laughter, cutlery and clinking. The ones that make you turn to whoever you’re walking with and say “ooh that looks nice, doesn’t it”. That’s exactly what P. Franco is. Only here you can walk in uninvited without anybody calling the police.',
