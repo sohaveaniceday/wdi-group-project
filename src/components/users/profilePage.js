@@ -58,12 +58,12 @@ class ProfilePage extends React.Component {
       return(
         user && <main className="section profile-page">
           <div className="container margin-maker">
-            <div className="extra-padding has-background-white margin-maker">
+            <div className="extra-padding has-background-white margin-topbottom">
               <div className="columns">
-                <div className="column is-half">
+                <div className="column is-6">
                   <h2 className="title">Hello {user.username}!</h2>
                 </div>
-                <div className="column is-half edit-column">
+                <div className="column is-6 edit-column">
                   <a className="button is-link is-rounded is-warning is-pulled-right edit-button" href={`/user/${user._id}/edit`}>
                     <span className="icon">
                       <i className="fas fa-edit"></i>
@@ -117,11 +117,11 @@ class ProfilePage extends React.Component {
                     <div key={i}><span><Link to={`/user/${friend._id}`}>{friend.friend.name}  </Link><button className="button is-small is-rounded pin-button" onClick={() => this.handleSubmit(friend.friend)}>
                   Accept
                     </button><br /></span></div>))}
-                  {(friends.some(friend => friend.status === 'pending')) && <div><hr /></div>}
+                  {(friends.some(friend => friend.status === 'accepted')) && (friends.some(friend => friend.status === 'pending')) && <div><hr /></div>}
                   {(friends.some(friend => friend.status === 'accepted')) && <h4 className="title is-6">Friends</h4>}
                   {friends && filterAccepted(friends).map((friend, i) => (
                     <div key={i}><Link to={`/user/${friend._id}`}>{friend.friend.name}<br /></Link></div>))}
-                  {(friends.some(friend => friend.status === 'accepted')) && <div><hr /></div>}
+                  {(friends.some(friend => friend.status === 'requested')) && (friends.some(friend => friend.status === 'accepted')) && (friends.some(friend => friend.status === 'pending')) && <div><hr /></div>}
                   {(friends.some(friend => friend.status === 'requested')) && <h4 className="title is-6">Requested Friends</h4>}
                   {friends && filterRequested(friends).map((friend, i) => (
                     <div key={i}><Link to={`/user/${friend._id}`}>{friend.friend.name}<br /></Link></div>))}
