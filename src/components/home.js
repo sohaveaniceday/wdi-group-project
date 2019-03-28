@@ -11,13 +11,19 @@ class Home extends Component {
       return (<Redirect to="/newsfeed" />)
     } else {
       return (
-        <section className="hero is-white is-fullheight">
-          <div className="hero-body">
-
-
+        <section className="hero is-fullheight-with-navbar home">
+          <div className="hero-body is-vcentered">
+            <div className="container is-vcentered home-message has-text-centered is-centered">
+              <p className="title is-vcentered is-3 has-text-black">
+                Munch
+              </p>
+              <p className="subtitle is-vcentered has-text-black">
+                An app
+              </p>
+            </div>
           </div>
-
-        </section>)
+        </section>
+      )
     }
   }
 }
