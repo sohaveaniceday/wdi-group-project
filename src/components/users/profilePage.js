@@ -64,7 +64,7 @@ class ProfilePage extends React.Component {
                   <h2 className="title">Hello {user.username}!</h2>
                 </div>
                 <div className="column is-6 edit-column">
-                  <a className="button is-link is-rounded is-warning is-pulled-right edit-button" href={`/user/${user._id}/edit`}>
+                  <a className="button is-rounded pin-button is-pulled-right edit-button" href={`/user/${user._id}/edit`}>
                     <span className="icon">
                       <i className="fas fa-edit"></i>
                     </span>

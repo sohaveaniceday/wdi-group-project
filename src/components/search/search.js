@@ -52,7 +52,7 @@ class Search extends React.Component {
     // console.log(search)
     console.log(this.state)
     return (
-      <main className="section">
+      <main className="section search-page hero is-fullheight">
         <div className="container margin-maker">
           <form onSubmit={this.handleSubmit}>
             <div className="field has-text-centered">
@@ -67,7 +67,7 @@ class Search extends React.Component {
               </div>
             </div>
             <div className="has-text-centered">
-              <button className="button is-info is-rounded">Search</button>
+              <button className="button pin-button is-rounded">Search</button>
             </div>
           </form>
           <hr />

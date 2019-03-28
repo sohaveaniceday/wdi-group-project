@@ -91,7 +91,7 @@ class RecipeEdit extends React.Component {
   render() {
     console.log(this.state)
     return (
-      <main className="section">
+      <main className="section recipe-page">
         <div className="container">
           <RecipeForm
             updateState={this.updateState}

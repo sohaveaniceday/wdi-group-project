@@ -263,9 +263,8 @@ class recipeShow extends React.Component {
                   </div>
                   <button className="button is-info is-rounded">Submit</button>
                 </form>
-                <br />
                 <div>{recipe.comments.map((comment, i) => (
-                  <div key={i}><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong> on {moment(comment.user.createdAt).format('Do MMMM YYYY')} at {moment(comment.user.createdAt).format('hh:mm')}</p><hr /></div>))}</div>
+                  <div key={i}><hr /><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong> on {moment(comment.user.createdAt).format('Do MMMM YYYY')} at {moment(comment.user.createdAt).format('hh:mm')}</p></div>))}</div>
               </div>
             </div>
           </div>

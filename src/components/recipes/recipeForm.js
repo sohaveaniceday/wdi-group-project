@@ -11,7 +11,7 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           <label className="label">Name (required)</label>
           <div className="control">
             <input
-              className={`input is-rounded ${errors.name ? 'is-danger': ''}`}
+              className={`input ${errors.name ? 'is-danger': ''}`}
               name="name"
               placeholder="Name"
               onChange={handleChange}
@@ -24,7 +24,7 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           <label className="label">Description</label>
           <div className="control">
             <input
-              className={`input is-rounded ${errors.description ? 'is-danger': ''}`}
+              className={`input ${errors.description ? 'is-danger': ''}`}
               name="description"
               placeholder="Description"
               onChange={handleChange}
