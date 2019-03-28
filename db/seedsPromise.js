@@ -374,17 +374,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
             'location': 'Florence, Italy',
             'bio': 'Mamma Mia li calzone'
-          },
-          {
-            'username': '',
-            'email': 'felippo@email',
-            'password': 'password',
-            'passwordConfirmation': 'password',
-            'name': 'Felippo123',
-            'categories': [categories[56]._id,categories[63]._id,categories[70]._id,categories[77]._id,categories[69]._id,categories[67]._id,categories[6]._id,categories[89]._id,categories[74]._id,categories[18]._id],
-            'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
-            'location': 'Florence, Italy',
-            'bio': 'Mamma Mia li calzone'
           }
         ])
       ])
