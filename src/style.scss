@@ -95,6 +95,18 @@ a {
   font-weight: bold;
 }
 
+// .section {
+//     background-image: url("./assets/video/offeo.mp4");
+//     opacity: 0.2
+// }
+
+.offeo {
+
+.margin-top {
+    margin: 200px
+}
+
+}
 .margin-maker {
   margin: 45px;
 }
@@ -171,8 +183,16 @@ a {
 .tile {
   box-shadow: 0 8px 16px;
   border-radius: 30px;
+  height: 300px;
+  width: 500px;
+  margin: 75px;
+  margin-left: 0px
 }
-
+.craving {
+  height: 30px;
+  width: 200px;
+  margin: 0px;
+}
 .columns.articles {
   height: 100%;
   display: flex;
