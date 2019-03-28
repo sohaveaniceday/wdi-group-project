@@ -189,7 +189,7 @@ class Register extends React.Component {
               <div className="field">
                 <label className="label">Profile Image</label>
                 {!this.state.image ?
-                  <Container openModal={this.openModal} className="button is-info is-rounded" />
+                  <Container openModal={this.openModal} className="button is-warning is-rounded" />
                   :
                   <img src={this.state.image}/>
                 }
