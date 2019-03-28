@@ -32,13 +32,14 @@ class Home extends Component {
             </div>
             <div className="">
               <div className="tile box-shadow column-is-two-thirds bottom-margin is-5by4">
-                <video  width="640" height="480" controls="hidden" autoPlay>
+                <video  loop width="640" height="480" controls="hidden" autoPlay>
                   <source className="is-rounded" src="../assets/video/munch.mp4" type="video/mp4"/>
                 </video>
               </div>
             </div>
 
           </div>
+
 
         </section>)
     }

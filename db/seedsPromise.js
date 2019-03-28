@@ -363,6 +363,28 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
             'location': 'London, UK',
             'bio': 'One word: CHEEEEEEEEEESE'
+          },
+          {
+            'username': 'Felippo',
+            'email': 'felippo@email',
+            'password': 'password',
+            'passwordConfirmation': 'password',
+            'name': 'Felippo123',
+            'categories': [categories[56]._id,categories[63]._id,categories[70]._id,categories[77]._id,categories[69]._id,categories[67]._id,categories[6]._id,categories[89]._id,categories[74]._id,categories[18]._id],
+            'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
+            'location': 'Florence, Italy',
+            'bio': 'Mamma Mia li calzone'
+          },
+          {
+            'username': '',
+            'email': 'felippo@email',
+            'password': 'password',
+            'passwordConfirmation': 'password',
+            'name': 'Felippo123',
+            'categories': [categories[56]._id,categories[63]._id,categories[70]._id,categories[77]._id,categories[69]._id,categories[67]._id,categories[6]._id,categories[89]._id,categories[74]._id,categories[18]._id],
+            'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
+            'location': 'Florence, Italy',
+            'bio': 'Mamma Mia li calzone'
           }
         ])
       ])
@@ -391,6 +413,15 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'categories': [categories[3]._id,categories[8]._id,categories[17]._id,categories[18]._id,categories[58]._id,categories[65]._id,categories[66]._id,categories[67]._id,categories[70]._id,categories[74]._id]
           },
           {
+            'restaurantName': 'Katsu wrap',
+            'reviewHeadline': 'Super quicks wraps',
+            'reviewText': 'Really fast service and great large porcions. Service is no nonsense so be sure to be on your game when ordering. Excellent, great choice for the wraps. Katsu chicken wraps and duck wrap with sweet chilly was my choice, superb value.',
+            'rating': 5,
+            'image': 'https://static1.squarespace.com/static/5563f7cee4b0658666ce012e/t/5693fde30ab3776bee429359/1452540259431/',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[5]._id,categories[3]._id,categories[63]._id,categories[89]._id,categories[69]._id,categories[61]._id,categories[58]._id,categories[62]._id,categories[67]._id,categories[56]._id]
+          },
+          {
             'restaurantName': 'Kitty Fisher\'s',
             'reviewHeadline': 'Great! Very casual',
             'reviewText': 'Cheese on toast. Meat and two veg. Strawberries and ice cream. No, despite our government’s best efforts, you have not been transported back to the 1980s. This is just Kitty Fisher’s style. It’s an old fashioned British restaurant in Mayfair that makes decadence its business. Don’t be fooled by the velvet and gold detail though, because this isn’t a stuffy restaurant. Sure, the food here is rich. Almost as rich as its clientele. But it’s also incredibly delicious. Regular sounding things like welsh rarebit, risotto, and crispy potatoes are presented without fanfare, and eaten in silence. No, it’s not the silence of British awkwardness. It’s the silence of proper enjoyment. That’s what you come to Kitty Fisher’s for.',
@@ -404,7 +435,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'reviewHeadline': 'Good vibes!',
             'reviewText': 'There are some places that make you smile as soon as you walk in and leave you grinning on exit - BAM is one of these. It’s a small, smoky and screechy place. Dishes are being cooked and smoked in the same room as you, hard rock is pounding out the speakers, you and your neighbours are knee-to-knee. It’s a great atmosphere, and that’s before we get to the food. The menu at BAM is quite hard to describe. Not least because it changes. Calling it fusion is probably the safest thing to do. At any one time you’ve got a glittery flatbread with cod’s roe, Chinese spiced fried guinea fowl, and miso scrambled eggs. You get the idea. Or do you? Or do we? Whatever, it’s all delicious, interesting and good fun.',
             'rating': 4,
-            'image': 'https://static.standard.co.uk/s3fs-public/thumbnails/image/2017/06/23/11/black-axe.jpg?w660',
+            'image': 'https://cdn-01.independent.ie/life/travel/article37363195.ece/9061d/AUTOCROP/w620/florence.jpg',
             'user': users[getRandom(4)]._id,
             'categories': [categories[15]._id,categories[3]._id,categories[50]._id,categories[65]._id,categories[66]._id,categories[74]._id,categories[80]._id,categories[82]._id,categories[70]._id,categories[98]._id]
           },
@@ -506,6 +537,15 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'image': 'https://blackbarnrestaurant.com/wp-content/uploads/2018/03/MZ_Web_blackbarncafe_001.jpg',
             'user': users[getRandom(4)]._id,
             'categories': [categories[5]._id,categories[3]._id,categories[65]._id,categories[61]._id,categories[58]._id,categories[64]._id,categories[87]._id,categories[75]._id,categories[70]._id,categories[68]._id]
+          },
+          {
+            'restaurantName': 'The steak specialist',
+            'reviewHeadline': 'A variety of dining rooms to suit your vibe',
+            'reviewText': 'The steak specialist that started as a pop up in Shoreditch has since opened Flatiron Beak Street, Denmark Street and Henrietta Street and now its returned to where it all started',
+            'rating': 2,
+            'image': 'https://images.squaremeal.co.uk/cloud/restaurants/11188/flatiron-shoreditch-2016-4-web-interior.jpg?w=900&h=600&fit=crop',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[3]._id,categories[62]._id,categories[70]._id,categories[75]._id,categories[76]._id,categories[77]._id,categories[87]._id,categories[89]._id,categories[91]._id,categories[92]._id,categories[96]._id,categories[98]._id]
           },
           {
             'restaurantName': 'Santa Maria',
@@ -621,7 +661,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
           {
             'name': 'Bean and Pesto Salad',
             'description': 'Serve this salad alongside vegetarian grills.',
-            'ingredients': '400g canned mixed beans, 4 spring onions, trimmed',
+            'ingredients': '420g can green beans, drained, rinsed. 2 x 125g cans four bean mix, drained, rinsed, 250g cherry tomatoes, halved. 1/3 cup sundried tomatoes, sliced. 1/3 cup kalamata olives, halved. Finely sliced fresh basil leaves, to serve',
             'method': 'Chop the spring onions into rounds and cut the pepper into strips. Add to the bowl, sprinkle in your chosen herbs and toss the bean salad together, seasoning to taste.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/272698.jpg?HjvE',
             'user': users[getRandom(4)]._id,
@@ -630,7 +670,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
           {
             'name': 'Beef Burger with Smoked Cheese',
             'description': 'A delicious balancing act of spicy, creamy, meaty, smoky and sour.',
-            'ingredients': '4 quarter pounder beef burgers,4 slices oak smoked cheddar',
+            'ingredients': '4 quarter pounder beef burgers. 4 slices oak smoked cheddar. 4 seeded burger buns. 60g gherkins, sliced. ¼ red cabbage, finely sliced. 1 red onion, finely sliced. 1 tbsp mayonnaise. 1 lime, juice of. 3 green chillies, deseeded and chopped. 1 banana shallot, chopped. 10g coriander',
             'method': 'Cook the burgers on a hot barbecue for 6 mins, turning every 2 mins. Then lay the slices of smoked cheese on top and cook for 2 mins with the lid on to melt the cheese.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/2682693.jpg?RIgk',
             'user': users[getRandom(4)]._id,
@@ -639,7 +679,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
           {
             'name': 'Blueberry Lemonade',
             'description': 'You can also add basil or mint to this gorgeously fresh-tasting pretty pink drink.',
-            'ingredients': '200g blueberries, 200g golden caster sugar',
+            'ingredients': '200g golden caster sugar.200g Blueberries. Lemon juice. Honey or sugar. Water',
             'method': 'In a food processor or high-speed blender, whizz the blueberries, sugar, lemon juice and 250ml water together until the berries are completely puréed and the sugar is dissolved.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/2624030.jpg?Q2Ok',
             'user': users[getRandom(4)]._id,
