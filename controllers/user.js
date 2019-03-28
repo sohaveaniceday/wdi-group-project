@@ -3,7 +3,7 @@ const User = require('../models/user')
 function showRoute(req, res) {
   return User
     .findById(req.params.id)
-    .populate('categories recipes reviews')
+    .populate('categories recipes reviews comments')
     // .populate('recipes')
     .then(user => {
       return Promise.all([

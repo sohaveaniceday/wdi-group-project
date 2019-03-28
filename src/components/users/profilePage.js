@@ -50,6 +50,7 @@ class ProfilePage extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     if(!this.state.data) return null
     const { user } = this.state.data
     const { friends } = this.state.data
