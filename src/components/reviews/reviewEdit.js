@@ -41,8 +41,7 @@ class ReviewEdit extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     const data = {...this.state.data, image: this.state.image}
-    axios.put(`/api/reviews/${this.props.match.params.id}`,
-      data,
+    axios.put(`/api/reviews/${this.props.match.params.id}`, data,
       // this.state.data
       { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
       .then(() => this.props.history.push('/newsfeed'))
@@ -98,7 +97,7 @@ class ReviewEdit extends React.Component {
             data={this.state.data}
             errors={this.state.errors}
             openModal={this.openModal}
-            image={this.image}
+            image={this.state.image}
           />
         </div>
       </main>

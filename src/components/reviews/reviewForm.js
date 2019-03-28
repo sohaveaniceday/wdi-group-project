@@ -68,7 +68,15 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
             <img src={image}/>
           }
         </div>
+        {/*<div className="field">
+          <label className="label">Review Image</label>
+          {!this.props.image ?
+            <Container openModal={this.openModal} className="button is-info is-rounded" />
+            :
+            <img src={this.props.image}/>
+          }
 
+        </div>*/}
 
         <div className="field">
           <label className="label">Categories (required)</label>

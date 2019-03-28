@@ -48,8 +48,9 @@ class ProfileEdit extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    axios.put(`/api/user/${this.props.match.params.id}`, this.state.data)
-      .then(() => this.props.history.push('/profilePage'))
+    const data = {...this.state.data, image: this.state.image}
+    axios.put(`/api/user/${this.props.match.params.id}`, data)
+      .then(() => this.props.history.push(`user/${this.props.match.params.id}/edit`))
       .catch(() => this.setState({ error: 'Invalid Input'}))
   }
 
@@ -168,6 +169,7 @@ class ProfileEdit extends React.Component {
               }
 
             </div>
+
 
             <div className="field">
               <label className="label">Password</label>

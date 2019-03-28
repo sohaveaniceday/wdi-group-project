@@ -100,7 +100,7 @@ class RecipeNew extends React.Component {
             categories={this.state.categories}
             errors={this.state.errors}
             openModal={this.openModal}
-            image={this.image}
+            image={this.state.image}
           />
         </div>
       </main>

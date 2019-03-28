@@ -46,8 +46,7 @@ class RecipeEdit extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     const data = {...this.state.data, image: this.state.image}
-    axios.put(`/api/recipes/${this.props.match.params.id}`,
-      data,
+    axios.put(`/api/recipes/${this.props.match.params.id}`, data,
       { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
       .then(() => this.props.history.push(`/recipe/${this.props.match.params.id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }))
@@ -90,6 +89,7 @@ class RecipeEdit extends React.Component {
 
   render() {
     console.log(this.state)
+    console.log(this.state.error)
     return (
       <main className="section">
         <div className="container">
@@ -102,7 +102,7 @@ class RecipeEdit extends React.Component {
             data={this.state.data}
             errors={this.state.errors}
             openModal={this.openModal}
-            image={this.image}
+            image={this.state.image}
           />
         </div>
       </main>
