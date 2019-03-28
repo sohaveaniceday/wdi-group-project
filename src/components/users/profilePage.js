@@ -74,7 +74,7 @@ class ProfilePage extends React.Component {
             </div>
             <hr />
             <div className="columns is-multiline">
-              <div className="column is-two-fifths">
+              <div className="column is-3">
                 <figure className="image">
                   <img src={user.image} alt={user.username} />
                 </figure>
@@ -92,19 +92,20 @@ class ProfilePage extends React.Component {
                   <span key={i}>{category.name}, </span>))}
                 </p>}
               </div>
-              <div className="column is-two-fifths has-text-centered">
+              <div className="column is-3 has-text-centered">
 
-                {(user.reviews.length > 0) && <h4 className="title is-4">Reviews</h4>}
+                <h4 className="title is-4">Reviews</h4>
                 {user.reviews && user.reviews.map((review, i) => (
                   <Link key={i} to={`/review/${review._id}`}><span className="title is-6">{review.restaurantName}</span><br />“{review.reviewHeadline}”<br />{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}<br /><br /></Link>))}
-                {(user.reviews.length > 0) && <hr />}
-                {(user.recipes.length > 0) && <h4 className="title is-4">Recipes</h4>}
+                {!(user.reviews.length > 0) && <span><Link to="/review/new" className="button is-primary is-rounded">Create a Review</Link></span>}
+              </div>
+              <div className="column is-4 has-text-centered">
+                <h4 className="title is-4">Recipes</h4>
                 {user.recipes && user.recipes.map((recipe, i) => (
                   <Link key={i} to={`/recipe/${recipe._id}`}><span className="title is-6">{recipe.name}</span><br />“{recipe.description}”<br /><br /></Link>))}
-                {(user.recipes.length > 0)}
-                {!(user.recipes.length > 0) && !(user.reviews.length > 0) && <span><Link to="/review/new" className="button is-primary is-rounded">Create a Review</Link>   <Link to="/recipe/new" className="button is-primary is-rounded">Create a Recipe</Link></span>}
+                {!(user.recipes.length > 0) && <Link to="/recipe/new" className="button is-primary is-rounded">Create a Recipe</Link>}
               </div>
-              <div className="column is-one-fifth has-text-right friends-column">
+              <div className="column is-2 has-text-right friends-column has-text-centered-mobile">
                 {(friends.some(friend => friend.status === 'pending')) && <h4 className="title is-6">Pending Friend Requests</h4>}
                 {friends && filterPending(friends).map((friend, i) => (
                   <div key={i}><span><Link to={`/user/${friend._id}`}>{friend.friend.name}  </Link><button className="button is-small is-rounded pin-button" onClick={() => this.handleSubmit(friend.friend)}>
