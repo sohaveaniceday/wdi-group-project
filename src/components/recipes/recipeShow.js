@@ -160,9 +160,9 @@ class recipeShow extends React.Component {
     const { likes } = this.state.recipe
 
     return(
-      <main className="section">
+      <main className="section recipe-page">
         <div className="container margin-maker">
-          <div className="columns is-vcentered no-margin">
+          <div className="columns is-vcentered no-margin has-background-white margin-topbottom curve-border">
             <div className="column is-half">
               <h2 className="custom-title">{recipe.name}<br /></h2>Created by <Link to={`/user/${recipe.user._id}`}>{recipe.user.username}</Link> on {moment(recipe.createdAt).format('Do MMMM YYYY')} at {moment(recipe.createdAt).format('hh:mm')}
               <div>
@@ -203,26 +203,31 @@ class recipeShow extends React.Component {
               }
             </div>
           </div>
-          <hr className="bottom-margin" />
-          <div className="columns">
-            <div className="column is-one-third">
-              <figure className="image">
-                <img src={recipe.image} alt={recipe.name} />
-              </figure>
+          <div className="columns is-multiline">
+            <div className="column is-3">
+              <div className="extra-padding has-background-white curve-border">
+                <figure className="image">
+                  <img src={recipe.image} alt={recipe.name} className="curve-border" />
+                </figure>
+                <br/>
+                <h4 className="title is-5">Description</h4>
+                <p>“{recipe.description}”</p>
+                <hr />
+                <h4 className="title is-4">Categories</h4>
+                <div>{recipe.categories.map((category, i) => (
+                  <span key={i}>{category.name}, </span>))}</div>
+              </div>
             </div>
-            <div className="column is-two-thirds">
-              <h4 className="title is-5">Description</h4>
-              <p>“{recipe.description}”</p>
-              <hr />
+            <div className="column is-4 has-text-centered">
+            <div className="extra-padding has-background-white curve-border">
               <h4 className="title is-4">Ingredients</h4>
               <p className="p_wrap">{recipe.ingredients}</p>
-              <hr />
+            </div>
+            </div>
+            <div className="column is-5 has-text-centered">
+            <div className="extra-padding has-background-white curve-border">
               <h4 className="title is-4">Method</h4>
               <p className="p_wrap">{recipe.method}</p>
-              <hr />
-              <h4 className="title is-4">Categories</h4>
-              <div>{recipe.categories.map((category, i) => (
-                <span key={i}>{category.name}, </span>))}</div>
               {this.isOwner() && <div><br /><hr /></div>}
               {this.isOwner() && <a className="button is-warning is-rounded" href={`/review/${recipe._id}/edit`}>
                 <span className="icon">
@@ -236,7 +241,11 @@ class recipeShow extends React.Component {
                 </span>
                 <span>Delete</span>
               </a>}
-              <hr />
+            </div>
+            </div>
+
+            <div className="column is-12">
+            <div className="extra-padding has-background-white curve-border">
               <h4 className="title is-4">Comments</h4>
               <form onSubmit={this.handleSubmit}>
                 <div className="field">
@@ -258,6 +267,7 @@ class recipeShow extends React.Component {
               <div>{recipe.comments.map((comment, i) => (
                 <div key={i}><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong> on {moment(comment.user.createdAt).format('Do MMMM YYYY')} at {moment(comment.user.createdAt).format('hh:mm')}</p><hr /></div>))}</div>
             </div>
+          </div>
           </div>
         </div>
       </main>

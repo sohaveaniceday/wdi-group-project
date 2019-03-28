@@ -14,7 +14,7 @@
   font-family: 'Raleway', sans-serif;
 }
 
-.news-feed, .profile-page {
+.news-feed, .profile-page, .recipe-page {
   background-color: rgba(194, 77, 44, 0.1);
 }
 
@@ -66,12 +66,20 @@ a {
   margin: 45px;
 }
 
+.small-margin-maker {
+  margin: 20px;
+}
+
 .extra-padding {
   padding: 20px;
 }
 
 .bottom-margin {
   margin: 0 0 60px 0;
+}
+
+.top-margin {
+  margin: 30px 0 0 0;
 }
 
 .no-margin {
@@ -83,12 +91,17 @@ a {
   margin: 20px 0;
 }
 
+.margin-sides {
+  margin: 0 20px 0 0;
+}
+
 .small-margin {
   margin: 5px 0 0 0;
 }
 
-.curve-border,.card {
+.curve-border,.card,.button {
   border-radius: 5px;
+  box-shadow: 0 1px 6px;
 }
 
 .custom-title {
@@ -117,7 +130,7 @@ a {
 
 .tile {
   box-shadow: 0 8px 16px;
-  border-radius: 30px
+  border-radius: 30px;
 }
 
 .columns.articles {
