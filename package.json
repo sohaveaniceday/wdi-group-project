@@ -6,7 +6,8 @@
   "author": "Semmi <semmi.semmiw@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index",
+    "start": "node index",
+    "build": "webpack -p",
     "seed1": "node db/seeds1",
     "seed2": "node db/seeds2",
     "seed": "node db/seedsPromise",

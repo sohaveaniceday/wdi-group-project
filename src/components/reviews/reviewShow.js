@@ -182,6 +182,7 @@ class reviewShow extends React.Component {
                   <img src={review.image} alt={review.restaurantName} />
                 </figure>
                 <br/>
+                <h4 className="title is-4">{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}</h4>
                 <h4 className="title is-4">Categories</h4>
                 <div>{review.categories.map((category, i) => (
                   <span key={i}>{category.name}, </span>))}</div>
@@ -190,7 +191,6 @@ class reviewShow extends React.Component {
             <div className="column is-two-thirds">
               <div className="extra-padding has-background-white curve-border">
                 <h4 className="title is-3">Review</h4>
-                <h4 className="title is-4">{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}</h4>
                 <p className="title is-6">“{review.reviewHeadline}”</p>
                 <p>{review.reviewText}</p>
                 {this.isOwner() && <div><hr /></div>}
