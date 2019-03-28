@@ -40,7 +40,7 @@ class PinnedItems extends React.Component {
   render() {
     // console.log(this.state.recipeFeed)
     return (
-      <main className="section">
+      <main className="section pinned-page hero is-fullheight">
         <div className="container margin-maker">
           <div className="columns is-mobile is-multiline articles">
             <div className="column is-hidden-mobile"></div>

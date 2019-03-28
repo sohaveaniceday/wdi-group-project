@@ -88,7 +88,7 @@ class Register extends React.Component {
     console.log(this.state)
     console.log(this.state.error)
     return (
-      <main className="section">
+      <main className="section profile-page">
         <div className="container margin-maker">
           <form onSubmit={this.handleSubmit}>
             <h2 className="title">Register</h2>
@@ -224,7 +224,7 @@ class Register extends React.Component {
                 />
               </div>
             </div>
-            <button className="button is-info is-rounded">Register</button>
+            <button className="button pin-button is-rounded">Register</button>
           </form>
         </div>
       </main>

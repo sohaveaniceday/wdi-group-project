@@ -36,7 +36,7 @@ class Nav extends React.Component {
   render() {
     return (
     //nav-bar burger checks if the navbarOpen is true and adds a class to trigger it to open. Triggers the toggleNavbar function when clicked
-      <nav className="navbar is-primary">
+      <nav className="navbar">
         <div className="navbar-brand">
           {!Auth.isAuthenticated() && <Link to="/" className="navbar-item">
             <span className="icon has-text-white is-large">

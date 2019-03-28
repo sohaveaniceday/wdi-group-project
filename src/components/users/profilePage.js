@@ -17,7 +17,6 @@ function filterPending(friendsArray) {
 }
 
 
-
 class ProfilePage extends React.Component {
   constructor() {
     super()
@@ -57,67 +56,81 @@ class ProfilePage extends React.Component {
     // console.log(friends)
     if (user) {
       return(
-        user && <main className="section">
+        user && <main className="section profile-page">
           <div className="container margin-maker">
-            <div className="columns">
-              <div className="column is-half">
-                <h2 className="title">Hello {user.username}!</h2>
-              </div>
-              <div className="column is-half edit-column">
-                <a className="button is-link is-rounded is-warning is-pulled-right edit-button" href={`/user/${user._id}/edit`}>
-                  <span className="icon">
-                    <i className="fas fa-edit"></i>
-                  </span>
-                  <span>Edit Profile</span>
-                </a>
+            <div className="extra-padding has-background-white margin-topbottom curve-border">
+              <div className="columns">
+                <div className="column is-6">
+                  <h2 className="title">Hello {user.username}!</h2>
+                </div>
+                <div className="column is-6 edit-column">
+                  <a className="button is-rounded pin-button is-pulled-right edit-button" href={`/user/${user._id}/edit`}>
+                    <span className="icon">
+                      <i className="fas fa-edit"></i>
+                    </span>
+                    <span>Edit Profile</span>
+                  </a>
+                </div>
               </div>
             </div>
-            <hr />
             <div className="columns is-multiline">
-              <div className="column is-two-fifths">
-                <figure className="image">
-                  <img src={user.image} alt={user.username} />
-                </figure>
-                <br />
-                <h4 className="title is-4">{user.name}</h4>
-                <hr />
-                <h4 className="title is-4">Location</h4>
-                <p>{user.location}</p>
-                <hr />
-                <h4 className="title is-4">Bio</h4>
-                <p>{user.bio}</p>
-                <hr />
-                <h4 className="title is-4">Categories</h4>
-                {user.categories && <p>{user.categories.map((category, i) => (
-                  <span key={i}>{category.name}, </span>))}
-                </p>}
+              <div className="column is-3">
+                <div className="extra-padding has-background-white curve-border">
+                  <figure className="image">
+                    <img src={user.image} alt={user.username} className="curve-border"/>
+                  </figure>
+                  <br />
+                  <h4 className="title is-4">{user.name}</h4>
+                  <hr />
+                  <h4 className="title is-4">Location</h4>
+                  <p>{user.location}</p>
+                  <hr />
+                  <h4 className="title is-4">Bio</h4>
+                  <p>{user.bio}</p>
+                  <hr />
+                  <h4 className="title is-4">Categories</h4>
+                  {user.categories && <p>{user.categories.map((category, i) => (
+                    <span key={i}>{category.name}, </span>))}
+                  </p>}
+                </div>
               </div>
-              <div className="column is-two-fifths has-text-centered">
-
-                {(user.reviews.length > 0) && <h4 className="title is-4">Reviews</h4>}
-                {user.reviews && user.reviews.map((review, i) => (
-                  <Link key={i} to={`/review/${review._id}`}><span className="title is-6">{review.restaurantName}</span><br />“{review.reviewHeadline}”<br />{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}<br /><br /></Link>))}
-                {(user.reviews.length > 0) && <hr />}
-                {(user.recipes.length > 0) && <h4 className="title is-4">Recipes</h4>}
-                {user.recipes && user.recipes.map((recipe, i) => (
-                  <Link key={i} to={`/recipe/${recipe._id}`}><span className="title is-6">{recipe.name}</span><br />“{recipe.description}”<br /><br /></Link>))}
-                {(user.recipes.length > 0)}
-                {!(user.recipes.length > 0) && !(user.reviews.length > 0) && <span><Link to="/review/new" className="button is-primary is-rounded">Create a Review</Link>   <Link to="/recipe/new" className="button is-primary is-rounded">Create a Recipe</Link></span>}
+              <div className="column is-3 has-text-centered">
+                <div className="extra-padding has-background-white curve-border">
+                  <h4 className="title is-3">Reviews</h4>
+                  {user.reviews && user.reviews.map((review, i) => (
+                    <Link key={i} to={`/review/${review._id}`}><span className="title is-6">{review.restaurantName}</span><br />“{review.reviewHeadline}”<br />{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}<br /><br /></Link>))}
+                  {!(user.reviews.length > 0) && <span><Link to="/review/new" className="button is-primary is-rounded">Create a Review</Link></span>}
+                </div>
               </div>
-              <div className="column is-one-fifth has-text-right friends-column">
-                {(friends.some(friend => friend.status === 'pending')) && <h4 className="title is-6">Pending Friend Requests</h4>}
-                {friends && filterPending(friends).map((friend, i) => (
-                  <div key={i}><span><Link to={`/user/${friend._id}`}>{friend.friend.name}  </Link><button className="button is-small is-rounded pin-button" onClick={() => this.handleSubmit(friend.friend)}>
+              <div className="column is-4 has-text-centered">
+                <div className="extra-padding has-background-white curve-border">
+                  <h4 className="title is-3">Recipes</h4>
+                  {user.recipes && user.recipes.map((recipe, i) => (
+                    <Link key={i} to={`/recipe/${recipe._id}`}><span className="title is-6">{recipe.name}</span><br />“{recipe.description}”<br /><br /></Link>))}
+                  {!(user.recipes.length > 0) && <Link to="/recipe/new" className="button is-primary is-rounded">Create a Recipe</Link>}
+                </div>
+              </div>
+              <div className="column is-2 has-text-centered friends-column">
+                <div className="extra-padding has-background-white curve-border">
+                  {(friends.some(friend => friend.status === 'pending')) && <h4 className="title is-6">Pending Friend Requests</h4>}
+                  {friends && filterPending(friends).map((friend, i) => (
+                    <div key={i}><span><Link to={`/user/${friend._id}`}>{friend.friend.name}  </Link><button className="button is-small is-rounded pin-button" onClick={() => this.handleSubmit(friend.friend)}>
                   Accept
-                  </button><br /></span></div>))}
-                {(friends.some(friend => friend.status === 'pending')) && <div><hr /></div>}
-                {(friends.some(friend => friend.status === 'accepted')) && <h4 className="title is-6">Friends</h4>}
-                {friends && filterAccepted(friends).map((friend, i) => (
-                  <div key={i}><Link to={`/user/${friend._id}`}>{friend.friend.name}<br /></Link></div>))}
-                {(friends.some(friend => friend.status === 'accepted')) && <div><hr /></div>}
-                {(friends.some(friend => friend.status === 'requested')) && <h4 className="title is-6">Requested Friends</h4>}
-                {friends && filterRequested(friends).map((friend, i) => (
-                  <div key={i}><Link to={`/user/${friend._id}`}>{friend.friend.name}<br /></Link></div>))}
+                    </button><br /></span></div>))}
+                  {(friends.some(friend => friend.status === 'accepted')) && (friends.some(friend => friend.status === 'pending')) && <div><hr /></div>}
+                  {(friends.some(friend => friend.status === 'accepted')) && <h4 className="title is-6">Friends</h4>}
+                  {friends && filterAccepted(friends).map((friend, i) => (
+                    <div key={i}><Link to={`/user/${friend._id}`}>{friend.friend.name}<br /></Link></div>))}
+                  {(friends.some(friend => friend.status === 'requested')) && (friends.some(friend => friend.status === 'accepted')) && <div><hr /></div>}
+                  {(friends.some(friend => friend.status === 'requested')) && <h4 className="title is-6">Requested Friends</h4>}
+                  {friends && filterRequested(friends).map((friend, i) => (
+                    <div key={i}><Link to={`/user/${friend._id}`}>{friend.friend.name}<br /></Link></div>))}
+                </div>
+              </div>
+              <div className="column is-multiline">
+                <div className="column is-one-fifth">
+
+                </div>
               </div>
             </div>
           </div>
@@ -128,7 +141,7 @@ class ProfilePage extends React.Component {
     }
   }
 }
-//tryal
+
 export default ProfilePage
 
 // <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>}
