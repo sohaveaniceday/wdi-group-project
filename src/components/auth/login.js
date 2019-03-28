@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 import Auth from '../../lib/auth'
-
+// import {Animated} from 'react-animated-css'
 
 class Login extends React.Component {
   constructor() {
@@ -39,36 +39,39 @@ class Login extends React.Component {
     return (
       <main className="section profile-page hero is-fullheight">
         <div className="container margin-maker">
-          <form onSubmit={this.handleSubmit}>
-            <h2 className="title">Login</h2>
-            <div className="field">
-              <label className="label">Email</label>
-              <div className="control">
-                <input
-                  className={`input is-rounded ${this.state.error ? 'is-danger': ''}`}
-                  name="email"
-                  placeholder="Email"
-                  value={this.state.data.email}
-                  onChange={this.handleChange}
-                />
+          <div className="input-max extra-padding has-background-white margin-topbottom curve-border">
+            <form onSubmit={this.handleSubmit}>
+              <h2 className="title">Login</h2>
+              <div className="field">
+                <label className="label">Email</label>
+                <div className="control">
+                  <input
+                    className={`input ${this.state.error ? 'is-danger': ''}`}
+                    name="email"
+                    placeholder="Email"
+                    value={this.state.data.email}
+                    onChange={this.handleChange}
+
+                  />
+                </div>
               </div>
-            </div>
-            <div className="field">
-              <label className="label">Password</label>
-              <div className="control">
-                <input
-                  className={`input is-rounded ${this.state.error ? 'is-danger': ''}`}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={this.state.data.password}
-                  onChange={this.handleChange}
-                />
+              <div className="field">
+                <label className="label">Password</label>
+                <div className="control">
+                  <input
+                    className={`input ${this.state.error ? 'is-danger': ''}`}
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={this.state.data.password}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                {this.state.error && <small className="help is-danger">{this.state.error}</small>}
               </div>
-              {this.state.error && <small className="help is-danger">{this.state.error}</small>}
-            </div>
-            <button className="button pin-button is-rounded">Login</button>
-          </form>
+              <button className="button pin-button is-rounded">Login</button>
+            </form>
+          </div>
         </div>
       </main>
     )

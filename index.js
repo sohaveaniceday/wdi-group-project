@@ -5,7 +5,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 //requires bodyParser
 const bodyParser = require('body-parser')
-//requires your port number and 
+//requires your port number and
 const { dbURI, port } = require('./config/environment')
 const router = require('./config/routes')
 
@@ -22,6 +22,9 @@ app.use(bodyParser.json())
 
 //dictates the URL path to use after http://localhost:4000
 app.use(('/api'), router)
+
+// serving up index html on a bad route
+app.get('/*', (req, res) => res.sendfile(`${__dirname}/dist/index.html`))
 
 //Makes sure Express is listening to the local host
 app.listen(port, () => console.log(`App is listenting on port ${port}`))

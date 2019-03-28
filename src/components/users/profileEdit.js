@@ -3,6 +3,9 @@ import axios from 'axios'
 import Select from 'react-select'
 import Container from '../Container'
 
+import * as filestack from 'filestack-js'
+const client = filestack.init('AYoVZLJZuQ2GNd6qd87SYz')
+
 class ProfileEdit extends React.Component {
   constructor() {
     super()
@@ -12,13 +15,17 @@ class ProfileEdit extends React.Component {
         username: '',
         email: '',
         password: '',
-        passwordConfirmation: ''
+        passwordConfirmation: '',
+        name: ''
       },
       error: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
+    this.updateState = this.updateState.bind(this)
+    this.openModal = this.openModal.bind(this)
+
   }
 
   componentDidMount() {
@@ -41,8 +48,9 @@ class ProfileEdit extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    axios.put(`/api/user/${this.props.match.params.id}`, this.state.data)
-      .then(() => this.props.history.push('/profilePage'))
+    const data = {...this.state.data, image: this.state.image}
+    axios.put(`/api/user/${this.props.match.params.id}`, data)
+      .then(() => this.props.history.push(`user/${this.props.match.params.id}/edit`))
       .catch(() => this.setState({ error: 'Invalid Input'}))
   }
 
@@ -52,7 +60,33 @@ class ProfileEdit extends React.Component {
     this.setState({ data })
   }
 
+  openModal() {
+    const options = {
+      fromSources: ['local_file_system','instagram','facebook'],
+      accept: ['image/*'],
+      transformations: {
+        crop: true,
+        circle: true,
+        rotate: true
+      },
+      onFileUploadFinished: (file) => {
+        this.setState({ image: file.url })
+      },
+      onFileUploadFailed: (file, error) => {
+        console.log('file', file)
+        console.log('error', error)
+      }
+    }
+    client.picker(options).open()
+  }
+
+  updateState(url){
+    console.log('updateState running')
+    console.log(url)
+  }
+
   render() {
+    console.log(this.state)
     console.log(this.state.error)
     return (
       <main className="section profile-page">
@@ -84,6 +118,34 @@ class ProfileEdit extends React.Component {
                 />
               </div>
               {this.state.error.email && <small className="help is-danger">{this.state.error.email}</small>}
+            </div>
+            <div className="field">
+              <label className="label">Password</label>
+              <div className="control">
+                <input
+                  className={`input ${this.state.error.password ? 'is-danger': ''}`}
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  value={this.state.data.password}
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.error.password && <small className="help is-danger">{this.state.error.password}</small>}
+            </div>
+            <div className="field">
+              <label className="label">Password Confirmation</label>
+              <div className="control">
+                <input
+                  className={`input ${this.state.error.password ? 'is-danger': ''}`}
+                  name="passwordConfirmation"
+                  type="password"
+                  placeholder="Password Confirmation"
+                  value={this.state.data.passwordConfirmation}
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.error.passwordConfirmation && <small className="help is-danger">{this.state.error.passwordConfirmation}</small>}
             </div>
             <div className="field">
               <label className="label">Full Name</label>
@@ -125,49 +187,25 @@ class ProfileEdit extends React.Component {
               </div>
               {this.state.error.bio && <small className="help is-danger">{this.state.error.bio}</small>}
             </div>
-            <div className="field">
-              <label className="label">Profile Image</label>
-              <Container className="button is-rounded is-warning" />
-            </div>
 
             <div className="field">
-              <label className="label">Password</label>
-              <div className="control">
-                <input
-                  className={`input ${this.state.error.password ? 'is-danger': ''}`}
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  value={this.state.data.password}
-                  onChange={this.handleChange}
-                />
-              </div>
-              {this.state.error.password && <small className="help is-danger">{this.state.error.password}</small>}
+              <label className="label">Profile Image</label>
+              {!this.state.image ?
+                <Container openModal={this.openModal} className="button is-info is-rounded" />
+                :
+                <img src={this.state.image}/>
+              }
             </div>
             <div className="field">
-              <label className="label">Password Confirmation</label>
-              <div className="control">
-                <input
-                  className={`input ${this.state.error.password ? 'is-danger': ''}`}
-                  name="passwordConfirmation"
-                  type="password"
-                  placeholder="Password Confirmation"
-                  value={this.state.data.passwordConfirmation}
-                  onChange={this.handleChange}
+              <label className="label">Categories</label>
+              <div>
+                <Select
+                  options={this.state.categories}
+                  onChange={this.handleSelect}
+                  isMulti
+                  className="basic-multi-select"
+                  classNamePrefix="select"
                 />
-              </div>
-              <div className="field">
-                <br />
-                <label className="label">Categories (required)</label>
-                <div>
-                  <Select
-                    options={this.state.categories}
-                    onChange={this.handleSelect}
-                    isMulti
-                    className="basic-multi-select"
-                    classNamePrefix="select"
-                  />
-                </div>
               </div>
             </div>
             <button className="button bottom-margin pin-button is-rounded">Save</button>
