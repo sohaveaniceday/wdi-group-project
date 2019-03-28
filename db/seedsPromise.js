@@ -521,6 +521,15 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'categories': [categories[5]._id,categories[3]._id,categories[63]._id,categories[89]._id,categories[69]._id,categories[61]._id,categories[58]._id,categories[62]._id,categories[67]._id,categories[56]._id]
           },
           {
+            'restaurantName': 'Bottega Prelibato',
+            'reviewHeadline': 'Italian Restaurant',
+            'reviewText': 'Casual Italian with a rustic-meets-industrial decor, place-mat menus and shelves of Italian goods.',
+            'rating': 2,
+            'image': 'https://static1.squarespace.com/static/55ffd803e4b0d089371453b0/56047169e4b0fd989ca3535e/5604728ee4b075ee2ef8494c/1443132047366/Bottega-Prelibato-Lighter---52.jpg',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[65]._id,categories[76]._id,categories[77]._id,categories[57]._id,categories[58]._id,categories[86]._id,categories[84]._id,categories[91]._id,categories[82]._id,categories[70]._id]
+          },
+          {
             'restaurantName': 'Magic Falafel',
             'reviewHeadline': 'Great for veggies',
             'reviewText': 'Very tasty Falafel, repeat for sure!',
