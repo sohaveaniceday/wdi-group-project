@@ -115,7 +115,7 @@ class UserShow extends React.Component {
                 {(this.state.data.friends.some(checkFriend)) && checkRequested(this.state.data.friends) &&
                   <a className="button is-rounded is-pulled-right pin-button" onClick={this.handleSubmit}>
                     <span className="icon">
-                      <i className="fas fa-check-circle"></i>
+                      <i className="fas fa-check-circle§"></i>
                     </span>
                     <span>Accept Request</span>
                   </a>
