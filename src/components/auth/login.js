@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 import Auth from '../../lib/auth'
-
+// import {Animated} from 'react-animated-css'
 
 class Login extends React.Component {
   constructor() {
@@ -39,7 +39,7 @@ class Login extends React.Component {
     return (
       <main className="section profile-page hero is-fullheight">
         <div className="container margin-maker">
-          <div className="extra-padding has-background-white margin-topbottom curve-border">
+          <div className="input-max extra-padding has-background-white margin-topbottom curve-border">
             <form onSubmit={this.handleSubmit}>
               <h2 className="title">Login</h2>
               <div className="field">
