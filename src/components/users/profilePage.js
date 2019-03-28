@@ -80,7 +80,7 @@ class ProfilePage extends React.Component {
                     <img src={user.image} alt={user.username} className="curve-border"/>
                   </figure>
                   <br />
-                  <h4 className="title is-4">{user.name}</h4>
+                  <h4 className="title is-3">{user.name}</h4>
                   <hr />
                   <h4 className="title is-4">Location</h4>
                   <p>{user.location}</p>
