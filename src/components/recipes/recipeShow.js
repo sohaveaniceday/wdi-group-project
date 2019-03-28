@@ -160,9 +160,9 @@ class recipeShow extends React.Component {
     const { likes } = this.state.recipe
 
     return(
-      <main className="section">
+      <main className="section recipe-page">
         <div className="container margin-maker">
-          <div className="columns is-vcentered no-margin">
+          <div className="columns is-vcentered has-background-white margin-topbottom curve-border">
             <div className="column is-half">
               <h2 className="custom-title">{recipe.name}<br /></h2>Created by <Link to={`/user/${recipe.user._id}`}>{recipe.user.username}</Link> on {moment(recipe.createdAt).format('Do MMMM YYYY')} at {moment(recipe.createdAt).format('hh:mm')}
               <div>
@@ -203,60 +203,69 @@ class recipeShow extends React.Component {
               }
             </div>
           </div>
-          <hr className="bottom-margin" />
-          <div className="columns">
+          <div className="columns is-multiline">
             <div className="column is-one-third">
-              <figure className="image">
-                <img src={recipe.image} alt={recipe.name} />
-              </figure>
+              <div className="extra-padding has-background-white curve-border">
+                <figure className="image">
+                  <img src={recipe.image} alt={recipe.name} className="curve-border" />
+                </figure>
+                <br/>
+                <h4 className="title is-5">Description</h4>
+                <p>“{recipe.description}”</p>
+                <hr />
+                <h4 className="title is-4">Categories</h4>
+                <div>{recipe.categories.map((category, i) => (
+                  <span key={i}>{category.name}, </span>))}</div>
+              </div>
             </div>
-            <div className="column is-two-thirds">
-              <h4 className="title is-5">Description</h4>
-              <p>“{recipe.description}”</p>
-              <hr />
-              <h4 className="title is-4">Ingredients</h4>
-              <p className="p_wrap">{recipe.ingredients}</p>
-              <hr />
-              <h4 className="title is-4">Method</h4>
-              <p className="p_wrap">{recipe.method}</p>
-              <hr />
-              <h4 className="title is-4">Categories</h4>
-              <div>{recipe.categories.map((category, i) => (
-                <span key={i}>{category.name}, </span>))}</div>
-              {this.isOwner() && <div><br /><hr /></div>}
-              {this.isOwner() && <a className="button is-warning is-rounded" href={`/review/${recipe._id}/edit`}>
-                <span className="icon">
-                  <i className="fas fa-pencil-alt"></i>
-                </span>
-                <span>Edit</span>
-              </a>}
-              {this.isOwner() && <a className="button is-danger is-rounded" onClick={this.handleDelete}>
-                <span className="icon">
-                  <i className="fas fa-trash-alt"></i>
-                </span>
-                <span>Delete</span>
-              </a>}
-              <hr />
-              <h4 className="title is-4">Comments</h4>
-              <form onSubmit={this.handleSubmit}>
-                <div className="field">
-                  <label className="label">Make Comment</label>
-                  <div className="control">
-                    <textarea cols='60' rows='3'
-                      className={`textarea text-top is-rounded ${errors.text ? 'is-danger': ''}`}
-                      name="text"
-                      placeholder="Comment"
-                      onChange={this.handleChange}
-                      value={data.text || ''}
-                    />
+            <div className="column is-one-third has-text-centered">
+              <div className="extra-padding has-background-white curve-border">
+                <h4 className="title is-4">Ingredients</h4>
+                <p className="p_wrap">{recipe.ingredients}</p>
+              </div>
+            </div>
+            <div className="column is-one-third has-text-centered">
+              <div className="extra-padding has-background-white curve-border">
+                <h4 className="title is-4">Method</h4>
+                <p className="p_wrap">{recipe.method}</p>
+                {this.isOwner() && <div><br /><hr /></div>}
+                {this.isOwner() && <a className="button is-warning is-rounded" href={`/review/${recipe._id}/edit`}>
+                  <span className="icon">
+                    <i className="fas fa-pencil-alt"></i>
+                  </span>
+                  <span>Edit</span>
+                </a>}
+                {this.isOwner() && <a className="button is-danger is-rounded" onClick={this.handleDelete}>
+                  <span className="icon">
+                    <i className="fas fa-trash-alt"></i>
+                  </span>
+                  <span>Delete</span>
+                </a>}
+              </div>
+            </div>
+
+            <div className="column is-12">
+              <div className="extra-padding has-background-white curve-border">
+                <h4 className="title is-4">Comments</h4>
+                <form onSubmit={this.handleSubmit}>
+                  <div className="field">
+                    <label className="label">Make Comment</label>
+                    <div className="control">
+                      <textarea cols='60' rows='3'
+                        className={`textarea text-top is-rounded ${errors.text ? 'is-danger': ''}`}
+                        name="text"
+                        placeholder="Comment"
+                        onChange={this.handleChange}
+                        value={data.text || ''}
+                      />
+                    </div>
+                    {errors.restaurantName && <small className="help is-danger">{errors.restaurantName}</small>}
                   </div>
-                  {errors.restaurantName && <small className="help is-danger">{errors.restaurantName}</small>}
-                </div>
-                <button className="button is-info is-rounded">Submit</button>
-              </form>
-              <br />
-              <div>{recipe.comments.map((comment, i) => (
-                <div key={i}><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong> on {moment(comment.user.createdAt).format('Do MMMM YYYY')} at {moment(comment.user.createdAt).format('hh:mm')}</p><hr /></div>))}</div>
+                  <button className="button is-info is-rounded">Submit</button>
+                </form>
+                <div>{recipe.comments.map((comment, i) => (
+                  <div key={i}><hr /><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong> on {moment(comment.user.createdAt).format('Do MMMM YYYY')} at {moment(comment.user.createdAt).format('hh:mm')}</p></div>))}</div>
+              </div>
             </div>
           </div>
         </div>

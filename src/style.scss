@@ -14,8 +14,9 @@
   font-family: 'Raleway', sans-serif;
 }
 
-.news-feed, .profile-page {
+.news-feed, .profile-page, .recipe-page, .review-page, .pinned-page, .search-page {
   background-color: rgba(194, 77, 44, 0.1);
+  background-size:100% 100%;
 }
 
 .navbar {
@@ -40,7 +41,7 @@
 
 .footer {
   width:100%;
-  height: 78px;
+  height: 60px;
   // background-color: hsl(171, 100%, 41%);
   // background-color: rgb(255, 127, 0);
   background-color: rgb(194, 77, 44);
@@ -72,6 +73,10 @@ a {
   margin: 45px;
 }
 
+.small-margin-maker {
+  margin: 20px;
+}
+
 .extra-padding {
   padding: 20px;
 }
@@ -80,17 +85,34 @@ a {
   margin: 0 0 60px 0;
 }
 
+.top-margin {
+  margin: 30px 0 0 0;
+}
+
 .no-margin {
   padding: 0;
   margin: 0;
+}
+
+.small-margin-bottom {
+  margin: 0 0 30px 0;
 }
 
 .margin-topbottom {
   margin: 20px 0;
 }
 
+.margin-sides {
+  margin: 0 20px 0 0;
+}
+
 .small-margin {
   margin: 5px 0 0 0;
+}
+
+.curve-border,.card,.button, button {
+  border-radius: 5px;
+  box-shadow: 0 1px 5px;
 }
 
 .custom-title {
@@ -110,11 +132,14 @@ a {
 }
 
 .pin-button {
-  background-color: rgb(237, 69, 70);
+  background-color: rgb(230, 77, 44);
   color: white;
   &:hover {
     color: white;
   }
+  &:not(:hover) {
+  color: white;
+}
 }
 
 .tile {

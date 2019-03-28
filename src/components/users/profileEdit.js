@@ -55,7 +55,7 @@ class ProfileEdit extends React.Component {
   render() {
     console.log(this.state.error)
     return (
-      <main className="section">
+      <main className="section profile-page">
         <div className="container margin-maker">
           <form onSubmit={this.handleSubmit}>
             <h2 className="title">Edit Profile</h2>
@@ -127,9 +127,9 @@ class ProfileEdit extends React.Component {
             </div>
             <div className="field">
               <label className="label">Profile Image</label>
-              <Container className="button is-info is-rounded" />
+              <Container className="button is-rounded is-warning" />
             </div>
-            
+
             <div className="field">
               <label className="label">Password</label>
               <div className="control">
@@ -170,7 +170,7 @@ class ProfileEdit extends React.Component {
                 </div>
               </div>
             </div>
-            <button className="button is-info bottom-margin">Save</button>
+            <button className="button bottom-margin pin-button is-rounded">Save</button>
           </form>
         </div>
       </main>

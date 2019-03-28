@@ -11,7 +11,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           <label className="label">Restaurant Name (required)</label>
           <div className="control">
             <input
-              className={`input is-rounded ${errors.restaurantName ? 'is-danger': ''}`}
+              className={`input ${errors.restaurantName ? 'is-danger': ''}`}
               name="restaurantName"
               placeholder="Restaurant Name"
               onChange={handleChange}
@@ -37,7 +37,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           <label className="label">Review Headline</label>
           <div className="control">
             <input
-              className={`input is-rounded ${errors.reviewHeadline ? 'is-danger': ''}`}
+              className={`input ${errors.reviewHeadline ? 'is-danger': ''}`}
               name="reviewHeadline"
               placeholder="Review Headline"
               onChange={handleChange}
@@ -50,7 +50,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           <label className="label">Review</label>
           <div className="control">
             <input
-              className={`input is-rounded${errors.reviewText ? 'is-danger': ''}`}
+              className={`input${errors.reviewText ? 'is-danger': ''}`}
               name="reviewText"
               placeholder="Review"
               onChange={handleChange}

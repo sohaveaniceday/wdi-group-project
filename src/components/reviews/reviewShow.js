@@ -134,9 +134,9 @@ class reviewShow extends React.Component {
     const { likes } = this.state.review
 
     return(
-      <main className="section">
+      <main className="section review-page">
         <div className="container margin-maker">
-          <div className="columns is-vcentered">
+          <div className="columns is-vcentered has-background-white margin-topbottom curve-border">
             <div className="column is-half">
               <h2 className="custom-title">{review.restaurantName}<br /></h2>Created by <Link to={`/user/${review.user._id}`}>{review.user.username}</Link> on {moment(review.createdAt).format('Do MMMM YYYY')} at {moment(review.createdAt).format('hh:mm')}
               {likes && likes.some(checkLikes) &&
@@ -175,59 +175,61 @@ class reviewShow extends React.Component {
               }
             </div>
           </div>
-          <hr />
-          <div className="columns">
+          <div className="columns is-multiline">
             <div className="column is-one-third">
-              <figure className="image">
-                <img src={review.image} alt={review.restaurantName} />
-              </figure>
+              <div className="extra-padding has-background-white curve-border">
+                <figure className="image">
+                  <img src={review.image} alt={review.restaurantName} />
+                </figure>
+                <br/>
+                <h4 className="title is-4">Categories</h4>
+                <div>{review.categories.map((category, i) => (
+                  <span key={i}>{category.name}, </span>))}</div>
+              </div>
             </div>
             <div className="column is-two-thirds">
-              <h4 className="title is-4">{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}</h4>
-              <hr />
-              <h4 className="title is-4">Review Headline</h4>
-              <p>“{review.reviewHeadline}”</p>
-              <hr />
-              <h4 className="title is-4">Review</h4>
-              <p>{review.reviewText}</p>
-              <hr />
-              <h4 className="title is-4">Categories</h4>
-              <div>{review.categories.map((category, i) => (
-                <span key={i}>{category.name}, </span>))}</div>
-              {this.isOwner() && <div><hr /></div>}
-              {this.isOwner() && <a className="button is-warning is-rounded" href={`/review/${review._id}/edit`}>
-                <span className="icon">
-                  <i className="fas fa-pencil-alt"></i>
-                </span>
-                <span>Edit</span>
-              </a>}
-              {this.isOwner() && <a className="button is-danger is-rounded" onClick={this.handleDelete}>
-                <span className="icon">
-                  <i className="fas fa-trash-alt"></i>
-                </span>
-                <span>Delete</span>
-              </a>}
-              <hr />
-              <h4 className="title is-4">Comments</h4>
-              <form onSubmit={this.handleSubmit}>
-                <div className="field">
-                  <label className="label">Make Comment</label>
-                  <div className="control">
-                    <textarea cols='60' rows='3'
-                      className={`textarea text-top is-rounded ${errors.text ? 'is-danger': ''}`}
-                      name="text"
-                      placeholder="Comment"
-                      onChange={this.handleChange}
-                      value={data.text || ''}
-                    />
+              <div className="extra-padding has-background-white curve-border">
+                <h4 className="title is-3">Review</h4>
+                <h4 className="title is-4">{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}</h4>
+                <p className="title is-6">“{review.reviewHeadline}”</p>
+                <p>{review.reviewText}</p>
+                {this.isOwner() && <div><hr /></div>}
+                {this.isOwner() && <a className="button is-warning is-rounded" href={`/review/${review._id}/edit`}>
+                  <span className="icon">
+                    <i className="fas fa-pencil-alt"></i>
+                  </span>
+                  <span>Edit</span>
+                </a>}
+                {this.isOwner() && <a className="button is-danger is-rounded" onClick={this.handleDelete}>
+                  <span className="icon">
+                    <i className="fas fa-trash-alt"></i>
+                  </span>
+                  <span>Delete</span>
+                </a>}
+              </div>
+            </div>
+            <div className="column is-full">
+              <div className="extra-padding has-background-white curve-border">
+                <h4 className="title is-4">Comments</h4>
+                <form onSubmit={this.handleSubmit}>
+                  <div className="field">
+                    <label className="label">Make Comment</label>
+                    <div className="control">
+                      <textarea cols='60' rows='3'
+                        className={`textarea text-top is-rounded ${errors.text ? 'is-danger': ''}`}
+                        name="text"
+                        placeholder="Comment"
+                        onChange={this.handleChange}
+                        value={data.text || ''}
+                      />
+                    </div>
+                    {errors.restaurantName && <small className="help is-danger">{errors.restaurantName}</small>}
                   </div>
-                  {errors.restaurantName && <small className="help is-danger">{errors.restaurantName}</small>}
-                </div>
-                <button className="button is-info is-rounded">Submit</button>
-              </form>
-              <br />
-              <div>{review.comments.map((comment, i) => (
-                <div key={i}><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong> on {moment(comment.user.createdAt).format('Do MMMM YYYY')} at {moment(comment.user.createdAt).format('hh:mm')}</p><hr /></div>))}</div>
+                  <button className="button is-info is-rounded">Submit</button>
+                </form>
+                <div>{review.comments.map((comment, i) => (
+                  <div key={i}><hr /><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong> on {moment(comment.user.createdAt).format('Do MMMM YYYY')} at {moment(comment.user.createdAt).format('hh:mm')}</p></div>))}</div>
+              </div>
             </div>
           </div>
         </div>

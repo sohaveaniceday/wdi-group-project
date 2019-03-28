@@ -37,7 +37,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <main className="section">
+      <main className="section profile-page hero is-fullheight">
         <div className="container margin-maker">
           <form onSubmit={this.handleSubmit}>
             <h2 className="title">Login</h2>
@@ -67,7 +67,7 @@ class Login extends React.Component {
               </div>
               {this.state.error && <small className="help is-danger">{this.state.error}</small>}
             </div>
-            <button className="button is-info is-rounded">Login</button>
+            <button className="button pin-button is-rounded">Login</button>
           </form>
         </div>
       </main>
