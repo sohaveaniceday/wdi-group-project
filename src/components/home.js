@@ -15,23 +15,29 @@ class Home extends Component {
 
           {/*Hero content: will be in the middle*/}
 
-          <div className="hero-body">
+          <div className="hero-body ">
             {/*}<div className="container>"
               <p clasName= "img is-128x128">
                 <img className="is-rounded" src="../assets/Munch_logo.png"/>
               </p>*/}
+            <div>
+              <div className=" column margin-maker craving subtitle is-uppercase has-text-weight-bold has-text-black" >
+              Munch
+              </div>
+              <div className=" column margin-maker is-shadow">
+                <h1 className="craving subtitle is-uppercase has-text-weight-bold has-text-black">
+          What are you craving?
+                </h1>
+              </div>
+            </div>
             <div className="">
               <div className="tile box-shadow column-is-two-thirds bottom-margin is-5by4">
-                <video  width="640" height="480" controls autoPlay>
+                <video  width="640" height="480" controls="hidden" autoPlay>
                   <source className="is-rounded" src="../assets/video/munch.mp4" type="video/mp4"/>
                 </video>
               </div>
             </div>
-            <div className="tile column margin-maker is-shadow">
-              <h1 className="subtitle is-uppercase has-text-weight-bold has-text-black">
-        What are you craving?
-              </h1>
-            </div>
+
           </div>
 
         </section>)
