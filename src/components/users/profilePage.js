@@ -81,21 +81,21 @@ class ProfilePage extends React.Component {
                   </figure>
                   <br />
                   <h4 className="title is-3">{user.name}</h4>
-                  {(friends.some(friend => friend.status === 'pending')) || (friends.some(friend => friend.status === 'accepted')) || (friends.some(friend => friend.status === 'requested')) && <hr />}
+                  <hr />
                   {(friends.some(friend => friend.status === 'pending')) && <h4 className="title is-6">Pending Friend Requests</h4>}
                   {friends && filterPending(friends).map((friend, i) => (
                     <div key={i}><span><Link to={`/user/${friend._id}`}>{friend.friend.name}  </Link><button className="button is-small is-rounded pin-button" onClick={() => this.handleSubmit(friend.friend)}>
                   Accept
                     </button><br /></span></div>))}
-                  {(friends.some(friend => friend.status === 'accepted')) && (friends.some(friend => friend.status === 'pending')) && <div><hr /></div>}
+                  {(friends.some(friend => friend.status === 'pending')) && <hr />}
                   {(friends.some(friend => friend.status === 'accepted')) && <h4 className="title is-6">Friends</h4>}
                   {friends && filterAccepted(friends).map((friend, i) => (
                     <div key={i}><Link to={`/user/${friend._id}`}>{friend.friend.name}<br /></Link></div>))}
-                  {(friends.some(friend => friend.status === 'requested')) && (friends.some(friend => friend.status === 'accepted')) && <div><hr /></div>}
+                  {(friends.some(friend => friend.status === 'accepted')) && <div><hr /></div>}
                   {(friends.some(friend => friend.status === 'requested')) && <h4 className="title is-6">Requested Friends</h4>}
                   {friends && filterRequested(friends).map((friend, i) => (
                     <div key={i}><Link to={`/user/${friend._id}`}>{friend.friend.name}<br /></Link></div>))}
-                  <hr />
+                  {(friends.some(friend => friend.status === 'requested')) && <div><hr /></div>}
                   <h4 className="title is-4">Location</h4>
                   <p>{user.location}</p>
                   <hr />
