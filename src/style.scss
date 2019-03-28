@@ -9,28 +9,34 @@
 }
 
 .navbar {
-  background: rgb(194, 77, 44);
-  position: fixed;
-  width: 100%;
-  .navbar-brand {
-  &:hover {
-    background: rgb(180, 60, 30);
-    color: white;
+      width: 100%;
+    span {
+      color: white;
     }
-  }
-  span {
-    color: white;
-  }
+    background: rgb(194, 77, 44);
+  .in-brand {
+      padding: 0 40px;
+    &:hover {
+        color: white;
+        background: rgb(180, 60, 30);
+        }
+    }
+  .out-brand {
+    &:hover {
+        color: white;
+        background: rgb(180, 60, 30);
+        }
+    }
+    .navbar-item {
+      padding: 0 20px;
+      color: rgb(255,255,255);
+    &:hover {
+      background: rgb(180, 60, 30);
+      color: white;
+      }
+    }
 }
 
-.nav-title {
-  color: white;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
-  flex-grow:1;
-}
 
 .footer {
   width:100%;
@@ -59,15 +65,21 @@
   background-size: cover;
   background-position: center;
   .home-message {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
     color: rgba(0, 0, 0, 0.8);
     // color: black;
     box-shadow: 0 0px 5px;
     max-width: 300px;
+    min-width: 300px;
     height: 300px;
-    padding: 120px 0;
-    text-align: center;
+    padding: 60px 30px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
   p {
     color: white;
@@ -84,14 +96,13 @@ a {
 //     opacity: 0.2
 // }
 
-.offeo {
-}
+
 .margin-top {
     margin: 200px
 }
 
 .margin-maker {
-  margin: 45px;
+  margin: 0 45px 70px 45px;
 }
 
 
@@ -99,9 +110,9 @@ a {
   margin: 20px;
 }
 
-.input {
-  width: 300px;
-}
+// .input {
+//   width: 300px;
+// }
 
 .input-max {
   max-width: 500px;
@@ -128,7 +139,7 @@ a {
 }
 
 .margin-topbottom {
-  margin: 20px 0;
+  margin: 0 0 20px 0;
 }
 
 .margin-sides {
@@ -142,6 +153,10 @@ a {
 .curve-border,.card,.button, button {
   border-radius: 5px;
   box-shadow: 0 0px 5px;
+}
+
+.is-warning {
+  box-shadow: 0 0px 0px;
 }
 
 .custom-title {
@@ -193,30 +208,6 @@ a {
   }
 }
 
-.navbar-item {
-  &:hover {
-    background: rgb(180, 60, 30);
-    color: white;
-  }
-  color: rgb(255,255,255);
-  padding: 0 30px;
-}
-.nav-active {
-  color: rgb(194, 77, 44);
-  &:hover {
-    background: rgb(194, 77, 44);
-    color: white;
-  }
-}
-
-.nav-inactive {
-  color: white;
-  &:hover {
-    background: rgb(194, 77, 44);
-    // color: white;
-  }
-}
-
 @media only screen and (max-width: 769px) {
 
 .pin-column, .edit-column {
@@ -228,9 +219,17 @@ a {
   }
 }
 //
-// @media only screen and (max-width: 1216px) {
-//
-// * {
-//   background-color: purple
-// }
-// }
+@media only screen and (max-width: 1088px) {
+
+  .navbar {
+        width: 100%;
+      background: rgb(194, 77, 44);
+      .navbar-item {
+        color: rgb(180, 60, 30);
+        &:hover {
+          background: rgb(240, 240, 240);
+          color: rgb(180, 60, 30);
+          }
+    }
+  }
+}

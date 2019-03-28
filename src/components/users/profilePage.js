@@ -113,7 +113,7 @@ class ProfilePage extends React.Component {
                   <h4 className="title is-3">Reviews</h4>
                   {user.reviews && user.reviews.map((review, i) => (
                     <Link key={i} to={`/review/${review._id}`}><span className="title is-6">{review.restaurantName}</span><br />“{review.reviewHeadline}”<br />{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}<br /><br /></Link>))}
-                  {!(user.reviews.length > 0) && <span><Link to="/review/new" className="button is-primary is-rounded">Create a Review</Link></span>}
+                  {!(user.reviews.length > 0) && <span><Link to="/review/new" className="button pin-button is-rounded">Create a Review</Link></span>}
                 </div>
               </div>
               <div className="column is-one-third has-text-centered">
@@ -121,7 +121,7 @@ class ProfilePage extends React.Component {
                   <h4 className="title is-3">Recipes</h4>
                   {user.recipes && user.recipes.map((recipe, i) => (
                     <Link key={i} to={`/recipe/${recipe._id}`}><span className="title is-6">{recipe.name}</span><br />“{recipe.description}”<br /><br /></Link>))}
-                  {!(user.recipes.length > 0) && <Link to="/recipe/new" className="button is-primary is-rounded">Create a Recipe</Link>}
+                  {!(user.recipes.length > 0) && <Link to="/recipe/new" className="button pin-button is-rounded">Create a Recipe</Link>}
                 </div>
               </div>
             </div>
