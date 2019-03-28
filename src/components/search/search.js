@@ -54,23 +54,24 @@ class Search extends React.Component {
     return (
       <main className="section search-page hero is-fullheight">
         <div className="container margin-maker">
-          <form onSubmit={this.handleSubmit}>
-            <div className="field has-text-centered">
-              <div className="control">
-                <input
-                  className='input'
-                  name="search"
-                  placeholder="Search restuarants, recipes, ingredients and categories"
-                  onChange={this.handleChange}
-                  value={data.search || ''}
-                />
+          <div className="extra-padding has-background-white margin-topbottom curve-border">
+            <form onSubmit={this.handleSubmit}>
+              <div className="field has-text-centered">
+                <div className="control">
+                  <input
+                    className='input'
+                    name="search"
+                    placeholder="Search restuarants, recipes, ingredients and categories"
+                    onChange={this.handleChange}
+                    value={data.search || ''}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="has-text-centered">
-              <button className="button pin-button is-rounded">Search</button>
-            </div>
-          </form>
-          <hr />
+              <div className="has-text-centered">
+                <button className="button pin-button is-rounded">Search</button>
+              </div>
+            </form>
+          </div>
           <div className="columns is-mobile is-multiline articles">
             <div className="column is-hidden-mobile"></div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">

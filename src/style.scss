@@ -131,6 +131,9 @@ a {
   &:hover {
     color: white;
   }
+  &:not(:hover) {
+  color: white;
+}
 }
 
 .tile {
