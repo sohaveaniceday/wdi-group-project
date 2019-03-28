@@ -110,9 +110,9 @@ a {
   margin: 20px;
 }
 
-.input {
-  width: 300px;
-}
+// .input {
+//   width: 300px;
+// }
 
 .input-max {
   max-width: 500px;
@@ -153,6 +153,10 @@ a {
 .curve-border,.card,.button, button {
   border-radius: 5px;
   box-shadow: 0 0px 5px;
+}
+
+.is-warning {
+  box-shadow: 0 0px 0px;
 }
 
 .custom-title {
