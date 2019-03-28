@@ -28,6 +28,9 @@
     background: rgb(180, 60, 30);
     color: white;
   }
+  span {
+    color: white;
+  }
 }
   .navbar-item {
     &:hover {
@@ -36,6 +39,13 @@
     }
     color: rgb(255,255,255);
     padding: 0 30px;
+  }
+  .nav-active {
+    color: rgb(194, 77, 44);
+    &:hover {
+      background: rgb(194, 77, 44);
+      color: white;
+    }
   }
 }
 
@@ -64,6 +74,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: center;
   .home-message {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 5px;
@@ -202,3 +213,10 @@ a {
 
   }
 }
+//
+// @media only screen and (max-width: 1216px) {
+//
+// * {
+//   background-color: purple
+// }
+// }

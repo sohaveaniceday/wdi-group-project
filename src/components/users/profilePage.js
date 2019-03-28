@@ -74,7 +74,7 @@ class ProfilePage extends React.Component {
               </div>
             </div>
             <div className="columns is-multiline">
-              <div className="column is-3">
+              <div className="column is-one-third">
                 <div className="extra-padding has-background-white curve-border">
                   <figure className="image">
                     <img src={user.image} alt={user.username} className="curve-border"/>
@@ -82,36 +82,6 @@ class ProfilePage extends React.Component {
                   <br />
                   <h4 className="title is-3">{user.name}</h4>
                   <hr />
-                  <h4 className="title is-4">Location</h4>
-                  <p>{user.location}</p>
-                  <hr />
-                  <h4 className="title is-4">Bio</h4>
-                  <p>{user.bio}</p>
-                  <hr />
-                  <h4 className="title is-4">Categories</h4>
-                  {user.categories && <p>{user.categories.map((category, i) => (
-                    <span key={i}>{category.name}, </span>))}
-                  </p>}
-                </div>
-              </div>
-              <div className="column is-3 has-text-centered">
-                <div className="extra-padding has-background-white curve-border">
-                  <h4 className="title is-3">Reviews</h4>
-                  {user.reviews && user.reviews.map((review, i) => (
-                    <Link key={i} to={`/review/${review._id}`}><span className="title is-6">{review.restaurantName}</span><br />“{review.reviewHeadline}”<br />{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}<br /><br /></Link>))}
-                  {!(user.reviews.length > 0) && <span><Link to="/review/new" className="button is-primary is-rounded">Create a Review</Link></span>}
-                </div>
-              </div>
-              <div className="column is-4 has-text-centered">
-                <div className="extra-padding has-background-white curve-border">
-                  <h4 className="title is-3">Recipes</h4>
-                  {user.recipes && user.recipes.map((recipe, i) => (
-                    <Link key={i} to={`/recipe/${recipe._id}`}><span className="title is-6">{recipe.name}</span><br />“{recipe.description}”<br /><br /></Link>))}
-                  {!(user.recipes.length > 0) && <Link to="/recipe/new" className="button is-primary is-rounded">Create a Recipe</Link>}
-                </div>
-              </div>
-              <div className="column is-2 has-text-centered friends-column">
-                <div className="extra-padding has-background-white curve-border">
                   {(friends.some(friend => friend.status === 'pending')) && <h4 className="title is-6">Pending Friend Requests</h4>}
                   {friends && filterPending(friends).map((friend, i) => (
                     <div key={i}><span><Link to={`/user/${friend._id}`}>{friend.friend.name}  </Link><button className="button is-small is-rounded pin-button" onClick={() => this.handleSubmit(friend.friend)}>
@@ -125,11 +95,33 @@ class ProfilePage extends React.Component {
                   {(friends.some(friend => friend.status === 'requested')) && <h4 className="title is-6">Requested Friends</h4>}
                   {friends && filterRequested(friends).map((friend, i) => (
                     <div key={i}><Link to={`/user/${friend._id}`}>{friend.friend.name}<br /></Link></div>))}
+                  <hr />
+                  <h4 className="title is-4">Location</h4>
+                  <p>{user.location}</p>
+                  <hr />
+                  <h4 className="title is-4">Bio</h4>
+                  <p>{user.bio}</p>
+                  <hr />
+                  <h4 className="title is-4">Categories</h4>
+                  {user.categories && <p>{user.categories.map((category, i) => (
+                    <span key={i}>{category.name}, </span>))}
+                  </p>}
                 </div>
               </div>
-              <div className="column is-multiline">
-                <div className="column is-one-fifth">
-
+              <div className="column is-one-third has-text-centered">
+                <div className="extra-padding has-background-white curve-border">
+                  <h4 className="title is-3">Reviews</h4>
+                  {user.reviews && user.reviews.map((review, i) => (
+                    <Link key={i} to={`/review/${review._id}`}><span className="title is-6">{review.restaurantName}</span><br />“{review.reviewHeadline}”<br />{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}<br /><br /></Link>))}
+                  {!(user.reviews.length > 0) && <span><Link to="/review/new" className="button is-primary is-rounded">Create a Review</Link></span>}
+                </div>
+              </div>
+              <div className="column is-one-third has-text-centered">
+                <div className="extra-padding has-background-white curve-border">
+                  <h4 className="title is-3">Recipes</h4>
+                  {user.recipes && user.recipes.map((recipe, i) => (
+                    <Link key={i} to={`/recipe/${recipe._id}`}><span className="title is-6">{recipe.name}</span><br />“{recipe.description}”<br /><br /></Link>))}
+                  {!(user.recipes.length > 0) && <Link to="/recipe/new" className="button is-primary is-rounded">Create a Recipe</Link>}
                 </div>
               </div>
             </div>
