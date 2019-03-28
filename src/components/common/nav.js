@@ -47,8 +47,8 @@ class Nav extends React.Component {
             <span className="icon has-text-white icon is-large">
               <i className="fas fa-home"></i>
             </span>
-            <h1 className="title is-4 nav-title">MUNCH</h1>
           </Link>}
+          <h1 className="title is-4 nav-title">MUNCH</h1>
           <a role="button"
             className={`navbar-burger ${this.state.navbarOpen ? 'is-active' : ''}`}
             onClick={this.toggleNavbar}
