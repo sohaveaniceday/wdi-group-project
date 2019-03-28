@@ -11,110 +11,23 @@ class Home extends Component {
       return (<Redirect to="/newsfeed" />)
     } else {
       return (
-        <section className="hero is-white is-fullheight">
-
-          {/*Hero content: will be in the middle*/}
-
-          <div className="hero-body">
-            {/*}<div className="container>"
-              <p clasName= "img is-128x128">
-                <img className="is-rounded" src="../assets/Munch_logo.png"/>
-              </p>*/}
-
-            <div className="container has-text-centered">
-              <h1 className="subtitle is-uppercase has-text-weight-bold has-text-black">
-        What are you craving?
-              </h1>
+        <section className="hero is-fullheight-with-navbar home">
+          <div className="hero-body is-vcentered">
+            <div className="container is-vcentered home-message has-text-centered is-centered">
+              <p className="title is-vcentered is-3 has-text-black">
+                Munch
+              </p>
+              <p className="subtitle is-vcentered has-text-black">
+                An app
+              </p>
             </div>
           </div>
-        </section>)
-
+        </section>
+      )
     }
   }
 }
 export default Home
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //       return (
@@ -143,3 +56,20 @@ export default Home
 // }
 
 // export default Home
+
+// {/*}<div className="container>"
+//   <p clasName= "img is-128x128">
+//     <img className="is-rounded" src="../assets/Munch_logo.png"/>
+//   </p>*/}
+// <div className="">
+//   <div className="tile box-shadow column-is-two-thirds bottom-margin is-5by4">
+//     <video  width="640" height="480" controls autoPlay>
+//       <source className="is-rounded" src="../assets/video/munch.mp4" type="video/mp4"/>
+//     </video>
+//   </div>
+// </div>
+// <div className="tile column margin-maker is-shadow">
+//   <h1 className="subtitle is-uppercase has-text-weight-bold has-text-black">
+// What are you craving?
+// //   </h1>
+//   </div>

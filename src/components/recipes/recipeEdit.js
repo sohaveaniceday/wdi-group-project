@@ -48,7 +48,7 @@ class RecipeEdit extends React.Component {
     const data = {...this.state.data, image: this.state.image}
     axios.put(`/api/recipes/${this.props.match.params.id}`, data,
       { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
-      .then(() => this.props.history.push(`/recipe/${this.props.match.params.id}`))
+      .then(() => this.props.history.push('/newsfeed'))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
@@ -91,7 +91,7 @@ class RecipeEdit extends React.Component {
     console.log(this.state)
     console.log(this.state.error)
     return (
-      <main className="section">
+      <main className="section recipe-page">
         <div className="container">
           <RecipeForm
             updateState={this.updateState}

@@ -46,12 +46,14 @@ class Newsfeed extends React.Component {
   render() {
     // console.log(this.state.recipeFeed)
     return (
-      <main className="section">
+      <main className="section news-feed hero is-fullheight">
         <div className="container margin-maker">
           <div className="columns is-mobile is-multiline articles">
             <div className="column is-hidden-mobile"></div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
-              <h2 className="title is-4 is-centered has-text-centered">Reviews for you</h2>
+              <div className="extra-padding has-background-white margin-topbottom curve-border">
+                <h2 className="title is-4 is-centered has-text-centered">Reviews for you</h2>
+              </div>
               {this.state.reviewFeed && this.state.reviewFeed.map(reviewFeed => (
                 <div key={reviewFeed._id} className="column">
                   <Link to={`/review/${reviewFeed._id}`} >
@@ -65,7 +67,7 @@ class Newsfeed extends React.Component {
                         </figure>
                       </div>
                       <div className="card-content">
-                        <h5 className="title is-6">{reviewFeed.reviewHeadline}</h5>
+                        <h5 className="title is-6">“{reviewFeed.reviewHeadline}“</h5>
                         <h6 className="subtitle is-6">Created by <Link to={`/user/${reviewFeed.user._id}`}>{reviewFeed.user.username}</Link><br /> at {moment(reviewFeed.createdAt).format('hh:mm')} on {moment(reviewFeed.createdAt).format('Do MMMM YYYY')}</h6>
                       </div>
                     </div>
@@ -74,7 +76,9 @@ class Newsfeed extends React.Component {
               ))}
             </div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
-              <h2 className="title is-4 is-centered has-text-centered">Recipes for you</h2>
+              <div className="extra-padding has-background-white margin-topbottom curve-border">
+                <h2 className="title is-4 is-centered has-text-centered">Recipes for you</h2>
+              </div>
               {this.state.recipeFeed && this.state.recipeFeed.map(recipeFeed => (
                 <div key={recipeFeed._id} className="column">
                   <Link to={`/recipe/${recipeFeed._id}`} >
@@ -88,7 +92,7 @@ class Newsfeed extends React.Component {
                         </figure>
                       </div>
                       <div className="card-content">
-                        <h5 className="title is-6">{recipeFeed.description}</h5>
+                        <h5 className="title is-6">“{recipeFeed.description}“</h5>
                         <h6 className="subtitle is-6">Created by <Link to={`/user/${recipeFeed.user._id}`}>{recipeFeed.user.username}</Link><br /> at {moment(recipeFeed.createdAt).format('hh:mm')} on {moment(recipeFeed.createdAt).format('Do MMMM YYYY')}</h6>
                       </div>
                     </div>

@@ -86,7 +86,7 @@ class ReviewEdit extends React.Component {
     console.log(this.state)
     console.log(this.state.error)
     return (
-      <main className="section">
+      <main className="section review-page">
         <div className="container">
           <ReviewForm
             updateState={this.updateState}

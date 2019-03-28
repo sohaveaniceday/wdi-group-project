@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 // import Auth from '../../lib/auth'
+const moment = require('moment')
+
 
 class Search extends React.Component {
   constructor() {
@@ -50,29 +52,30 @@ class Search extends React.Component {
     // console.log(search)
     console.log(this.state)
     return (
-      <main className="section">
+      <main className="section search-page hero is-fullheight">
         <div className="container margin-maker">
-          <form onSubmit={this.handleSubmit}>
-            <div className="field has-text-centered">
-              <div className="control">
-                <input
-                  className='input'
-                  name="search"
-                  placeholder="Search restuarants, recipes, ingredients and categories"
-                  onChange={this.handleChange}
-                  value={data.search || ''}
-                />
+          <div className="extra-padding has-background-white margin-topbottom curve-border">
+            <form onSubmit={this.handleSubmit}>
+              <div className="field has-text-centered">
+                <div className="control">
+                  <input
+                    className='input'
+                    name="search"
+                    placeholder="Search restuarants, recipes, ingredients and categories"
+                    onChange={this.handleChange}
+                    value={data.search || ''}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="has-text-centered">
-              <button className="button is-info">Search</button>
-            </div>
-          </form>
-          <hr />
+              <div className="has-text-centered">
+                <button className="button pin-button is-rounded">Search</button>
+              </div>
+            </form>
+          </div>
           <div className="columns is-mobile is-multiline articles">
             <div className="column is-hidden-mobile"></div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
-              {this.state.sent && <h2 className="title is-4 is-centered has-text-centered">Review Results</h2>}
+              {this.state.sent && <div className="extra-padding has-background-white margin-topbottom curve-border"><h2 className="title is-4 is-centered has-text-centered">Results for Reviews</h2></div>}
               {this.state.reviewFeed && this.state.reviewFeed.map(reviewFeed => (
                 <div key={reviewFeed._id} className="column">
                   <Link to={`/review/${reviewFeed._id}`} >
@@ -86,8 +89,8 @@ class Search extends React.Component {
                         </figure>
                       </div>
                       <div className="card-content">
-                        <h5 className="title is-6">{reviewFeed.reviewHeadline}</h5>
-                        <h6 className="subtitle is-6">{reviewFeed.user.username}</h6>
+                        <h5 className="title is-6">“{reviewFeed.reviewHeadline}“</h5>
+                        <h6 className="subtitle is-6">Created by <Link to={`/user/${reviewFeed.user._id}`}>{reviewFeed.user.username}</Link><br /> at {moment(reviewFeed.createdAt).format('hh:mm')} on {moment(reviewFeed.createdAt).format('Do MMMM YYYY')}</h6>
                       </div>
                     </div>
                   </Link>
@@ -95,7 +98,7 @@ class Search extends React.Component {
               ))}
             </div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
-              {this.state.sent && <h2 className="title is-4 is-centered has-text-centered">Recipe Results</h2>}
+              {this.state.sent && <div className="extra-padding has-background-white margin-topbottom curve-border"><h2 className="title is-4 is-centered has-text-centered">Results for Recipes</h2></div>}
               {this.state.recipeFeed && this.state.recipeFeed.map(recipeFeed => (
                 <div key={recipeFeed._id} className="column">
                   <Link to={`/recipe/${recipeFeed._id}`} >
@@ -109,8 +112,8 @@ class Search extends React.Component {
                         </figure>
                       </div>
                       <div className="card-content">
-                        <h5 className="title is-6">{recipeFeed.description}</h5>
-                        <h6 className="subtitle is-6">{recipeFeed.user.username}</h6>
+                        <h5 className="title is-6">“{recipeFeed.description}“</h5>
+                        <h6 className="subtitle is-6">Created by <Link to={`/user/${recipeFeed.user._id}`}>{recipeFeed.user.username}</Link><br /> at {moment(recipeFeed.createdAt).format('hh:mm')} on {moment(recipeFeed.createdAt).format('Do MMMM YYYY')}</h6>
                       </div>
                     </div>
                   </Link>
