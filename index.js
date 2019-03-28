@@ -5,7 +5,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 //requires bodyParser
 const bodyParser = require('body-parser')
-//requires your port number and 
+//requires your port number and
 const { dbURI, port } = require('./config/environment')
 const router = require('./config/routes')
 
@@ -25,3 +25,5 @@ app.use(('/api'), router)
 
 //Makes sure Express is listening to the local host
 app.listen(port, () => console.log(`App is listenting on port ${port}`))
+
+module.exports = app
