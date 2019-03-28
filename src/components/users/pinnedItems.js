@@ -22,7 +22,6 @@ class PinnedItems extends React.Component {
         const [ user, recipes, reviews ] = res
         console.log(user, recipes, reviews)
         console.log(user.data.user.pinnedReviews)
-        // console.log(res)
         const recipeFeed = recipes.data.filter(recipe => {
           return (user.data.user.pinnedRecipes.some(pinnedRecipe => {
             return recipe._id.includes(pinnedRecipe)
@@ -38,7 +37,7 @@ class PinnedItems extends React.Component {
   }
 
   render() {
-    // console.log(this.state.recipeFeed)
+    console.log('hello', this.state)
     return (
       <main className="section pinned-page hero is-fullheight">
         <div className="container margin-maker">
@@ -94,6 +93,7 @@ class PinnedItems extends React.Component {
                 </div>
               ))}
             </div>
+            {this.state.user && this.state.user.data.user.pinnedRecipes === [] && this.state.user.data.user.pinnedReviews === [] && <p>hello</p>}
             <div className="column is-hidden-mobile"></div>
           </div>
         </div>

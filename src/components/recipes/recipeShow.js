@@ -210,6 +210,19 @@ class recipeShow extends React.Component {
                   <img src={recipe.image} alt={recipe.name} className="curve-border" />
                 </figure>
                 <br/>
+                {this.isOwner() && <a className="button is-warning is-rounded" href={`/recipe/${recipe._id}/edit`}>
+                  <span className="icon">
+                    <i className="fas fa-pencil-alt"></i>
+                  </span>
+                  <span>Edit</span>
+                </a>}
+                {this.isOwner() && <a className="button is-danger is-rounded" onClick={this.handleDelete}>
+                  <span className="icon">
+                    <i className="fas fa-trash-alt"></i>
+                  </span>
+                  <span>Delete</span>
+                </a>}
+                {this.isOwner() && <div><br /></div>}
                 <h4 className="title is-5">Description</h4>
                 <p>“{recipe.description}”</p>
                 <hr />
@@ -228,22 +241,8 @@ class recipeShow extends React.Component {
               <div className="extra-padding has-background-white curve-border">
                 <h4 className="title is-4">Method</h4>
                 <p className="p_wrap">{recipe.method}</p>
-                {this.isOwner() && <div><br /><hr /></div>}
-                {this.isOwner() && <a className="button is-warning is-rounded" href={`/review/${recipe._id}/edit`}>
-                  <span className="icon">
-                    <i className="fas fa-pencil-alt"></i>
-                  </span>
-                  <span>Edit</span>
-                </a>}
-                {this.isOwner() && <a className="button is-danger is-rounded" onClick={this.handleDelete}>
-                  <span className="icon">
-                    <i className="fas fa-trash-alt"></i>
-                  </span>
-                  <span>Delete</span>
-                </a>}
               </div>
             </div>
-
             <div className="column is-12">
               <div className="extra-padding has-background-white curve-border">
                 <h4 className="title is-4">Comments</h4>

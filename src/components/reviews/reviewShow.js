@@ -182,18 +182,6 @@ class reviewShow extends React.Component {
                   <img src={review.image} alt={review.restaurantName} />
                 </figure>
                 <br/>
-                <h4 className="title is-4">{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}</h4>
-                <h4 className="title is-4">Categories</h4>
-                <div>{review.categories.map((category, i) => (
-                  <span key={i}>{category.name}, </span>))}</div>
-              </div>
-            </div>
-            <div className="column is-two-thirds">
-              <div className="extra-padding has-background-white curve-border">
-                <h4 className="title is-3">Review</h4>
-                <p className="title is-6">“{review.reviewHeadline}”</p>
-                <p>{review.reviewText}</p>
-                {this.isOwner() && <div><hr /></div>}
                 {this.isOwner() && <a className="button is-warning is-rounded" href={`/review/${review._id}/edit`}>
                   <span className="icon">
                     <i className="fas fa-pencil-alt"></i>
@@ -206,6 +194,18 @@ class reviewShow extends React.Component {
                   </span>
                   <span>Delete</span>
                 </a>}
+                {this.isOwner() && <div><br /></div>}
+                <h4 className="title is-4">{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}</h4>
+                <h4 className="title is-4">Categories</h4>
+                <div>{review.categories.map((category, i) => (
+                  <span key={i}>{category.name}, </span>))}</div>
+              </div>
+            </div>
+            <div className="column is-two-thirds">
+              <div className="extra-padding has-background-white curve-border">
+                <h4 className="title is-3">Review</h4>
+                <p className="title is-6">“{review.reviewHeadline}”</p>
+                <p>{review.reviewText}</p>
               </div>
             </div>
             <div className="column is-full">

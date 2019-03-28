@@ -67,7 +67,7 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           </div>*/}
 
           <div className="field">
-            <label className="label">Profile Image</label>
+            <label className="label">Recipe Image</label>
             {!image ?
               <Container openModal={openModal} className="button is-warning is-rounded" />
               :
