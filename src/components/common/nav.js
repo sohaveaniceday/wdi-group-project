@@ -61,7 +61,7 @@ class Nav extends React.Component {
         </div>
         <div className={`navbar-menu ${this.state.navbarOpen ? 'is-active' : ''}`}>
           <div className="navbar-end">
-          {Auth.isAuthenticated() && <Link to="/search" className={`navbar-item ${this.state.navbarOpen ? 'nav-active' : 'nav-inactive'}`}>Search</Link>}
+            {Auth.isAuthenticated() && <Link to="/search" className={`navbar-item ${this.state.navbarOpen ? 'nav-active' : 'nav-inactive'}`}>Search</Link>}
             {Auth.isAuthenticated() && <Link to="/pinneditems" className={`navbar-item ${this.state.navbarOpen ? 'nav-active' : 'nav-inactive'}`}>Pinned Items</Link>}
             {Auth.isAuthenticated() && <Link to="/review/new" className={`navbar-item ${this.state.navbarOpen ? 'nav-active' : 'nav-inactive'}`}>New Review</Link>}
             {Auth.isAuthenticated() && <Link to="/recipe/new" className={`navbar-item ${this.state.navbarOpen ? 'nav-active' : 'nav-inactive'}`}>New Recipe</Link>}
