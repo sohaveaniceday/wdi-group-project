@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import Auth from '../lib/auth'
 // import {Animated} from 'react-animated-css'
+import { Link } from 'react-router-dom'
+
 
 class Home extends Component {
   render(){
@@ -12,14 +14,18 @@ class Home extends Component {
     } else {
       return (
         <section className="hero is-fullheight-with-navbar home">
-          <div className="hero-body is-vcentered">
-            <div className="container is-vcentered home-message has-text-centered is-centered">
-              <p className="title is-vcentered is-3 has-text-black">
-                Munch
-              </p>
-              <p className="subtitle is-vcentered has-text-black">
-                An app
-              </p>
+          <div className="container home-message has-text-centered">
+            <p className="title is-2 has-text-black">
+              Munch
+            </p>
+            <p className="subtitle has-text-black">
+              What are you craving?
+            </p>
+            <div>
+              <Link to="/register" className="button pin-button is-rounded is-large">Register</Link>
+              <br />
+              <br />
+              <span>Already registered? <Link to="/login">Login here.</Link></span>
             </div>
           </div>
         </section>

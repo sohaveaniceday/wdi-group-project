@@ -37,18 +37,17 @@ class Nav extends React.Component {
     return (
     //nav-bar burger checks if the navbarOpen is true and adds a class to trigger it to open. Triggers the toggleNavbar function when clicked
       <nav className="navbar">
-        <div className="navbar-brand">
-          {!Auth.isAuthenticated() && <Link to="/" className="navbar-item">
+        <div className={`navbar-brand ${Auth.isAuthenticated() ? 'in-brand' : 'out-brand'}`}>
+          {!Auth.isAuthenticated() && <Link to="/" className="navbar-item nav-special">
             <span className="icon has-text-white is-large">
               <i className="fas fa-home"></i>
-            </span>
+            </span><div className="navbar-item nav-special is-hidden-mobile is-hidden-tablet-only">MUNCH</div>
           </Link>}
           {Auth.isAuthenticated() && <Link to="/newsfeed" className="navbar-item">
-            <span className="icon has-text-white icon is-large">
-              <i className="fas fa-home"></i>
+            <span className="icon has-text-white is-large nav-icon">
+              <i className="fas fa-home"></i><div className="navbar-item nav-icon is-hidden-mobile is-hidden-tablet-only">MUNCH</div>
             </span>
           </Link>}
-          <h1 className="title is-4 nav-title">MUNCH</h1>
           <a role="button"
             className={`navbar-burger ${this.state.navbarOpen ? 'is-active' : ''}`}
             onClick={this.toggleNavbar}
