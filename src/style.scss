@@ -23,28 +23,12 @@
   }
 }
 
-  .navbar-item {
-    &:hover {
-      background: rgb(180, 60, 30);
-      color: white;
-    }
-    color: rgb(255,255,255);
-    padding: 0 30px;
-  }
-  .nav-active {
-    color: rgb(194, 77, 44);
-    &:hover {
-      background: rgb(194, 77, 44);
-      color: white;
-    }
-  }
-
 .nav-title {
   color: white;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  // padding-top: 20px;
   flex-grow:1;
 }
 
@@ -199,6 +183,30 @@ a {
 
   .news {
     overflow-y: scroll;
+  }
+}
+
+.navbar-item {
+  &:hover {
+    background: rgb(180, 60, 30);
+    color: white;
+  }
+  color: rgb(255,255,255);
+  padding: 0 30px;
+}
+.nav-active {
+  color: rgb(194, 77, 44);
+  &:hover {
+    background: rgb(194, 77, 44);
+    color: white;
+  }
+}
+
+.nav-inactive {
+  color: white;
+  &:hover {
+    background: rgb(194, 77, 44);
+    // color: white;
   }
 }
 
