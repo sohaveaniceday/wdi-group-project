@@ -58,7 +58,7 @@ class ProfilePage extends React.Component {
       return(
         user && <main className="section profile-page">
           <div className="container margin-maker">
-            <div className="extra-padding has-background-white margin-topbottom">
+            <div className="extra-padding has-background-white margin-topbottom curve-border">
               <div className="columns">
                 <div className="column is-6">
                   <h2 className="title">Hello {user.username}!</h2>
@@ -75,9 +75,9 @@ class ProfilePage extends React.Component {
             </div>
             <div className="columns is-multiline">
               <div className="column is-3">
-                <div className="extra-padding has-background-white">
+                <div className="extra-padding has-background-white curve-border">
                   <figure className="image">
-                    <img src={user.image} alt={user.username} />
+                    <img src={user.image} alt={user.username} className="curve-border"/>
                   </figure>
                   <br />
                   <h4 className="title is-4">{user.name}</h4>
@@ -95,7 +95,7 @@ class ProfilePage extends React.Component {
                 </div>
               </div>
               <div className="column is-3 has-text-centered">
-                <div className="extra-padding has-background-white">
+                <div className="extra-padding has-background-white curve-border">
                   <h4 className="title is-4">Reviews</h4>
                   {user.reviews && user.reviews.map((review, i) => (
                     <Link key={i} to={`/review/${review._id}`}><span className="title is-6">{review.restaurantName}</span><br />“{review.reviewHeadline}”<br />{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}<br /><br /></Link>))}
@@ -103,7 +103,7 @@ class ProfilePage extends React.Component {
                 </div>
               </div>
               <div className="column is-4 has-text-centered">
-                <div className="extra-padding has-background-white">
+                <div className="extra-padding has-background-white curve-border">
                   <h4 className="title is-4">Recipes</h4>
                   {user.recipes && user.recipes.map((recipe, i) => (
                     <Link key={i} to={`/recipe/${recipe._id}`}><span className="title is-6">{recipe.name}</span><br />“{recipe.description}”<br /><br /></Link>))}
@@ -111,7 +111,7 @@ class ProfilePage extends React.Component {
                 </div>
               </div>
               <div className="column is-2 has-text-centered friends-column">
-                <div className="extra-padding has-background-white">
+                <div className="extra-padding has-background-white curve-border">
                   {(friends.some(friend => friend.status === 'pending')) && <h4 className="title is-6">Pending Friend Requests</h4>}
                   {friends && filterPending(friends).map((friend, i) => (
                     <div key={i}><span><Link to={`/user/${friend._id}`}>{friend.friend.name}  </Link><button className="button is-small is-rounded pin-button" onClick={() => this.handleSubmit(friend.friend)}>
@@ -121,7 +121,7 @@ class ProfilePage extends React.Component {
                   {(friends.some(friend => friend.status === 'accepted')) && <h4 className="title is-6">Friends</h4>}
                   {friends && filterAccepted(friends).map((friend, i) => (
                     <div key={i}><Link to={`/user/${friend._id}`}>{friend.friend.name}<br /></Link></div>))}
-                  {(friends.some(friend => friend.status === 'requested')) && (friends.some(friend => friend.status === 'accepted')) && (friends.some(friend => friend.status === 'pending')) && <div><hr /></div>}
+                  {(friends.some(friend => friend.status === 'requested')) && (friends.some(friend => friend.status === 'accepted')) && <div><hr /></div>}
                   {(friends.some(friend => friend.status === 'requested')) && <h4 className="title is-6">Requested Friends</h4>}
                   {friends && filterRequested(friends).map((friend, i) => (
                     <div key={i}><Link to={`/user/${friend._id}`}>{friend.friend.name}<br /></Link></div>))}
