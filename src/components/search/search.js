@@ -65,7 +65,7 @@ class Search extends React.Component {
               </div>
             </div>
             <div className="has-text-centered">
-              <button className="button is-info">Search</button>
+              <button className="button is-info is-rounded">Search</button>
             </div>
           </form>
           <hr />
