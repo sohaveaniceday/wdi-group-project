@@ -458,15 +458,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'categories': [categories[16]._id,categories[20]._id,categories[49]._id,categories[56]._id,categories[75]._id,categories[76]._id,categories[77]._id,categories[86]._id,categories[92]._id,categories[91]._id]
           },
           {
-            'restaurantName': 'Red Dog Saloon',
-            'reviewHeadline': 'BBQ!',
-            'reviewText': 'Great place with a nice vibe to it. Depending what time you go, before you arrive to the place you can smell it, an amazing smell of barbecue permeates the surrounding area',
-            'rating': 4,
-            'image': 'https://media-cdn.tripadvisor.com/media/photo-s/06/1d/a1/d0/red-dog-south.jpg',
-            'user': users[getRandom(4)]._id,
-            'categories': [categories[2]._id,categories[64]._id,categories[76]._id,categories[77]._id,categories[91]._id,categories[18]._id,categories[68]._id,categories[69]._id,categories[58]._id,categories[82]._id]
-          },
-          {
             'restaurantName': 'P Franco',
             'reviewHeadline': 'Cosy!',
             'reviewText': 'You know those dinner parties you sometimes walk past and peer into at night? With big windows looking out onto the pavement, full of yellow lighting and the sound of laughter, cutlery and clinking. The ones that make you turn to whoever you’re walking with and say “ooh that looks nice, doesn’t it”. That’s exactly what P. Franco is. Only here you can walk in uninvited without anybody calling the police.',
@@ -686,11 +677,29 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'categories': [categories[81]._id,categories[80]._id,categories[58]._id,categories[76]._id,categories[77]._id,categories[54]._id,categories[55]._id,categories[49]._id,categories[48]._id,categories[56]._id]
           },
           {
+            'name': 'Aubergine Parmigano',
+            'description': 'This is a firm family favourite, a comfort food that I serve with crusty bread and a green salad on cold days',
+            'ingredients': '3 aubergines. 400g mozzarella, ripped into pieces. 1 jar tomato passata. 80g parmesan, shaved. 1 bunch fresh basil. 2 tbsps olive oil, for cooking. 1 pinch ground black pepper. 2 tbsps salt, plus one pinch.',
+            'method': 'Chop the spring onions into rounds and cut the pepper into strips. Add to the bowl, sprinkle in your chosen herbs and toss the bean salad together, seasoning to taste.',
+            'image': 'https://www.ocado.com/cmscontent/recipe_image_med/92771.jpg?C_PE',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[81]._id,categories[80]._id,categories[58]._id,categories[76]._id,categories[77]._id,categories[54]._id,categories[55]._id,categories[49]._id,categories[48]._id,categories[56]._id]
+          },
+          {
             'name': 'Beef Burger with Smoked Cheese',
             'description': 'A delicious balancing act of spicy, creamy, meaty, smoky and sour.',
             'ingredients': '4 quarter pounder beef burgers. 4 slices oak smoked cheddar. 4 seeded burger buns. 60g gherkins, sliced. ¼ red cabbage, finely sliced. 1 red onion, finely sliced. 1 tbsp mayonnaise. 1 lime, juice of. 3 green chillies, deseeded and chopped. 1 banana shallot, chopped. 10g coriander',
             'method': 'Cook the burgers on a hot barbecue for 6 mins, turning every 2 mins. Then lay the slices of smoked cheese on top and cook for 2 mins with the lid on to melt the cheese.',
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/2682693.jpg?RIgk',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[2]._id,categories[50]._id,categories[76]._id,categories[77]._id,categories[87]._id,categories[95]._id,categories[85]._id,categories[83]._id,categories[74]._id]
+          },
+          {
+            'name': 'BBQ Pulled Jackfruit with Sweetcorn Salsa',
+            'description': 'Fast and full of flavour, this pulled jackfruit with sweetcorn salsa will become a firm family favourite.',
+            'ingredients': '1 tbsp sunflower oil. 2 onions, diced. 2 green peppers, finely sliced. 400g jackfruit, drained and rinsed. 2 tsp mild chilli powder. 2 tsp smoked paprkia. 1 tsp cinnamon. 4 tbsp Worcester sauce, (ensure it’s vegan, anchovy free). 1 large handful flat leaf parsley, roughly chopped. ½ tsp smoked salt. 4 tbsp canned sweetcorn, drained. 2 avocados, peeled and sliced. 1 large handful fresh coriander, leaves finely chopped. 2 limes, juiced. 4 burger buns, sliced in half. 2 tbsp olive oil',
+            'method': 'Cook the burgers , add jackfruit. In the meantime prepare the sweetcorn slasa. Brush the non-seed side of the bread buns with olive oil and place onto a hot griddle pan. diced avoado and coriander. Load the BBQ pulled jackfruit into buns followed by the sweetcorn salsa',
+            'image': 'https://www.ocado.com/cmscontent/recipe_image_med/2907638.jpg?SdQA',
             'user': users[getRandom(4)]._id,
             'categories': [categories[2]._id,categories[50]._id,categories[76]._id,categories[77]._id,categories[87]._id,categories[95]._id,categories[85]._id,categories[83]._id,categories[74]._id]
           },
