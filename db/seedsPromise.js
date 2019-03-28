@@ -1,19 +1,17 @@
 const mongoose = require('mongoose')
 const {dbURI} = require('../config/environment')
-// const Books = require('../models/book')
-// const BookGenre = require('../models/bookGenre')
+
 const Category = require('../models/category')
 const Review = require('../models/review')
 const Recipe = require('../models/recipe')
 const User = require('../models/user')
-// const Promise = require('bluebird')
+const Promise = require('bluebird')
 
 function getRandom(max) {
   return Math.floor(Math.random() * Math.floor(max))
 }
 
 mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
-  console.log('connected')
   db.dropDatabase()
 
   Category.create([
@@ -114,7 +112,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
     }, {
       'name': 'Lacto-Ovo Vegetarians'
     }, {
-      'name': 'Pescetarians'
+      'name': 'Pescetarian'
     }, {
       'name': 'Low-Carb'
     }, {
@@ -232,7 +230,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id],
             'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
             'location': 'London, UK',
-            'bio': 'burittos are my friend'
+            'bio': 'Burittos are my friend'
           },
           {
             'username': 'Semmi',
@@ -266,6 +264,105 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'image': 'http://www.gannett-cdn.com/-mm-/421fa88894207f6fd125837bfbea3a215d8338a7/c=972-205-2409-1017/local/-/media/2016/10/18/USATODAY/USATODAY/636124053572235005-101816orange-cat-thinkstock.jpg?width=3200&height=1680&fit=crop',
             'location': 'Manchester, UK',
             'bio': 'Chicken katsu wraps for the win'
+          },
+          {
+            'username': 'Molly',
+            'email': 'molly@email',
+            'password': 'password',
+            'passwordConfirmation': 'password',
+            'name': 'Molly L',
+            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id],
+            'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
+            'location': 'London, UK',
+            'bio': 'I cant cook for sh*t'
+          },
+          {
+            'username': 'Ian',
+            'email': 'ian@email',
+            'password': 'password',
+            'passwordConfirmation': 'password',
+            'name': 'Ian B',
+            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id],
+            'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
+            'location': 'London, UK',
+            'bio': 'The onling I like better than talking about food is eating'
+          },
+          {
+            'username': 'Kelly',
+            'email': 'kelly@email',
+            'password': 'password',
+            'passwordConfirmation': 'password',
+            'name': 'Kelly H',
+            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id],
+            'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
+            'location': 'London, UK',
+            'bio': 'burittos are my friend'
+          },
+          {
+            'username': 'Alessandro',
+            'email': 'alessandro@email',
+            'password': 'password',
+            'passwordConfirmation': 'password',
+            'name': 'Ale D',
+            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id],
+            'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
+            'location': 'Rome, Italy',
+            'bio': 'Eat your spagetti to forgetti your regretti'
+          },
+          {
+            'username': 'Stacey',
+            'email': 'stacey@email',
+            'password': 'password',
+            'passwordConfirmation': 'password',
+            'name': 'Stace K',
+            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id],
+            'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
+            'location': 'London, UK',
+            'bio': 'Hello, I love baking goodies for my family and friends'
+          },
+          {
+            'username': 'Justin',
+            'email': 'justin@email',
+            'password': 'password',
+            'passwordConfirmation': 'password',
+            'name': 'Justin W',
+            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id],
+            'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
+            'location': 'London, UK',
+            'bio': 'Always looking for inspiration on where to eat'
+          },
+          {
+            'username': 'Tommy',
+            'email': 'tommy@email',
+            'password': 'password',
+            'passwordConfirmation': 'password',
+            'name': 'Tommy B',
+            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id],
+            'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
+            'location': 'London, UK',
+            'bio': 'I am training myself to cook, any tips much appreciated!'
+          },
+          {
+            'username': 'Briony',
+            'email': 'briony@email',
+            'password': 'password',
+            'passwordConfirmation': 'password',
+            'name': 'Briony J',
+            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id],
+            'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
+            'location': 'London, UK',
+            'bio': 'I love exploring new places to eat'
+          },
+          {
+            'username': 'Fabian',
+            'email': 'fabian@email',
+            'password': 'password',
+            'passwordConfirmation': 'password',
+            'name': 'Fabian O',
+            'categories': [categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id,categories[getRandom(100)]._id],
+            'image': 'https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg',
+            'location': 'London, UK',
+            'bio': 'One word: CHEEEEEEEEEESE'
           }
         ])
       ])
@@ -307,7 +404,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'reviewHeadline': 'Good vibes!',
             'reviewText': 'There are some places that make you smile as soon as you walk in and leave you grinning on exit - BAM is one of these. It’s a small, smoky and screechy place. Dishes are being cooked and smoked in the same room as you, hard rock is pounding out the speakers, you and your neighbours are knee-to-knee. It’s a great atmosphere, and that’s before we get to the food. The menu at BAM is quite hard to describe. Not least because it changes. Calling it fusion is probably the safest thing to do. At any one time you’ve got a glittery flatbread with cod’s roe, Chinese spiced fried guinea fowl, and miso scrambled eggs. You get the idea. Or do you? Or do we? Whatever, it’s all delicious, interesting and good fun.',
             'rating': 4,
-            'image': 'https://infatuation.imgix.net/media/images/reviews/black-axe-mangal/banners/1517315875.19.jpg?auto=format&h=840&w=1336',
+            'image': 'https://static.standard.co.uk/s3fs-public/thumbnails/image/2017/06/23/11/black-axe.jpg?w660',
             'user': users[getRandom(4)]._id,
             'categories': [categories[15]._id,categories[3]._id,categories[50]._id,categories[65]._id,categories[66]._id,categories[74]._id,categories[80]._id,categories[82]._id,categories[70]._id,categories[98]._id]
           },
@@ -409,13 +506,86 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'image': 'https://blackbarnrestaurant.com/wp-content/uploads/2018/03/MZ_Web_blackbarncafe_001.jpg',
             'user': users[getRandom(4)]._id,
             'categories': [categories[5]._id,categories[3]._id,categories[65]._id,categories[61]._id,categories[58]._id,categories[64]._id,categories[87]._id,categories[75]._id,categories[70]._id,categories[68]._id]
+          },
+          {
+            'restaurantName': 'Santa Maria',
+            'reviewHeadline': 'Tranditional and delicious',
+            'reviewText': 'For pizza traditionalists, Santa Maria do it like in old Napoli. The San Daniele doesn’t have any tomato sauce, but is topped instead with cherry tomatoes, rocket, parmesan shavings and generous amounts of excellent quality San Daniele Parma ham.',
+            'rating': 4,
+            'image': 'https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/02/07/16/santa-maria.jpg?w660',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[8]._id,categories[48]._id,categories[65]._id,categories[59]._id,categories[76]._id,categories[77]._id,categories[85]._id,categories[88]._id,categories[94]._id,categories[96]._id]
+          },
+          {
+            'restaurantName': 'Brindisa',
+            'reviewHeadline': 'Set the table for the perfect feast',
+            'reviewText': 'Prepare to wait in line for this Borough Market classic: a ciabatta roll stuffed to bursting with smoky chorizo fresh from the grill, roasted red peppers and rocket. It’s a good to start the day as it is to soak up a few pints later on.',
+            'rating': 3,
+            'image': 'https://static.standard.co.uk/s3fs-public/thumbnails/image/2017/06/23/10/brindisa-chorizo.jpg?w660',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[10]._id,categories[13]._id,categories[33]._id,categories[49]._id,categories[50]._id,categories[53]._id,categories[76]._id,categories[77]._id,categories[80]._id,categories[81]._id,categories[93]._id]
+          },
+          {
+            'restaurantName': 'Club Mexicana',
+            'reviewHeadline': '100% Vegan Mexican street food',
+            'reviewText': 'Vegan food can, however, get down and dirty with the best of them. This punchy, spicy jackfruit taco from Club Mexicana gives pulled pork a serious run for its money.',
+            'rating': 5,
+            'image': 'https://static.standard.co.uk/s3fs-public/thumbnails/image/2017/01/10/11/club-mexicana-4.jpg?w660',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[0]._id,categories[11]._id,categories[17]._id,categories[18]._id,categories[47]._id,categories[56]._id,categories[75]._id,categories[76]._id,categories[77]._id,categories[86]._id,categories[93]._id,categories[95]._id]
+          },
+          {
+            'restaurantName': 'Holborn Dining Rooms',
+            'reviewHeadline': 'A variety of dining rooms to suit your vibe',
+            'reviewText': 'You can take your pick from Calum Franklin’s pies at Holborn Dining Room, because they are all outstanding. The chef is pastry wizard, who works his magic across a range that includes an anything but humble pork pie, and seasonal specials such as curried mutton pie with mango chutney.',
+            'rating': 3,
+            'image': 'https://static.standard.co.uk/s3fs-public/thumbnails/image/2017/06/23/10/pies-holborn.jpg?w660',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[3]._id,categories[62]._id,categories[70]._id,categories[75]._id,categories[76]._id,categories[77]._id,categories[87]._id,categories[89]._id,categories[91]._id,categories[92]._id,categories[96]._id,categories[98]._id]
+          },
+          {
+            'restaurantName': 'Duck & Waffle',
+            'reviewHeadline': '24 hourse with a view to kill',
+            'reviewText': 'A warm, chewy waffle topped with crisp-skinned confit duck and a runny egg, drizzled in maple syrup. Convinced yet? Naturally there are some pretty impressive views, too...',
+            'rating': 5,
+            'image': 'https://static.standard.co.uk/s3fs-public/thumbnails/image/2016/02/17/12/30-duck-waffle.jpg?w660',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[3]._id,categories[75]._id,categories[76]._id,categories[77]._id,categories[91]._id,categories[98]._id]
+          },
+          {
+            'restaurantName': 'Bao',
+            'reviewHeadline': 'If you like Bao buns, look no further',
+            'reviewText': 'For steamed buns, you can’t beat Bao. Their classic sees a pillowy-soft bun filled with slow-braised pork belly, coarse peanut powder and shredded coriander. Worth queuing for.',
+            'rating': 5,
+            'image': 'https://static.standard.co.uk/s3fs-public/thumbnails/image/2016/02/17/12/30-bao.jpg?w660',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[1]._id,categories[9]._id,categories[16]._id,categories[76]._id,categories[77]._id,categories[90]._id,categories[81]._id]
+          },
+          {
+            'restaurantName': 'Dominique Ansel Bakery',
+            'reviewHeadline': 'The home of the cronut and other delicious treats',
+            'reviewText': 'When New York master baker Dominique Ansel opened his first European site in Victoria, this hybrid Franken Pastry that merges a croissant and a doughnut led to queues of several hours. Bite into its fluffy, buttery, flaky goodness and you’ll instantly understand the appeal.',
+            'rating': 4,
+            'image': 'https://static.standard.co.uk/s3fs-public/thumbnails/image/2017/06/23/11/cronut.jpg?w660',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[3]._id,categories[5]._id,categories[59]._id,categories[67]._id,categories[69]._id,categories[71]._id,categories[72]._id,categories[82]._id,categories[90]._id,categories[93]._id,categories[95]._id]
+          },
+          {
+            'restaurantName': 'Kricket',
+            'reviewHeadline': 'Modern Indian',
+            'reviewText': 'Now settled in Soho after outgrowing the Brixton shipping container they started out in, Kricket offers more dishes than ever to please spice fans. This light and bright exemplary version of bhel puri is still top of the pile.',
+            'rating': 5,
+            'image': 'https://static.standard.co.uk/s3fs-public/thumbnails/image/2016/02/17/12/30-kricket.jpg?w660',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[7]._id,categories[60]._id,categories[76]._id,categories[77]._id,categories[79]._id,categories[81]._id,categories[83]._id,categories[92]._id]
           }
+
         ]),
         Recipe.create([
           {
             'name': 'Filo fish pies with pea-spiked mash',
             'description': 'Ultimate health food',
-            'ingredients': '2 cloves of garlic, 2 leeks',
+            'ingredients': '2 cloves of garlic \n2 leeks',
             'method': 'Preheat the oven to gas 6, 200°C, fan 180°C. Peel and finely slice the garlic, wash and finely slice the leeks, then place in a large pan on a medium heat with 1 tsp of oil. Cook for 10 mins, or until softened, stirring regularly.',
             'image': 'https://realfood.tesco.com/media/images/RFO-1400x919-Filo-fish-pies-with-pea-spiked-mash-3b1120a9-8e50-4e39-8bea-aecae3a42675-0-1400x919.jpg',
             'user': users[getRandom(4)]._id,
@@ -546,11 +716,64 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
             'image': 'https://www.ocado.com/cmscontent/recipe_image_med/49311.jpg?TsA',
             'user': users[getRandom(4)]._id,
             'categories': [categories[3]._id,categories[96]._id,categories[95]._id,categories[91]._id,categories[90]._id,categories[93]._id,categories[3]._id,categories[69]._id]
+          },
+          {
+            'name': 'Chicken curry in a hurry',
+            'description': 'The name says it all',
+            'ingredients': '1 cup white rice \n1 1/2 tablespoons olive oil \n1 small yellow onion, thinly sliced \n2 teaspoons curry powder \n1/2 cup plain yogurt \n3/4 cup heavy cream \n1/2 teaspoon kosher salt \n1/4 teaspoon black pepper \n1 14.5-ounce can diced tomatoes, drained (optional) meat from 1 rotisserie chicken, sliced or shredded \n1/4 cup fresh cilantro leaves, roughly chopped',
+            'method': 'Step 1: Cook the rice according to the package directions. \nStep 2: Heat the oil in a skillet over medium-low heat. Add the onion and cook, stirring occasionally, for 7 minutes. \nStep 3: Sprinkle with the curry powder and cook, stirring, for 1 minute. \nStep 4: Add the yogurt and cream and simmer gently for 3 minutes. Stir in the salt, pepper, and tomatoes (if desired). Remove from heat. \nStep 5: Divide the rice and chicken among individual bowls, spoon the sauce over the top, and sprinkle with the cilantro.',
+            'image': 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.realsimple.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Frs_medium_image%2Fpublic%2Fchicken-curry_0.jpg%3Fitok%3DiRNX6FHh&w=200&c=sc&poi=face&q=85',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[7]._id,categories[60]._id,categories[76]._id,categories[77]._id,categories[83]._id,categories[90]._id]
+          },
+          {
+            'name': 'Southwestern Beef Chili with corn',
+            'description': 'Packed with flavor but not too spicy',
+            'ingredients': '2 carrots \n1 onion \n1 bell pepper \n1/2 pound ground beef \n2 tablespoons tomato paste \n2 15-ounce cans black beans \n1 tablespoon chili powder kosher salt and black pepper \n1//n2 cup corn kernels (from 1 ear, or frozen and thawed) \n1/2 cup grated Cheddar (2 ounces)',
+            'method': 'Step 1: Heat the oil in a large saucepan over medium-high heat. Add the carrots, onion, and poblano and cook, stirring, for 3 minutes. \nStep 2: Add the beef and cook, breaking it up with a spoon, until no longer pink, 3 to 5 minutes. \nStep 3: Add the tomato paste and cook, stirring, until it is slightly darkened, 1 minute. \nStep 4: Stir in the beans, chili powder, 3 cups water, ½ teaspoon salt, and ¼ teaspoon pepper. \nStep 5: Simmer over medium heat until the vegetables are tender, 8 to 10 minutes. Stir in the corn. \nStep 6: Divide the chili among bowls and top with the Cheddar',
+            'image': 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.realsimple.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Frs_medium_image%2Fpublic%2Fsouthwestern-beef-chili.jpg%3Fitok%3DT7BjJvVG%261540235518&w=200&c=sc&poi=face&q=85',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[2]._id,categories[50]._id,categories[76]._id,categories[77]._id,categories[79]._id,categories[85]._id,categories[90]._id]
+          },
+          {
+            'name': 'Spanish Ommelette with potatoes and chorizo',
+            'description': 'The idea of breakfast for dinner is nothing new',
+            'ingredients': '3 tablespoons extra-virgin olive oil \n1 large yellow onion \n2 ounces Spanish chorizo (cured sausage), sliced into thin half-moons \n3/4 pound red potatoes, diced \nkosher salt and pepper \n3/4 cup flat-leaf parsley, roughly chopped \n10 large eggs, beaten \n1 cup (4 ounces) shredded Manchego or sharp Cheddar \n1 small head green-leaf lettuce \n1/2 small red onion, thinly sliced',
+            'method': 'Step 1: Heat oven to 400° F. Heat 1 tablespoon of the oil in a large ovenproof skillet over medium heat. Add the yellow onion and cook for 5 minutes. \nStep 2: Add the chorizo, potatoes, and ½ teaspoon each salt and pepper and cook, covered, stirring occasionally, until the potatoes are tender, 10 minutes. \nStep 3: Stir in the parsley. Pour in the eggs and stir to distribute the ingredients. Sprinkle with the cheese and transfer to oven. \nStep 4: Bake the omelet until puffed and brown around the edges and a knife comes out clean, about 15 minutes./nStep 5: Divide the lettuce and red onion among plates and drizzle with the remaining oil. Cut the omelet into wedges and serve with the salad.',
+            'image': 'https://img.taste.com.au/UHOXSbyA/taste/2016/11/spanish-omelette-81051-1.jpeg',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[3]._id,categories[96]._id,categories[95]._id,categories[91]._id,categories[90]._id,categories[93]._id,categories[3]._id,categories[69]._id]
+          },
+          {
+            'name': 'Creamy Squash linguine',
+            'description': 'Quick and easy, and deliciously creamy',
+            'ingredients': '350g chopped butternut squash \n3 peeled garlic cloves \n3 tbsp olive oil \n350g linguine \nsmall bunch sage',
+            'method': '1: Heat oven to 200C/180C fan/gas 6. Put the squash and garlic on a baking tray and drizzle with the olive oil. Roast for 35-40 mins until soft. Season. \n2: Cook the pasta according to pack instructions. Drain, reserving the water. Use a stick blender to whizz the squash with 400ml cooking water. Heat some oil in a frying pan, fry the sage until crisp, then drain on kitchen paper. Tip the pasta and sauce into the pan and warm through. Scatter with sage.',
+            'image': 'https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2017/10/creamy_squash_linguine.jpg?itok=FlkVjdXw',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[0]._id,categories[8]._id,categories[18]._id,categories[48]._id,categories[55]._id,categories[57]._id,categories[76]._id,categories[78]._id,categories[84]._id, categories[85]._id, categories[90]._id]
+          },
+          {
+            'name': 'Falafel burgers',
+            'description': 'Whizz up chickpeas with garlic, spices and herbs to make delicious vegetarian patties for lunch or dinner',
+            'ingredients': '250g chickpeas from a can \n1 medium onion, finely chopped \n2 garlic cloves, crushed \n2 tsp ground coriander \n2 tsp ground cumin \nsmall pack flat-leaf parsley, chopped \n2 rounded tbsp plain flour \n2 tbsp vegetable oil \n100g hummus \n4 burger buns, cut in half \nwatercress, to serve',
+            'method': '1: Drain, rinse and dry the chickpeas thoroughly, then tip into the bowl of a food processor. Pulse until lightly broken up into coarse crumbs. \n2: Add the onion, garlic, spices, parsley, flour and some seasoning, and continue to pulse until combined. Using your hands, gently form the mixture into 4 patties about 10cm in diameter and 2cm thick. \n3: In a large pan, heat the oil and fry the falafels on each side for 2-3 mins or until golden (you may need to do this in batches). Lightly griddle the burger buns on the cut side in a griddle pan, or toast under the grill. \n4:Spread one side of each bun with hummus, top with a falafel burger, add a handful of watercress, then pop the remaining bun half on top.',
+            'image': 'https://www.bbcgoodfood.com/sites/default/files/styles/teaser_item/public/recipe_images/falafel-burgers.jpg?itok=2YOvgn5X',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[2]._id,categories[18]._id,categories[20]._id,categories[59]._id,categories[66]._id,categories[74]._id,categories[93]._id,categories[76]._id,categories[77]._id]
+          },
+          {
+            'name': 'Spotted Dick',
+            'description': 'This summery dessert combines three classic English ingredients',
+            'ingredients': '250g self-raising flour \npinch of salt \n125g shredded suet \n180g currant \n80g caster sugar \nfinely grated zest 1 lemon \nfinely grated zest 1 small orange \n150ml whole milk, plus 2-3 tbsp \ncustard, to serve',
+            'method': '1: Put the flour and salt in a bowl. Add the suet, currants, sugar, lemon and orange zest. \n2: Pour in 150ml milk and mix to a firm but moist dough, adding the extra milk if necessary. \n3: Shape into a fat roll about 20cm long. Place on a large rectangle of baking parchment. Wrap loosely to allow for the pudding to rise and tie the ends with string like a Christmas cracker. \n4: Place a steamer over a large pan of boiling water, add the pudding to the steamer, cover and steam for 1½ hours. Top up the pan with water from time to time. \n5: Remove from the steamer and allow to cool slightly before unwrapping. Serve sliced with custard.',
+            'image': 'https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--1130451_11.jpg?itok=akFgTfeO',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[3]._id,categories[87]._id,categories[69]._id]
           }
         ])
       ])
     })
-    .then(() => console.log('did my job'))
     .catch(err => console.log(err))
     .finally(() => mongoose.connection.close())
 })

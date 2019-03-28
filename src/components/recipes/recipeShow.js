@@ -162,40 +162,48 @@ class recipeShow extends React.Component {
     return(
       <main className="section">
         <div className="container margin-maker">
-          <div className="columns is-vcentered">
+          <div className="columns is-vcentered no-margin">
             <div className="column is-half">
               <h2 className="custom-title">{recipe.name}<br /></h2>Created by <Link to={`/user/${recipe.user._id}`}>{recipe.user.username}</Link> on {moment(recipe.createdAt).format('Do MMMM YYYY')} at {moment(recipe.createdAt).format('hh:mm')}
+              <div>
+                {likes && likes.some(checkLikes) &&
+                <div className="small-margin"><a className="button is-link is-rounded is-small">
+                  <span className="icon">
+                    <i className="fas fa-check-circle"></i>
+                  </span>
+                  <span>Liked</span>
+                </a><label className="label totalLikes like-info">{this.state.recipe.likes.length} Likes</label></div>
+                }
+                {likes && !likes.some(checkLikes) &&
+                    <div className="small-margin"><a className="button is-link is-rounded is-small" onClick={() => this.handleLike(likes, Auth.getPayload().sub)}>
+                      <span className="icon">
+                        <i className="fas fa-thumbs-up"></i>
+                      </span>
+                      <span>Like</span>
+                    </a><label className="label totalLikes like-info">{this.state.recipe.likes.length} Likes</label></div>
+                }
+              </div>
             </div>
-            <div className="column is-half">
+            <div className="column is-half pin-column">
               {pinnedRecipes && pinnedRecipes.some(checkPin) &&
-          <button className="button is-info is-rounded is-pulled-right">
-          Pinned
-          </button>
+                <a className="button is-rounded is-pulled-right pin-button">
+                  <span className="icon">
+                    <i className="fas fa-check-circle"></i>
+                  </span>
+                  <span>Pinned</span>
+                </a>
               }
               {pinnedRecipes && !pinnedRecipes.some(checkPin) &&
-            <button onClick={() => this.handleClick(pinnedRecipes, [recipe._id])} className="button is-info is-rounded is-pulled-right">
-          Pin Recipe
-            </button>
+                <a className="button is-rounded is-pulled-right pin-button" onClick={() => this.handleClick(pinnedRecipes, [recipe._id])}>
+                  <span className="icon">
+                    <i className="fas fa-thumbtack"></i>
+                  </span>
+                  <span>Pin</span>
+                </a>
               }
             </div>
           </div>
-          <hr />
-
-          <div>
-            {likes && likes.some(checkLikes) &&
-            <button className="button is-info recipeLike">
-              Liked
-            </button>
-            }
-            {likes && !likes.some(checkLikes) &&
-              <button className="button is-info recipeLike" onClick={() => this.handleLike(likes, Auth.getPayload().sub)}>
-              Like
-              </button>
-            }
-            <label className="label totalLikes">Likes: {this.state.recipe.likes.length}</label>
-          </div>
-          <hr />
-
+          <hr className="bottom-margin" />
           <div className="columns">
             <div className="column is-one-third">
               <figure className="image">
@@ -203,8 +211,8 @@ class recipeShow extends React.Component {
               </figure>
             </div>
             <div className="column is-two-thirds">
-              <h4 className="title is-4">Description</h4>
-              <p>{recipe.description}</p>
+              <h4 className="title is-5">Description</h4>
+              <p>“{recipe.description}”</p>
               <hr />
               <h4 className="title is-4">Ingredients</h4>
               <p className="p_wrap">{recipe.ingredients}</p>
@@ -216,16 +224,26 @@ class recipeShow extends React.Component {
               <div>{recipe.categories.map((category, i) => (
                 <span key={i}>{category.name}, </span>))}</div>
               {this.isOwner() && <div><br /><hr /></div>}
-              {this.isOwner() && <Link className="button is-warning" to={`/recipe/${recipe._id}/edit`}>Edit</Link>}
-              {this.isOwner() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
+              {this.isOwner() && <a className="button is-warning is-rounded" href={`/review/${recipe._id}/edit`}>
+                <span className="icon">
+                  <i className="fas fa-pencil-alt"></i>
+                </span>
+                <span>Edit</span>
+              </a>}
+              {this.isOwner() && <a className="button is-danger is-rounded" onClick={this.handleDelete}>
+                <span className="icon">
+                  <i className="fas fa-trash-alt"></i>
+                </span>
+                <span>Delete</span>
+              </a>}
               <hr />
               <h4 className="title is-4">Comments</h4>
               <form onSubmit={this.handleSubmit}>
                 <div className="field">
                   <label className="label">Make Comment</label>
                   <div className="control">
-                    <input
-                      className={`input ${errors.text ? 'is-danger': ''}`}
+                    <textarea cols='60' rows='3'
+                      className={`textarea text-top is-rounded ${errors.text ? 'is-danger': ''}`}
                       name="text"
                       placeholder="Comment"
                       onChange={this.handleChange}
@@ -234,7 +252,7 @@ class recipeShow extends React.Component {
                   </div>
                   {errors.restaurantName && <small className="help is-danger">{errors.restaurantName}</small>}
                 </div>
-                <button className="button is-info">Submit</button>
+                <button className="button is-info is-rounded">Submit</button>
               </form>
               <br />
               <div>{recipe.comments.map((comment, i) => (
@@ -249,5 +267,3 @@ class recipeShow extends React.Component {
 
 
 export default recipeShow
-
-// <p>{recipe.ingredients.replace('↵', /\n/g)}</p>

@@ -49,6 +49,7 @@ class ProfilePage extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     if(!this.state.data) return null
     const { user } = this.state.data
     const { friends } = this.state.data
@@ -61,13 +62,18 @@ class ProfilePage extends React.Component {
               <div className="column is-half">
                 <h2 className="title">Hello {user.username}!</h2>
               </div>
-              <div className="column is-half">
-                <Link className="button is-warning is-pulled-right" to={`/user/${user._id}/edit`}>Edit Profile</Link>
+              <div className="column is-half edit-column">
+                <a className="button is-link is-rounded is-warning is-pulled-right edit-button" href={`/user/${user._id}/edit`}>
+                  <span className="icon">
+                    <i className="fas fa-edit"></i>
+                  </span>
+                  <span>Edit Profile</span>
+                </a>
               </div>
             </div>
             <hr />
             <div className="columns is-multiline">
-              <div className="column is-two-fifths">
+              <div className="column is-3">
                 <figure className="image">
                   <img src={user.image} alt={user.username} />
                 </figure>
@@ -85,19 +91,23 @@ class ProfilePage extends React.Component {
                   <span key={i}>{category.name}, </span>))}
                 </p>}
               </div>
-              <div className="column is-two-fifths has-text-centered">
+              <div className="column is-3 has-text-centered">
+
                 <h4 className="title is-4">Reviews</h4>
                 {user.reviews && user.reviews.map((review, i) => (
-                  <Link key={i} to={`/review/${review._id}`}><strong>{review.restaurantName}</strong><br />{review.reviewHeadline}<br />{review.rating} Stars<br /><br /></Link>))}
-                <hr />
+                  <Link key={i} to={`/review/${review._id}`}><span className="title is-6">{review.restaurantName}</span><br />“{review.reviewHeadline}”<br />{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}<br /><br /></Link>))}
+                {!(user.reviews.length > 0) && <span><Link to="/review/new" className="button is-primary is-rounded">Create a Review</Link></span>}
+              </div>
+              <div className="column is-4 has-text-centered">
                 <h4 className="title is-4">Recipes</h4>
                 {user.recipes && user.recipes.map((recipe, i) => (
-                  <Link key={i} to={`/recipe/${recipe._id}`}><strong>{recipe.name}</strong><br />{recipe.description}<br /><br /></Link>))}
+                  <Link key={i} to={`/recipe/${recipe._id}`}><span className="title is-6">{recipe.name}</span><br />“{recipe.description}”<br /><br /></Link>))}
+                {!(user.recipes.length > 0) && <Link to="/recipe/new" className="button is-primary is-rounded">Create a Recipe</Link>}
               </div>
-              <div className="column is-one-fifth has-text-right">
+              <div className="column is-2 has-text-right friends-column has-text-centered-mobile">
                 {(friends.some(friend => friend.status === 'pending')) && <h4 className="title is-6">Pending Friend Requests</h4>}
                 {friends && filterPending(friends).map((friend, i) => (
-                  <div key={i}><span><Link to={`/user/${friend._id}`}>{friend.friend.name}  </Link><button onClick={() => this.handleSubmit(friend.friend)}>
+                  <div key={i}><span><Link to={`/user/${friend._id}`}>{friend.friend.name}  </Link><button className="button is-small is-rounded pin-button" onClick={() => this.handleSubmit(friend.friend)}>
                   Accept
                   </button><br /></span></div>))}
                 {(friends.some(friend => friend.status === 'pending')) && <div><hr /></div>}

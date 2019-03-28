@@ -95,32 +95,44 @@ class UserShow extends React.Component {
               <div className="column is-half">
                 <h2 className="title">{user.username}’s Profile</h2>
               </div>
-              <div className="column is-half">
+              <div className="column is-half pin-column">
                 {(this.state.data.friends.some(checkFriend)) && checkPending(this.state.data.friends) &&
-                <button className="button is-info is-rounded is-pulled-right">
-                Requested
-                </button>
+                  <a className="button is-rounded is-pulled-right pin-button">
+                    <span className="icon">
+                      <i className="fas fa-check-circle"></i>
+                    </span>
+                    <span>Requested</span>
+                  </a>
                 }
                 {(this.state.data.friends.some(checkFriend)) && checkAccepted(this.state.data.friends) &&
-                <button className="button is-info is-rounded is-pulled-right">
-                Friends
-                </button>
+                  <a className="button is-rounded is-pulled-right pin-button">
+                    <span className="icon">
+                      <i className="fas fa-user-friends"></i>
+                    </span>
+                    <span>Friends</span>
+                  </a>
                 }
                 {(this.state.data.friends.some(checkFriend)) && checkRequested(this.state.data.friends) &&
-                <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
-                Accept Request
-                </button>
+                  <a className="button is-rounded is-pulled-right pin-button" onClick={this.handleSubmit}>
+                    <span className="icon">
+                      <i className="fas fa-check-circle§"></i>
+                    </span>
+                    <span>Accept Request</span>
+                  </a>
                 }
                 {(!this.state.data.friends.some(checkFriend)) &&
-                <button onClick={this.handleSubmit} className="button is-info is-rounded is-pulled-right">
-                Request Friend
-                </button>
+                  <a className="button is-rounded is-pulled-right pin-button" onClick={this.handleSubmit}>
+                    <span className="icon">
+                      <i className="fas fa-user-friends"></i>
+                    </span>
+                    <span>Request Friend</span>
+                  </a>
                 }
               </div>
             </div>
             <hr />
             <div className="columns is-multiline">
-              <div className="column is-half">
+              <div className="column is-4">
                 <figure className="image">
                   <img src={user.image} alt={user.username} />
                 </figure>
@@ -138,14 +150,15 @@ class UserShow extends React.Component {
                   <span key={i}>{category.name}, </span>))}
                 </p>}
               </div>
-              <div className="column is-half">
+              <div className="column is-4 has-text-centered">
                 <h4 className="title is-4">Reviews</h4>
                 {user.reviews && user.reviews.map((review, i) => (
-                  <Link key={i} to={`/review/${review._id}`}><strong>{review.restaurantName}</strong><br />{review.reviewHeadline}<br />{review.rating} Stars<br /><br /></Link>))}
-                <hr />
+                  <Link key={i} to={`/review/${review._id}`}><span className="title is-6">{review.restaurantName}</span><br />“{review.reviewHeadline}”<br />{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}<br /><br /></Link>))}
+              </div>
+              <div className="column is-4 has-text-centered">
                 <h4 className="title is-4">Recipes</h4>
                 {user.recipes && user.recipes.map((recipe, i) => (
-                  <Link key={i} to={`/recipe/${recipe._id}`}><strong>{recipe.name}</strong><br />{recipe.description}<br /><br /></Link>))}
+                  <Link key={i} to={`/recipe/${recipe._id}`}><span className="title is-6">{recipe.name}</span><br />“{recipe.description}”<br /><br /></Link>))}
               </div>
             </div>
           </div>
