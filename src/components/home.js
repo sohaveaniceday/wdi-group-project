@@ -20,101 +20,25 @@ class Home extends Component {
               <p clasName= "img is-128x128">
                 <img className="is-rounded" src="../assets/Munch_logo.png"/>
               </p>*/}
-
-            <div className="container has-text-centered">
+            <div className="">
+              <div className="tile box-shadow column-is-two-thirds bottom-margin is-5by4">
+                <video  width="640" height="480" controls autoPlay>
+                  <source className="is-rounded" src="../assets/video/munch.mp4" type="video/mp4"/>
+                </video>
+              </div>
+            </div>
+            <div className="tile column margin-maker is-shadow">
               <h1 className="subtitle is-uppercase has-text-weight-bold has-text-black">
         What are you craving?
               </h1>
             </div>
           </div>
-        </section>)
 
+        </section>)
     }
   }
 }
 export default Home
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //       return (

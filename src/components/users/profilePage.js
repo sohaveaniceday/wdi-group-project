@@ -17,7 +17,6 @@ function filterPending(friendsArray) {
 }
 
 
-
 class ProfilePage extends React.Component {
   constructor() {
     super()
@@ -128,6 +127,11 @@ class ProfilePage extends React.Component {
                     <div key={i}><Link to={`/user/${friend._id}`}>{friend.friend.name}<br /></Link></div>))}
                 </div>
               </div>
+              <div className="column is-multiline">
+                <div className="column is-one-fifth">
+
+                </div>
+              </div>
             </div>
           </div>
         </main>
@@ -137,7 +141,7 @@ class ProfilePage extends React.Component {
     }
   }
 }
-//tryal
+
 export default ProfilePage
 
 // <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>}
