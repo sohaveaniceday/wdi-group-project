@@ -25,7 +25,7 @@ import ProfilePage from './components/users/profilePage'
 import UserShow from './components/users/userShow'
 import ProfileEdit from './components/users/profileEdit'
 import Search from './components/search/search'
-
+import ErrorPage from './components/errorPage'
 // import axios from 'axios'
 
 class App extends React.Component {
@@ -58,6 +58,7 @@ class App extends React.Component {
             <SecureRoute path="/user/:id/edit" component={ProfileEdit} />
             <SecureRoute path="/search" component={Search} />
             <Route path="/user/:id" component={UserShow} />
+            <Route path="/*" component={ErrorPage} />
           </Switch>
           <Footer />
         </main>

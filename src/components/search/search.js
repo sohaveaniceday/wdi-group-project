@@ -75,7 +75,7 @@ class Search extends React.Component {
           <div className="columns is-mobile is-multiline articles">
             <div className="column is-hidden-mobile"></div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
-              {this.state.sent && <h2 className="title is-4 is-centered has-text-centered">Reviews for you</h2>}
+              {this.state.sent && <div className="extra-padding has-background-white margin-topbottom curve-border"><h2 className="title is-4 is-centered has-text-centered">Results for Reviews</h2></div>}
               {this.state.reviewFeed && this.state.reviewFeed.map(reviewFeed => (
                 <div key={reviewFeed._id} className="column">
                   <Link to={`/review/${reviewFeed._id}`} >
@@ -98,7 +98,7 @@ class Search extends React.Component {
               ))}
             </div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
-              {this.state.sent && <h2 className="title is-4 is-centered has-text-centered">Recipes for you</h2>}
+              {this.state.sent && <div className="extra-padding has-background-white margin-topbottom curve-border"><h2 className="title is-4 is-centered has-text-centered">Results for Recipes</h2></div>}
               {this.state.recipeFeed && this.state.recipeFeed.map(recipeFeed => (
                 <div key={recipeFeed._id} className="column">
                   <Link to={`/recipe/${recipeFeed._id}`} >
