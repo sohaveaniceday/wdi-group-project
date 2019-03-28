@@ -1,14 +1,3 @@
-// .navbar {
-//   background: hsl(171, 100%, 41%);
-//   position: fixed;
-//   width: 100%;
-//   .navbar-item {
-//     color: rgb(255,255,255);
-//     padding: 0 30px;
-//   }
-//
-//   }
-// }
 
 * {
   font-family: 'Raleway', sans-serif;
@@ -27,11 +16,13 @@
   &:hover {
     background: rgb(180, 60, 30);
     color: white;
+    }
   }
   span {
     color: white;
   }
 }
+
   .navbar-item {
     &:hover {
       background: rgb(180, 60, 30);
@@ -49,6 +40,12 @@
   }
 }
 
+  .nav-title {
+    color: white;
+    justify-content: center;
+    flex-direction: column;
+    flex-grow:1;
+  }
 .footer {
   width:100%;
   height: 60px;
