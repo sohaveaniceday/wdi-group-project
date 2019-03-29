@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Animated } from 'react-animated-css'
 import Select from 'react-select'
 import Container from '../Container'
 import * as filestack from 'filestack-js'
@@ -177,12 +178,14 @@ class Register extends React.Component {
                 {this.state.error.bio && <small className="help is-danger">{this.state.error.bio}</small>}
               </div>
               <div className="field">
-                <label className="label">Profile Image</label>
-                {!this.state.image ?
-                  <Container openModal={this.openModal} className="button is-warning is-rounded" />
-                  :
-                  <img src={this.state.image}/>
-                }
+                <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={true}>
+                  <label className="label">Profile Image</label>
+                  {!this.state.image ?
+                    <Container openModal={this.openModal} className="button is-warning is-rounded" />
+                    :
+                    <img src={this.state.image}/>
+                  }
+                </Animated>
               </div>
               <div className="field">
                 <label className="label">Categories (pick at least 3)</label>
@@ -196,7 +199,9 @@ class Register extends React.Component {
                   />
                 </div>
               </div>
-              <button className="button pin-button is-rounded">Register</button>
+              <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={true}>
+                <button className="button pin-button is-rounded">Register</button>
+              </Animated>
             </form>
           </div>
         </div>

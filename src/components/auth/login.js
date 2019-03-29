@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Animated } from 'react-animated-css'
 
 import Auth from '../../lib/auth'
 // import {Animated} from 'react-animated-css'
@@ -69,7 +70,9 @@ class Login extends React.Component {
                 </div>
                 {this.state.error && <small className="help is-danger">{this.state.error}</small>}
               </div>
-              <button className="button pin-button is-rounded">Login</button>
+              <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={true}>
+                <button className="button pin-button is-rounded">Login</button>
+              </Animated>
             </form>
           </div>
         </div>
