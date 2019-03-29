@@ -57,7 +57,7 @@ class ProfilePage extends React.Component {
     if (user) {
       return(
         user && <main className="section profile-page hero is-fullheight">
-          <div className="container margin-maker">
+          <div className="container margin-maker margin-auto">
             <div className="extra-padding has-background-white margin-topbottom curve-border">
               <div className="columns">
                 <div className="column is-6">

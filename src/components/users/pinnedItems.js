@@ -40,7 +40,7 @@ class PinnedItems extends React.Component {
     console.log('hello', this.state)
     return (
       <main className="section pinned-page hero is-fullheight">
-        <div className="container margin-maker">
+        <div className="container margin-maker margin-auto">
           <div className="columns is-mobile is-multiline articles">
             <div className="column is-hidden-mobile"></div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
@@ -51,17 +51,17 @@ class PinnedItems extends React.Component {
                 <div key={reviewFeed._id} className="column">
                   <Link to={`/review/${reviewFeed._id}`} >
                     <div className="card">
-                      <div className="card-header">
-                        <h4 className="card-header-title">{reviewFeed.restaurantName}</h4>
+                      <div className="card-header is-shadowless">
+                        <h4 className="card-header-title custom-title is-centered">{reviewFeed.restaurantName}</h4>
                       </div>
-                      <div className="card-image">
+                      <div className="card-image is-4by3">
                         <figure className="image">
-                          <img src={reviewFeed.image} alt={reviewFeed.restaurantName} />
+                          <img className="extra-padding" src={reviewFeed.image} alt={reviewFeed.restaurantName} />
                         </figure>
                       </div>
                       <div className="card-content">
-                        <h5 className="title is-6">“{reviewFeed.reviewHeadline}“</h5>
-                        <h6 className="subtitle is-6">Created by <Link to={`/user/${reviewFeed.user._id}`}>{reviewFeed.user.username}</Link><br /> at {moment(reviewFeed.createdAt).format('hh:mm')} on {moment(reviewFeed.createdAt).format('Do MMMM YYYY')}</h6>
+                        <h5 className="title is-6 small-margin-bottom">“{reviewFeed.reviewHeadline}“</h5>
+                        <h6 className="subtitle is-6 has-text-right top-margin">Created by <Link to={`/user/${reviewFeed.user._id}`}>{reviewFeed.user.username}</Link><br /> at {moment(reviewFeed.createdAt).format('hh:mm')} on {moment(reviewFeed.createdAt).format('Do MMMM YYYY')}</h6>
                       </div>
                     </div>
                   </Link>
@@ -76,17 +76,17 @@ class PinnedItems extends React.Component {
                 <div key={recipeFeed._id} className="column">
                   <Link to={`/recipe/${recipeFeed._id}`} >
                     <div className="card">
-                      <div className="card-header">
-                        <h4 className="card-header-title">{recipeFeed.name}</h4>
+                      <div className="card-header is-shadowless has-text-centered">
+                        <h4 className="card-header-title custom-title is-centered">{recipeFeed.name}</h4>
                       </div>
-                      <div className="card-image">
+                      <div className="card-image is-4by3">
                         <figure className="image">
-                          <img src={recipeFeed.image} alt={recipeFeed.name} />
+                          <img className="extra-padding" src={recipeFeed.image} alt={recipeFeed.name} />
                         </figure>
                       </div>
                       <div className="card-content">
-                        <h5 className="title is-6">“{recipeFeed.description}“</h5>
-                        <h6 className="subtitle is-6">Created by <Link to={`/user/${recipeFeed.user._id}`}>{recipeFeed.user.username}</Link><br /> at {moment(recipeFeed.createdAt).format('hh:mm')} on {moment(recipeFeed.createdAt).format('Do MMMM YYYY')}</h6>
+                        <h5 className="title is-6 .small-margin-bottom">“{recipeFeed.description}“</h5>
+                        <h6 className="subtitle is-6 has-text-right top-margin">Created by <Link to={`/user/${recipeFeed.user._id}`}>{recipeFeed.user.username}</Link><br /> at {moment(recipeFeed.createdAt).format('hh:mm')} on {moment(recipeFeed.createdAt).format('Do MMMM YYYY')}</h6>
                       </div>
                     </div>
                   </Link>

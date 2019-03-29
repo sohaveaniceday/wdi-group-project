@@ -47,7 +47,7 @@ class Newsfeed extends React.Component {
     // console.log(this.state.recipeFeed)
     return (
       <main className="section news-feed hero is-fullheight">
-        <div className="container margin-maker">
+        <div className="container margin-maker margin-auto">
           <div className="columns is-mobile is-multiline articles">
             <div className="column is-hidden-mobile"></div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
@@ -83,7 +83,7 @@ class Newsfeed extends React.Component {
                 <div key={recipeFeed._id} className="column">
                   <Link to={`/recipe/${recipeFeed._id}`} >
                     <div className="card">
-                      <div className="card-header is-shadowless">
+                      <div className="card-header is-shadowless has-text-centered">
                         <h4 className="card-header-title custom-title is-centered">{recipeFeed.name}</h4>
                       </div>
                       <div className="card-image is-4by3">
