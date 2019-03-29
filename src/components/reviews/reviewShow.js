@@ -138,23 +138,7 @@ class reviewShow extends React.Component {
         <div className="container margin-maker">
           <div className="columns is-vcentered has-background-white margin-topbottom curve-border">
             <div className="column is-half">
-              <h2 className="custom-title">{review.restaurantName}<br /></h2>Created by <Link to={`/user/${review.user._id}`}>{review.user.username}</Link> on {moment(review.createdAt).format('Do MMMM YYYY')} at {moment(review.createdAt).format('hh:mm')}
-              {likes && likes.some(checkLikes) &&
-                <div><a className="button is-link is-rounded is-small">
-                  <span className="icon">
-                    <i className="fas fa-check-circle"></i>
-                  </span>
-                  <span>Liked</span>
-                </a><label className="label totalLikes like-info">{this.state.review.likes.length} Likes</label></div>
-              }
-              {likes && !likes.some(checkLikes) &&
-                    <div><a className="button is-link is-rounded is-small" onClick={() => this.handleLike(likes, Auth.getPayload().sub)}>
-                      <span className="icon">
-                        <i className="fas fa-thumbs-up"></i>
-                      </span>
-                      <span>Like</span>
-                    </a><label className="label totalLikes like-info">{this.state.review.likes.length} Likes</label></div>
-              }
+              <h2 className="custom-title">{review.restaurantName}<br /></h2>
             </div>
             <div className="column is-half pin-column">
               {pinnedReviews && pinnedReviews.some(checkPin) &&
@@ -175,8 +159,8 @@ class reviewShow extends React.Component {
               }
             </div>
           </div>
-          <div className="columns is-multiline">
-            <div className="column is-one-third">
+          <div className="columns is-multiline small-top-margin">
+            <div className="column is-one-third no-left-side-padding">
               <div className="extra-padding has-background-white curve-border">
                 <figure className="image">
                   <img src={review.image} alt={review.restaurantName} />
@@ -195,20 +179,38 @@ class reviewShow extends React.Component {
                   <span>Delete</span>
                 </a>}
                 {this.isOwner() && <div><br /></div>}
-                <h4 className="title is-4">{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}</h4>
+                Created by <Link to={`/user/${review.user._id}`}>{review.user.username}</Link><br/><span className="small-font"> on {moment(review.createdAt).format('Do MMMM YYYY')} at {moment(review.createdAt).format('hh:mm')}</span><br /><br />
+                {likes && likes.some(checkLikes) &&
+                  <div><a className="button is-link is-rounded is-small">
+                    <span className="icon">
+                      <i className="fas fa-check-circle"></i>
+                    </span>
+                    <span>Liked</span>
+                  </a><label className="label totalLikes like-info">{this.state.review.likes.length} Likes</label></div>
+                }
+                {likes && !likes.some(checkLikes) &&
+                      <div><a className="button is-link is-rounded is-small" onClick={() => this.handleLike(likes, Auth.getPayload().sub)}>
+                        <span className="icon">
+                          <i className="fas fa-thumbs-up"></i>
+                        </span>
+                        <span>Like</span>
+                      </a><label className="label totalLikes like-info">{this.state.review.likes.length} Likes</label></div>
+                }
+                <hr />
                 <h4 className="title is-4">Categories</h4>
                 <div>{review.categories.map((category, i) => (
                   <span key={i}>{category.name}, </span>))}</div>
               </div>
             </div>
-            <div className="column is-two-thirds">
+            <div className="column is-two-thirds no-right-side-padding">
               <div className="extra-padding has-background-white curve-border">
                 <h4 className="title is-3">Review</h4>
+                <h4 className="title is-4">{[...Array(review.rating)].map((e, i) => <span key={i}><i className="fas fa-star"></i></span>)}</h4>
                 <p className="title is-6">“{review.reviewHeadline}”</p>
                 <p>{review.reviewText}</p>
               </div>
             </div>
-            <div className="column is-full">
+            <div className="column is-full no-side-padding">
               <div className="extra-padding has-background-white curve-border">
                 <h4 className="title is-4">Comments</h4>
                 <form onSubmit={this.handleSubmit}>
@@ -225,7 +227,7 @@ class reviewShow extends React.Component {
                     </div>
                     {errors.restaurantName && <small className="help is-danger">{errors.restaurantName}</small>}
                   </div>
-                  <button className="button is-info is-rounded">Submit</button>
+                  <button className="button pin-button is-rounded">Submit</button>
                 </form>
                 <div>{review.comments.map((comment, i) => (
                   <div key={i}><hr /><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong> on {moment(comment.user.createdAt).format('Do MMMM YYYY')} at {moment(comment.user.createdAt).format('hh:mm')}</p></div>))}</div>

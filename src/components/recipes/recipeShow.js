@@ -164,25 +164,7 @@ class recipeShow extends React.Component {
         <div className="container margin-maker">
           <div className="columns is-vcentered has-background-white margin-topbottom curve-border">
             <div className="column is-half">
-              <h2 className="custom-title">{recipe.name}<br /></h2>Created by <Link to={`/user/${recipe.user._id}`}>{recipe.user.username}</Link> on {moment(recipe.createdAt).format('Do MMMM YYYY')} at {moment(recipe.createdAt).format('hh:mm')}
-              <div>
-                {likes && likes.some(checkLikes) &&
-                <div className="small-margin"><a className="button is-link is-rounded is-small">
-                  <span className="icon">
-                    <i className="fas fa-check-circle"></i>
-                  </span>
-                  <span>Liked</span>
-                </a><label className="label totalLikes like-info">{this.state.recipe.likes.length} Likes</label></div>
-                }
-                {likes && !likes.some(checkLikes) &&
-                    <div className="small-margin"><a className="button is-link is-rounded is-small" onClick={() => this.handleLike(likes, Auth.getPayload().sub)}>
-                      <span className="icon">
-                        <i className="fas fa-thumbs-up"></i>
-                      </span>
-                      <span>Like</span>
-                    </a><label className="label totalLikes like-info">{this.state.recipe.likes.length} Likes</label></div>
-                }
-              </div>
+              <h2 className="custom-title">{recipe.name}<br /></h2>
             </div>
             <div className="column is-half pin-column">
               {pinnedRecipes && pinnedRecipes.some(checkPin) &&
@@ -203,8 +185,8 @@ class recipeShow extends React.Component {
               }
             </div>
           </div>
-          <div className="columns is-multiline">
-            <div className="column is-one-third">
+          <div className="columns is-multiline small-top-margin">
+            <div className="column is-one-third no-left-side-padding">
               <div className="extra-padding has-background-white curve-border">
                 <figure className="image">
                   <img src={recipe.image} alt={recipe.name} className="curve-border" />
@@ -223,6 +205,26 @@ class recipeShow extends React.Component {
                   <span>Delete</span>
                 </a>}
                 {this.isOwner() && <div><br /></div>}
+                Created by <Link to={`/user/${recipe.user._id}`}>{recipe.user.username}</Link><br/><span className="small-font"> on {moment(recipe.createdAt).format('Do MMMM YYYY')} at {moment(recipe.createdAt).format('hh:mm')}</span><br /><br />
+                <div>
+                  {likes && likes.some(checkLikes) &&
+                  <div className="small-margin"><a className="button is-link is-rounded is-small">
+                    <span className="icon">
+                      <i className="fas fa-check-circle"></i>
+                    </span>
+                    <span>Liked</span>
+                  </a><label className="label totalLikes like-info">{this.state.recipe.likes.length} Likes</label></div>
+                  }
+                  {likes && !likes.some(checkLikes) &&
+                      <div className="small-margin"><a className="button is-link is-rounded is-small" onClick={() => this.handleLike(likes, Auth.getPayload().sub)}>
+                        <span className="icon">
+                          <i className="fas fa-thumbs-up"></i>
+                        </span>
+                        <span>Like</span>
+                      </a><label className="label totalLikes like-info">{this.state.recipe.likes.length} Likes</label></div>
+                  }
+                </div>
+                <hr />
                 <h4 className="title is-5">Description</h4>
                 <p>“{recipe.description}”</p>
                 <hr />
@@ -237,13 +239,13 @@ class recipeShow extends React.Component {
                 <p className="p_wrap">{recipe.ingredients}</p>
               </div>
             </div>
-            <div className="column is-one-third has-text-centered">
+            <div className="column is-one-third has-text-centered no-right-side-padding">
               <div className="extra-padding has-background-white curve-border">
                 <h4 className="title is-4">Method</h4>
                 <p className="p_wrap">{recipe.method}</p>
               </div>
             </div>
-            <div className="column is-12">
+            <div className="column is-12 no-side-padding">
               <div className="extra-padding has-background-white curve-border">
                 <h4 className="title is-4">Comments</h4>
                 <form onSubmit={this.handleSubmit}>
@@ -260,7 +262,7 @@ class recipeShow extends React.Component {
                     </div>
                     {errors.restaurantName && <small className="help is-danger">{errors.restaurantName}</small>}
                   </div>
-                  <button className="button is-info is-rounded">Submit</button>
+                  <button className="button pin-button is-rounded">Submit</button>
                 </form>
                 <div>{recipe.comments.map((comment, i) => (
                   <div key={i}><hr /><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong> on {moment(comment.user.createdAt).format('Do MMMM YYYY')} at {moment(comment.user.createdAt).format('hh:mm')}</p></div>))}</div>

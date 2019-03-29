@@ -93,9 +93,11 @@ class PinnedItems extends React.Component {
                 </div>
               ))}
             </div>
-            {this.state.user && this.state.user.data.user.pinnedRecipes === [] && this.state.user.data.user.pinnedReviews === [] && <p>hello</p>}
             <div className="column is-hidden-mobile"></div>
           </div>
+          {this.state.user && this.state.reviewFeed.length === 0 && this.state.recipeFeed.length === 0 && <div className="column is-full"><div className="card has-text-centered extra-padding">
+            <div className="title is-6 has-text-centered">You don’t have any pinned items yet.<br />
+              <br />Check out your newsfeed or search for inspiration!<br /><br /><span><Link to="/newsfeed" className="button pin-button is-rounded">Newsfeed</Link>      <Link to="/search" className="button pin-button is-rounded custom-button-width">Search</Link></span></div></div></div>}
         </div>
       </main>
     )
