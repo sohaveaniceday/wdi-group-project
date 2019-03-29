@@ -40,7 +40,7 @@ class PinnedItems extends React.Component {
     console.log('hello', this.state)
     return (
       <main className="section pinned-page hero is-fullheight">
-        <div className="container margin-maker">
+        <div className="container margin-maker margin-auto">
           <div className="columns is-mobile is-multiline articles">
             <div className="column is-hidden-mobile"></div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">

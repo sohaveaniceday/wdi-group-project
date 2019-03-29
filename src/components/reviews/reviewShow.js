@@ -135,7 +135,7 @@ class reviewShow extends React.Component {
 
     return(
       <main className="section review-page">
-        <div className="container margin-maker">
+        <div className="container margin-maker margin-auto">
           <div className="columns is-vcentered has-background-white margin-topbottom curve-border">
             <div className="column is-half">
               <h2 className="custom-title">{review.restaurantName}<br /></h2>

@@ -90,7 +90,7 @@ class UserShow extends React.Component {
     } else if (user) {
       return(
         <main className="section profile-page">
-          <div className="container margin-maker">
+          <div className="container margin-maker margin-auto">
             <div className="extra-padding has-background-white margin-topbottom curve-border">
               <div className="columns">
                 <div className="column is-half">

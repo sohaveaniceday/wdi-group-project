@@ -161,7 +161,7 @@ class recipeShow extends React.Component {
 
     return(
       <main className="section recipe-page">
-        <div className="container margin-maker">
+        <div className="container margin-maker margin-auto">
           <div className="columns is-vcentered has-background-white margin-topbottom curve-border">
             <div className="column is-half">
               <h2 className="custom-title">{recipe.name}<br /></h2>
