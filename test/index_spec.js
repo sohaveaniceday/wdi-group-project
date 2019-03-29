@@ -8,37 +8,24 @@ const { secret } = require('../config/environment')
 
 const jwt = require('jsonwebtoken')
 
-const categoryData = [
-  { name: 'Vegetarian' }
-]
+const categoryData = { name: 'Vegetarian' }
+
+const categoryDataPost = { name: 'Meaty' }
+
 
 let token
 
 describe('Category tests(GET /api/category)', () => {
 
+  beforeEach(done => {
+    Category.create(categoryData)
+      .then(() => done())
+      .catch(() => done())
+  })
+
   afterEach(done => {
     Category.collection.remove()
     done()
-  })
-
-  beforeEach(done => {
-    Category.remove({})
-      .then(() => Category.create(categoryData))
-      .then(() => User.remove({}))
-      .then(() => User.create({
-        username: 'test',
-        email: 'test',
-        password: 'test',
-        passwordConfirmation: 'test',
-        categories: ['categories[13]._id']
-        // pinnedReviews: 'test'
-
-      }))
-      .then(user => {
-        token = jwt.sign({ sub: user._id }, secret)
-        done()
-      })
-      .catch(done)
   })
 
   it('should return a 200 response', done => {
@@ -139,7 +126,7 @@ describe('Category tests(GET /api/category)', () => {
         .post('/api/categories')
         .set('Accept', 'application/json')
         .set('Authorization', `Bearer ${token}`)
-        .send(categoryData)
+        .send(categoryDataPost)
         .end((err, res) => {
           expect(res.status).to.eq(201)
           done()
@@ -150,14 +137,10 @@ describe('Category tests(GET /api/category)', () => {
       api
         .post('/api/categories')
         .set('Accept', 'application/json')
-        .send({
-          category: {
-            name: 'Vegetarian'
-          }
-        })
+        .send({ name: 'Beansy' })
         .end((err, res) => {
+          console.log(res)
           const category = res.body
-
           expect(category)
             .to.have.property('_id')
             .and.to.be.a('string')
