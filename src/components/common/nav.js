@@ -41,12 +41,12 @@ class Nav extends React.Component {
           {!Auth.isAuthenticated() && <Link to="/" className="navbar-item nav-special">
             <span className="icon has-text-white is-large">
               <i className="fas fa-home"></i>
-            </span><div className="navbar-item nav-special is-hidden-mobile is-hidden-tablet-only">MUNCH</div>
+            </span><div className="navbar-item nav-special is-hidden-mobile">MUNCH</div>
           </Link>}
-          {Auth.isAuthenticated() && <Link to="/newsfeed" className="navbar-item nav-special">
-            <span className="icon has-text-white is-large">
-              <i className="fas fa-home"></i>
-            </span><div className="navbar-item nav-special is-hidden-mobile is-hidden-tablet-only">MUNCH</div>
+          {Auth.isAuthenticated() && <Link to="/newsfeed" className="navbar-item">
+            <span className="icon has-text-white is-large nav-icon">
+              <i className="fas fa-home"></i><div className="navbar-item nav-icon is-flex-widescreen">MUNCH</div>
+            </span>
           </Link>}
           <a role="button"
             className={`navbar-burger ${this.state.navbarOpen ? 'is-active' : ''}`}
