@@ -81,6 +81,21 @@
     color: white;
   }
 }
+
+.search-page {
+  background-image: url('/assets/2ead977b9b39f27c282a40db8431ff57.gif');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  .search-message {
+    background-color: rgba(255, 255, 255, 0.8);
+    // border-radius: 5px;
+    color: rgba(0, 0, 0, 0.8);
+  }
+}
+
 a {
   color: rgb(50, 115, 220);
   font-weight: bold;

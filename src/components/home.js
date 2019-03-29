@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router'
+import { Animated } from 'react-animated-css'
 import Auth from '../lib/auth'
 // import {Animated} from 'react-animated-css'
 import { Link } from 'react-router-dom'
@@ -22,7 +23,9 @@ class Home extends Component {
               What are you craving?
             </p>
             <div>
-              <Link to="/register" className="button pin-button is-rounded is-large">Register</Link>
+              <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={true}>
+                <Link to="/register" className="button pin-button is-rounded is-large">Register</Link>
+              </Animated>
               <br />
               <br />
               <span>Already registered? <Link to="/login">Login here.</Link></span>

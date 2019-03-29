@@ -48,7 +48,7 @@ class Search extends React.Component {
     return (
       <main className="section search-page hero is-fullheight">
         <div className="container margin-maker">
-          <div className="extra-padding has-background-white margin-topbottom curve-border">
+          <div className="extra-padding margin-topbottom curve-border search-message">
             <form onSubmit={this.handleSubmit}>
               <div className="field has-text-centered">
                 <div className="control">
