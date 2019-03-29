@@ -83,7 +83,7 @@ class Newsfeed extends React.Component {
                 <div key={recipeFeed._id} className="column">
                   <Link to={`/recipe/${recipeFeed._id}`} >
                     <div className="card">
-                      <div className="card-header is-shadowless">
+                      <div className="card-header is-shadowless has-text-centered">
                         <h4 className="card-header-title custom-title is-centered">{recipeFeed.name}</h4>
                       </div>
                       <div className="card-image is-4by3">
