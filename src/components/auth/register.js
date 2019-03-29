@@ -148,7 +148,7 @@ class Register extends React.Component {
                 {this.state.error.passwordConfirmation && <small className="help is-danger">{this.state.error.passwordConfirmation}</small>}
               </div>
               <div className="field">
-                <label className="label">Full Name</label>
+                <label className="label">Full Name (required)</label>
                 <div className="control">
                   <input
                     className={`input ${this.state.error.name ? 'is-danger': ''}`}

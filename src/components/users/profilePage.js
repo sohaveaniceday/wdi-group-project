@@ -56,7 +56,7 @@ class ProfilePage extends React.Component {
     // console.log(friends)
     if (user) {
       return(
-        user && <main className="section profile-page">
+        user && <main className="section profile-page hero is-fullheight">
           <div className="container margin-maker">
             <div className="extra-padding has-background-white margin-topbottom curve-border">
               <div className="columns">
@@ -76,10 +76,10 @@ class ProfilePage extends React.Component {
             <div className="columns is-multiline">
               <div className="column is-one-third">
                 <div className="extra-padding has-background-white curve-border">
-                  <figure className="image">
+                  {user.image && <><figure className="image">
                     <img src={user.image} alt={user.username} className="curve-border"/>
                   </figure>
-                  <br />
+                  <br /></>}
                   <h4 className="title is-3">{user.name}</h4>
                   <hr />
                   {(friends.some(friend => friend.status === 'pending')) && <h4 className="title is-6">Pending Friend Requests</h4>}
