@@ -2,14 +2,11 @@ import React from 'react'
 import axios from 'axios'
 import Select from 'react-select'
 import Container from '../Container'
-
 import * as filestack from 'filestack-js'
 const client = filestack.init('AYoVZLJZuQ2GNd6qd87SYz')
-
 class Register extends React.Component {
   constructor() {
     super()
-
     this.state = {
       data: {
         username: '',
@@ -26,7 +23,6 @@ class Register extends React.Component {
     this.updateState = this.updateState.bind(this)
     this.openModal = this.openModal.bind(this)
   }
-
   componentDidMount() {
     axios.get('/api/categories')
       .then(res => {
@@ -35,13 +31,11 @@ class Register extends React.Component {
       .then(categories => this.setState({ categories }))
       .catch(err => console.log(err))
   }
-
   handleChange({ target: { name , value }}) {
     const data = {...this.state.data, [name]: value}
     const error = ''
     this.setState({ data, error })
   }
-
   handleSubmit(e) {
     e.preventDefault()
     const data = {...this.state.data, image: this.state.image}
@@ -52,13 +46,11 @@ class Register extends React.Component {
         .catch(() => this.setState({ error: 'Invalid Input'}))
     }
   }
-
   handleSelect(value) {
     let data = null
     data = {...this.state.data, categories: value.map(({ value }) => value) }
     this.setState({ data })
   }
-
   openModal() {
     const options = {
       fromSources: ['local_file_system','instagram','facebook'],
@@ -78,18 +70,16 @@ class Register extends React.Component {
     }
     client.picker(options).open()
   }
-
   updateState(url){
     console.log('updateState running')
     console.log(url)
   }
-
   render() {
     console.log(this.state)
     console.log(this.state.error)
     return (
       <main className="section profile-page">
-        <div className="container margin-maker">
+        <div className="input-max container margin-maker">
           <div className="input-max extra-padding has-background-white margin-topbottom curve-border">
             <form onSubmit={this.handleSubmit}>
               <h2 className="title">Register</h2>
@@ -214,5 +204,4 @@ class Register extends React.Component {
     )
   }
 }
-
 export default Register

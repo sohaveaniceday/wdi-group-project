@@ -3,24 +3,19 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 // import Auth from '../../lib/auth'
 const moment = require('moment')
-
-
 class Search extends React.Component {
   constructor() {
     super()
     this.state = { data: {search: ''} }
-
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
-
   handleChange({ target: { name, value } }) {
     const data = {...this.state.data, [name]: value }
     const errors = {...this.state.errors, [name]: null }
     this.setState({ data, errors })
     console.log(this.state.data.search)
   }
-
   handleSubmit(e) {
     e.preventDefault()
     this.setState({ sent: true })
@@ -46,14 +41,13 @@ class Search extends React.Component {
         this.setState({ recipeFeed, reviewFeed })
       })
   }
-
   render() {
     const { data } = this.state
     // console.log(search)
     console.log(this.state)
     return (
       <main className="section search-page hero is-fullheight">
-        <div className="container margin-maker margin-auto">
+        <div className="container margin-maker">
           <div className="extra-padding has-background-white margin-topbottom curve-border">
             <form onSubmit={this.handleSubmit}>
               <div className="field has-text-centered">
@@ -89,7 +83,7 @@ class Search extends React.Component {
                         </figure>
                       </div>
                       <div className="card-content">
-                        <h5 className="title is-6">“{reviewFeed.reviewHeadline}“</h5>
+                        <h5 className="title is-6">{reviewFeed.reviewHeadline}</h5>
                         <h6 className="subtitle is-6">Created by <Link to={`/user/${reviewFeed.user._id}`}>{reviewFeed.user.username}</Link><br /> at {moment(reviewFeed.createdAt).format('hh:mm')} on {moment(reviewFeed.createdAt).format('Do MMMM YYYY')}</h6>
                       </div>
                     </div>
@@ -112,7 +106,7 @@ class Search extends React.Component {
                         </figure>
                       </div>
                       <div className="card-content">
-                        <h5 className="title is-6">“{recipeFeed.description}“</h5>
+                        <h5 className="title is-6">{recipeFeed.description}</h5>
                         <h6 className="subtitle is-6">Created by <Link to={`/user/${recipeFeed.user._id}`}>{recipeFeed.user.username}</Link><br /> at {moment(recipeFeed.createdAt).format('hh:mm')} on {moment(recipeFeed.createdAt).format('Do MMMM YYYY')}</h6>
                       </div>
                     </div>
@@ -127,9 +121,7 @@ class Search extends React.Component {
     )
   }
 }
-
 export default Search
-
 // <form onSubmit={this.handleSubmit}>
 //   <div className="field">
 //     <label className="label">Make Comment</label>
