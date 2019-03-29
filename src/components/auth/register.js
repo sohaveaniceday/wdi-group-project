@@ -79,7 +79,7 @@ class Register extends React.Component {
     console.log(this.state.error)
     return (
       <main className="section profile-page">
-        <div className="input-max container margin-maker">
+        <div className="input-max container margin-maker margin-auto">
           <div className="input-max extra-padding has-background-white margin-topbottom curve-border">
             <form onSubmit={this.handleSubmit}>
               <h2 className="title">Register</h2>
