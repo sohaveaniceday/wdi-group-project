@@ -1,66 +1,96 @@
-# General Assembly WDI Project 3: 
+# General Assembly WDI Project 3: A MERN Stack App
 
-[Portfolio Link](https://wdi-times-machine.herokuapp.com/)
+[Portfolio Link](https://munch-ga.herokuapp.com/)
 
 ## Brief
 
-In teams of 3 we had to render an app that retrieves data from a public API in an interesting and engaging manner. We had just under 48 hours to achieve this goal, making it extremely time sensitive.
+In groups of 4, build a full-stack application by making your own backend and your own front-end. Use an Express API to serve your data from a Mongo database and consume your API with a separate front-end built with React.
 
 ## Technologies Used:
 
 * JavaScript
 * React
+* HTML
+* CSS
+* Sass
+* Node.js
+* Mongoose
+* Express
 * Axios
-* Insomnia
-* Webpack
-* NPM
-* HTML5
-* Bulma + CSS + Sass
-* Git
-* GitHub
+* Filestack
+* Yarn
+* Bulma
 
 ## Approach Taken
 
-The Times Machine is a tech news app which leverages the vast New York Times Archive API. Our app allows readers to step back in time and find tech stories from the past. Users can search for technology and science stories dating back to the 1920s.
+In our team of 4 we created Munch, a social networking site for foodies, bringing together restaurant reviews and recipes all in one place. My part in the project included building the models in Node.js, building the friend request and pinned items functionality, implementing search, creating the initial seeds file and styling icons and buttons.
 
 ---
 
 ## Screenshot Walk-through
 
-### Home page with app title and short description.
+### Landing page for logged-out users prompting register/login.
 
-![home page](screenshots/home-page.png)
+![landing page](screenshots/landing-page.png)
 
-### The search page that allows the user to select their desired month and year.
+### Register page that allows user to register their details.
 
-![search page](screenshots/search-page.png)
+![register](screenshots/register.png)
 
-### The loading page displays while the app searches the API.
+### Login page allows user to login.
 
-![loading page](screenshots/loading-page.png)
+![login](screenshots/login.png)
 
-### Results page displays results (limited to 20) with headline and short article snippet. Users can choose to read more via the 'Read More' link, which takes users to the full article on the NYT website.
+### The user's homescreen is a newsfeed which curates content specific to the user's category preferences and friends list.
 
-![results page](screenshots/results-page.png)
+![newsfeed](screenshots/newsfeed.png)
 
-### The Randomizer page returns results for a random month and year.
+### The recipe page displays all the relevant info for the recipe, including the ability to pin the recipe, like the recipe, make a comment, and edit/delete if the user is the recipe owner.
 
-![randomizer page](screenshots/randomizer-page.png)
+![recipe page](screenshots/recipe-page.png)
+
+### The review page displays all the relevant info for the review, including the ability to pin the review, like the review, make a comment, and edit/delete if the user is the review owner.
+
+![review page](screenshots/review-page.png)
+
+### The Profile page allows the user to browse their own details, find their recipes and reviews, see their friend list, and the option to edit their details.
+
+![profile page](screenshots/profile-page.png)
+
+### Search allows the user to search the whole database for restaurants, recipes, ingredients and categories.
+
+![search](screenshots/search.png)
+
+### The Pinned Items page allows users to see their pinned items all in one place.
+
+![pinned items](screenshots/pinned-items.png)
+
+### The new review/recipe forms allow the user to create their own reviews and recipes.
+
+![new review](screenshots/new-review.png)
 
 ___
 
 ### Functionality
 
-To access stories, the user simply selects a month and year on the search page for results to appear. Our app also features a randomizer, which returns results from a random year and month.
+The functionality works much the same way as most popular social network sites. Users can:
+
+* Register & login
+* Post, edit and delete your own reviews and recipe
+* Search posts
+* Like other’s posts
+* Friend other users
+* Get a curated newsfeed based on your preferences and friends
+* Pin your favourite reviews & recipes
 
 ### Process
-The creation of our app began with testing out the NYT Archive API. After experimenting with results through Insomnia, our team took the following steps:
-1. Creating a webpack from scratch.
-2. Creating the app’s wireframes.
-3. Writing out and planning the pseudo code.
-4. Creating the main pages and necessary components in React: home, searchesNew, searchesForm, randomizer, nav, footer etc.
-5. Creating a search function that successfully navigates the NYT Archive's eclectic metadata. Due to the sheer amount of data, our main goal was to successfully filter for tech and science-related articles.
-6. To style our page, we used a combination of Bulma, Sass and an Animations NPM package.
+When we realised there were very few apps that incorporated both restaurant reviews and recipes (apps tend to lean to one or the other), we realised we had our USP. Once we had settled on our concept, we got to work on the  
+1.
+1.
+1.
+1.
+1.
+1.
 
 
 #### Featured piece of code 1
