@@ -2,7 +2,9 @@
 
 [Portfolio Link](https://munch-ga.herokuapp.com/)
 
-Munch was the first MERN stack app I had built. It incorporated everything I had learned in the previous 8 weeks, including React, JavaScript and MongoDB.
+Munch was the first MERN stack app I had built. It incorporated everything we had learned in the previous 8 weeks, including React, JavaScript and MongoDB.
+
+---
 
 ## Brief
 
@@ -12,11 +14,9 @@ In 9 days and in groups of 4 we had to:
 * **Use an Express API** to serve your data from a Mongo database
 * **Consume your API with a separate front-end** built with React
 * **Be a complete product** which most likely means multiple relationships and CRUD functionality for at least a couple of models
-* Consume at least **one public API** to enchance your app
+* Consume at least **one public API** to enhance your app
 * **Implement thoughtful user stories/wireframes** that are significant enough to help you know which features are core MVP and which you can cut
-* **Have a visually impressive design** to kick your portfolio up a notch and have something to wow future clients & employers. **ALLOW** time for this.
 * **Be deployed online** so it's publicly accessible.
-* **Have automated tests** for _at least_ one RESTful resource on the back-end. Improve your employability by demonstrating a good understanding of testing principals.
 
 ## Technologies Used:
 
@@ -135,7 +135,7 @@ ___
 
 Creating our app strengthened our knowledge of React and also gave us an opportunity to experiment and play around with ideas. Our top wins include:
 
-* 
+*
 ___
 
 ## Future Features
