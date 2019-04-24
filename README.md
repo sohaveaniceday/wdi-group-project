@@ -1,5 +1,7 @@
 # General Assembly WDI Project 3: A MERN Stack App
 
+Still work in progress...
+
 [Portfolio Link](https://munch-ga.herokuapp.com/)
 
 Munch was the first MERN stack app I had built. It incorporated everything we had learned in the previous 8 weeks, including React, JavaScript and MongoDB.
