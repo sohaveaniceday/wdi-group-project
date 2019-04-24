@@ -98,8 +98,10 @@ The functionality works much the same way as most popular social network sites. 
 * Pin your favourite reviews & recipes
 
 ### Process
-When we realised there were very few apps that incorporated both restaurant reviews and recipes (apps tend to lean to one or the other), we realised we had our USP. Once we had settled on our concept, we got to work on the  
-1.  
+When we realised there were very few apps that incorporated both restaurant reviews and recipes (apps tend to lean to one or the other), we realised we had our USP. Once we had settled on our concept, we got to work on the project.
+1.  In order to understand how our app would work at a fundamental level we needed to draft out models and routes in a visual manner.
+![pinned items](screenshots/backend-wireframe.jpeg)
+
 2.  
 3.  
 4.  
