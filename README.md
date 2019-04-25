@@ -1,7 +1,5 @@
 # General Assembly WDI Project 3: A MERN Stack App
 
-Still work in progress...
-
 [Portfolio Link](https://munch-ga.herokuapp.com/)
 
 Munch was the first MERN stack app I had built. It incorporated everything we had learned in the previous 8 weeks, including React, JavaScript and MongoDB.
@@ -195,6 +193,25 @@ ___
 
 ### Wins and Blockers
 
+One of the biggest blockers for this project was creating a substantial seeds file that incorporated promised. As some models relied on other models in order to be created, we had to establish multiple promises in the seeds file in order for the database to accept certain models. For instance, in order for a review to exist, it must first have a user and categories in order to create the review - so we would create the user and categories first and then promise them to the review seed.
+
+``` JavaScript
+     return Promise.all([
+        Review.create([
+          {
+            'restaurantName': 'Noble Rot',
+            'reviewHeadline': 'So good!',
+            'reviewText': 'The very best restaurants are like your oldest friend.',
+            'rating': 5,
+            'image': 'https://infatuation.imgix.net/media/images/reviews/noble-rot-wine-bar/banners/1492493931.11.jpg?auto=format&h=840&w=1336',
+            'user': users[getRandom(4)]._id,
+            'categories': [categories[5]._id,categories[3]._id,categories[63]._id,categories[89]._id
+          }
+        )]
+      )]
+```
+
+As for wins, I'm really pleased with how the backend works and allows the user to do everything a normal social media platform would. The friends request system and the pinned items are particularly slick, allowing users to customise their experience of the site easily and efficiently. The newsfeed also works really nicely, making it feel like a real service.
 ___
 
 ## Future Features

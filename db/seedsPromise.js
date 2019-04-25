@@ -380,7 +380,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
     })
     .then(data => {
       const [ categories, users ] = data
-
       return Promise.all([
         Review.create([
           {
