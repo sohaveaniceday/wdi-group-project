@@ -113,7 +113,6 @@ class recipeShow extends React.Component {
     let recipe = null
     recipe = {...this.state.recipe, likes: value.concat(user) }
     this.setState({ recipe }, function() {
-      console.log('recipe state -->', this.state.recipe)
       axios.put(`/api/recipes/${this.props.match.params.id}`,
         this.state.recipe,
         { headers: {Authorization: `Bearer ${Auth.getToken()}`}})

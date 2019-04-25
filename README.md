@@ -99,47 +99,102 @@ The functionality works much the same way as most popular social network sites. 
 
 ### Process
 When we realised there were very few apps that incorporated both restaurant reviews and recipes (apps tend to lean to one or the other), we realised we had our USP. Once we had settled on our concept, we got to work on the project.
-1.  In order to understand how our app would work at a fundamental level we needed to draft out models and routes in a visual manner.
-![pinned items](screenshots/backend-wireframe.jpeg)
-
-2.  
-3.  
-4.  
-5.  
-6.  
-
+1.  To work efficiently and effectively as a team, we used Trello to assign the various tasks amongst us. This was particularly useful when we were working remotely.
+![trello](screenshots/trello.png)
+2.  In order to understand how our app would work at a fundamental level we needed to draft out models and routes in a visual manner.
+![backend wireframe](screenshots/backend-wireframe.jpeg)
+3.  We then created wireframes for the front end to visualise how our backend would interact with it.
+4.  By day 2 we were happy with our respective wireframes, we began work on our backend: creating the models, controllers, and then routes, all in Node.js.
+5.  By the end of day 4 we had tested the backend using Insomnia and we were happy with the functionality. We then started work on the frontend: creating the app.js file, then creating the various components that would make up the app, all in React.
+6.  After day 6 we had reached an MVP level of completion, we began styling the app using the Bulma framework.
 
 #### Featured piece of code 1
 
-
+The User Schema was by far our most complicated model, as it had to contain the majority of datasets. It contained referenced models, as well as virtuals (for reviews and recipes) and a friends plugin. The friends plugin took quite a while to implement as the documentation wasn't as clear as I would have hoped. This was also my first experience with virtuals, which was quite challenging to understand at first.
 
 ``` JavaScript
+
+const userSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true, trim: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  name: { type: String, required: true },
+  categories: [ {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Category',
+    required: true
+  } ],
+  image: { type: String },
+  location: { type: String },
+  bio: { type: String },
+  pinnedRecipes: [ {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Recipe'
+  } ],
+  pinnedReviews: [ {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Review',
+    required: true
+  } ]
+})
+
+userSchema.plugin(friendsPlugin({ pathName: 'friends' }))
+
+userSchema.virtual('reviews', {
+  ref: 'Review',
+  localField: '_id',
+  foreignField: 'user'
+})
 
 ```
 
 ### Styling
 
+We used the CSS framework Bulma to style our app. This would take some of the heavy lifting out of creating things like navbars etc., so we could focus more on the functionality of the site. We customised the default Bulma settings as much as we could to differentiate itself from other Bulma products - which generally look quite similar. This involved customising the buttons to feature icons, changing the curvature of the cards, and some of the navbar configuration.
 
+In future I would avoid using Bulma as we found it quite difficult to customise once we had applied its classes, and ended up being quite a time drain. In my next project I will try and use a different CSS framework like Materialise.
 
 #### Featured piece of code 2
 
-
+This is how we got our curated Newsfeed to work. It pulls in all the data from our API for recipes, reviews and user using an ```axios.all``` request. It then checks if the user is friends with the user who wrote the recipe/review - if yes, then then item will show. If not, it will check if the review shares any of the same categories as the user's preferences. It will finally check if the user is the author, and disregard the item if it's true.
 
 ``` JavaScript
 
+componentDidMount() {
+  axios.all([
+    axios.get(`/api/user/${Auth.getPayload().sub}`),
+    axios.get('/api/recipes'),
+    axios.get('/api/reviews')
+  ])
+    .then(res => {
+      const [ user, recipes, reviews ] = res
+      const recipeFeed = recipes.data.filter(recipe => {
+        return ((user.data.friends.some(friend => {
+          return (recipe.user.id.includes(friend._id) && friend.status !== 'pending')
+        })) || user.data.user.categories.some(category => {
+          return recipe.categories.some(categoryObject => {
+            return Object.values(categoryObject).includes(category._id)
+          })
+        }) && recipe.user.id !== Auth.getPayload().sub)
+      })
+      const reviewFeed = reviews.data.filter(review => {
+        return ((user.data.friends.some(friend => {
+          return (review.user.id.includes(friend._id) && friend.status !== 'pending')
+        })) || user.data.user.categories.some(category => {
+          return review.categories.some(categoryObject => {
+            return Object.values(categoryObject).includes(category._id)
+          })
+        }) && review.user.id !== Auth.getPayload().sub)
+      })
+      this.setState({ recipeFeed, reviewFeed, user })
+    })
+}
 
 ```
 ___
 
-### Challenges
+### Wins and Blockers
 
-
-
-### Wins
-
-Creating our app strengthened our knowledge of React and also gave us an opportunity to experiment and play around with ideas. Our top wins include:
-
-*
 ___
 
 ## Future Features
