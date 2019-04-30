@@ -106,6 +106,12 @@ When we realised there were very few apps that incorporated both restaurant revi
 5.  By the end of day 4 we had tested the backend using Insomnia and we were happy with the functionality. We then started work on the frontend: creating the app.js file, then creating the various components that would make up the app, all in React.
 6.  After day 6 we had reached an MVP level of completion, we began styling the app using the Bulma framework.
 
+### Division of work
+
+Other than Trello, as previously mentioned, other ways that we kept up to date on all our tasks and each other's progress was daily stand ups first thing in the morning. This was a great opportunity to keep everyone abreast of any issues, with the code or otherwise. We would often express our approach to our tasks and ask for any assistance from other team memebers. Some of the more challenging tasks were assigned to multiple team members so we could solve big issues quicker - this tactic was particularly applied to the backend, as we all wanted practice in setting up our own RESTful API. My contribution to the project included building the models in Node.js, building the friend request and pinned items functionality, implementing search, creating the initial seeds file and styling icons and buttons.
+
+
+
 #### Featured piece of code 1
 
 The User Schema was by far our most complicated model, as it had to contain the majority of datasets. It contained referenced models, as well as virtuals (for reviews and recipes) and a friends plugin. The friends plugin took quite a while to implement as the documentation wasn't as clear as I would have hoped. This was also my first experience with virtuals, which was quite challenging to understand at first.
