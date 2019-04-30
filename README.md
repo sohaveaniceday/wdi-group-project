@@ -228,3 +228,9 @@ If we had more time essential future features we would like to add include:
 * Ability to un-pin items and un-like reviews/recipes.
 * A shopping list functionality so you could keep all the ingredients you needed for your next shop on your app.
 * A simple cooking timer on the recipe pages to assist with timekeeping.
+
+___
+
+## Key Learnings
+
+This was the most challenging project to date as it brought together everything we had learnt so far, as well as working collaboratively as a 4 person team. Clear division of work and daily stand ups were essential for the success of the project as it allowed us to work efficiently but also to allow people to work on things they found difficult and consequently aid the learning process. It pushed us to not just lean on our strong suits but seek out areas of our coding that needed improvement. I also learnt that its best not to completely rely on a CSS framework as it can cause bigger issues later down in the workflow. I shall be brushing up on my CSS skills to avoid this in future.
