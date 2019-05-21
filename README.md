@@ -1,6 +1,6 @@
 # General Assembly WDI Project 3: A MERN Stack App
 
-[Portfolio Link](https://munch-ga.herokuapp.com/)
+[Deployed Project Link](https://munch-ga.herokuapp.com/)
 
 Munch was the first MERN stack app I had built. It incorporated everything we had learned in the previous 8 weeks, including React, JavaScript and MongoDB.
 
@@ -105,6 +105,12 @@ When we realised there were very few apps that incorporated both restaurant revi
 4.  By day 2 we were happy with our respective wireframes, we began work on our backend: creating the models, controllers, and then routes, all in Node.js.
 5.  By the end of day 4 we had tested the backend using Insomnia and we were happy with the functionality. We then started work on the frontend: creating the app.js file, then creating the various components that would make up the app, all in React.
 6.  After day 6 we had reached an MVP level of completion, we began styling the app using the Bulma framework.
+
+### Division of work
+
+Other than Trello, as previously mentioned, other ways that we kept up to date on all our tasks and each other's progress was daily stand ups first thing in the morning. This was a great opportunity to keep everyone abreast of any issues, with the code or otherwise. We would often express our approach to our tasks and ask for any assistance from other team memebers. Some of the more challenging tasks were assigned to multiple team members so we could solve big issues quicker - this tactic was particularly applied to the backend, as we all wanted practice in setting up our own RESTful API. My contribution to the project included building the models in Node.js, building the friend request and pinned items functionality, implementing search, creating the initial seeds file and styling icons and buttons.
+
+
 
 #### Featured piece of code 1
 
@@ -222,3 +228,9 @@ If we had more time essential future features we would like to add include:
 * Ability to un-pin items and un-like reviews/recipes.
 * A shopping list functionality so you could keep all the ingredients you needed for your next shop on your app.
 * A simple cooking timer on the recipe pages to assist with timekeeping.
+
+___
+
+## Key Learnings
+
+This was the most challenging project to date as it brought together everything we had learnt so far, as well as working collaboratively as a 4 person team. Clear division of work and daily stand ups were essential for the success of the project as it allowed us to work efficiently but also to allow people to work on things they found difficult and consequently aid the learning process. It pushed us to not just lean on our strong suits but seek out areas of our coding that needed improvement. I also learnt that its best not to completely rely on a CSS framework as it can cause bigger issues later down in the workflow. I shall be brushing up on my CSS skills to avoid this in future.
