@@ -6,14 +6,10 @@
   "author": "Semmi <semmi.semmiw@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node index",
     "build": "webpack -p",
-    "seed1": "node db/seeds1",
-    "seed2": "node db/seeds2",
-    "seed": "node db/seedsPromise",
-    "start:server": "nodemon",
-    "start:client": "webpack-dev-server --mode=development",
-    "test": "istanbul cover node_modules/.bin/_mocha"
+    "postinstall": "[ \"$NODE_ENV\" = \"production\" ] && yarn build || exit 0",
+    "serve:react": "webpack-dev-server",
+    "serve:flask": "pipenv run flask run -p 4000"
   },
   "dependencies": {
     "axios": "^0.18.0",
