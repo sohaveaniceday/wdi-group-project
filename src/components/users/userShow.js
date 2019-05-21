@@ -1,21 +1,16 @@
 import React from 'react'
 import axios from 'axios'
-// import User from '../../../controllers/user'
-import Auth from '../../lib/auth'
-import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router'
+import Auth from '../../lib/auth'
 
 let arrayNumber = null
 
 function checkFriend(value, i) {
-  console.log(value._id)
   if (value._id === Auth.getPayload().sub) {
-    console.log('true')
     arrayNumber = i
-    console.log(arrayNumber)
     return true
   } else {
-    console.log('false')
     return false
   }
 }
@@ -58,30 +53,17 @@ class UserShow extends React.Component {
       .then(res => this.setState({ data: res.data }))
   }
 
-  // componentDidUpdate() {
-  //   axios.get(`/api/user/${this.props.match.params.id}`)
-  //     .then(res => this.setState({ data: res.data }))
-  // }
-
   handleSubmit() {
-    console.log('hello')
     axios.post('/api/friends',
       this.props.match.params,
       { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
       .then((res) => {
-        console.log(res)
         document.location.reload(true)
-        // this.forceUpdate()
       })
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
-
-
   render() {
-    // console.log(Auth.getPayload().sub, this.props.match.params)
-    // console.log((this.state.data.friends.forEach(checkRequest)))
-    console.log(this.state.data.friends)
     const { user } = this.state.data
     if(!this.state.data) {
       return null

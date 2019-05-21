@@ -56,7 +56,7 @@ class ReviewEdit extends React.Component {
     }
     this.setState({ data })
   }
-  
+
   openModal() {
     const options = {
       fromSources: ['local_file_system','instagram','facebook'],
@@ -70,8 +70,8 @@ class ReviewEdit extends React.Component {
         this.setState({ image: file.url })
       },
       onFileUploadFailed: (file, error) => {
-        console.log('file', file)
-        console.log('error', error)
+        console.log("file", file);
+        console.log("error", error);
       }
     }
     client.picker(options).open()
@@ -83,8 +83,6 @@ class ReviewEdit extends React.Component {
   }
 
   render() {
-    console.log(this.state)
-    console.log(this.state.error)
     return (
       <main className="section review-page">
         <div className="container">

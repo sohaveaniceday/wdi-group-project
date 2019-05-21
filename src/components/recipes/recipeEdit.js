@@ -74,8 +74,8 @@ class RecipeEdit extends React.Component {
         this.setState({image: file.url })
       },
       onFileUploadFailed: (file, error) => {
-        console.log('file', file)
-        console.log('error', error)
+        console.log("file", file);
+        console.log("error", error);
       }
     }
     client.picker(options).open()

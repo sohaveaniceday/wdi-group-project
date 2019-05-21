@@ -19,8 +19,6 @@ class Newsfeed extends React.Component {
     ])
       .then(res => {
         const [ user, recipes, reviews ] = res
-        console.log(user, recipes, reviews)
-        console.log('hello',res)
         const recipeFeed = recipes.data.filter(recipe => {
           return ((user.data.friends.some(friend => {
             return (recipe.user.id.includes(friend._id) && friend.status !== 'pending')
@@ -44,7 +42,6 @@ class Newsfeed extends React.Component {
   }
 
   render() {
-    // console.log(this.state.recipeFeed)
     return (
       <main className="section news-feed hero is-fullheight">
         <div className="container margin-maker margin-auto">

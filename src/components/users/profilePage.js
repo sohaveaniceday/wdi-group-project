@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import Auth from '../../lib/auth'
 import { Link } from 'react-router-dom'
+import Auth from '../../lib/auth'
 
 
 function filterRequested(friendsArray) {
@@ -32,28 +32,21 @@ class ProfilePage extends React.Component {
   }
 
   handleSubmit(id) {
-    // e.preventDefault()
-    // console.log(e.target.value)
     axios.post('/api/friends',
       id,
       { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
-      .then((res) => {
-        console.log(res)
+      .then(() => {
         document.location.reload(true)
-        // this.forceUpdate()
       })
       .catch(err => {
-        console.log(err)
         this.setState({ errors: err.response.data.errors })
       })
   }
 
   render() {
-    console.log(this.state)
     if(!this.state.data) return null
     const { user } = this.state.data
     const { friends } = this.state.data
-    // console.log(friends)
     if (user) {
       return(
         user && <main className="section profile-page hero is-fullheight">
@@ -135,12 +128,3 @@ class ProfilePage extends React.Component {
 }
 
 export default ProfilePage
-
-// <Link className="button is-warning" to={`/reviews/${review._id}/edit`}>Edit</Link>}
-//
-// <div>
-// <h4 className="title is-4">Reviews</h4>
-// {data.reviews && <div>{data.reviews.map((review, i) => (
-//   <p key={i}><strong>{review.restaurantName}</strong> <br />{review.restaurantHeadline}</p>))}
-// <hr />
-// </div>

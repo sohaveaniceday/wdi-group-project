@@ -85,7 +85,6 @@ class RecipeNew extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <main className="section recipe-page">
         <div className="container">

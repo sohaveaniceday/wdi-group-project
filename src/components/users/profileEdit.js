@@ -86,8 +86,6 @@ class ProfileEdit extends React.Component {
   }
 
   render() {
-    console.log(this.state)
-    console.log(this.state.error)
     return (
       <main className="section profile-page">
         <div className="container margin-maker">

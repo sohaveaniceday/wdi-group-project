@@ -20,28 +20,38 @@ class ReviewNew extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/categories')
+    axios
+      .get('/api/categories')
       .then(res => {
-        return res.data.map(category => ({ value: category._id, label: category.name }))
+        return res.data.map(category => ({
+          value: category._id,
+          label: category.name
+        }))
       })
       .then(categories => this.setState({ categories }))
       .catch(err => console.log(err))
   }
 
-  handleChange({ target: { name, value }}) {
-    const data = {...this.state.data, [name]: value }
-    const errors = {...this.state.errors, [name]: ''}
+  handleChange({ target: { name, value } }) {
+    const data = { ...this.state.data, [name]: value }
+    const errors = { ...this.state.errors, [name]: '' }
     this.setState({ data, errors })
+  }
+
+  updateState(url) {
+    console.log('updateState running')
+    console.log(url)
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    const data = {...this.state.data, image: this.state.image}
+    const data = { ...this.state.data, image: this.state.image }
     if (this.state.data.categories && this.state.data.categories.length > 0) {
-      axios.post('/api/reviews',
-        data,
-        { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
-        .then((res) => {
+      axios
+        .post('/api/reviews', data, {
+          headers: { Authorization: `Bearer ${Auth.getToken()}` }
+        })
+        .then(res => {
           if (res.data.errors) {
             this.setState({ sent: 'false' })
           } else {
@@ -55,37 +65,31 @@ class ReviewNew extends React.Component {
 
   handleSelect(value) {
     let data = null
-    data = {...this.state.data, categories: value.map(({ value }) => value) }
+    data = { ...this.state.data, categories: value.map(({ value }) => value) }
     this.setState({ data })
   }
 
   openModal() {
     const options = {
-      fromSources: ['local_file_system','instagram','facebook'],
+      fromSources: ['local_file_system', 'instagram', 'facebook'],
       accept: ['image/*'],
       transformations: {
         crop: true,
         circle: true,
         rotate: true
       },
-      onFileUploadFinished: (file) => {
+      onFileUploadFinished: file => {
         this.setState({ image: file.url })
       },
       onFileUploadFailed: (file, error) => {
-        console.log('file', file)
-        console.log('error', error)
+        console.log("file", file)
+        console.log("error", error)
       }
     }
     client.picker(options).open()
   }
 
-  updateState(url){
-    console.log('updateState running')
-    console.log(url)
-  }
-
   render() {
-    console.log(this.state)
     return (
       <main className="section review-page">
         <div className="container">

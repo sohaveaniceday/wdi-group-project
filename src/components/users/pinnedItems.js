@@ -20,8 +20,6 @@ class PinnedItems extends React.Component {
     ])
       .then(res => {
         const [ user, recipes, reviews ] = res
-        console.log(user, recipes, reviews)
-        console.log(user.data.user.pinnedReviews)
         const recipeFeed = recipes.data.filter(recipe => {
           return (user.data.user.pinnedRecipes.some(pinnedRecipe => {
             return recipe._id.includes(pinnedRecipe)
@@ -37,7 +35,6 @@ class PinnedItems extends React.Component {
   }
 
   render() {
-    console.log('hello', this.state)
     return (
       <main className="section pinned-page hero is-fullheight">
         <div className="container margin-maker margin-auto">

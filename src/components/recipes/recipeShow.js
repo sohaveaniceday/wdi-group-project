@@ -7,7 +7,6 @@ const moment = require('moment')
 let recipeId = null
 
 function checkPin(value) {
-  console.log(value)
   if (value === recipeId) {
     return true
   } else {
@@ -18,12 +17,9 @@ function checkPin(value) {
 let userId = null
 
 function checkLikes(value) {
-  console.log('check like value', value)
   if (value === userId) {
-    console.log('true')
     return true
   } else {
-    console.log('false')
     return false
   }
 }
@@ -63,7 +59,6 @@ class recipeShow extends React.Component {
     const data = {...this.state.data, [name]: value }
     const errors = {...this.state.errors, [name]: null }
     this.setState({ data, errors })
-    console.log(this.state.data)
   }
 
   handleSubmit(e) {
@@ -119,7 +114,6 @@ class recipeShow extends React.Component {
   }
   
   render() {
-    console.log('state', this.state)
     if(!this.state.recipe) return null
     const { recipe, data, errors } = this.state
     recipeId = this.props.match.params.id
