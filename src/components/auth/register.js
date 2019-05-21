@@ -2,9 +2,11 @@ import React from 'react'
 import axios from 'axios'
 import { Animated } from 'react-animated-css'
 import Select from 'react-select'
-import Container from '../container'
 import * as filestack from 'filestack-js'
+import Container from '../container'
+
 const client = filestack.init('AYoVZLJZuQ2GNd6qd87SYz')
+
 class Register extends React.Component {
   constructor() {
     super()
@@ -24,6 +26,7 @@ class Register extends React.Component {
     this.updateState = this.updateState.bind(this)
     this.openModal = this.openModal.bind(this)
   }
+
   componentDidMount() {
     axios.get('/api/categories')
       .then(res => {
@@ -32,11 +35,13 @@ class Register extends React.Component {
       .then(categories => this.setState({ categories }))
       .catch(err => console.log(err))
   }
+
   handleChange({ target: { name , value }}) {
     const data = {...this.state.data, [name]: value}
     const error = ''
     this.setState({ data, error })
   }
+
   handleSubmit(e) {
     e.preventDefault()
     const data = {...this.state.data, image: this.state.image}
@@ -47,11 +52,13 @@ class Register extends React.Component {
         .catch(() => this.setState({ error: 'Invalid Input'}))
     }
   }
+
   handleSelect(value) {
     let data = null
     data = {...this.state.data, categories: value.map(({ value }) => value) }
     this.setState({ data })
   }
+
   openModal() {
     const options = {
       fromSources: ['local_file_system','instagram','facebook'],
@@ -71,10 +78,12 @@ class Register extends React.Component {
     }
     client.picker(options).open()
   }
+
   updateState(url){
     console.log('updateState running')
     console.log(url)
   }
+  
   render() {
     console.log(this.state)
     console.log(this.state.error)
@@ -209,4 +218,5 @@ class Register extends React.Component {
     )
   }
 }
+
 export default Register

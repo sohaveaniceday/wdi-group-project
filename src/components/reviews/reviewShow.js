@@ -1,10 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Auth from "../../lib/auth";
+
 const moment = require('moment')
-
-import Auth from '../../lib/auth'
-
 let reviewId = null
 
 function checkPin(value) {
@@ -50,7 +49,6 @@ class reviewShow extends React.Component {
     axios.get(`/api/user/${Auth.getPayload().sub}`)
       .then(res => this.setState({ data: res.data.user }))
   }
-
 
   handleDelete() {
     axios.delete(`/api/reviews/${this.props.match.params.id}`,
@@ -189,12 +187,17 @@ class reviewShow extends React.Component {
                   </a><label className="label totalLikes like-info">{this.state.review.likes.length} Likes</label></div>
                 }
                 {likes && !likes.some(checkLikes) &&
-                      <div><a className="button is-link is-rounded is-small" onClick={() => this.handleLike(likes, Auth.getPayload().sub)}>
-                        <span className="icon">
-                          <i className="fas fa-thumbs-up"></i>
-                        </span>
-                        <span>Like</span>
-                      </a><label className="label totalLikes like-info">{this.state.review.likes.length} Likes</label></div>
+                (
+                  <div>
+                    <a className="button is-link is-rounded is-small" onClick={() => this.handleLike(likes, Auth.getPayload().sub)}>
+                      <span className="icon">
+                        <i className="fas fa-thumbs-up" />
+                      </span>
+                      <span>Like</span>
+                    </a>
+                    <label className="label totalLikes like-info">{this.state.review.likes.length} Likes</label>
+                  </div>
+                )
                 }
                 <hr />
                 <h4 className="title is-4">Categories</h4>
@@ -229,8 +232,21 @@ class reviewShow extends React.Component {
                   </div>
                   <button className="button pin-button is-rounded">Submit</button>
                 </form>
-                <div>{review.comments.map((comment, i) => (
-                  <div key={i}><hr /><p>{comment.text}</p><p><strong>Written by {comment.user.username}</strong> on {moment(comment.user.createdAt).format('Do MMMM YYYY')} at {moment(comment.user.createdAt).format('hh:mm')}</p></div>))}</div>
+                <div>
+                  {
+                    (
+                      review.comments.map((comment, i) => (
+                        <div key={i}>
+                          <hr />
+                          <p>{comment.text}</p>
+                          <p>
+                            <strong>Written by {comment.user.username}</strong> on {moment(comment.user.createdAt).format('Do MMMM YYYY')} at {moment(comment.user.createdAt).format('hh:mm')}
+                          </p>
+                        </div>
+                      ))
+                    )
+                  }
+                </div>
               </div>
             </div>
           </div>

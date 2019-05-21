@@ -1,0 +1,29 @@
+.navbar {
+      width: 100%;
+      position: fixed;
+    span {
+      color: white;
+    }
+    background: rgb(194, 77, 44);
+  .in-brand {
+      padding: 0 40px;
+    &:hover {
+        color: white;
+        background: rgb(180, 60, 30);
+        }
+    }
+  .out-brand {
+    &:hover {
+        color: white;
+        background: rgb(180, 60, 30);
+        }
+    }
+    .navbar-item {
+      padding: 0 20px;
+      color: rgb(255,255,255);
+    &:hover {
+      background: rgb(180, 60, 30);
+      color: white;
+      }
+    }
+}

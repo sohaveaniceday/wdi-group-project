@@ -37,7 +37,9 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           <div className="field">
             <label className="label">Ingredients</label>
             <div className="control">
-              <textarea cols='60' rows='4'
+              <textarea 
+                cols='60' 
+                rows='4'
                 className={`textarea text-top is-rounded ${errors.ingredients ? 'is-danger': ''}`}
                 name="ingredients"
                 placeholder="Ingredients"
@@ -50,7 +52,9 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
           <div className="field">
             <label className="label">Method</label>
             <div className="control">
-              <textarea cols='60' rows='4'
+              <textarea 
+                cols='60' 
+                rows='4'
                 className={`textarea text-top is-rounded ${errors.method ? 'is-danger': ''}`}
                 name="method"
                 placeholder="Method"
@@ -60,12 +64,6 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
             </div>
             {errors.method && <small className="help is-danger">{errors.method}</small>}
           </div>
-
-          {/*<div className="field">
-          <label className="label">Food Image</label>
-          <Container openModal={openModal} className="button is-info is-rounded" />
-          </div>*/}
-
           <div className="field">
             <label className="label">Recipe Image</label>
             {!image ?
@@ -74,7 +72,6 @@ const RecipeForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
               <img src={image}/>
             }
           </div>
-
           <div className="field">
             <label className="label">Categories (required)</label>
             <div>

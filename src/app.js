@@ -1,10 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import 'bulma'
-import './style.scss'
-// import Container from './components/Container'
+import './style/main.scss'
 
-// import { BrowserRouter as Browser, Route, Switch } from 'react-router-dom'
 import { BrowserRouter as Browser, Route, Switch } from 'react-router-dom'
 
 import Home from './components/home'
@@ -28,43 +26,33 @@ import Search from './components/search/search'
 import ErrorPage from './components/errorPage'
 // import axios from 'axios'
 
-class App extends React.Component {
-  // componentDidMount() {
-  //   axios.get('/api/examples')
-  //     .then(res => console.log(res.data))
-  //     .catch(err => console.log(err))
-  // }
-
-
-
-  render() {
-    return (
-      <Browser>
-        <main>
-          <Nav />
-          <Switch>
-            <Route path="/register" component={Register} />
-            <Route path="/login" component={Login} />
-            <SecureRoute path="/recipe/new" component={RecipeNew} />
-            <SecureRoute path="/recipe/:id/edit" component={RecipeEdit} />
-            <SecureRoute path="/recipe/:id" component={RecipeShow} />
-            <SecureRoute path="/review/new" component={ReviewNew} />
-            <SecureRoute path="/review/:id/edit" component={ReviewEdit} />
-            <SecureRoute path="/review/:id" component={ReviewShow} />
-            <SecureRoute path="/newsfeed" component={Newsfeed} />
-            <SecureRoute path="/pinneditems" component={PinnedItems} />
-            <Route exact path="/" component={Home} />
-            <SecureRoute path="/profilepage" component={ProfilePage} />
-            <SecureRoute path="/user/:id/edit" component={ProfileEdit} />
-            <SecureRoute path="/search" component={Search} />
-            <Route path="/user/:id" component={UserShow} />
-            <Route path="/*" component={ErrorPage} />
-          </Switch>
-          <Footer />
-        </main>
-      </Browser>
-    )
-  }
+const App = () => {
+  return (
+    <Browser>
+      <main>
+        <Nav />
+        <Switch>
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+          <SecureRoute path="/recipe/new" component={RecipeNew} />
+          <SecureRoute path="/recipe/:id/edit" component={RecipeEdit} />
+          <SecureRoute path="/recipe/:id" component={RecipeShow} />
+          <SecureRoute path="/review/new" component={ReviewNew} />
+          <SecureRoute path="/review/:id/edit" component={ReviewEdit} />
+          <SecureRoute path="/review/:id" component={ReviewShow} />
+          <SecureRoute path="/newsfeed" component={Newsfeed} />
+          <SecureRoute path="/pinneditems" component={PinnedItems} />
+          <Route exact path="/" component={Home} />
+          <SecureRoute path="/profilepage" component={ProfilePage} />
+          <SecureRoute path="/user/:id/edit" component={ProfileEdit} />
+          <SecureRoute path="/search" component={Search} />
+          <Route path="/user/:id" component={UserShow} />
+          <Route path="/*" component={ErrorPage} />
+        </Switch>
+        <Footer />
+      </main>
+    </Browser>
+  )
 }
 
 ReactDOM.render(
