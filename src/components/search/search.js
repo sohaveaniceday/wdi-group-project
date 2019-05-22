@@ -48,77 +48,129 @@ class Search extends React.Component {
     return (
       <main className="section search-page hero is-fullheight">
         <div className="container margin-maker margin-auto min-width-search">
-          <div className="extra-padding margin-topbottom curve-border search-message">
+          <div className="input-max extra-padding curve-border search-message">
             <form onSubmit={this.handleSubmit}>
               <div className="field has-text-centered">
                 <div className="control">
                   <input
-                    className='input'
+                    className="input"
                     name="search"
                     placeholder="Search restuarants, recipes, ingredients and categories"
                     onChange={this.handleChange}
-                    value={data.search || ''}
+                    value={data.search || ""}
                   />
                 </div>
               </div>
               <div className="has-text-centered">
-                <button className="button pin-button is-rounded">Search</button>
+                <button className="button pin-button is-rounded">
+                  Search
+                </button>
               </div>
             </form>
           </div>
           <div className="columns is-mobile is-multiline articles">
-            <div className="column is-hidden-mobile"></div>
+            <div className="column is-hidden-mobile" />
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
-              {this.state.sent && <div className="extra-padding has-background-white margin-topbottom curve-border"><h2 className="title is-4 is-centered has-text-centered">Results for Reviews</h2></div>}
-              {this.state.reviewFeed && this.state.reviewFeed.map(reviewFeed => (
-                <div key={reviewFeed._id} className="column">
-                  <Link to={`/review/${reviewFeed._id}`} >
-                    <div className="card">
-                      <div className="card-header">
-                        <h4 className="card-header-title">{reviewFeed.restaurantName}</h4>
-                      </div>
-                      <div className="card-image">
-                        <figure className="image">
-                          <img src={reviewFeed.image} alt={reviewFeed.restaurantName} />
-                        </figure>
-                      </div>
-                      <div className="card-content">
-                        <h5 className="title is-6">{reviewFeed.reviewHeadline}</h5>
-                        <h6 className="subtitle is-6">Created by <Link to={`/user/${reviewFeed.user._id}`}>{reviewFeed.user.username}</Link><br /> at {moment(reviewFeed.createdAt).format('hh:mm')} on {moment(reviewFeed.createdAt).format('Do MMMM YYYY')}</h6>
-                      </div>
-                    </div>
-                  </Link>
+              {this.state.sent && (
+                <div className="extra-padding has-background-white margin-topbottom curve-border">
+                  <h2 className="title is-4 is-centered has-text-centered">
+                    Results for Reviews
+                  </h2>
                 </div>
-              ))}
+              )}
+              {this.state.reviewFeed &&
+                this.state.reviewFeed.map(reviewFeed => (
+                  <div key={reviewFeed._id} className="column">
+                    <Link to={`/review/${reviewFeed._id}`}>
+                      <div className="card">
+                        <div className="card-header">
+                          <h4 className="card-header-title">
+                            {reviewFeed.restaurantName}
+                          </h4>
+                        </div>
+                        <div className="card-image">
+                          <figure className="image">
+                            <img
+                              src={reviewFeed.image}
+                              alt={reviewFeed.restaurantName}
+                            />
+                          </figure>
+                        </div>
+                        <div className="card-content">
+                          <h5 className="title is-6">
+                            {reviewFeed.reviewHeadline}
+                          </h5>
+                          <h6 className="subtitle is-6">
+                            Created by{" "}
+                            <Link to={`/user/${reviewFeed.user._id}`}>
+                              {reviewFeed.user.username}
+                            </Link>
+                            <br /> at{" "}
+                            {moment(reviewFeed.createdAt).format("hh:mm")}{" "}
+                            on{" "}
+                            {moment(reviewFeed.createdAt).format(
+                              "Do MMMM YYYY"
+                            )}
+                          </h6>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                ))}
             </div>
             <div className="column is-two-fifths-desktop is-two-fifths-tablet is-half-mobile news">
-              {this.state.sent && <div className="extra-padding has-background-white margin-topbottom curve-border"><h2 className="title is-4 is-centered has-text-centered">Results for Recipes</h2></div>}
-              {this.state.recipeFeed && this.state.recipeFeed.map(recipeFeed => (
-                <div key={recipeFeed._id} className="column">
-                  <Link to={`/recipe/${recipeFeed._id}`} >
-                    <div className="card">
-                      <div className="card-header">
-                        <h4 className="card-header-title">{recipeFeed.name}</h4>
-                      </div>
-                      <div className="card-image">
-                        <figure className="image">
-                          <img src={recipeFeed.image} alt={recipeFeed.name} />
-                        </figure>
-                      </div>
-                      <div className="card-content">
-                        <h5 className="title is-6">{recipeFeed.description}</h5>
-                        <h6 className="subtitle is-6">Created by <Link to={`/user/${recipeFeed.user._id}`}>{recipeFeed.user.username}</Link><br /> at {moment(recipeFeed.createdAt).format('hh:mm')} on {moment(recipeFeed.createdAt).format('Do MMMM YYYY')}</h6>
-                      </div>
-                    </div>
-                  </Link>
+              {this.state.sent && (
+                <div className="extra-padding has-background-white margin-topbottom curve-border">
+                  <h2 className="title is-4 is-centered has-text-centered">
+                    Results for Recipes
+                  </h2>
                 </div>
-              ))}
+              )}
+              {this.state.recipeFeed &&
+                this.state.recipeFeed.map(recipeFeed => (
+                  <div key={recipeFeed._id} className="column">
+                    <Link to={`/recipe/${recipeFeed._id}`}>
+                      <div className="card">
+                        <div className="card-header">
+                          <h4 className="card-header-title">
+                            {recipeFeed.name}
+                          </h4>
+                        </div>
+                        <div className="card-image">
+                          <figure className="image">
+                            <img
+                              src={recipeFeed.image}
+                              alt={recipeFeed.name}
+                            />
+                          </figure>
+                        </div>
+                        <div className="card-content">
+                          <h5 className="title is-6">
+                            {recipeFeed.description}
+                          </h5>
+                          <h6 className="subtitle is-6">
+                            Created by{" "}
+                            <Link to={`/user/${recipeFeed.user._id}`}>
+                              {recipeFeed.user.username}
+                            </Link>
+                            <br /> at{" "}
+                            {moment(recipeFeed.createdAt).format("hh:mm")}{" "}
+                            on{" "}
+                            {moment(recipeFeed.createdAt).format(
+                              "Do MMMM YYYY"
+                            )}
+                          </h6>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                ))}
             </div>
-            <div className="column is-hidden-mobile"></div>
+            <div className="column is-hidden-mobile" />
           </div>
         </div>
       </main>
-    )
+    );
   }
 }
 export default Search

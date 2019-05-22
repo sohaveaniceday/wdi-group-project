@@ -89,40 +89,54 @@ class ProfileEdit extends React.Component {
     return (
       <main className="section profile-page">
         <div className="container margin-maker">
-          <div className="extra-padding has-background-white margin-topbottom curve-border">
+          <div className="extra-padding has-background-white input-max curve-border">
             <form onSubmit={this.handleSubmit}>
               <h2 className="title">Edit Profile</h2>
               <div className="field">
                 <label className="label">Username</label>
                 <div className="control">
                   <input
-                    className={`input ${this.state.error.username ? 'is-danger': ''}`}
+                    className={`input ${
+                      this.state.error.username ? "is-danger" : ""
+                    }`}
                     name="username"
                     placeholder="Username"
                     value={this.state.data.username}
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.error.username && <small className="help is-danger">{this.state.error.username}</small>}
+                {this.state.error.username && (
+                  <small className="help is-danger">
+                    {this.state.error.username}
+                  </small>
+                )}
               </div>
               <div className="field">
                 <label className="label">Email</label>
                 <div className="control">
                   <input
-                    className={`input ${this.state.error.email ? 'is-danger': ''}`}
+                    className={`input ${
+                      this.state.error.email ? "is-danger" : ""
+                    }`}
                     name="email"
                     placeholder="Email"
                     value={this.state.data.email}
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.error.email && <small className="help is-danger">{this.state.error.email}</small>}
+                {this.state.error.email && (
+                  <small className="help is-danger">
+                    {this.state.error.email}
+                  </small>
+                )}
               </div>
               <div className="field">
                 <label className="label">Password</label>
                 <div className="control">
                   <input
-                    className={`input ${this.state.error.password ? 'is-danger': ''}`}
+                    className={`input ${
+                      this.state.error.password ? "is-danger" : ""
+                    }`}
                     name="password"
                     type="password"
                     placeholder="Password"
@@ -130,13 +144,19 @@ class ProfileEdit extends React.Component {
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.error.password && <small className="help is-danger">{this.state.error.password}</small>}
+                {this.state.error.password && (
+                  <small className="help is-danger">
+                    {this.state.error.password}
+                  </small>
+                )}
               </div>
               <div className="field">
                 <label className="label">Password Confirmation</label>
                 <div className="control">
                   <input
-                    className={`input ${this.state.error.password ? 'is-danger': ''}`}
+                    className={`input ${
+                      this.state.error.password ? "is-danger" : ""
+                    }`}
                     name="passwordConfirmation"
                     type="password"
                     placeholder="Password Confirmation"
@@ -144,56 +164,81 @@ class ProfileEdit extends React.Component {
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.error.passwordConfirmation && <small className="help is-danger">{this.state.error.passwordConfirmation}</small>}
+                {this.state.error.passwordConfirmation && (
+                  <small className="help is-danger">
+                    {this.state.error.passwordConfirmation}
+                  </small>
+                )}
               </div>
               <div className="field">
                 <label className="label">Full Name</label>
                 <div className="control">
                   <input
-                    className={`input ${this.state.error.name ? 'is-danger': ''}`}
+                    className={`input ${
+                      this.state.error.name ? "is-danger" : ""
+                    }`}
                     name="name"
                     placeholder="Full Name"
                     value={this.state.data.name}
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.error.name && <small className="help is-danger">{this.state.error.name}</small>}
+                {this.state.error.name && (
+                  <small className="help is-danger">
+                    {this.state.error.name}
+                  </small>
+                )}
               </div>
               <div className="field">
                 <label className="label">Location</label>
                 <div className="control">
                   <input
-                    className={`input ${this.state.error.location ? 'is-danger': ''}`}
+                    className={`input ${
+                      this.state.error.location ? "is-danger" : ""
+                    }`}
                     name="location"
                     placeholder="Location"
                     value={this.state.data.location}
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.error.location && <small className="help is-danger">{this.state.error.location}</small>}
+                {this.state.error.location && (
+                  <small className="help is-danger">
+                    {this.state.error.location}
+                  </small>
+                )}
               </div>
 
               <div className="field">
                 <label className="label">Bio</label>
                 <div className="control">
                   <input
-                    className={`input ${this.state.error.bio ? 'is-danger': ''}`}
+                    className={`input ${
+                      this.state.error.bio ? "is-danger" : ""
+                    }`}
                     name="bio"
                     placeholder="Bio"
                     value={this.state.data.bio}
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.error.bio && <small className="help is-danger">{this.state.error.bio}</small>}
+                {this.state.error.bio && (
+                  <small className="help is-danger">
+                    {this.state.error.bio}
+                  </small>
+                )}
               </div>
 
               <div className="field">
                 <label className="label">Profile Image</label>
-                {!this.state.image ?
-                  <Container openModal={this.openModal} className="button is-warning is-rounded" />
-                  :
-                  <img src={this.state.image}/>
-                }
+                {!this.state.image ? (
+                  <Container
+                    openModal={this.openModal}
+                    className="button is-warning is-rounded"
+                  />
+                ) : (
+                  <img src={this.state.image} />
+                )}
               </div>
               <div className="field">
                 <label className="label">Categories</label>
@@ -212,7 +257,7 @@ class ProfileEdit extends React.Component {
           </div>
         </div>
       </main>
-    )
+    );
   }
 }
 

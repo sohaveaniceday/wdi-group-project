@@ -5,21 +5,27 @@ import Container from '../container'
 const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, categories, openModal, image }) => {
   return (
     <div className="margin-maker">
-      <div className="extra-padding has-background-white margin-topbottom curve-border">
+      <div className="extra-padding has-background-white input-max curve-border">
         <h1 className="title is-2">Review Form</h1>
         <form onSubmit={handleSubmit}>
           <div className="field">
             <label className="label">Restaurant Name (required)</label>
             <div className="control">
               <input
-                className={`input ${errors.restaurantName ? 'is-danger': ''}`}
+                className={`input ${
+                  errors.restaurantName ? "is-danger" : ""
+                }`}
                 name="restaurantName"
                 placeholder="Restaurant Name"
                 onChange={handleChange}
-                value={data.restaurantName || ''}
+                value={data.restaurantName || ""}
               />
             </div>
-            {errors.restaurantName && <small className="help is-danger">{errors.restaurantName}</small>}
+            {errors.restaurantName && (
+              <small className="help is-danger">
+                {errors.restaurantName}
+              </small>
+            )}
           </div>
           <label className="label">Rating</label>
           <div className="select">
@@ -38,35 +44,46 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
             <label className="label">Review Headline</label>
             <div className="control">
               <input
-                className={`input ${errors.reviewHeadline ? 'is-danger': ''}`}
+                className={`input ${
+                  errors.reviewHeadline ? "is-danger" : ""
+                }`}
                 name="reviewHeadline"
                 placeholder="Review Headline"
                 onChange={handleChange}
-                value={data.reviewHeadline || ''}
+                value={data.reviewHeadline || ""}
               />
             </div>
-            {errors.reviewHeadline && <small className="help is-danger">{errors.reviewHeadline}</small>}
+            {errors.reviewHeadline && (
+              <small className="help is-danger">
+                {errors.reviewHeadline}
+              </small>
+            )}
           </div>
           <div className="field">
             <label className="label">Review</label>
             <div className="control">
               <input
-                className={`input${errors.reviewText ? 'is-danger': ''}`}
+                className={`input${errors.reviewText ? "is-danger" : ""}`}
                 name="reviewText"
                 placeholder="Review"
                 onChange={handleChange}
-                value={data.reviewText || ''}
+                value={data.reviewText || ""}
               />
             </div>
-            {errors.reviewText && <small className="help is-danger">{errors.reviewText}</small>}
+            {errors.reviewText && (
+              <small className="help is-danger">{errors.reviewText}</small>
+            )}
           </div>
           <div className="field">
             <label className="label">Review Image</label>
-            {!image ?
-              <Container openModal={openModal} className="button is-warning is-rounded" />
-              :
-              <img src={image}/>
-            }
+            {!image ? (
+              <Container
+                openModal={openModal}
+                className="button is-warning is-rounded"
+              />
+            ) : (
+              <img src={image} />
+            )}
           </div>
           <div className="field">
             <label className="label">Categories (required)</label>
@@ -84,7 +101,7 @@ const ReviewForm = ({ handleChange, handleSubmit, handleSelect, data, errors, ca
         </form>
       </div>
     </div>
-  )
+  );
 }
 
 export default ReviewForm

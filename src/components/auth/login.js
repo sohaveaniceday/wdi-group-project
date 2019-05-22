@@ -38,8 +38,8 @@ class Login extends React.Component {
   render() {
     return (
       <main className="section profile-page hero is-fullheight">
-        <div className="input-max container margin-maker">
-          <div className="input-max extra-padding has-background-white margin-topbottom curve-border">
+        <div className="container margin-maker">
+          <div className="input-max extra-padding has-background-white curve-border">
             <form onSubmit={this.handleSubmit}>
               <h2 className="title">Login</h2>
               <div className="field">
