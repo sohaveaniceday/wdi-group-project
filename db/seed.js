@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
+const Promise = require('bluebird')
 const {dbURI} = require('../config/environment')
 
 const Category = require('../models/category')
 const Review = require('../models/review')
 const Recipe = require('../models/recipe')
 const User = require('../models/user')
-const Promise = require('bluebird')
 
 function getRandom(max) {
   return Math.floor(Math.random() * Math.floor(max))
