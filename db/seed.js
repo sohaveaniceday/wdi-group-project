@@ -11,8 +11,8 @@ function getRandom(max) {
   return Math.floor(Math.random() * Math.floor(max))
 }
 
-mongoose.connect(dbURI, { useNewUrlParser: true }, (err, db) => {
-  db.dropDatabase()
+mongoose.connect(dbURI, { useNewUrlParser: true }, () => {
+  // db.dropDatabase()
 
   Category.create([
     {
