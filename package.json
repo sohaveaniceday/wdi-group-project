@@ -10,7 +10,7 @@
     "postinstall": "[ \"$NODE_ENV\" = \"production\" ] && yarn build || exit 0",
     "start:server": "nodemon",
     "start:client": "webpack-dev-server --mode=development",
-    "test": "istanbul cover node_modules/.bin/_mocha",
+    "test": "istanbul cover node_modules/.bin/_mocha"
   },
   "dependencies": {
     "axios": "^0.18.0",
