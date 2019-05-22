@@ -13,7 +13,8 @@
     "start:server": "nodemon",
     "start:client": "webpack-dev-server --mode=development",
     "test": "istanbul cover node_modules/.bin/_mocha",
-    "start": "node index.js"
+    "start": "node index.js",
+    "seed": "node db/seedsPromise"
   },
   "dependencies": {
     "axios": "^0.18.0",
